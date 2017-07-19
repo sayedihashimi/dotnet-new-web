@@ -17,7 +17,7 @@ namespace TemplatesShared
 
     public interface ITemplatePack
     {
-        string Owner { get; set; }
+        string Owners { get; set; }
         string Version { get; set; }
         int DownloadCount { get; set; }
         string[] Tags { get; set; }
@@ -28,6 +28,6 @@ namespace TemplatesShared
         string Authors { get; set; }
         string LicenseUrl { get; set; }
         string ProjectUrl { get; set; }
-        string Id { get; set; }
+        string Package { get; set; }
     }
 }

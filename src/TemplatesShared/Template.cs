@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,7 +20,7 @@ namespace TemplatesShared
 
     public class TemplatePack : ITemplatePack
     {
-        public string Owner { get; set; }
+        public string Owners { get; set; }
         public string Version { get; set; }
         public int DownloadCount { get; set; }
         [JsonConverter(typeof(StringArrayConverter))]
@@ -32,7 +33,8 @@ namespace TemplatesShared
         public string Authors { get; set; }
         public string LicenseUrl { get; set; }
         public string ProjectUrl { get; set; }
-        public string Id { get; set; }
+
+        public string Package { get; set; }
 
         public static IList<TemplatePack>CreateFromFile(string filepath)
         {
@@ -62,7 +64,8 @@ namespace TemplatesShared
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             // not needed
-            throw new NotImplementedException();
+            JToken fromobj = JToken.FromObject(value);
+            fromobj.WriteTo(writer);
         }
     }
 
@@ -112,8 +115,8 @@ namespace TemplatesShared
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            // Not needed
-            throw new NotImplementedException();
+            JToken t = JToken.FromObject(value);
+            t.WriteTo(writer);
         }
     }
 }
