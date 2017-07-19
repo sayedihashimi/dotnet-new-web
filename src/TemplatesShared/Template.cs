@@ -33,6 +33,17 @@ namespace TemplatesShared
         public string LicenseUrl { get; set; }
         public string ProjectUrl { get; set; }
         public string Id { get; set; }
+
+        public static IList<TemplatePack>CreateFromFile(string filepath)
+        {
+            string jsonString = System.IO.File.ReadAllText(filepath);
+            return CreateFromText(jsonString);
+        }
+
+        public static IList<TemplatePack>CreateFromText(string text)
+        {
+            return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
+        }
     }
 
 
