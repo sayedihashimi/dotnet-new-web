@@ -6,7 +6,7 @@ using System.Text;
 
 namespace TemplatesShared
 {
-    public class Template : ITemplate
+    public class Template
     {
         public string Author { get; set; }
         public string Name { get; set; }
@@ -16,9 +16,11 @@ namespace TemplatesShared
         public string ShortName { get; set; }
         public string GroupIdentity { get; set; }
         public string Identity { get; set; }
+        [JsonIgnore()]
+        public int SearchScore { get; set; }
     }
 
-    public class TemplatePack : ITemplatePack
+    public class TemplatePack
     {
         public string Owners { get; set; }
         public string Version { get; set; }
@@ -26,7 +28,7 @@ namespace TemplatesShared
         [JsonConverter(typeof(StringArrayConverter))]
         public string[] Tags { get; set; }
         [JsonConverter(typeof(TemplateConverter))]
-        public ITemplate[] Templates { get; set; }
+        public Template[] Templates { get; set; }
         public string DownloadUrl { get; set; }
         public string Description { get; set; }
         public string Copyright { get; set; }
@@ -36,13 +38,13 @@ namespace TemplatesShared
 
         public string Package { get; set; }
 
-        public static IList<TemplatePack>CreateFromFile(string filepath)
+        public static List<TemplatePack>CreateFromFile(string filepath)
         {
             string jsonString = System.IO.File.ReadAllText(filepath);
             return CreateFromText(jsonString);
         }
 
-        public static IList<TemplatePack>CreateFromText(string text)
+        public static List<TemplatePack>CreateFromText(string text)
         {
             return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
@@ -53,7 +55,7 @@ namespace TemplatesShared
     {
         public override bool CanConvert(Type objectType)
         {
-            return (objectType == typeof(ITemplate[]));
+            return (objectType == typeof(Template[]));
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

@@ -11,16 +11,14 @@ using Microsoft.AspNetCore.Hosting;
 namespace TemplatesApi.Controllers
 {
     [Route("api/[controller]")]
-    public class TemplatesController : Controller
+    public class SearchController : Controller
     {
-        public TemplatesController(IHostingEnvironment hostingEnvironment)
-        {
+        public SearchController(IHostingEnvironment hostingEnvironment) {
             _hostingEnvironment = hostingEnvironment;
             _webRoot = _hostingEnvironment.WebRootPath;
             SetFilepath(@"template-report.json");
         }
-        public static void SetFilepath(string filename)
-        {
+        public static void SetFilepath(string filename) {
             string filepath = Path.Combine(_webRoot, filename);
             Filepath = filepath;
             TemplatePacks = TemplatePack.CreateFromFile(filepath);
@@ -31,25 +29,9 @@ namespace TemplatesApi.Controllers
         private static List<TemplatePack> TemplatePacks { get; set; }
 
         // GET api/templates
-        [HttpGet]
-        public IEnumerable<TemplatePack> Get()
-        {
-            return TemplatePacks;
-        }
-
-        // GET api/templates/ID
-        [HttpGet("{id}")]
-        public TemplatePack Get(string id)
-        {
-            foreach(var tp in TemplatePacks)
-            {
-                if (id.Equals(tp.Package, StringComparison.OrdinalIgnoreCase))
-                {
-                    return tp;
-                }
-            }
-
-            return null;
+        [HttpGet("{searchTerm}")]
+        public List<Template> Get(string searchTerm) {
+            return new TemplateSearcher().Search(searchTerm, TemplatePacks);
         }
     }
 }

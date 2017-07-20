@@ -19,7 +19,7 @@ namespace TemplateTest
         public void TestCreateFromFile()
         {
             string filepath = GetTestFilepath(@"template-report01.json");
-            IList<TemplatePack> result = TemplatePack.CreateFromFile(filepath);
+            List<TemplatePack> result = TemplatePack.CreateFromFile(filepath);
             Assert.NotNull(result);
             Assert.True(result.Count > 0);
         }
@@ -29,7 +29,7 @@ namespace TemplateTest
         {
             string filepath = GetTestFilepath(@"template-report01.json");
             string str = File.ReadAllText(filepath);
-            IList<TemplatePack> result = TemplatePack.CreateFromText(str);
+            List<TemplatePack> result = TemplatePack.CreateFromText(str);
             Assert.NotNull(result);
             Assert.True(result.Count > 0);
         }
