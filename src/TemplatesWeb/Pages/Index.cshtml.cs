@@ -25,16 +25,17 @@ namespace TemplatesWeb.Pages
         {
             try
             {
-                string jsonString = System.IO.File.ReadAllText(@"C:\data\mycode\dotnet-new-web\src\template-report.json");
-                var res = JsonConvert.DeserializeObject<List<TemplatePack>>(jsonString);
-                
-                var url = new Uri(new Uri(_config.TemplatesApiBaseUrl), "search").AbsoluteUri;
-                ViewData["url"] = url;
+                string baseUrl = _config.TemplatesApiBaseUrl;
+                if (string.IsNullOrWhiteSpace(baseUrl) || baseUrl.StartsWith(@"D:\")) {
+                    baseUrl = @"http://dotnetnew-api.azurewebsites.net/api/";
+                }
+                var url = new Uri(new Uri(baseUrl), "search").AbsoluteUri;
+                ViewData["url"] = baseUrl;
                 HttpClient client = new HttpClient();
                 HttpResponseMessage response = client.GetAsync(url).Result;
                 string json = response.Content.ReadAsStringAsync().Result;
                 var result = JsonConvert.DeserializeObject<List<Template>>(json);
-                _templates = result;
+               _templates = result;
                 // List<Template>result =
                 // client.GetAsync("/api/customerservice").Result;
                 // string stringData = response.Content.ReadAsStringAsync().Result;
