@@ -94,16 +94,56 @@ namespace TemplatesShared {
             else if (groupIdRes.IsPartialMatch)
                 score += 50;
 
+            var tagKeysRes = IsStringMatch(searchTerm, template.Tags.Keys);
+            var tagValuesRes = IsStringMatch(searchTerm, template.Tags.Values);
+
+            var tagRes = Combine(
+                            IsStringMatch(searchTerm, template.Tags.Keys), 
+                            IsStringMatch(searchTerm, template.Tags.Values));
+            if (tagRes.IsExactMatch)
+                score += 250;
+            else if (tagRes.StartsWith)
+                score += 50;
+            else if (tagRes.IsPartialMatch)
+                score += 25;
+
+            var classRes = IsStringMatch(searchTerm, template.Classifications);
+            if (classRes.IsExactMatch)
+                score += 250;
+            else if (classRes.StartsWith)
+                score += 50;
+            else if (classRes.IsPartialMatch)
+                score += 25;
+
             return new TemplateSearchResult {
                 IsMatch =  (score > 0),
                 SearchValue = score
             };
         }
-        internal TemplateMatchResult IsStringMatch(string search, string strToSearch) {
-            if (search == null) {
-                return new TemplateMatchResult();
+        internal TemplateMatchResult Combine(TemplateMatchResult match1, TemplateMatchResult match2) {
+            if (match1 == null)
+                throw new ArgumentNullException("match1");
+            if (match2 == null)
+                throw new ArgumentNullException("match2");
+            
+            return new TemplateMatchResult {
+                IsExactMatch = (match1.IsExactMatch || match2.IsExactMatch),
+                IsPartialMatch = (match1.IsPartialMatch || match2.IsPartialMatch),
+                StartsWith = (match1.StartsWith || match2.StartsWith)
+            };
+        }
+        internal TemplateMatchResult Combine(IEnumerable<TemplateMatchResult> matches) {
+            if (matches == null || matches.Count() <= 0)
+                throw new ArgumentNullException("matches");
+
+            var result = new TemplateMatchResult();
+            foreach(var m in matches) {
+                result = Combine(result, m);
             }
-            if (strToSearch == null) {
+            return result;
+        }
+        internal TemplateMatchResult IsStringMatch(string search, string strToSearch) {
+            if (search == null || strToSearch == null) {
                 return new TemplateMatchResult();
             }
 
@@ -126,8 +166,22 @@ namespace TemplatesShared {
 
             return new TemplateMatchResult();
         }
-    }
 
+        internal TemplateMatchResult IsStringMatch(string search, IEnumerable<string> strToSearch) {
+            if (string.IsNullOrWhiteSpace(search) || strToSearch == null || strToSearch.Count() <= 0) {
+                return new TemplateMatchResult();
+            }
+
+            var result = new TemplateMatchResult();
+            List<TemplateMatchResult> matches = new List<TemplateMatchResult>();
+            foreach(var str in strToSearch) {
+                result = Combine(result, IsStringMatch(search, str));
+            }
+
+            return result;
+        }
+    }
+    
     internal class TemplateSearchResult : ITemplateSearchResult {
         public bool IsMatch { get; set; }
         public int SearchValue { get; set; } = 0;
