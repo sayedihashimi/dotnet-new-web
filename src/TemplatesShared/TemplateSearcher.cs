@@ -6,10 +6,14 @@ using System.Linq;
 namespace TemplatesShared {
     public class TemplateSearcher : ITemplateSearcher {
         public List<Template> Search(string searchTerm, List<TemplatePack> templatePacks) {
+            if (string.IsNullOrWhiteSpace(searchTerm)) {
+                return GetAllTemplates(templatePacks);
+            }
             if (string.IsNullOrWhiteSpace(searchTerm) ||
                             templatePacks == null || templatePacks.Count <= 0) {
                 return null;
             }
+
             var matches = new List<Template>();
             foreach(var tp in templatePacks) {
                 foreach(Template t in tp.Templates) {
@@ -40,7 +44,13 @@ namespace TemplatesShared {
             // return matches.Keys;
             return retv.ToList();
         }
-
+        private List<Template> GetAllTemplates(IEnumerable<TemplatePack> templatePacks) {
+            List<Template> result = new List<Template>();
+            foreach (var tp in templatePacks) {
+                result.AddRange(tp.Templates);
+            }
+            return result;
+        }
         /// <summary>
         /// This function will search the template for the given term.
         /// If there is a match the returned object will have IsMatch set to true.

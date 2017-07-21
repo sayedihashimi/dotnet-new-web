@@ -28,6 +28,10 @@ namespace TemplatesApi.Controllers
         private static string Filepath { get; set; }
         private static List<TemplatePack> TemplatePacks { get; set; }
 
+        [HttpGet()]
+        public List<Template> Get() {
+            return Get(string.Empty);
+        }
         // GET api/templates
         [HttpGet("{searchTerm}")]
         public List<Template> Get(string searchTerm) {

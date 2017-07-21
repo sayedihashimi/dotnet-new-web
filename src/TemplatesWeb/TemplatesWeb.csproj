@@ -16,5 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
 
 </Project>
