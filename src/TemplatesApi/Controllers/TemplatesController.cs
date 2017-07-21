@@ -39,17 +39,17 @@ namespace TemplatesApi.Controllers
 
         // GET api/templates/ID
         [HttpGet("{id}")]
-        public TemplatePack Get(string id)
+        public IActionResult Get(string id)
         {
             foreach(var tp in TemplatePacks)
             {
                 if (id.Equals(tp.Package, StringComparison.OrdinalIgnoreCase))
                 {
-                    return tp;
+                    return Ok(tp);
                 }
             }
 
-            return null;
+            return NotFound();
         }
     }
 }
