@@ -7,6 +7,11 @@
 
 
 <h1>template search</h1>
+<form method="POST">
+    <div>Name: <input asp-for="SearchText" /></div>
+    <input type="submit" />
+</form>
+
 @foreach(var t in Model._templates) {
     <h3>Template - [@t.Name]</h3>
 }

@@ -1,0 +1,14 @@
+﻿@page "{SearchText}"
+@model SearchModel
+@{
+}
+<h1>Search: [@Model.SearchText] </h1>
+
+<form method="POST" action="~/">
+    <div>Name: <input asp-for="SearchText" /></div>
+    <input type="submit" />
+</form>
+
+@foreach(var t in Model.SearchResults) {
+    <h3>@t.Name</h3>
+}

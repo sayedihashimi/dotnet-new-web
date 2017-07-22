@@ -46,6 +46,10 @@ namespace TemplatesWeb
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "search",
+                    template: "{controller=Search}/{action=Index}/{SearchText?}");
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
