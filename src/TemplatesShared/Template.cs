@@ -25,8 +25,6 @@ namespace TemplatesShared
         public string Owners { get; set; }
         public string Version { get; set; }
         public int DownloadCount { get; set; }
-        // [JsonConverter(typeof(StringArrayConverter))]
-        // public string Tags { get; set; }
         [JsonConverter(typeof(TemplateConverter))]
         public Template[] Templates { get; set; }
         public string DownloadUrl { get; set; }
