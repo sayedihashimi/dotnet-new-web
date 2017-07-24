@@ -18,6 +18,7 @@ namespace TemplatesShared
         public string Identity { get; set; }
         [JsonIgnore()]
         public int SearchScore { get; set; }
+        public string TemplatePackId { get; set; }
     }
 
     public class TemplatePack
@@ -39,7 +40,18 @@ namespace TemplatesShared
         public static List<TemplatePack>CreateFromFile(string filepath)
         {
             string jsonString = System.IO.File.ReadAllText(filepath);
-            return CreateFromText(jsonString);
+
+            List<TemplatePack>results = CreateFromText(jsonString);
+            // assign the templatepackid if not already set
+            foreach(var tp in results) {
+                foreach(var t in tp.Templates) {
+                    if (string.IsNullOrWhiteSpace(t.TemplatePackId)) {
+                        t.TemplatePackId = tp.Package;
+                    }
+                }
+            }
+
+            return results;
         }
 
         public static List<TemplatePack>CreateFromText(string text)

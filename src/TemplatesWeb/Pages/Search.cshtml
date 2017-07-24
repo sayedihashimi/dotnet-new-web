@@ -12,12 +12,19 @@
 @foreach(var t in Model.SearchResults) {
     <h3>@t.Name</h3>
     <p>
+        Package: <b>@t.TemplatePackId</b><br/>
         Author: @t.Author<br />
         Identity: @t.Identity<br />
         ShortName: @t.ShortName<br />
-        @t.Tags : @foreach (var tt in t.Tags) { tt.ToString(); }<br />
-        @t.Classifications: @foreach (var cc in t.Classifications) { cc.ToString(); }<br />
+        Tags : 
+            @foreach (var tt in t.Tags) {
+                <span>@tt.Key.ToString()</span>
+                <b>@tt.Value.ToString()</b>;
+            } <br/>
+        Classifications:
+            @foreach (var cc in t.Classifications) {
+                <b>@cc.ToString() &nbsp</b>;
+            } <br />
         GroupId: @t.GroupIdentity<br />
-        SearchScore: @t.SearchScore<br />
     </p>
 }
