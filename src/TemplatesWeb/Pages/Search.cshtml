@@ -11,4 +11,13 @@
 
 @foreach(var t in Model.SearchResults) {
     <h3>@t.Name</h3>
+    <p>
+        Author: @t.Author<br />
+        Identity: @t.Identity<br />
+        ShortName: @t.ShortName<br />
+        @t.Tags : @foreach (var tt in t.Tags) { tt.ToString(); }<br />
+        @t.Classifications: @foreach (var cc in t.Classifications) { cc.ToString(); }<br />
+        GroupId: @t.GroupIdentity<br />
+        SearchScore: @t.SearchScore<br />
+    </p>
 }

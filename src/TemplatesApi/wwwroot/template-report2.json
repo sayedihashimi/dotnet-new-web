@@ -2,8 +2,8 @@
     {
         "Owners":  "Microsoft",
         "Version":  "0.9.3",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Microsoft.AspNetCore.SpaTemplates-0.9.3.nupkg\\",
-        "DownloadCount":  47792,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Microsoft.AspNetCore.SpaTemplates-0.9.3.nupkg\\",
+        "DownloadCount":  47680,
         "Tags":  null,
         "Templates":  [
                           {
@@ -114,8 +114,8 @@
     {
         "Owners":  "Microsoft",
         "Version":  "1.0.0-preview-000409",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Microsoft.DotNet.Web.Spa.ProjectTemplates-1.0.0-preview-000409.nupkg\\",
-        "DownloadCount":  7693,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Microsoft.DotNet.Web.Spa.ProjectTemplates-1.0.0-preview-000409.nupkg\\",
+        "DownloadCount":  7657,
         "Tags":  null,
         "Templates":  [
                           {
@@ -178,8 +178,8 @@
     {
         "Owners":  "Steve Desmond",
         "Version":  "1.0.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\libyear-1.0.1.nupkg\\",
-        "DownloadCount":  2005,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\libyear-1.0.1.nupkg\\",
+        "DownloadCount":  1990,
         "Tags":  null,
         "Templates":  [
                           {
@@ -216,8 +216,8 @@
     {
         "Owners":  "Muhammad Rehan Saeed (RehanSaeed.com)",
         "Version":  "1.6.2",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Boilerplate.Templates-1.6.2.nupkg\\",
-        "DownloadCount":  1735,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Boilerplate.Templates-1.6.2.nupkg\\",
+        "DownloadCount":  1725,
         "Tags":  "ASP.NET Core Boilerplate Muhammad Rehan Saeed Framework",
         "Templates":  [
                           {
@@ -263,8 +263,8 @@
     {
         "Owners":  "Amazon Web Services",
         "Version":  "1.3.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Amazon.Lambda.Templates-1.3.0.nupkg\\",
-        "DownloadCount":  1220,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Amazon.Lambda.Templates-1.3.0.nupkg\\",
+        "DownloadCount":  1216,
         "Tags":  "AWS Amazon Lambda",
         "Templates":  [
                           {
@@ -439,8 +439,8 @@
     {
         "Owners":  "Brock Allen, Dominick Baier",
         "Version":  "1.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\IdentityServer4.Templates-1.0.0.nupkg\\",
-        "DownloadCount":  1209,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\IdentityServer4.Templates-1.0.0.nupkg\\",
+        "DownloadCount":  1207,
         "Tags":  null,
         "Templates":  [
                           {
@@ -449,9 +449,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "IdentityServer4"
-                                                  ],
+                              "classifications":  "IdentityServer4",
                               "shortName":  "is4",
                               "groupIdentity":  "IdentityServer4.Basic",
                               "identity":  "IdentityServer4.Basic"
@@ -462,9 +460,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "IdentityServer4"
-                                                  ],
+                              "classifications":  "IdentityServer4",
                               "shortName":  "is4inmem",
                               "groupIdentity":  "IdentityServer4.InMem",
                               "identity":  "IdentityServer4.InMem"
@@ -475,9 +471,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "IdentityServer4"
-                                                  ],
+                              "classifications":  "IdentityServer4",
                               "shortName":  "is4ui",
                               "groupIdentity":  "IdentityServer4.UI",
                               "identity":  "IdentityServer4.UI"
@@ -494,8 +488,8 @@
     {
         "Owners":  "Jimmy Byrd",
         "Version":  "0.3.5",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\MiniScaffold-0.3.5.nupkg\\",
-        "DownloadCount":  1156,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\MiniScaffold-0.3.5.nupkg\\",
+        "DownloadCount":  1154,
         "Tags":  "class library template fsharp",
         "Templates":  [
                           {
@@ -504,9 +498,7 @@
                               "tags":  {
                                            "language":  "F#"
                                        },
-                              "classifications":  [
-                                                      "Scaffold"
-                                                  ],
+                              "classifications":  "Scaffold",
                               "shortName":  "mini-scaffold",
                               "groupIdentity":  null,
                               "identity":  "MiniScaffold"
@@ -523,8 +515,8 @@
     {
         "Owners":  "Dustin Moris Gorski",
         "Version":  "0.1.6",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\giraffe-template-0.1.6.nupkg\\",
-        "DownloadCount":  1037,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\giraffe-template-0.1.6.nupkg\\",
+        "DownloadCount":  1035,
         "Tags":  "giraffe web app razor pages micro service dotnet new template",
         "Templates":  [
                           {
@@ -553,8 +545,8 @@
     {
         "Owners":  "Chad Ramos (pioneercode.com)",
         "Version":  "1.0.6",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Pioneer.Console.Boilerplate-1.0.6.nupkg\\",
-        "DownloadCount":  864,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Pioneer.Console.Boilerplate-1.0.6.nupkg\\",
+        "DownloadCount":  862,
         "Tags":  "Pioneer Code Boilerplate .NET Core Console Dependency Injection Logging Configuration Chad Ramos",
         "Templates":  [
                           {
@@ -586,8 +578,8 @@
     {
         "Owners":  "kiootic",
         "Version":  "3.5.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\MonoGame.Template.NETCore-3.5.1.nupkg\\",
-        "DownloadCount":  774,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\MonoGame.Template.NETCore-3.5.1.nupkg\\",
+        "DownloadCount":  771,
         "Tags":  "MonoGame Game Core VSCode",
         "Templates":  [
                           {
@@ -617,8 +609,8 @@
     {
         "Owners":  "Mads Kristensen",
         "Version":  "1.0.21",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\MadsKristensen.AspNetCore.Web.Templates-1.0.21.nupkg\\",
-        "DownloadCount":  767,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\MadsKristensen.AspNetCore.Web.Templates-1.0.21.nupkg\\",
+        "DownloadCount":  764,
         "Tags":  "asp.net core .net template",
         "Templates":  [
                           {
@@ -678,8 +670,8 @@
     {
         "Owners":  "RIGANTI",
         "Version":  "1.1.2",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\DotVVM.Templates-1.1.2.nupkg\\",
-        "DownloadCount":  708,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\DotVVM.Templates-1.1.2.nupkg\\",
+        "DownloadCount":  706,
         "Tags":  null,
         "Templates":  [
                           {
@@ -709,8 +701,8 @@
     {
         "Owners":  "BrainCrumbz",
         "Version":  "1.0.2",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\dotnet-new-nspec-1.0.2.nupkg\\",
-        "DownloadCount":  681,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\dotnet-new-nspec-1.0.2.nupkg\\",
+        "DownloadCount":  679,
         "Tags":  "testing bdd tdd rspec mocha dotnet core test template",
         "Templates":  [
                           {
@@ -739,8 +731,8 @@
     {
         "Owners":  "Idea42, LLC",
         "Version":  "1.0.11",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Idea42.NetCore.Templates-1.0.11.nupkg\\",
-        "DownloadCount":  651,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Idea42.NetCore.Templates-1.0.11.nupkg\\",
+        "DownloadCount":  649,
         "Tags":  null,
         "Templates":  [
                           {
@@ -787,8 +779,8 @@
     {
         "Owners":  "Micha? Niegrzybowski",
         "Version":  "5.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Expecto.Template-5.0.0.nupkg\\",
-        "DownloadCount":  609,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Expecto.Template-5.0.0.nupkg\\",
+        "DownloadCount":  606,
         "Tags":  ".net core Expecto template",
         "Templates":  [
                           {
@@ -797,9 +789,7 @@
                               "tags":  {
                                            "language":  "F#"
                                        },
-                              "classifications":  [
-                                                      "Test"
-                                                  ],
+                              "classifications":  "Test",
                               "shortName":  "expecto",
                               "groupIdentity":  null,
                               "identity":  "Expecto.Template"
@@ -816,8 +806,8 @@
     {
         "Owners":  "Kralizek",
         "Version":  "1.1.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Kralizek.Lambda.Templates-1.1.1.nupkg\\",
-        "DownloadCount":  605,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Kralizek.Lambda.Templates-1.1.1.nupkg\\",
+        "DownloadCount":  603,
         "Tags":  null,
         "Templates":  [
                           {
@@ -918,8 +908,8 @@
     {
         "Owners":  "tintoy",
         "Version":  "0.1.0-beta1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\FiftyProtons.Templates.DotNetNew-0.1.0-beta1.nupkg\\",
-        "DownloadCount":  585,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\FiftyProtons.Templates.DotNetNew-0.1.0-beta1.nupkg\\",
+        "DownloadCount":  583,
         "Tags":  null,
         "Templates":  [
                           {
@@ -982,8 +972,8 @@
     {
         "Owners":  "Micha? Niegrzybowski",
         "Version":  "1.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\WebAPI.FSharp.Template-1.1.0.nupkg\\",
-        "DownloadCount":  541,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\WebAPI.FSharp.Template-1.1.0.nupkg\\",
+        "DownloadCount":  539,
         "Tags":  ".net core Web API F# template",
         "Templates":  [
                           {
@@ -1012,8 +1002,8 @@
     {
         "Owners":  "Patrik Svensson, Mattias Karlsson, Gary Ewan Park and contributors",
         "Version":  "0.1.0-alpha0058",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Cake.Frosting.Template-0.1.0-alpha0058.nupkg\\",
-        "DownloadCount":  505,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Cake.Frosting.Template-0.1.0-alpha0058.nupkg\\",
+        "DownloadCount":  503,
         "Tags":  "Cake Script Build",
         "Templates":  [
                           {
@@ -1042,8 +1032,8 @@
     {
         "Owners":  "tintoy",
         "Version":  "0.1.0-alpha2",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\FiftyProtons.Templates.PSCore-0.1.0-alpha2.nupkg\\",
-        "DownloadCount":  504,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\FiftyProtons.Templates.PSCore-0.1.0-alpha2.nupkg\\",
+        "DownloadCount":  502,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1073,8 +1063,8 @@
     {
         "Owners":  "Andrew Lock",
         "Version":  "1.0.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\NetEscapades.Templates-1.0.1.nupkg\\",
-        "DownloadCount":  487,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\NetEscapades.Templates-1.0.1.nupkg\\",
+        "DownloadCount":  485,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1103,8 +1093,8 @@
     {
         "Owners":  "Mads Kristensen",
         "Version":  "1.0.5",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\LibraryInstallerExtensionTemplate-1.0.5.nupkg\\",
-        "DownloadCount":  476,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\LibraryInstallerExtensionTemplate-1.0.5.nupkg\\",
+        "DownloadCount":  474,
         "Tags":  "extensibility vssdk vsix",
         "Templates":  [
                           {
@@ -1134,8 +1124,8 @@
     {
         "Owners":  "Stefan Hausotte",
         "Version":  "1.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\CakeApp-1.1.0.nupkg\\",
-        "DownloadCount":  473,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\CakeApp-1.1.0.nupkg\\",
+        "DownloadCount":  471,
         "Tags":  "Cake build dotnet new core",
         "Templates":  [
                           {
@@ -1166,8 +1156,8 @@
     {
         "Owners":  "Peachpie, Petr Houska",
         "Version":  "0.7.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Peachpie.Templates-0.7.0.nupkg\\",
-        "DownloadCount":  351,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Peachpie.Templates-0.7.0.nupkg\\",
+        "DownloadCount":  349,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1176,9 +1166,7 @@
                               "tags":  {
                                            "language":  "PHP"
                                        },
-                              "classifications":  [
-                                                      "Library"
-                                                  ],
+                              "classifications":  "Library",
                               "shortName":  "peachpie-classlibrary",
                               "groupIdentity":  "Peachpie.Templates.ClassLibrary",
                               "identity":  "Peachpie.Templates.ClassLibrary"
@@ -1189,9 +1177,7 @@
                               "tags":  {
                                            "language":  "PHP"
                                        },
-                              "classifications":  [
-                                                      "Console"
-                                                  ],
+                              "classifications":  "Console",
                               "shortName":  "peachpie-console",
                               "groupIdentity":  "Peachpie.Templates.ConsoleApp",
                               "identity":  "Peachpie.Templates.ConsoleApp"
@@ -1222,8 +1208,8 @@
     {
         "Owners":  "LykkeX",
         "Version":  "1.0.6",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Lykke.Template-1.0.6.nupkg\\",
-        "DownloadCount":  269,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Lykke.Template-1.0.6.nupkg\\",
+        "DownloadCount":  267,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1232,9 +1218,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Solution"
-                                                  ],
+                              "classifications":  "Solution",
                               "shortName":  "LykkeTemplate",
                               "groupIdentity":  "Lykke.Template",
                               "identity":  "Lykke.Template"
@@ -1251,8 +1235,8 @@
     {
         "Owners":  "Dan Siegel",
         "Version":  "1.0.0-alpha4",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Prism.Forms.QuickstartTemplates-1.0.0-alpha4.nupkg\\",
-        "DownloadCount":  241,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Prism.Forms.QuickstartTemplates-1.0.0-alpha4.nupkg\\",
+        "DownloadCount":  238,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1312,8 +1296,8 @@
     {
         "Owners":  "Jeremy Lindsay (@jeremylindsayni)",
         "Version":  "0.4.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\RaspberryPi.Template-0.4.0.nupkg\\",
-        "DownloadCount":  239,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\RaspberryPi.Template-0.4.0.nupkg\\",
+        "DownloadCount":  228,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1341,9 +1325,9 @@
     },
     {
         "Owners":  "akharlov",
-        "Version":  "1.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\NUnit3.DotNetNew.Template-1.1.0.nupkg\\",
-        "DownloadCount":  221,
+        "Version":  "1.0.1",
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\NUnit3.DotNetNew.Template-1.0.1.nupkg\\",
+        "DownloadCount":  218,
         "Tags":  "NUnit dotnet core",
         "Templates":  [
                           {
@@ -1358,41 +1342,11 @@
                                                       "NUnit"
                                                   ],
                               "shortName":  "nunit",
-                              "groupIdentity":  "NUnit3.DotNetNew.Template",
-                              "identity":  "NUnit3.DotNetNew.Template.CSharp"
-                          },
-                          {
-                              "author":  "Aleksei Kharlov aka halex2005 (codeofclimber.ru)",
-                              "name":  "NUnit 3 Test Project",
-                              "tags":  {
-                                           "type":  "project",
-                                           "language":  "F#"
-                                       },
-                              "classifications":  [
-                                                      "Test",
-                                                      "NUnit"
-                                                  ],
-                              "shortName":  "nunit",
-                              "groupIdentity":  "NUnit3.DotNetNew.Template",
-                              "identity":  "NUnit3.DotNetNew.Template.FSharp"
-                          },
-                          {
-                              "author":  "Aleksei Kharlov aka halex2005 (codeofclimber.ru)",
-                              "name":  "NUnit 3 Test Project",
-                              "tags":  {
-                                           "type":  "project",
-                                           "language":  "VB"
-                                       },
-                              "classifications":  [
-                                                      "Test",
-                                                      "NUnit"
-                                                  ],
-                              "shortName":  "nunit",
-                              "groupIdentity":  "NUnit3.DotNetNew.Template",
-                              "identity":  "NUnit3.DotNetNew.Template.VisualBasic"
+                              "groupIdentity":  null,
+                              "identity":  "NUnit3.DotNetNew.Template"
                           }
                       ],
-        "DownloadUrl":  "https://api.nuget.org/packages/nunit3.dotnetnew.template.1.1.0.nupkg",
+        "DownloadUrl":  "https://api.nuget.org/packages/nunit3.dotnetnew.template.1.0.1.nupkg",
         "Description":  "Project and item templates containing basic NUnit 3 Test Project.",
         "Copyright":  "Copyright ? Aleksei Kharlov aka halex2005",
         "Authors":  "akharlov",
@@ -1403,8 +1357,8 @@
     {
         "Owners":  "Maxime Mangel",
         "Version":  "0.1.3",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Fable.Template.Elmish.React.Demo-0.1.3.nupkg\\",
-        "DownloadCount":  211,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Fable.Template.Elmish.React.Demo-0.1.3.nupkg\\",
+        "DownloadCount":  209,
         "Tags":  "fable template fsharp",
         "Templates":  [
                           {
@@ -1435,8 +1389,8 @@
     {
         "Owners":  "NServiceBus Ltd",
         "Version":  "1.0.1-alpha0009",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\NServiceBus.Template.WindowsService-1.0.1-alpha0009.nupkg\\",
-        "DownloadCount":  172,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\NServiceBus.Template.WindowsService-1.0.1-alpha0009.nupkg\\",
+        "DownloadCount":  169,
         "Tags":  "NServiceBus, SelfHost",
         "Templates":  [
                           {
@@ -1446,9 +1400,7 @@
                                            "type":  "project",
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "nservicebus"
-                                                  ],
+                              "classifications":  "nservicebus",
                               "shortName":  "nsbservice",
                               "groupIdentity":  "nservicebus",
                               "identity":  "NServiceBusWindowsService"
@@ -1465,8 +1417,8 @@
     {
         "Owners":  "Melvin Vermeer (melvin.vermeer@wortell.nl)",
         "Version":  "2017.7.17.3",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\TeamWeb.MvcTemplate-2017.7.17.3.nupkg\\",
-        "DownloadCount":  165,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\TeamWeb.MvcTemplate-2017.7.17.3.nupkg\\",
+        "DownloadCount":  163,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1497,8 +1449,8 @@
     {
         "Owners":  "Melvin Vermeer (melvin.vermeer@wortell.nl)",
         "Version":  "0.1.2",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Melvin.Mvc.Template-0.1.2.nupkg\\",
-        "DownloadCount":  164,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Melvin.Mvc.Template-0.1.2.nupkg\\",
+        "DownloadCount":  162,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1529,8 +1481,8 @@
     {
         "Owners":  "NServiceBus Ltd",
         "Version":  "1.0.1-alpha0009",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\NServiceBus.Template.TransportAdapter.WindowsService-1.0.1-alpha0009.nupkg\\",
-        "DownloadCount":  156,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\NServiceBus.Template.TransportAdapter.WindowsService-1.0.1-alpha0009.nupkg\\",
+        "DownloadCount":  152,
         "Tags":  "NServiceBus, SelfHost",
         "Templates":  [
                           {
@@ -1563,8 +1515,8 @@
     {
         "Owners":  "Mariusz Kotas",
         "Version":  "1.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Alza.Konzole.Templates.Microservice-1.0.0.nupkg\\",
-        "DownloadCount":  153,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Alza.Konzole.Templates.Microservice-1.0.0.nupkg\\",
+        "DownloadCount":  151,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1573,9 +1525,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Solution"
-                                                  ],
+                              "classifications":  "Solution",
                               "shortName":  "konzole-service",
                               "groupIdentity":  "Alza.Konzole.Templates",
                               "identity":  "Alza.Konzole.Templates.Microservice"
@@ -1592,8 +1542,8 @@
     {
         "Owners":  "Ram",
         "Version":  "0.1.3",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\MicroServiceWebApiTemplate-0.1.3.nupkg\\",
-        "DownloadCount":  146,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\MicroServiceWebApiTemplate-0.1.3.nupkg\\",
+        "DownloadCount":  144,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1602,9 +1552,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "WebAPI"
-                                                  ],
+                              "classifications":  "WebAPI",
                               "shortName":  "eswebapi",
                               "groupIdentity":  null,
                               "identity":  "ESTemplates.WebApiTemplate"
@@ -1621,8 +1569,8 @@
     {
         "Owners":  "Juan Blanco",
         "Version":  "0.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Nethereum.Templates.Faucet-0.1.0.nupkg\\",
-        "DownloadCount":  122,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Nethereum.Templates.Faucet-0.1.0.nupkg\\",
+        "DownloadCount":  120,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1652,8 +1600,8 @@
     {
         "Owners":  "Hub3c",
         "Version":  "0.0.3",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Hub3c.Integration.Template-0.0.3.nupkg\\",
-        "DownloadCount":  111,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Hub3c.Integration.Template-0.0.3.nupkg\\",
+        "DownloadCount":  109,
         "Tags":  "Template C# NET.CORE",
         "Templates":  [
                           {
@@ -1679,8 +1627,8 @@
     {
         "Owners":  "Peter Kottas",
         "Version":  "1.0.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\PeterKottas.DotNetCore.WindowsService.Templates-1.0.1.nupkg\\",
-        "DownloadCount":  100,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\PeterKottas.DotNetCore.WindowsService.Templates-1.0.1.nupkg\\",
+        "DownloadCount":  98,
         "Tags":  "dotnetcore templates,.netcore templates,windows service templates,micro templates",
         "Templates":  [
                           {
@@ -1689,9 +1637,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Microservices"
-                                                  ],
+                              "classifications":  "Microservices",
                               "shortName":  "mcrsvc-min",
                               "groupIdentity":  null,
                               "identity":  "PeterKottas.DotNetCore.WindowsService.MinimalTemplate"
@@ -1706,39 +1652,10 @@
         "Package":  "PeterKottas.DotNetCore.WindowsService.Templates"
     },
     {
-        "Owners":  "Mariusz Kotas",
-        "Version":  "1.0.0.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Alza.Konzole.Templates.Microservice.Simple-1.0.0.1.nupkg\\",
-        "DownloadCount":  99,
-        "Tags":  null,
-        "Templates":  [
-                          {
-                              "author":  "Mariusz Kotas",
-                              "name":  "Konzole simple microservice",
-                              "tags":  {
-                                           "language":  "C#"
-                                       },
-                              "classifications":  [
-                                                      "Solution"
-                                                  ],
-                              "shortName":  "konzole-service-simple",
-                              "groupIdentity":  "Alza.Konzole.Templates",
-                              "identity":  "Alza.Konzole.Templates.Microservice.Simple"
-                          }
-                      ],
-        "DownloadUrl":  "https://api.nuget.org/packages/alza.konzole.templates.microservice.simple.1.0.0.1.nupkg",
-        "Description":  "Alza Konzole template for creating new simple microservice",
-        "Copyright":  null,
-        "Authors":  "Mariusz Kotas",
-        "LicenseUrl":  null,
-        "ProjectUrl":  "https://gitlab.alz.lcl/konzole2",
-        "Package":  "Alza.Konzole.Templates.Microservice.Simple"
-    },
-    {
         "Owners":  "Ben Sheeler",
         "Version":  "0.0.2",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Sheelersoft.AngularTemplate-0.0.2.nupkg\\",
-        "DownloadCount":  96,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Sheelersoft.AngularTemplate-0.0.2.nupkg\\",
+        "DownloadCount":  94,
         "Tags":  ".Net Core Angular Template",
         "Templates":  [
                           {
@@ -1747,9 +1664,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Web"
-                                                  ],
+                              "classifications":  "Web",
                               "shortName":  "sheelersoft-angular",
                               "groupIdentity":  null,
                               "identity":  "sheelersoft.AngularTemplate"
@@ -1766,8 +1681,8 @@
     {
         "Owners":  "take",
         "Version":  "0.1.2.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Take.Blip.Client.ConsoleTemplate-0.1.2.1.nupkg\\",
-        "DownloadCount":  96,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Take.Blip.Client.ConsoleTemplate-0.1.2.1.nupkg\\",
+        "DownloadCount":  88,
         "Tags":  "blip bot chatbots",
         "Templates":  [
                           {
@@ -1776,9 +1691,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Bots"
-                                                  ],
+                              "classifications":  "Bots",
                               "shortName":  "blip-console",
                               "groupIdentity":  null,
                               "identity":  "Take.Blip.Client.ConsoleTemplate"
@@ -1795,8 +1708,8 @@
     {
         "Owners":  "Stephen Phillips",
         "Version":  "0.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\MonoGameTemplate-0.1.0.nupkg\\",
-        "DownloadCount":  89,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\MonoGameTemplate-0.1.0.nupkg\\",
+        "DownloadCount":  87,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1805,9 +1718,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "MonoGame"
-                                                  ],
+                              "classifications":  "MonoGame",
                               "shortName":  "monogame",
                               "groupIdentity":  null,
                               "identity":  "MonoGameTemplate"
@@ -1824,8 +1735,8 @@
     {
         "Owners":  "Peter Kottas",
         "Version":  "1.0.1",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\PeterKottas.DotNetCore.WindowsService.Template-1.0.1.nupkg\\",
-        "DownloadCount":  86,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\PeterKottas.DotNetCore.WindowsService.Template-1.0.1.nupkg\\",
+        "DownloadCount":  84,
         "Tags":  "dotnetcore template,.netcore template,windows service template,micro template",
         "Templates":  [
                           {
@@ -1834,9 +1745,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Microservices"
-                                                  ],
+                              "classifications":  "Microservices",
                               "shortName":  "mcrsvc",
                               "groupIdentity":  null,
                               "identity":  "PeterKottas.DotNetCore.WindowsService.Template"
@@ -1853,8 +1762,8 @@
     {
         "Owners":  "Prafull Bhosale",
         "Version":  "1.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\CustomAspNetCodeGeneratorTemplate-1.0.0.nupkg\\",
-        "DownloadCount":  84,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\CustomAspNetCodeGeneratorTemplate-1.0.0.nupkg\\",
+        "DownloadCount":  82,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1881,10 +1790,37 @@
         "Package":  "CustomAspNetCodeGeneratorTemplate"
     },
     {
+        "Owners":  "Mariusz Kotas",
+        "Version":  "1.0.0.1",
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Alza.Konzole.Templates.Microservice.Simple-1.0.0.1.nupkg\\",
+        "DownloadCount":  72,
+        "Tags":  null,
+        "Templates":  [
+                          {
+                              "author":  "Mariusz Kotas",
+                              "name":  "Konzole simple microservice",
+                              "tags":  {
+                                           "language":  "C#"
+                                       },
+                              "classifications":  "Solution",
+                              "shortName":  "konzole-service-simple",
+                              "groupIdentity":  "Alza.Konzole.Templates",
+                              "identity":  "Alza.Konzole.Templates.Microservice.Simple"
+                          }
+                      ],
+        "DownloadUrl":  "https://api.nuget.org/packages/alza.konzole.templates.microservice.simple.1.0.0.1.nupkg",
+        "Description":  "Alza Konzole template for creating new simple microservice",
+        "Copyright":  null,
+        "Authors":  "Mariusz Kotas",
+        "LicenseUrl":  null,
+        "ProjectUrl":  "https://gitlab.alz.lcl/konzole2",
+        "Package":  "Alza.Konzole.Templates.Microservice.Simple"
+    },
+    {
         "Owners":  "Ram",
         "Version":  "0.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\ESMicroServiceWebApiTemplate-0.1.0.nupkg\\",
-        "DownloadCount":  56,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\ESMicroServiceWebApiTemplate-0.1.0.nupkg\\",
+        "DownloadCount":  54,
         "Tags":  null,
         "Templates":  [
                           {
@@ -1893,9 +1829,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "WebAPI"
-                                                  ],
+                              "classifications":  "WebAPI",
                               "shortName":  "eswebapi",
                               "groupIdentity":  null,
                               "identity":  "ESTemplates.WebApiTemplate"
@@ -1912,8 +1846,8 @@
     {
         "Owners":  "Carlos Mendible (@cmendibl3)",
         "Version":  "1.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\CodeItYourself.WebAPI.AWS.Lambda-1.0.0.nupkg\\",
-        "DownloadCount":  51,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\CodeItYourself.WebAPI.AWS.Lambda-1.0.0.nupkg\\",
+        "DownloadCount":  49,
         "Tags":  "dotnetcore template .netcore aws lambda",
         "Templates":  [
                           {
@@ -1922,9 +1856,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Web/WebAPI"
-                                                  ],
+                              "classifications":  "Web/WebAPI",
                               "shortName":  "webapilambda",
                               "groupIdentity":  null,
                               "identity":  "codeityourself.webapi.aws.lambda"
@@ -1941,8 +1873,8 @@
     {
         "Owners":  "Carlos Mendible (@cmendibl3)",
         "Version":  "1.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\CodeItYourself.ASPNET.Raspberry-1.0.0.nupkg\\",
-        "DownloadCount":  51,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\CodeItYourself.ASPNET.Raspberry-1.0.0.nupkg\\",
+        "DownloadCount":  49,
         "Tags":  "dotnetcore template .netcore RaspberryPi",
         "Templates":  [
                           {
@@ -1951,9 +1883,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Web"
-                                                  ],
+                              "classifications":  "Web",
                               "shortName":  "webrpi",
                               "groupIdentity":  null,
                               "identity":  "codeityourself.web.raspberry"
@@ -1970,8 +1900,8 @@
     {
         "Owners":  "Carlos Mendible (@cmendibl3)",
         "Version":  "1.0.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\CodeItYourself.WebAPI.EchoBot-1.0.0.nupkg\\",
-        "DownloadCount":  50,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\CodeItYourself.WebAPI.EchoBot-1.0.0.nupkg\\",
+        "DownloadCount":  48,
         "Tags":  "dotnetcore template .netcore bot botframework",
         "Templates":  [
                           {
@@ -1980,9 +1910,7 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  [
-                                                      "Web/API"
-                                                  ],
+                              "classifications":  "Web/API",
                               "shortName":  "webechobot",
                               "groupIdentity":  null,
                               "identity":  "codeityourself.webapi.echobot"
@@ -1999,8 +1927,8 @@
     {
         "Owners":  "Thomas Burkhart",
         "Version":  "0.1.0",
-        "ExtractPath":  "C:\\Users\\sayedha\\AppData\\Local\\Temp\\SayedHaMachineSetup\\apps\\Nancy.Templates.BasicNetCoreApp-0.1.0.nupkg\\",
-        "DownloadCount":  43,
+        "ExtractPath":  "C:\\Users\\appveyor\\AppData\\Local\\Temp\\1\\SayedHaMachineSetup\\apps\\Nancy.Templates.BasicNetCoreApp-0.1.0.nupkg\\",
+        "DownloadCount":  41,
         "Tags":  "web app nancyfx dotnet new template",
         "Templates":  [
                           {
@@ -2009,7 +1937,9 @@
                               "tags":  {
                                            "language":  "C#"
                                        },
-                              "classifications":  null,
+                              "classifications":  {
+
+                                                  },
                               "shortName":  "NancyCoreApp",
                               "groupIdentity":  null,
                               "identity":  null
