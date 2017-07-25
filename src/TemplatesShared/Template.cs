@@ -36,6 +36,7 @@ namespace TemplatesShared
         public string ProjectUrl { get; set; }
 
         public string Package { get; set; }
+        public string IconUrl { get; set; }
 
         public static List<TemplatePack>CreateFromFile(string filepath)
         {
@@ -59,8 +60,6 @@ namespace TemplatesShared
             return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
     }
-
-
     public class TemplateConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)

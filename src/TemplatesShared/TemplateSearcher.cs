@@ -5,6 +5,26 @@ using System.Linq;
 
 namespace TemplatesShared {
     public class TemplateSearcher : ITemplateSearcher {
+        public TemplatePack FindTemplatePackById(string name, List<TemplatePack>templatePacks) {
+            if (string.IsNullOrWhiteSpace(name) || templatePacks == null || templatePacks.Count <=0 ) {
+                return null;
+            }
+
+            foreach(var tp in templatePacks) {
+                if (string.Equals(name, tp.Package, StringComparison.OrdinalIgnoreCase)) {
+                    return tp;
+                }
+            }
+
+            return null;
+        }
+        public TemplatePack FindTemplatePackFor(Template template, List<TemplatePack> templatePacks) {
+            if (template == null || templatePacks == null || templatePacks.Count <= 0) {
+                return null;
+            }
+
+            return FindTemplatePackById(template.TemplatePackId, templatePacks);
+        }
         public List<Template> Search(string searchTerm, List<TemplatePack> templatePacks) {
             if (string.IsNullOrWhiteSpace(searchTerm)) {
                 return GetAllTemplates(templatePacks);
@@ -32,14 +52,6 @@ namespace TemplatesShared {
             var retv = from m in matches
                        orderby m.SearchScore
                        select m;
-
-            // TODO: Needs sorting
-
-            // var sortedDict = from entry in myDict 
-            //                  orderby entry.Value 
-            //                  ascending select entry;
-
-
 
             // return matches.Keys;
             return retv.ToList();

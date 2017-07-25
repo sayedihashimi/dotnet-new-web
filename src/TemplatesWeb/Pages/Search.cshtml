@@ -11,20 +11,27 @@
 
 @foreach(var t in Model.SearchResults) {
     <h3>@t.Name</h3>
-    <p>
-        Package: <b>@t.TemplatePackId</b><br/>
-        Author: @t.Author<br />
-        Identity: @t.Identity<br />
-        ShortName: @t.ShortName<br />
-        Tags : 
-            @foreach (var tt in t.Tags) {
-                <span>@tt.Key.ToString()</span>
-                <b>@tt.Value.ToString()</b>;
-            } <br/>
-        Classifications:
-            @foreach (var cc in t.Classifications) {
-                <b>@cc.ToString() &nbsp</b>;
-            } <br />
-        GroupId: @t.GroupIdentity<br />
-    </p>
+    <table>
+        <tr>
+            <td>Author</td>
+            <td>@t.Author</td>
+        </tr>
+        <tr>
+            <td>Tags:</td>
+            <td>
+                @foreach (var tt in t.Tags) {
+                    <span>@tt.Key.ToString()</span>
+                    <b>@tt.Value.ToString()</b>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>Classifications:</td>
+            <td>
+                @foreach (var cc in t.Classifications) {
+                    <b>@cc.ToString() &nbsp</b>
+                }
+            </td>
+        </tr>
+    </table>
 }
