@@ -1,0 +1,31 @@
+﻿@page "{packId}"
+@model PackModel
+
+<h2>@Model.TemplatePack.Package</h2>
+<h3><i>@Model.TemplatePack.Description</i></h3>
+<section class="installCommand">
+    dotnet new --install "@Model.TemplatePack.Package"
+</section>
+
+<section>
+    <ul class="templateInfo">
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
+        <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>
+        }
+        <li>Copyright:         <b>@Model.TemplatePack.Copyright</b></li>
+        <li>Authors:           <b>@foreach (var au in Model.TemplatePack.Authors) {@au}</b></li>
+        <li>Description:       <b>@Model.TemplatePack.Description</b></li>
+        <li>Downloads:         <b>@Model.TemplatePack.DownloadCount</b></li>
+        <li>License:           <b><a href="@Model.TemplatePack.LicenseUrl">@Model.TemplatePack.LicenseUrl</a></b></li>
+        <li>Owners:            <b>@foreach (var own in Model.TemplatePack.Owners) {@own}</b></li>
+        <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>
+    </ul>
+</section>
+<h3>Templates:</h3>
+<section>
+    <ul>
+        @foreach(var template in Model.TemplatePack.Templates) {
+            <li><a href="/template/@Model.TemplatePack.Package/@template.Identity">@template.Name</a></li>
+        }
+    </ul>
+</section>

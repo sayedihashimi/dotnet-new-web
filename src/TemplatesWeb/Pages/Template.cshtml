@@ -9,7 +9,7 @@
 
     @Model.Template.Name (@Model.Template.ShortName)</h3>
 
-
+<h3><i>@Model.TemplatePack.Description</i></h3>
 <section class="installCommand">
     dotnet new --install "@Model.TemplatePack.Package"
 </section>
@@ -28,6 +28,6 @@
         <li>Classifications:   <b>@foreach (var c in Model.Template.Classifications) {@c;}</b></li>        
     </ul>
 
-    <h4><a href="~/Search/@Model.TemplatePack.Package">See other templates in this package</a></h4>
+    <h4><a href="~/pack/@Model.TemplatePack.Package">Other templates in this package</a></h4>
     
 </section>
