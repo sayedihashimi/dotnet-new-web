@@ -11,31 +11,16 @@ using Microsoft.Extensions.Options;
 using System.Net.Http;
 
 namespace TemplatesWeb.Pages {
-    public class IndexModel : PageModel {
-        private TemplateWebConfig _config { get; set; }
+    public class IndexModel : BasePageModel {
         public IList<Template> _templates { get; set; }
-        private string _baseUrl { get; set; }
 
         [BindProperty]
         public string SearchText { get; set; }
 
-        public IndexModel(IOptions<TemplateWebConfig> config) {
-            _config = config.Value;
-            _templates = new List<Template>();
-
-            _baseUrl = _config.TemplatesApiBaseUrl;
-            if (string.IsNullOrWhiteSpace(_baseUrl) || _baseUrl.StartsWith(@"D:\")) {
-                _baseUrl = @"http://dotnetnew-api.azurewebsites.net/api/";
-            }
+        public IndexModel(IOptions<TemplateWebConfig> config):base(config) {
         }
         public void OnGet() {
-            var url = new Uri(new Uri(_baseUrl), "search").AbsoluteUri;
-            ViewData["url"] = _baseUrl;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            string json = response.Content.ReadAsStringAsync().Result;
-            var result = JsonConvert.DeserializeObject<List<Template>>(json);
-            _templates = result;
+            _templates = GetFromApi<List<Template>>("search");
         }
 
         public IActionResult OnPostAsync() {
