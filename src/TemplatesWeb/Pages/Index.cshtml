@@ -12,6 +12,8 @@
     <input type="submit" />
 </form>
 
-@foreach(var t in Model._templates) {
-    <h3>Template - [@t.Name]</h3>
-}
+<ul>
+    @foreach (var t in Model._templates) {
+        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
+    }
+</ul>
