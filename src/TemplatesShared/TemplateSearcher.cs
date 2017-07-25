@@ -54,7 +54,7 @@ namespace TemplatesShared {
             var matches = new List<Template>();
             foreach(var tp in templatePacks) {
                 foreach(Template t in tp.Templates) {
-                    var r = SearchTemplate(searchTerm, t);
+                    var r = SearchTemplate(searchTerm, t, tp);
                     if (r.IsMatch) {
                         t.SearchScore = r.SearchValue;
                         matches.Add(t);
@@ -89,10 +89,9 @@ namespace TemplatesShared {
         /// <param name="searchTerm"></param>
         /// <param name="template"></param>
         /// <returns></returns>
-        internal TemplateSearchResult SearchTemplate(string searchTerm, Template template) {
-            // check all fields
-
+        internal TemplateSearchResult SearchTemplate(string searchTerm, Template template, TemplatePack pack) {
             int score = 0;
+            // check all fields in template
             var nameRes = IsStringMatch(searchTerm, template.Name);
             if (nameRes.IsExactMatch)
                 score += 1000;
@@ -153,6 +152,31 @@ namespace TemplatesShared {
                 score += 50;
             else if (classRes.IsPartialMatch)
                 score += 25;
+
+            // see if there is a match with the TemplatePack itself
+            var packAuthorMatch = IsStringMatch(searchTerm, pack.Authors);
+            if (packAuthorMatch.IsExactMatch || packAuthorMatch.StartsWith || packAuthorMatch.IsPartialMatch)
+                score += 10;
+            
+            var copyMatch = IsStringMatch(searchTerm, pack.Copyright);
+            if (copyMatch.IsExactMatch || copyMatch.StartsWith || copyMatch.IsPartialMatch)
+                score += 10;
+
+            var descMatch = IsStringMatch(searchTerm, pack.Description);
+            if(descMatch.IsExactMatch || descMatch.StartsWith || descMatch.IsPartialMatch)
+                score += 10;
+
+            var ownerMatch = IsStringMatch(searchTerm, pack.Owners);
+            if (ownerMatch.IsExactMatch || ownerMatch.StartsWith || ownerMatch.IsPartialMatch)
+                score += 10;
+
+            var pkgMatch = IsStringMatch(searchTerm, pack.Package);
+            if (pkgMatch.IsExactMatch || pkgMatch.StartsWith || pkgMatch.IsPartialMatch)
+                score += 10;
+
+            var projUrlMatch = IsStringMatch(searchTerm, pack.ProjectUrl);
+            if (projUrlMatch.IsExactMatch || projUrlMatch.StartsWith || projUrlMatch.IsPartialMatch)
+                score += 10;
 
             return new TemplateSearchResult {
                 IsMatch =  (score > 0),
