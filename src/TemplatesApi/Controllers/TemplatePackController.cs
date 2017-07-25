@@ -29,7 +29,7 @@ namespace TemplatesApi.Controllers {
 
         [HttpGet("{packageId}")]
         public TemplatePack Get(string packageId) {
-            return new TemplateSearcher().FindTemplatePackById(packageId, TemplatePacks);
+            return new TemplateSearcher().FindTemplatePackByName(packageId, TemplatePacks);
         }
     }
 }

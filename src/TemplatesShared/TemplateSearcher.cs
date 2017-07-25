@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TemplatesShared {
     public class TemplateSearcher : ITemplateSearcher {
-        public TemplatePack FindTemplatePackById(string name, List<TemplatePack>templatePacks) {
+        public TemplatePack FindTemplatePackByName(string name, List<TemplatePack>templatePacks) {
             if (string.IsNullOrWhiteSpace(name) || templatePacks == null || templatePacks.Count <=0 ) {
                 return null;
             }
@@ -23,7 +23,24 @@ namespace TemplatesShared {
                 return null;
             }
 
-            return FindTemplatePackById(template.TemplatePackId, templatePacks);
+            return FindTemplatePackByName(template.TemplatePackId, templatePacks);
+        }
+        public Template GetTemplateById(string templateName, IEnumerable<TemplatePack> templatePacks) {
+            if(templateName == null || templatePacks == null || templatePacks.Count() <= 0) {
+                return null;
+            }
+            foreach(var tp in templatePacks) {
+                foreach(var t in tp.Templates) {
+                    if (string.Equals(templateName, t.Identity, StringComparison.OrdinalIgnoreCase)) {
+                        return t;
+                    }
+                }
+            }
+
+            return null;
+        }
+        public Template GetTemplateById(string templateName, TemplatePack templatePack) {
+            return GetTemplateById(templateName, new List<TemplatePack> { templatePack });
         }
         public List<Template> Search(string searchTerm, List<TemplatePack> templatePacks) {
             if (string.IsNullOrWhiteSpace(searchTerm)) {

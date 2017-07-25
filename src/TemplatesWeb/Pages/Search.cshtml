@@ -10,7 +10,7 @@
 </form>
 
 @foreach(var t in Model.SearchResults) {
-    <h3>@t.Name</h3>
+    <h3><a href="~/template/@t.TemplatePackId/@t.Identity">@t.Name</a></h3>
     <table>
         <tr>
             <td>Author</td>

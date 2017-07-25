@@ -3,6 +3,30 @@
     padding-bottom: 20px;
 }
 
+.templateInfo {
+    padding-left: 0;
+}
+    .templateInfo li {
+        list-style: none;
+        display: block;
+        unicode-bidi: embed;
+        font-family: monospace;
+        white-space: pre;
+    }
+
+.installCommand{
+    font-family: Consolas,'Lucida Console',monospace;
+    font-size: 24px;
+    display:block;
+    padding-left:40px;
+    padding-top:20px;
+    padding-bottom:20px;
+    border:1px solid;
+    border-radius:25px;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
