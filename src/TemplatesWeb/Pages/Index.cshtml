@@ -3,17 +3,24 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1>URL: @ViewData["url"]</h1>
 
-
-<h1>template search</h1>
+<h1>dotnet core templates</h1>
 <form method="POST">
-    <div>Name: <input asp-for="SearchText" /></div>
-    <input type="submit" />
+    <div>
+        <input id="templateSearchBox" asp-for="SearchText" class="form-control"/>
+        <button type="submit" class="btn btn-primary">Search templates</button>
+    </div>
 </form>
 
-<ul>
-    @foreach (var t in Model._templates) {
-        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
+<h2>Template packs</h2>
+@foreach (var tp in Model.TemplatePacks) {
+    if(string.Equals("Microsoft.AspNetCore.SpaTemplates", tp.Package, StringComparison.OrdinalIgnoreCase)) {
+        continue;
     }
-</ul>
+    <p><a href="/pack/@tp.Package">@tp.Package</a> - <quote>@tp.Description</quote></p>
+
+    <ul>
+        <li>Num downloads: @tp.DownloadCount</li>
+        <li>Contains <b>@tp.Templates.Count()</b> templates</li>
+    </ul>
+}

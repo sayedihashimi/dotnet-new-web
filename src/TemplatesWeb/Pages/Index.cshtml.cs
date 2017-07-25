@@ -12,7 +12,7 @@ using System.Net.Http;
 
 namespace TemplatesWeb.Pages {
     public class IndexModel : BasePageModel {
-        public IList<Template> _templates { get; set; }
+        public List<TemplatePack> TemplatePacks { get; set; }
 
         [BindProperty]
         public string SearchText { get; set; }
@@ -20,7 +20,7 @@ namespace TemplatesWeb.Pages {
         public IndexModel(IOptions<TemplateWebConfig> config):base(config) {
         }
         public void OnGet() {
-            _templates = GetFromApi<List<Template>>("search");
+            TemplatePacks = GetFromApi<List<TemplatePack>>("templatepack");
         }
 
         public IActionResult OnPostAsync() {

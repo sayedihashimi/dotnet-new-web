@@ -31,5 +31,8 @@ namespace TemplatesApi.Controllers {
         public TemplatePack Get(string packageId) {
             return new TemplateSearcher().FindTemplatePackByName(packageId, TemplatePacks);
         }
+        public List<TemplatePack> Get() {
+            return TemplatePacks;
+        }
     }
 }

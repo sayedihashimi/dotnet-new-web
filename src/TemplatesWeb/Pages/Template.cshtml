@@ -16,9 +16,8 @@
 
 <section>
     <ul class="templateInfo">
-        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
-            <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>
-        }
+        <li>Downloads:         <b>@Model.TemplatePack.DownloadCount</b></li>
+        <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>        
         <li>Identity:          <b>@Model.Template.Identity</b></li>
         <li>GroupIdentity:     <b>@Model.Template.GroupIdentity</b></li>
         <li>Author:            <b>@Model.Template.Author</b></li>
