@@ -27,11 +27,14 @@
     margin-bottom:20px;
 }
 
-#templateSearchBox{
+#templateSearchBox input{
     display:inline;
     width: 300px;
-    height: 50px;
-    font-size: 25px;
+    font-size: 20px;
+}
+#templateSearchBox button {
+    display:inline;
+    font-size: 20px;
 }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */

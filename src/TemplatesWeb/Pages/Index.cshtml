@@ -6,17 +6,14 @@
 
 <h1>dotnet core templates</h1>
 <form method="POST">
-    <div>
-        <input id="templateSearchBox" asp-for="SearchText" class="form-control"/>
+    <div id="templateSearchBox">
+        <input asp-for="SearchText" class="form-control"/>
         <button type="submit" class="btn btn-primary">Search templates</button>
     </div>
 </form>
 
 <h2>Template packs</h2>
 @foreach (var tp in Model.TemplatePacks) {
-    if(string.Equals("Microsoft.AspNetCore.SpaTemplates", tp.Package, StringComparison.OrdinalIgnoreCase)) {
-        continue;
-    }
     <p><a href="/pack/@tp.Package">@tp.Package</a> - <quote>@tp.Description</quote></p>
 
     <ul>
