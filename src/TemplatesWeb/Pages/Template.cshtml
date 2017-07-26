@@ -3,26 +3,33 @@
 
 
 <h3>
-    @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
-        <img src="@Model.TemplatePack.IconUrl" alt="package icon" />
-    }
+@if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
+    <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="package icon" />
+}
 
-    @Model.Template.Name (@Model.Template.ShortName)</h3>
-
-<h3><i>@Model.TemplatePack.Description</i></h3>
+@Model.Template.Name (@Model.Template.ShortName) - <i>@Model.TemplatePack.Description</i>
+</h3>
+<section class="templateInfo">
+    <ul>
+        <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a> |</li>
+        <li>downloads: @Model.TemplatePack.DownloadCount |</li>
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
+        <li><a href="@Model.TemplatePack.ProjectUrl">go to project</a></li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
+            <li><a href="@Model.TemplatePack.LicenseUrl">license</a></li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
+            <li>Copyright: @Model.TemplatePack.Copyright</li>
+        }
+    </ul>
+</section>    
 <section class="installCommand">
     dotnet new --install "@Model.TemplatePack.Package"
 </section>
 
 <section>
     <ul class="templateInfo">
-        <li>Downloads:         <b>@Model.TemplatePack.DownloadCount</b></li>
-        <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>        
-        <li>Identity:          <b>@Model.Template.Identity</b></li>
-        <li>GroupIdentity:     <b>@Model.Template.GroupIdentity</b></li>
-        <li>Author:            <b>@Model.Template.Author</b></li>
-        <li>Copyright:         <b>@Model.TemplatePack.Copyright</b></li>
-        <li>License:           <b><a href="@Model.TemplatePack.LicenseUrl">@Model.TemplatePack.LicenseUrl</a></b></li>
         <li>Tags:              <b>@foreach (var t in Model.Template.Tags) {@t.Key @t.Value<span>;</span>}</b></li>
         <li>Classifications:   <b>@foreach (var c in Model.Template.Classifications) {@c;}</b></li>        
     </ul>
