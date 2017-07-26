@@ -2,7 +2,9 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
-
+.navbar-header a img{
+    display:inline;
+}
 .templateInfo {
     padding-left: 0;
 }

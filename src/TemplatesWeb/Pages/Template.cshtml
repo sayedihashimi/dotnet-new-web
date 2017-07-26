@@ -31,10 +31,9 @@
 
 <section>
     <ul class="templateInfo">
-        <li>Tags:              <b>@foreach (var t in Model.Template.Tags) {@t.Key @t.Value<span>;</span>}</b></li>
-        <li>Classifications:   <b>@foreach (var c in Model.Template.Classifications) {@c;}</b></li>        
+        <li>Tags:              @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <b>@t.Value<span>; </span></b>}</li>
+        <li>Classifications:   @foreach (var c in Model.Template.Classifications) {<b>@c</b><span>; </span>}</li>        
     </ul>
 
-    <h4><a href="~/pack/@Model.TemplatePack.Package">Other templates in this package</a></h4>
-    
+    <h4><a href="~/pack/@Model.TemplatePack.Package">Other templates in this package</a></h4>    
 </section>

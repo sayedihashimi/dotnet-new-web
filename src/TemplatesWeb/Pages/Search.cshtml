@@ -2,20 +2,27 @@
 @model SearchModel
 @{
 }
-<h1>Search: [@Model.SearchText] </h1>
 
 <form method="POST" action="~/">
-    <div>Name: <input asp-for="SearchText" /></div>
-    <input type="submit" />
+    <div id="templateSearchBox">
+        <h2>
+            Search
+            <input asp-for="SearchText" class="form-control" />
+            <button type="submit" class="btn btn-primary">Search templates</button>
+        </h2>
+    </div>
 </form>
 
+Found <b>@Model.SearchResults.Count</b> matching templates
 @foreach (var template in Model.SearchResults) {
     <h3><a href="~/template/@template.TemplatePackId/@template.Identity">@template.Name</a></h3>
     <ul class="horizontalList">
         <li>by: <a href="/search/@template.Author">@template.Author</a> |</li>
         <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li> |
-        <li>Tags:              <b>@foreach (var t in template.Tags) {@t.Key @t.Value<span>; </span>}</b></li>
-        <li>Classifications:   <b>@foreach (var c in template.Classifications) {@c;
-        }</b></li>        
+        @if (template.Tags != null && template.Tags.Count > 0) {
+        <li>Tags:              <b>@foreach (var t in template.Tags) {@t.Key @t.Value<span>; </span>}</b> |</li> }
+
+        @if (template.Classifications != null && template.Classifications.Length > 0) {
+        <li>Classifications:   <b>@foreach (var c in template.Classifications) {@c; } </b></li> }
     </ul>
 }
