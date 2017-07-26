@@ -1,7 +1,12 @@
 ﻿@page "{packId}"
 @model PackModel
 
-<h2>@Model.TemplatePack.Package</h2>
+<h2>
+    @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
+        <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="package icon" />
+    }
+    @Model.TemplatePack.Package
+</h2>
 <h3><i>@Model.TemplatePack.Description</i></h3>
 <section class="templateInfo">
     <ul class="horizontalList">

@@ -9,33 +9,13 @@
     <input type="submit" />
 </form>
 
-@foreach(var t in Model.SearchResults) {
-    <h3><a href="~/template/@t.TemplatePackId/@t.Identity">@t.Name</a></h3>
-    <table>
-        <tr>
-            <td>Author</td>
-            <td>@t.Author</td>
-        </tr>
-        <tr>
-            <td>Tags:</td>
-            <td>
-                @foreach (var tt in t.Tags) {
-                    <span>@tt.Key.ToString()</span>
-                    <b>@tt.Value.ToString()</b>
-                }
-            </td>
-        </tr>
-        <tr>
-            <td>Classifications:</td>
-            <td>
-                @foreach (var cc in t.Classifications) {
-                    <b>@cc.ToString() &nbsp</b>
-                }
-            </td>
-        </tr>
-        <tr>
-            <td>Package:</td>
-            <td>@t.TemplatePackId</td>
-        </tr>
-    </table>
+@foreach (var template in Model.SearchResults) {
+    <h3><a href="~/template/@template.TemplatePackId/@template.Identity">@template.Name</a></h3>
+    <ul class="horizontalList">
+        <li>by: <a href="/search/@template.Author">@template.Author</a> |</li>
+        <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li> |
+        <li>Tags:              <b>@foreach (var t in template.Tags) {@t.Key @t.Value<span>; </span>}</b></li>
+        <li>Classifications:   <b>@foreach (var c in template.Classifications) {@c;
+        }</b></li>        
+    </ul>
 }
