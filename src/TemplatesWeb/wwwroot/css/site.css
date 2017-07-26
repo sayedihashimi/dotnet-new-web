@@ -18,7 +18,9 @@
         font-family: monospace;
         white-space: pre;
     }
-
+.indexHead {
+    font-family: Consolas,'Lucida Console',monospace;
+}
 .installCommand{
     font-family: Consolas,'Lucida Console',monospace;
     font-size: 24px;
