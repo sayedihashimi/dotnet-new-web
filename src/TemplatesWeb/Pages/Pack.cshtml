@@ -3,24 +3,25 @@
 
 <h2>@Model.TemplatePack.Package</h2>
 <h3><i>@Model.TemplatePack.Description</i></h3>
+<section class="templateInfo">
+    <ul class="horizontalList">
+        <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a> |</li>
+        <li>downloads: @Model.TemplatePack.DownloadCount |</li>
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
+            <li><a href="@Model.TemplatePack.ProjectUrl">go to project</a> |</li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
+            <li><a href="@Model.TemplatePack.LicenseUrl">license</a> |</li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
+            <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ","")</li>
+        }
+    </ul>
+</section>
 <section class="installCommand">
     dotnet new --install "@Model.TemplatePack.Package"
 </section>
 
-<section>
-    <ul class="templateInfo">
-        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
-        <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>
-        }
-        <li>Copyright:         <b>@Model.TemplatePack.Copyright</b></li>
-        <li>Authors:           <b>@foreach (var au in Model.TemplatePack.Authors) {@au}</b></li>
-        <li>Description:       <b>@Model.TemplatePack.Description</b></li>
-        <li>Downloads:         <b>@Model.TemplatePack.DownloadCount</b></li>
-        <li>License:           <b><a href="@Model.TemplatePack.LicenseUrl">@Model.TemplatePack.LicenseUrl</a></b></li>
-        <li>Owners:            <b>@foreach (var own in Model.TemplatePack.Owners) {@own}</b></li>
-        <li>Project:           <b><a href="@Model.TemplatePack.ProjectUrl">@Model.TemplatePack.ProjectUrl</a></b></li>
-    </ul>
-</section>
 <h3>Templates:</h3>
 <section>
     <ul>

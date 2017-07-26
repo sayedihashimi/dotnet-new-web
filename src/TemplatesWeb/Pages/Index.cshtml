@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
+    int counter = 0;
 }
 
 <h1>dotnet core templates</h1>
@@ -13,11 +14,34 @@
 </form>
 
 <h2>Template packs</h2>
-@foreach (var tp in Model.TemplatePacks) {
-    <p><a href="/pack/@tp.Package">@tp.Package</a> - <quote>@tp.Description</quote></p>
 
-    <ul>
-        <li>Num downloads: @tp.DownloadCount</li>
-        <li>Contains <b>@tp.Templates.Count()</b> templates</li>
-    </ul>
+@foreach (var tp in Model.TemplatePacks) {
+    string evenOrOdd = (counter++ % 2) == 0 ? "evenrow" : "oddrow";
+    <section class="templatePackSection @evenOrOdd">
+        <h3>
+            @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) {
+                <img class="pkgIcon" src="@tp.IconUrl" alt="package icon" />
+            }
+            <a href="/pack/@tp.Package">@tp.Package</a>
+        </h3>
+        <quote>@tp.Description</quote>
+        <ul class="horizontalList packList">
+            <li>by: <a href="/search/@tp.Authors">@tp.Authors</a> |</li>
+            <li>downloads: @tp.DownloadCount |</li>
+            @if (!string.IsNullOrWhiteSpace(tp.ProjectUrl)) {
+                <li><a href="@tp.ProjectUrl">go to project</a> |</li> 
+            }
+            @if (!string.IsNullOrWhiteSpace(tp.LicenseUrl)) {
+                <li><a href="@tp.LicenseUrl">license</a> |</li> 
+            }
+            @if (!string.IsNullOrWhiteSpace(tp.Copyright)) {
+                <li>Copyright: @tp.Copyright.Replace("Copyright ","")</li>
+            }
+        </ul>
+        <ul class="templateList">
+            @foreach(var t in tp.Templates) {
+                <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>       
+            }
+        </ul>
+    </section>
 }
