@@ -30,13 +30,31 @@ namespace TemplatesShared
         public Template[] Templates { get; set; }
         public string DownloadUrl { get; set; }
         public string Description { get; set; }
-        public string Copyright { get; set; }
+        private string _copyright;
+        public string Copyright {
+            get { return _copyright; }
+            set {
+                if(value != null) {
+                    value = value.Replace("?", "©");
+                }
+                _copyright = value;
+            }
+        }
         public string Authors { get; set; }
         public string LicenseUrl { get; set; }
         public string ProjectUrl { get; set; }
 
         public string Package { get; set; }
-        public string IconUrl { get; set; }
+        private string _iconurl;
+        public string IconUrl {
+            get { return _iconurl; }
+            set {
+                if (string.IsNullOrWhiteSpace(value)) {
+                    value = @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
+                }
+                _iconurl = value;
+            }
+        }
 
         public static List<TemplatePack>CreateFromFile(string filepath)
         {

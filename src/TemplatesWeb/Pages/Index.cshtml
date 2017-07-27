@@ -8,6 +8,9 @@
 <h1 class="indexHead">
     dotnet core templates
 </h1>
+<p>
+    Find available templates for <code>dotnet core</code>
+</p>
 <form method="POST">
     <div id="templateSearchBox">
         <input asp-for="SearchText" class="form-control" required/>
@@ -29,12 +32,14 @@
         <quote>@tp.Description</quote>
         <ul class="horizontalList packList">
             <li>by: <a href="/search/@tp.Authors">@tp.Authors</a> |</li>
-            <li>downloads: @tp.DownloadCount |</li>
+            <li>
+            <img src="~/images/icon-download.png" alt="download icon"/>
+            downloads: @tp.DownloadCount |</li>
             @if (!string.IsNullOrWhiteSpace(tp.ProjectUrl)) {
-                <li><a href="@tp.ProjectUrl">go to project</a> |</li> 
+                <li><a href="@tp.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li> 
             }
             @if (!string.IsNullOrWhiteSpace(tp.LicenseUrl)) {
-                <li><a href="@tp.LicenseUrl">license</a> |</li> 
+                <li><a href="@tp.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li> 
             }
             @if (!string.IsNullOrWhiteSpace(tp.Copyright)) {
                 <li>Copyright: @tp.Copyright.Replace("Copyright ","")</li>

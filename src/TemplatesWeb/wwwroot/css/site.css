@@ -33,7 +33,9 @@
     margin-top:20px;
     margin-bottom:20px;
 }
-
+code{
+    background-color:inherit;
+}
 #templateSearchBox input{
     display:inline;
     width: 300px;
