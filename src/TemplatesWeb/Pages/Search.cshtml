@@ -1,4 +1,4 @@
-﻿@page "{SearchText}"
+﻿@page "{SearchText?}"
 @model SearchModel
 @{
 }
@@ -20,9 +20,9 @@ Found <b>@Model.SearchResults.Count</b> matching templates
         <li>by: <a href="/search/@template.Author">@template.Author</a> |</li>
         <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li> |
         @if (template.Tags != null && template.Tags.Count > 0) {
-        <li>Tags:              <b>@foreach (var t in template.Tags) {@t.Key @t.Value<span>; </span>}</b> |</li> }
+            <li>Tags: @foreach (var t in template.Tags) {@t.Key<span>:</span> <b>@t.Value<span>; </span></b>}</li> }
 
         @if (template.Classifications != null && template.Classifications.Length > 0) {
-        <li>Classifications:   <b>@foreach (var c in template.Classifications) {@c; } </b></li> }
+            <li>Classifications:   @foreach (var c in template.Classifications) {<b>@c</b><span>; </span>}</li>}
     </ul>
 }
