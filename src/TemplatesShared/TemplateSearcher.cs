@@ -67,7 +67,7 @@ namespace TemplatesShared {
             }
 
             var retv = from m in matches
-                       orderby m.SearchScore
+                       orderby m.SearchScore descending
                        select m;
 
             // return matches.Keys;
