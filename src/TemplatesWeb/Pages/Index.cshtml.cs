@@ -16,11 +16,29 @@ namespace TemplatesWeb.Pages {
 
         [BindProperty]
         public string SearchText { get; set; }
+        public int OverallDownloads { get; set; }
+        public int NumTemplates { get; set; }
+        public int NumTemplatePacks { get; set; }
+        public int NumAuthors { get; set; }
+
 
         public IndexModel(IOptions<TemplateWebConfig> config):base(config) {
         }
         public void OnGet() {
             TemplatePacks = GetFromApi<List<TemplatePack>>("templatepack");
+
+            if (TemplatePacks != null) {
+                OverallDownloads = (from tp in TemplatePacks
+                                        select tp.DownloadCount).Sum();
+
+                NumTemplates = (from tp in TemplatePacks
+                                from template in tp.Templates
+                                select template).ToList().Count;
+
+                NumTemplatePacks = TemplatePacks.Count;
+                NumAuthors = (from tp in TemplatePacks
+                                  select tp.Authors).Distinct().ToList().Count;
+            }
         }
 
         public IActionResult OnPostAsync() {

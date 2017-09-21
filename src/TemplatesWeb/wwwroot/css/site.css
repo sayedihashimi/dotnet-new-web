@@ -59,6 +59,24 @@ code{
 .horizontalList li {
     display: inline;
 }
+
+#overallStats{
+    margin:0;
+    padding:0;
+    padding-top:10px;
+    padding-bottom:5px;
+}
+#overallStats li {
+    display: block;
+    unicode-bidi: embed;
+    font-family: monospace;
+    white-space: pre;
+}
+
+#overallStats li .value{
+    font-weight: bold;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

@@ -6,10 +6,10 @@
 }
 
 <h1 class="indexHead">
-    dotnet core templates
+    dotnet templates
 </h1>
 <p>
-    Find available templates for <code>dotnet core</code>
+    Find available templates for <code>dotnet</code>
 </p>
 <form method="POST">
     <div id="templateSearchBox">
@@ -17,6 +17,13 @@
         <button type="submit" class="btn btn-primary">Search templates</button>
     </div>
 </form>
+
+<ul id="overallStats">
+    <li>Overall downloads:       <span class="value">@Model.OverallDownloads</span></li>
+    <li>Num of templates:        <span class="value">@Model.NumTemplates</span></li>
+    <li>Num of template packs:   <span class="value">@Model.NumTemplatePacks</span></li>
+    <li>Num of template authors: <span class="value">@Model.NumAuthors</span></li>
+</ul>
 
 <h2>Template packs</h2>
 
