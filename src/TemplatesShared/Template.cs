@@ -10,7 +10,7 @@ namespace TemplatesShared
     {
         public string Author { get; set; }
         public string Name { get; set; }
-        public Dictionary<string, string> Tags { get; set; }
+        public Dictionary<string, string> Tags { get; set; } = new Dictionary<string, string>();
         [JsonConverter(typeof(StringArrayConverter))]
         public string[] Classifications { get; set; }
         public string ShortName { get; set; }

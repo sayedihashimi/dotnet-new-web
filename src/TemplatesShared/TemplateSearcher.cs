@@ -132,6 +132,11 @@ namespace TemplatesShared {
             else if (groupIdRes.IsPartialMatch)
                 score += 50;
 
+            // to avoid nullref error
+            if(template.Tags == null) { 
+                template.Tags = new Dictionary<string, string>();
+            }
+
             var tagKeysRes = IsStringMatch(searchTerm, template.Tags.Keys);
             var tagValuesRes = IsStringMatch(searchTerm, template.Tags.Values);
 
