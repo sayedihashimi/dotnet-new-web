@@ -33,10 +33,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)TemplatePacksPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TemplatePacksPage.xaml.cs">
       <DependentUpon>TemplatePacksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -45,7 +45,7 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\NewItemPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\template-report.json" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)TemplatePacksPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TemplatePacksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
