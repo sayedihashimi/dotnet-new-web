@@ -16,9 +16,6 @@ namespace DotnetNewMobile
             InitializeComponent();
 
             BindingContext = viewModel = new ItemsViewModel();
-
-            var text = GetJsonFileContents();
-            var templatePacks = TemplatePack.CreateFromText(text);
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -44,17 +41,6 @@ namespace DotnetNewMobile
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
-        }
-
-        protected string GetJsonFileContents(){
-            string resxname = "DotnetNewMobile.iOS.Assets.template-report.json";
-            var assembly = typeof(ItemsPage).GetTypeInfo().Assembly;
-            string text = null;
-            using(var stream = assembly.GetManifestResourceStream(resxname))
-            using(var reader = new System.IO.StreamReader(stream)){
-                text = reader.ReadToEnd();
-            }
-            return text;
         }
     }
 }

@@ -22,5 +22,8 @@ namespace DotnetNewMobile
                 viewModel.LoadItemsCommand.Execute(null);
             }
 		}
+        //async void OnItemSelected(object sender, SelectedItemChangedEventArgs args){
+        //    throw new NotImplementedException();
+        //}
 	}
 }
