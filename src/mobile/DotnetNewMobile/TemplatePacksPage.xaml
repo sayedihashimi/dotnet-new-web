@@ -6,9 +6,21 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <Label FontSize="Medium" Text="dotnet new template packs"/>
-            <!--<ListView x:Name="TemplatePacksListView"
-                      ItemSelected=""-->
+            <Label FontSize="Large" Text="dotnet new template packs"/>
+            <ListView x:Name="TemplatePacksListView"
+                      ItemsSource="{Binding Items}"
+                      VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Package}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
