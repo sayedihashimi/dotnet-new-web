@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TemplatesShared
 {
@@ -73,9 +74,15 @@ namespace TemplatesShared
             return results;
         }
 
-        public static List<TemplatePack>CreateFromText(string text)
+        public static List<TemplatePack> CreateFromText(string text)
         {
             return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
+        }
+        public static async Task<List<TemplatePack>> CreateFromTextAsync(string text)
+        {
+
+            return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<List<TemplatePack>>(text));
+            // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
     }
     public class TemplateConverter : JsonConverter
