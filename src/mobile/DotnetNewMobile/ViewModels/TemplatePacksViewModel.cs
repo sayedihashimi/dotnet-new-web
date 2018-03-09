@@ -64,6 +64,4 @@ namespace DotnetNewMobile.ViewModels
             return text;
         }
     }
-
-
 }

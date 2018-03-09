@@ -16,7 +16,14 @@
                             <StackLayout Orientation="Horizontal">
                                 <Image Grid.Row="0" Grid.Column="0" WidthRequest="40" 
                                        VerticalOptions="Center"
-                                       Source="{Binding IconPngUrl}"  />
+                                       Source="{Binding IconPngUrl}">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Tapped="ViewTemplateClicked"
+
+                                        />
+                                    </Image.GestureRecognizers>
+                                </Image>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Package}" 
                                        VerticalOptions="Center" LineBreakMode="NoWrap" />
                             </StackLayout>
