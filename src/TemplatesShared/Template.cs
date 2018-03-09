@@ -48,12 +48,29 @@ namespace TemplatesShared
         public string Package { get; set; }
         private string _iconurl;
         public string IconUrl {
-            get { return _iconurl; }
+            get {
+                if(string.IsNullOrWhiteSpace(_iconurl)){
+                    return @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
+                }
+                return _iconurl; 
+            }
             set {
                 if (string.IsNullOrWhiteSpace(value)) {
                     value = @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
                 }
                 _iconurl = value;
+            }
+        }
+
+        public string IconPngUrl{
+            get{
+                string defaultIconUrl = "http://dotnetnew.azurewebsites.net/images/create-project-25.png";
+                if(string.IsNullOrWhiteSpace(IconUrl) || 
+                   IconUrl.EndsWith(".svg",StringComparison.OrdinalIgnoreCase)){
+                    return defaultIconUrl;
+                }
+
+                return IconUrl;
             }
         }
 

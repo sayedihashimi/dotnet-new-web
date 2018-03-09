@@ -13,8 +13,9 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Package}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Image Grid.Row="0" Grid.Column="0" WidthRequest="20" Source="{Binding IconPngUrl}" VerticalOptions="Center" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Package}" VerticalOptions="Center" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
