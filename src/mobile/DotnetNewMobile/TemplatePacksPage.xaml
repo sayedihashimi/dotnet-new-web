@@ -14,8 +14,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Image Grid.Row="0" Grid.Column="0" WidthRequest="20" Source="{Binding IconPngUrl}" VerticalOptions="Center" />
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Package}" VerticalOptions="Center" />
+                                <Image Grid.Row="0" Grid.Column="0" WidthRequest="40" 
+                                       VerticalOptions="Center"
+                                       Source="{Binding IconPngUrl}"  />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Package}" 
+                                       VerticalOptions="Center" LineBreakMode="NoWrap" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

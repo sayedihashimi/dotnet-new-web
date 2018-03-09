@@ -64,7 +64,7 @@ namespace TemplatesShared
 
         public string IconPngUrl{
             get{
-                string defaultIconUrl = "http://dotnetnew.azurewebsites.net/images/create-project-25.png";
+                string defaultIconUrl = "http://dotnetnew.azurewebsites.net/images/create-project-64.png";
                 if(string.IsNullOrWhiteSpace(IconUrl) || 
                    IconUrl.EndsWith(".svg",StringComparison.OrdinalIgnoreCase)){
                     return defaultIconUrl;
