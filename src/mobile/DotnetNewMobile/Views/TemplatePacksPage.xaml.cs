@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DotnetNewMobile.ViewModels;
+using DotnetNewMobile.Views;
 using Xamarin.Forms;
 
 namespace DotnetNewMobile
@@ -22,10 +23,10 @@ namespace DotnetNewMobile
                 viewModel.LoadItemsCommand.Execute(null);
             }
 		}
-        async void ViewTemplateClicked(object sender, EventArgs e)
+        async void ViewTemplateTapped(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new NewItemPage());
-            await Navigation.PushAsync(new TemplatedPage());
+            await Navigation.PushAsync(new TemplatePage());
         }
 	}
 }

@@ -6,11 +6,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <!--<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                <Image Source="http://dotnetnew.azurewebsites.net/images/create-project-64.png" 
-                       HeightRequest="64" WidthRequest="64"/>-->
-                <Label FontSize="Large" Text="dotnet new template packs" Margin="10,0,0,0"/>
-           <!-- </StackLayout>-->
+            <Label FontSize="Large" Text="dotnet new template packs" Margin="10,0,0,0"/>
 
             <ListView x:Name="TemplatePacksListView"
                       ItemsSource="{Binding Items}"
@@ -28,35 +24,16 @@
                                                WidthRequest="64" />
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding Package}" LineBreakMode="NoWrap" />
-                                        <Label Text="one" LineBreakMode="NoWrap" />   
-                                        <Label Text="two" LineBreakMode="NoWrap" />
-                                        <Label Text="three" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding NumTemplatesString}" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding OwnerString}" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding DownloadString}" LineBreakMode="NoWrap" />
                                     </StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ViewTemplateTapped"/>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Frame>
-
-
-                            
-                            <!--<StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                <Image WidthRequest="64" 
-                                       VerticalOptions="Center"
-                                       Source="{Binding IconPngUrl}">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                            Tapped="ViewTemplateClicked"
-
-                                        />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                                <StackLayout VerticalOptions="StartAndExpand">
-                                   <Label Text="{Binding Package}"
-                                       VerticalOptions="Center" LineBreakMode="NoWrap" /> 
-                                    <Label Text="foo"/>
-                                    <Label Text="bar"/>
-                                    <Label Text="bar2"/>
-                                </StackLayout>
-                            </StackLayout>-->
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

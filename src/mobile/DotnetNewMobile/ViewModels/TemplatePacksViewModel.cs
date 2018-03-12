@@ -11,12 +11,12 @@ namespace DotnetNewMobile.ViewModels
 {
     public class TemplatePacksViewModel : BaseViewModel
     {
-        public ObservableCollection<TemplatePack> Items { get; set; }
+        public ObservableCollection<TemplatePackViewModel> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public TemplatePacksViewModel()
         {
-            Items = new ObservableCollection<TemplatePack>();
+            Items = new ObservableCollection<TemplatePackViewModel>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
         }
 
@@ -33,7 +33,7 @@ namespace DotnetNewMobile.ViewModels
                 var items = await TemplatePack.CreateFromTextAsync(GetJsonFileContents());
                 foreach (var item in items)
                 {
-                    Items.Add(item);
+                    Items.Add(new TemplatePackViewModel(item));
                 }
             }
             catch (Exception ex)
