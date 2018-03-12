@@ -41,6 +41,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksPage.xaml.cs">
       <DependentUpon>TemplatePacksPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ListViewSelectedItemBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SelectedItemEventArgsToSelectedItemConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
