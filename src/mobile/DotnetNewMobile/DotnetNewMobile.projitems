@@ -34,13 +34,13 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\TemplatePacksPage.xaml.cs">
-      <DependentUpon>TemplatePacksPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\TemplatePage.xaml.cs">
       <DependentUpon>TemplatePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePackViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksPage.xaml.cs">
+      <DependentUpon>TemplatePacksPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -49,11 +49,11 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\NewItemPage.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\template-report.json" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TemplatePacksPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TemplatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TemplatePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

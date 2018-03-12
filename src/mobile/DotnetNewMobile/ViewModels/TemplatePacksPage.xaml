@@ -7,11 +7,11 @@
     <ContentPage.Content>
         <StackLayout>
             <Label FontSize="Large" Text="dotnet new template packs" Margin="10,0,0,0"/>
-
             <ListView x:Name="TemplatePacksListView"
                       ItemsSource="{Binding Items}"
                       RowHeight="150"
                       SeparatorVisibility="None"
+                      ItemTapped="Handle_ItemTapped"
                       >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -21,7 +21,13 @@
                                     <StackLayout Orientation="Horizontal" 
                                                  VerticalOptions="CenterAndExpand">
                                         <Image Source="{Binding IconPngUrl}" HeightRequest="64" 
-                                               WidthRequest="64" />
+                                               WidthRequest="64">
+                                           <!-- <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding TappedCommand}"
+                                                    CommandParameter="Image1" />
+                                            </Image.GestureRecognizers>-->
+                                        </Image>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" />
@@ -29,9 +35,6 @@
                                         <Label Text="{Binding OwnerString}" LineBreakMode="NoWrap" />
                                         <Label Text="{Binding DownloadString}" LineBreakMode="NoWrap" />
                                     </StackLayout>
-                                    <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="ViewTemplateTapped"/>
-                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>

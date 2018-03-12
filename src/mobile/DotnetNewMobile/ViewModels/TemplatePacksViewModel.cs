@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Windows.Input;
+using DotnetNewMobile.Views;
 
 namespace DotnetNewMobile.ViewModels
 {
@@ -13,11 +15,19 @@ namespace DotnetNewMobile.ViewModels
     {
         public ObservableCollection<TemplatePackViewModel> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public Command TappedCommand { get; set; }
+        private INavigation Navigation { get; set; }
 
-        public TemplatePacksViewModel()
+        public TemplatePacksViewModel(INavigation navigation)
         {
             Items = new ObservableCollection<TemplatePackViewModel>();
+            Navigation = navigation;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            TappedCommand = new Command(async () => await ExecuteTapped());
+        }
+
+        async Task ExecuteTapped(){
+            await Navigation.PushAsync(new TemplatePage());
         }
 
         async Task ExecuteLoadItemsCommand(){
