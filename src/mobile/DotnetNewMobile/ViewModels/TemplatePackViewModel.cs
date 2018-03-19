@@ -6,8 +6,8 @@ namespace DotnetNewMobile.ViewModels
 {
     public class TemplatePackViewModel
     {
-        private TemplatePack Pack{
-            get;set;
+        public TemplatePack Pack{
+            get; private set;
         }
 
         public TemplatePackViewModel(TemplatePack pack){
@@ -42,6 +42,35 @@ namespace DotnetNewMobile.ViewModels
         public string IconPngUrl{
             get{
                 return Pack != null ? Pack.IconPngUrl : string.Empty;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return Pack != null ? Pack.Description : string.Empty;
+            }
+        }
+        public string LicenseUrl
+        {
+            get
+            {
+                return Pack != null ? Pack.LicenseUrl : string.Empty;
+            }
+        }
+        public string ProjectUrl
+        {
+            get
+            {
+                return Pack != null ? Pack.ProjectUrl : string.Empty;
+            }
+        }
+        public string NuGetUrl
+        {
+            get
+            {
+                return Pack != null ? $"http://dotnetnew.azurewebsites.net/pack/{Pack.Package}" : string.Empty;
             }
         }
     }

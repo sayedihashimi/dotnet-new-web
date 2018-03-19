@@ -28,7 +28,8 @@ namespace DotnetNewMobile.ViewModels
 
         async void ExecuteTapped(TemplatePackViewModel pack){
             System.Console.WriteLine("inside ExecuteTapped");
-            await Navigation.PushAsync(new TemplatePage());
+
+            await Navigation.PushAsync(new TemplatePackPage(pack));
         }
 
         async Task ExecuteLoadItemsCommand(){

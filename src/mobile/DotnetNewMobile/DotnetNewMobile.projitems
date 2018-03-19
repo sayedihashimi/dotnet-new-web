@@ -43,6 +43,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ListViewSelectedItemBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SelectedItemEventArgsToSelectedItemConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\TemplatePackPage.xaml.cs">
+      <DependentUpon>TemplatePackPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -56,6 +59,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ViewModels\TemplatePacksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TemplatePackPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
