@@ -35,19 +35,31 @@
             <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
                 <!-- TODO: Change image -->
                 <Image Source="nuget-logo-20x20.png" WidthRequest="20"/>
-                <Label Text="View on nuget.org" TextColor="#0000EE" />
+                <Label Text="View on nuget.org" TextColor="#0000EE">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BrowseToNuGet}" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
                 <!-- TODO: Change image -->
                 <Image Source="globe-19x19.png" WidthRequest="20"/>
-                <Label Text="Go to project site" TextColor="#0000EE" />
+                <Label Text="Go to project site" TextColor="#0000EE">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BrowseProjectSite}" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 10">
                 <!-- TODO: Change image -->
                 <Image Source="icon-license.png" WidthRequest="20"/>
-                <Label Text="View license" TextColor="#0000EE" />
+                <Label Text="View license" TextColor="#0000EE">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BrowseLicense}" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

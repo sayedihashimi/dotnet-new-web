@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Input;
+using Foundation;
 using TemplatesShared;
 using Xamarin.Forms;
 
@@ -6,12 +8,29 @@ namespace DotnetNewMobile.ViewModels
 {
     public class TemplatePackViewModel
     {
-        public TemplatePack Pack{
+        public TemplatePackViewModel(TemplatePack pack){
+            Pack = pack;
+            BrowseToNuGet = new Command(ExecuteBrowseToNuget);
+            BrowseProjectSite = new Command(ExecuteBrowseProjectSite);
+            BrowseLicense = new Command(ExecuteBrowseToLicense);
+        }
+
+        public TemplatePack Pack
+        {
             get; private set;
         }
 
-        public TemplatePackViewModel(TemplatePack pack){
-            Pack = pack;
+        public ICommand BrowseToNuGet
+        {
+            get; private set;
+        }
+
+        public ICommand BrowseProjectSite{
+            get; private set;
+        }
+
+        public ICommand BrowseLicense{
+            get; private set;
         }
 
         public string DownloadCount
@@ -70,8 +89,21 @@ namespace DotnetNewMobile.ViewModels
         {
             get
             {
-                return Pack != null ? $"http://dotnetnew.azurewebsites.net/pack/{Pack.Package}" : string.Empty;
+                return Pack != null ? $"https://www.nuget.org/packages/{Pack.Package}" : string.Empty;
             }
+        }
+
+        public void ExecuteBrowseToNuget(object s){
+            Device.OpenUri(new System.Uri(NuGetUrl));
+        }
+
+        public void ExecuteBrowseProjectSite(){
+            Device.OpenUri(new System.Uri(ProjectUrl));
+        }
+
+        public void ExecuteBrowseToLicense(object s)
+        {
+            Device.OpenUri(new System.Uri(LicenseUrl));
         }
     }
 }
