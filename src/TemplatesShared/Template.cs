@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -82,6 +83,9 @@ namespace TemplatesShared
             // assign the templatepackid if not already set
             foreach(var tp in results) {
                 foreach(var t in tp.Templates) {
+                    if(string.IsNullOrWhiteSpace(t.Name)){
+                        continue; 
+                    }
                     if (string.IsNullOrWhiteSpace(t.TemplatePackId)) {
                         t.TemplatePackId = tp.Package;
                     }
@@ -93,12 +97,38 @@ namespace TemplatesShared
 
         public static List<TemplatePack> CreateFromText(string text)
         {
-            return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
+            var result = JsonConvert.DeserializeObject<List<TemplatePack>>(text);
+
+            foreach(var tp in result){
+                if (tp.Templates != null){
+                    List<Template> tList = tp.Templates.ToList();
+                    if(tList.RemoveAll(tr => { return string.IsNullOrWhiteSpace(tr.Name); }) > 0){
+                        tp.Templates = tList.ToArray();
+                    }
+
+                }
+            }
+
+            return result;
         }
         public static async Task<List<TemplatePack>> CreateFromTextAsync(string text)
         {
+            var result = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<List<TemplatePack>>(text));
 
-            return await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<List<TemplatePack>>(text));
+            foreach (var tp in result)
+            {
+                if (tp.Templates != null)
+                {
+                    List<Template> tList = tp.Templates.ToList();
+                    if (tList.RemoveAll(tr => { return string.IsNullOrWhiteSpace(tr.Name); }) > 0)
+                    {
+                        tp.Templates = tList.ToArray();
+                    }
+
+                }
+            }
+
+            return result;
             // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
     }

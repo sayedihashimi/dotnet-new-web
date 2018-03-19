@@ -11,6 +11,7 @@ namespace DotnetNewMobile.Views
         {
             InitializeComponent();
             PackViewModel = packViewModel;
+            BindingContext = PackViewModel;
         }
 
         public TemplatePackViewModel PackViewModel{

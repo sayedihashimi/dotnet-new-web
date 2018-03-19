@@ -14,16 +14,16 @@ namespace DotnetNewMobile.ViewModels
             Pack = pack;
         }
 
-        public string DownloadString
+        public string DownloadCount
         {
             get{
-                return Pack != null ? $"Downloads: {Pack.DownloadCount}" : string.Empty;
+                return Pack != null ? Pack.DownloadCount.ToString() : string.Empty;
             }
         }
    
         public string PackageString{
             get{
-                return Pack != null? Pack.Package: "";
+                return Pack != null? Pack.Owners: "";
             }
         }
 
