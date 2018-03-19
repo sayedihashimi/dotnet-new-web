@@ -14,8 +14,8 @@ namespace DotnetNewMobile.ViewModels
     public class TemplatePacksViewModel : BaseViewModel
     {
         public ObservableCollection<TemplatePackViewModel> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
-        public Command TappedCommand { get; set; }
+        public Command LoadItemsCommand { get; private set; }
+        public ICommand TappedCommand { get; private set; }
         private INavigation Navigation { get; set; }
 
         public TemplatePacksViewModel(INavigation navigation)
@@ -23,11 +23,18 @@ namespace DotnetNewMobile.ViewModels
             Items = new ObservableCollection<TemplatePackViewModel>();
             Navigation = navigation;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
-            TappedCommand = new Command(async () => await ExecuteTapped());
+            TappedCommand = new Command<TemplatePackViewModel>(ExecuteTapped);
+
+            //TappedCommand = new Command(FooBar);
         }
 
-        async Task ExecuteTapped(){
-            await Navigation.PushAsync(new TemplatePage());
+        void ExecuteTapped(TemplatePackViewModel pack){
+            System.Console.WriteLine("inside ExecuteTapped");
+            Navigation.PushAsync(new TemplatePage()).Wait();
+        }
+
+        void FooBar(object foo){
+            System.Console.WriteLine("foobar");
         }
 
         async Task ExecuteLoadItemsCommand(){
