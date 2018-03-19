@@ -13,23 +13,23 @@ namespace DotnetNewMobile
             switch (Device.RuntimePlatform)
             {
                 case Device.iOS:
-                    itemsPage = new NavigationPage(new ItemsPage())
-                    {
-                        Title = "Browse"
-                    };
+                    //itemsPage = new NavigationPage(new ItemsPage())
+                    //{
+                    //    Title = "Browse"
+                    //};
 
-                    aboutPage = new NavigationPage(new AboutPage())
-                    {
-                        Title = "About"
-                    };
+                    //aboutPage = new NavigationPage(new AboutPage())
+                    //{
+                    //    Title = "About"
+                    //};
 
                     templatePacksPage = new NavigationPage(new TemplatePacksPage())
                     {
                         Title = "About"
                     };
 
-                    itemsPage.Icon = "tab_feed.png";
-                    aboutPage.Icon = "tab_about.png";
+                    //itemsPage.Icon = "tab_feed.png";
+                    //aboutPage.Icon = "tab_about.png";
                     templatePacksPage.Icon = "tab_home.png";
 
                     break;
@@ -49,8 +49,8 @@ namespace DotnetNewMobile
 
 
             Children.Add(templatePacksPage);
-            Children.Add(itemsPage);
-            Children.Add(aboutPage);
+            //Children.Add(itemsPage);
+            //Children.Add(aboutPage);
 
             Title = Children[0].Title;
         }
