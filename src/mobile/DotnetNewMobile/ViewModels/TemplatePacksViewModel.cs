@@ -24,17 +24,11 @@ namespace DotnetNewMobile.ViewModels
             Navigation = navigation;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             TappedCommand = new Command<TemplatePackViewModel>(ExecuteTapped);
-
-            //TappedCommand = new Command(FooBar);
         }
 
         void ExecuteTapped(TemplatePackViewModel pack){
             System.Console.WriteLine("inside ExecuteTapped");
             Navigation.PushAsync(new TemplatePage()).Wait();
-        }
-
-        void FooBar(object foo){
-            System.Console.WriteLine("foobar");
         }
 
         async Task ExecuteLoadItemsCommand(){
