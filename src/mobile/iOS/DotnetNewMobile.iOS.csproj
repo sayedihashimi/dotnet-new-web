@@ -122,6 +122,9 @@
     <BundleResource Include="Resources\tab_home.png" />
     <BundleResource Include="Resources\tab_home%402x.png" />
     <BundleResource Include="Resources\tab_home%403x.png" />
+    <BundleResource Include="Resources\globe-19x19.png" />
+    <BundleResource Include="Resources\icon-license.png" />
+    <BundleResource Include="Resources\nuget-logo-20x20.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
