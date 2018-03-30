@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
 	<string>DotnetNewMobile</string>
-	<key>CFBundleName</key>
-	<string>DotnetNewMobile</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.DotnetNewMobile</string>
+	<string>com-sayedha-dotnetnew01</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -45,6 +43,8 @@
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleLightContent</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false />
+	<false/>
+	<key>CFBundleName</key>
+	<string>Dotnet new templates</string>
 </dict>
 </plist>

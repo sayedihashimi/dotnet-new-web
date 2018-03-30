@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Input;
-using Foundation;
 using TemplatesShared;
 using Xamarin.Forms;
 
@@ -42,7 +41,7 @@ namespace DotnetNewMobile.ViewModels
    
         public string PackageString{
             get{
-                return Pack != null? Pack.Owners: "";
+                return Pack != null? Pack.Package: "";
             }
         }
 

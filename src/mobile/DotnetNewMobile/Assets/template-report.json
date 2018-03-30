@@ -7,15 +7,6 @@
         "Tags":  "aspnet templates spa",
         "Templates":  [
                           {
-                              "author":  null,
-                              "name":  null,
-                              "tags":  null,
-                              "classifications":  null,
-                              "shortName":  null,
-                              "groupIdentity":  null,
-                              "identity":  null
-                          },
-                          {
                               "author":  "Microsoft",
                               "name":  "ASP.NET Core with Aurelia",
                               "tags":  {
@@ -30,56 +21,6 @@
                               "shortName":  "aurelia",
                               "groupIdentity":  "Microsoft.AspNetCore.SpaTemplates.Aurelia",
                               "identity":  "Microsoft.AspNetCore.SpaTemplates.Aurelia.CSharp.2.1"
-                          },
-                          {
-                              "author":  null,
-                              "name":  null,
-                              "tags":  null,
-                              "classifications":  null,
-                              "shortName":  null,
-                              "groupIdentity":  null,
-                              "identity":  null
-                          },
-                          {
-                              "author":  "Microsoft",
-                              "name":  "ASP.NET Core with Knockout.js",
-                              "tags":  {
-                                           "type":  "project",
-                                           "language":  "C#"
-                                       },
-                              "classifications":  [
-                                                      "Web",
-                                                      "MVC",
-                                                      "SPA"
-                                                  ],
-                              "shortName":  "knockout",
-                              "groupIdentity":  "Microsoft.AspNetCore.SpaTemplates.Knockout",
-                              "identity":  "Microsoft.AspNetCore.SpaTemplates.Knockout.CSharp.2.1"
-                          },
-                          {
-                              "author":  null,
-                              "name":  null,
-                              "tags":  null,
-                              "classifications":  null,
-                              "shortName":  null,
-                              "groupIdentity":  null,
-                              "identity":  null
-                          },
-                          {
-                              "author":  "Microsoft",
-                              "name":  "ASP.NET Core with Vue.js",
-                              "tags":  {
-                                           "type":  "project",
-                                           "language":  "C#"
-                                       },
-                              "classifications":  [
-                                                      "Web",
-                                                      "MVC",
-                                                      "SPA"
-                                                  ],
-                              "shortName":  "vue",
-                              "groupIdentity":  "Microsoft.AspNetCore.SpaTemplates.Vue",
-                              "identity":  "Microsoft.AspNetCore.SpaTemplates.Vue.CSharp.2.1"
                           }
                       ],
         "DownloadUrl":  "https://api.nuget.org/packages/microsoft.aspnetcore.spatemplates.2.1.0-preview1-final.nupkg",

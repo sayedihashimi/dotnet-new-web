@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:local="clr-namespace:DotnetNewMobile"
              x:Class="DotnetNewMobile.TemplatePacksPage"
-             x:Name="TemplatePacksPage">
+             x:Name="TemplatePacksPage"
+             Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />

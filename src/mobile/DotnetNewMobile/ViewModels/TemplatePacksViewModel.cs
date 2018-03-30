@@ -24,6 +24,7 @@ namespace DotnetNewMobile.ViewModels
             Navigation = navigation;
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             TappedCommand = new Command<TemplatePackViewModel>(ExecuteTapped);
+            Title = "dotnet new templates";
         }
 
         async void ExecuteTapped(TemplatePackViewModel pack){
@@ -65,6 +66,17 @@ namespace DotnetNewMobile.ViewModels
         }
         protected string GetJsonFileContents()
         {
+            // if the file exists locally use that file instead of the built in one
+            var fileHelper = new SaveAndLoad();
+            if(fileHelper.DoesFileExist("dotnetnew-template-report.json")){
+                try{
+                    return fileHelper.LoadText("dotnetnew-template-report.json");  
+                }
+                catch{
+                }
+            }
+
+            // fallback to embedded file
             string resxname = "DotnetNewMobile.iOS.Assets.template-report.json";
             var assembly = typeof(ItemsPage).GetTypeInfo().Assembly;
             string text = null;
@@ -74,6 +86,7 @@ namespace DotnetNewMobile.ViewModels
                 text = reader.ReadToEnd();
             }
             return text;
+
         }
     }
 }
