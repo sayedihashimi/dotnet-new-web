@@ -1,109 +1,109 @@
 {
   "images": [
     {
-      "filename": "DougFace-40px.png",
+      "filename": "create-project-40x40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-60px.png",
+      "filename": "create-project-60x60.png",
       "size": "20x20",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-58px.png",
+      "filename": "create-project-58x58.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-87px.png",
+      "filename": "create-project-87x87.png",
       "size": "29x29",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-80px.png",
+      "filename": "create-project-80x80.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-120px.png",
+      "filename": "create-project-120x120.png",
       "size": "40x40",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-120px.png",
+      "filename": "create-project-120x120.png",
       "size": "60x60",
       "scale": "2x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-180px.png",
+      "filename": "create-project-180x180.png",
       "size": "60x60",
       "scale": "3x",
       "idiom": "iphone"
     },
     {
-      "filename": "DougFace-20px.png",
+      "filename": "create-project-20x20.png",
       "size": "20x20",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-40px.png",
+      "filename": "create-project-40x40.png",
       "size": "20x20",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-29px.png",
+      "filename": "create-project-29x29.png",
       "size": "29x29",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-58px.png",
+      "filename": "create-project-58x58.png",
       "size": "29x29",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-40px.png",
+      "filename": "create-project-40x40.png",
       "size": "40x40",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-80px.png",
+      "filename": "create-project-80x80.png",
       "size": "40x40",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-167px.png",
+      "filename": "create-project-167x167.png",
       "size": "83.5x83.5",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-76px.png",
+      "filename": "create-project-76x76.png",
       "size": "76x76",
       "scale": "1x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-152px.png",
+      "filename": "create-project-152x152.png",
       "size": "76x76",
       "scale": "2x",
       "idiom": "ipad"
     },
     {
-      "filename": "DougFace-1024px.png",
+      "filename": "create-project-1024x1024.png",
       "size": "1024x1024",
       "scale": "1x",
       "idiom": "ios-marketing"

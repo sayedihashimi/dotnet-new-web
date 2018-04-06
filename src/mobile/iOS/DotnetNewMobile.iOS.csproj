@@ -112,19 +112,19 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-40px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-60px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-58px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-87px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-80px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-120px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-180px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-20px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-29px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-76px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-152px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-167px.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\DougFace-1024px.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-1024x1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-40x40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-20x20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-167x167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-152x152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-76x76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-80x80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-29x29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-58x58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-180x180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-120x120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-60x60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\create-project-87x87.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_about.png" />
