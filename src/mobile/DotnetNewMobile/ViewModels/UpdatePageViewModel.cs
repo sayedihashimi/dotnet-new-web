@@ -30,6 +30,7 @@ namespace DotnetNewMobile.ViewModels
         }
 
         private void ExecuteUpdateTemplates(){
+
             ResultMessage = string.Empty;
             try{
                 string url = "http://dotnetnew-api.azurewebsites.net/template-report.json";
@@ -38,6 +39,7 @@ namespace DotnetNewMobile.ViewModels
                 saveAndLoad.DownloadAndSave(url, filename);
                 string res = saveAndLoad.LoadText(filename);
                 ResultMessage = "Templates successfully updated";
+                MessagingCenter.Send<UpdatePageViewModel>(this, "TemplateListUpdated");
             }
             catch(Exception ex){
                 ResultMessage = ex.ToString();
