@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Input;
 using DotnetNewMobile.Views;
+using System.Linq;
 
 namespace DotnetNewMobile.ViewModels
 {
@@ -25,6 +26,59 @@ namespace DotnetNewMobile.ViewModels
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
             TappedCommand = new Command<TemplatePackViewModel>(ExecuteTapped);
             Title = "dotnet new templates";
+        }
+
+        public int OverallDownloads { get; set; }
+        public int NumTemplates { get; set; }
+        public int NumTemplatePacks { get; set; }
+        public int NumAuthors { get; set; }
+
+        private string _overallDownloadString;
+        public string OverallDownloadsString { 
+            get{
+                return _overallDownloadString;
+            }
+            set{
+                if(_overallDownloadString != value){
+                    SetProperty(ref _overallDownloadString, value, nameof(OverallDownloadsString));
+                }
+            }
+        }
+
+        private string _numTemplateString;
+        public string NumTemplatesString { 
+            get{
+                return _numTemplateString;
+            }
+            set{
+                if(_numTemplateString != value){
+                    SetProperty(ref _numTemplateString, value, nameof(NumTemplatesString));
+                }
+            }
+        }
+
+        private string _numTemplatePacksString;
+        public string NumTemplatePacksString { 
+            get{
+                return _numTemplatePacksString;
+            } 
+            set{
+                if(_numTemplatePacksString != value){
+                    SetProperty(ref _numTemplatePacksString, value, nameof(NumTemplatePacksString));
+                }
+            }
+        }
+
+        private string _numAuthorsString;
+        public string NumAuthorsString { 
+            get{
+                return _numAuthorsString;
+            } 
+            set{
+                if(_numAuthorsString != value){
+                    SetProperty(ref _numAuthorsString, value, nameof(NumAuthorsString));
+                }
+            }
         }
 
         async void ExecuteTapped(TemplatePackViewModel pack){
@@ -48,6 +102,7 @@ namespace DotnetNewMobile.ViewModels
                 {
                     Items.Add(new TemplatePackViewModel(item));
                 }
+                UpdateSummaryData();
             }
             catch (Exception ex)
             {
@@ -58,7 +113,39 @@ namespace DotnetNewMobile.ViewModels
                 IsBusy = false;
             }
         }
+        public void UpdateSummaryData(){
+            if(Items != null){
+                OverallDownloads = 0;
+                NumTemplates = 0;
+                NumTemplatePacks = 0;
+                NumAuthors = 0;
 
+                foreach(var i in Items){
+                    if (i.Pack != null)
+                    {
+                        OverallDownloads += i.Pack.DownloadCount;
+                        NumTemplates += i.Pack.Templates.Count();
+                    }
+                    NumTemplatePacks++;
+                }
+
+                NumAuthors = (from tp in Items
+                              select tp.Pack.Authors).Distinct().ToList().Count;
+
+            }
+            else{
+                OverallDownloads = 0;
+                NumTemplates = 0;
+                NumTemplatePacks = 0;
+                NumAuthors = 0;
+            }
+
+
+            OverallDownloadsString = $"Overall downloads:       {OverallDownloads}";
+            NumTemplatesString = $"Num of templates:        {NumTemplates}";
+            NumTemplatePacksString = $"Num of template packs:   {NumTemplatePacks}";
+            NumAuthorsString = $"Num of template authors: {NumAuthors}";
+        }
         List<TemplatePack> GetTemplatePacks()
         {
             var text = GetJsonFileContents();

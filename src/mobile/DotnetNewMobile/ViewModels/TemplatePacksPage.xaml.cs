@@ -30,6 +30,7 @@ namespace DotnetNewMobile
             {
                 viewModel.LoadItemsCommand.Execute(null);
                 UpdateTemplateList = false;
+                viewModel.UpdateSummaryData();
             }
 		}
 	}

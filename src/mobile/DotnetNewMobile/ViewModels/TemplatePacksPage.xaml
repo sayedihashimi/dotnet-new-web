@@ -12,7 +12,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <Label FontSize="Large" Text="dotnet new template packs" Margin="10,0,0,0"/>
             <ListView x:Name="TemplatePacksListView"
                       ItemsSource="{Binding Items}"
                       RowHeight="150"
@@ -20,6 +19,14 @@
                 <ListView.Behaviors>
                     <local:ListViewSelectedItemBehavior Command="{Binding TappedCommand}" Converter="{StaticResource SelectedItemConverter}"/>
                 </ListView.Behaviors>
+                <ListView.Header>
+                    <StackLayout Margin="0,10,0,10" Padding="0,20,0,20">
+                    <Label FontFamily="Andale Mono" Text="{Binding OverallDownloadsString}"/>
+                    <Label FontFamily="Andale Mono" Text="{Binding NumTemplatesString}"/>
+                    <Label FontFamily="Courier" Text="{Binding NumTemplatePacksString}"/>
+                    <Label FontFamily="Courier" Text="{Binding NumAuthorsString}"/>
+                    </StackLayout>
+                </ListView.Header>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
