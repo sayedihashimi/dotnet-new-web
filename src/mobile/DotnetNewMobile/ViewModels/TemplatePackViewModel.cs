@@ -63,13 +63,18 @@ namespace DotnetNewMobile.ViewModels
             }
         }
 
-        public string Description
-        {
-            get
-            {
-                return Pack != null ? Pack.Description : string.Empty;
-            }
-        }
+		public string Description
+		{
+			get
+			{
+				return Pack != null ? Pack.Description : string.Empty;
+			}
+		}
+		public bool HasLicense{
+			get{
+				return !string.IsNullOrWhiteSpace(LicenseUrl);
+			}
+		}
         public string LicenseUrl
         {
             get
@@ -77,6 +82,11 @@ namespace DotnetNewMobile.ViewModels
                 return Pack != null ? Pack.LicenseUrl : string.Empty;
             }
         }
+		public bool HasProjectUrl{
+			get{
+				return !string.IsNullOrWhiteSpace(ProjectUrl);
+			}
+		}
         public string ProjectUrl
         {
             get
