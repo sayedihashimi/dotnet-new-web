@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using DotnetNewMobile.Views;
 using Xamarin.Forms;
 
@@ -6,10 +7,11 @@ namespace DotnetNewMobile
 {
     public class MainPage : TabbedPage
     {
+
         public MainPage()
         {
             Page templatePacksPage = null;
-            Page updateTemplatesPage = null;
+            Page searchPage = null;
             //try{
             //    string url = "http://dotnetnew-api.azurewebsites.net/template-report.json";
             //    string filename = "template-report.json";
@@ -28,14 +30,14 @@ namespace DotnetNewMobile
                     {
                         Title = "Templates"
                     };
-                    updateTemplatesPage = new NavigationPage(new UpdatePage())
+                    searchPage = new NavigationPage(new SearchPage())
                     {
-                        Title = "Update templates"
+                        Title = "Search"
                     };
                     //itemsPage.Icon = "tab_feed.png";
                     //aboutPage.Icon = "tab_about.png";
 
-                    updateTemplatesPage.Icon = "tab_feed.png";
+                    searchPage.Icon = "tab_feed.png";
                     templatePacksPage.Icon = "tab_home.png";
 
                     break;
@@ -47,7 +49,8 @@ namespace DotnetNewMobile
 
 
             Children.Add(templatePacksPage);
-            Children.Add(updateTemplatesPage);
+            Children.Add(searchPage);
+
             Title = Children[0].Title;
         }
 
@@ -55,6 +58,17 @@ namespace DotnetNewMobile
         {
             base.OnCurrentPageChanged();
             Title = CurrentPage?.Title ?? string.Empty;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+        private void GoToPage(Page page){
+            Task.WaitAll(Navigation.PushAsync(page));
+        }
+        private async void GoToPageAsync(Page page){
+            await Navigation.PushAsync(page);
         }
     }
 }

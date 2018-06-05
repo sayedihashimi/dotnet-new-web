@@ -7,11 +7,11 @@ using Xamarin.Forms;
 
 namespace DotnetNewMobile
 {
-    public partial class TemplatePacksPage : ContentPage
+    public partial class TemplatePacksPage : BaseContentPage
     {
         TemplatePacksViewModel viewModel;
         private bool UpdateTemplateList = true;
-        public TemplatePacksPage()
+        public TemplatePacksPage() : base()
         {
             InitializeComponent();
 
@@ -32,6 +32,8 @@ namespace DotnetNewMobile
                 UpdateTemplateList = false;
                 viewModel.UpdateSummaryData();
             }
+
+//            new TemplatesShared.TemplateSearcher().Search()
 		}
 	}
 }

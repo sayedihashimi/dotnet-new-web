@@ -142,6 +142,9 @@
     <BundleResource Include="Resources\globe-19x19.png" />
     <BundleResource Include="Resources\icon-license.png" />
     <BundleResource Include="Resources\nuget-logo-20x20.png" />
+    <BundleResource Include="Resources\update.png" />
+    <BundleResource Include="Resources\update%402x.png" />
+    <BundleResource Include="Resources\update%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />

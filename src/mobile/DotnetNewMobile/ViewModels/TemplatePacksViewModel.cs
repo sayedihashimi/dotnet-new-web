@@ -15,6 +15,7 @@ namespace DotnetNewMobile.ViewModels
     public class TemplatePacksViewModel : BaseViewModel
     {
         public ObservableCollection<TemplatePackViewModel> Items { get; set; }
+        public IList<TemplatePack> TemplateList { get; set; }
         public Command LoadItemsCommand { get; private set; }
         public ICommand TappedCommand { get; private set; }
         private INavigation Navigation { get; set; }
@@ -97,8 +98,8 @@ namespace DotnetNewMobile.ViewModels
             try
             {
                 Items.Clear();
-                var items = await TemplatePack.CreateFromTextAsync(GetJsonFileContents());
-                foreach (var item in items)
+                TemplateList = await TemplatePack.CreateFromTextAsync(GetJsonFileContents());
+                foreach (var item in TemplateList)
                 {
                     Items.Add(new TemplatePackViewModel(item));
                 }
