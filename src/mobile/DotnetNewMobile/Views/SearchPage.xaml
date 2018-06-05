@@ -8,9 +8,15 @@
         <StackLayout Margin="10,20,10,0">
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Entry x:Name="entrySearch" BackgroundColor="#ccffff" WidthRequest="200"  />
+                <Entry  x:Name="entrySearch"
+                        Text="{Binding SearchTerm,Mode=TwoWay}"
+                        BackgroundColor="#ccffff" 
+                        WidthRequest="200"  />
                 <Button Text="Search"  
-                        BackgroundColor="{StaticResource Primary}" TextColor="White" WidthRequest="100" FontFamily="{Binding FontFamily}"/>
+                        Command="{Binding SearchCommand}"
+                        BackgroundColor="{StaticResource Primary}" 
+                        TextColor="White" WidthRequest="100" 
+                        FontFamily="{Binding FontFamily}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

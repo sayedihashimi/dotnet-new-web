@@ -5,7 +5,11 @@
              Title="{Binding Title}">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center">
-            <Button Text="Update template list" Command="{Binding UpdateTemplates}" Margin="0,10,0,0" WidthRequest="200" BackgroundColor="{StaticResource Primary}" TextColor="White"/>
+            <Button Text="Update template list" 
+                    Command="{Binding UpdateTemplates}" 
+                    Margin="0,10,0,0" 
+                    WidthRequest="200" BackgroundColor="{StaticResource Primary}" 
+                    TextColor="White"/>
 
             <Label Text="{Binding ResultMessage,Mode=TwoWay}"/>
         </StackLayout>

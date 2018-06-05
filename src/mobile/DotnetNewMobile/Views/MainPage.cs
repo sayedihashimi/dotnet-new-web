@@ -37,7 +37,7 @@ namespace DotnetNewMobile
                     //itemsPage.Icon = "tab_feed.png";
                     //aboutPage.Icon = "tab_about.png";
 
-                    searchPage.Icon = "tab_feed.png";
+                    searchPage.Icon = "search.png";
                     templatePacksPage.Icon = "tab_home.png";
 
                     break;
