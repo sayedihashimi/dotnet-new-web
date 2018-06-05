@@ -57,6 +57,9 @@ namespace TemplatesShared {
                     var r = SearchTemplate(searchTerm, t, tp);
                     if (r.IsMatch) {
                         t.SearchScore = r.SearchValue;
+                        if(string.IsNullOrEmpty(t.TemplatePackId)){
+                            t.TemplatePackId = tp.Package;
+                        }
                         matches.Add(t);
                     }
                 }

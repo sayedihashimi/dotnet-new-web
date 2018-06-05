@@ -18,6 +18,55 @@
                         TextColor="White" WidthRequest="100" 
                         FontFamily="{Binding FontFamily}"/>
             </StackLayout>
+
+            <ContentView IsVisible="{Binding NumSearchResultLabelVisible}">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding NumSearchResults}" />
+                    <Label Text=" results found"/>
+                </StackLayout>
+
+            </ContentView>
+            
+            <ListView x:Name="searchResultList"
+                      ItemsSource="{Binding FoundItems}"
+                      RowHeight="200"
+                      SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="20,0,0,0">
+                                <Label Text="{Binding Template.Name}" FontAttributes="Bold" Margin="-20,0,0,0" FontSize="25"/>
+
+                                <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
+                                    <Label Text="By: " LineBreakMode="NoWrap"/>
+                                    <Label Text="{Binding Template.Author}" />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="In: " LineBreakMode="NoWrap"/>
+                                    <Label Text="{Binding Template.TemplatePackId}" TextColor="#0000EE" LineBreakMode="NoWrap" />
+                                </StackLayout>
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Tags: " />
+                                    <Label Text="{Binding TagsString}"/>
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="Classifications: "/>
+                                    <Label Text="{Binding ClassificationsString}"/>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
         </StackLayout>
+
+        
     </ContentPage.Content>
 </local:BaseContentPage>

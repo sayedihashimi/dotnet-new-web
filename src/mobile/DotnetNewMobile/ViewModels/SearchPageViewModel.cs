@@ -1,45 +1,105 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DotnetNewMobile.ViewModels;
+using TemplatesShared;
 using Xamarin.Forms;
 
 namespace DotnetNewMobile
 {
     public class SearchPageViewModel : BaseViewModel
     {
+        public SearchPageViewModel()
+        {
+            IsBusy = false;
+            // SearchCommand = new Command(async () =>  ExecuteSearchCommand());
+            SearchCommand = new Command(() => ExecuteSearchCommand());
+            SearchTerm = "Mads";
+            FoundItems = new ObservableCollection<SearchTemplateViewModel>();
+        }
+
+        private TemplateSearcher _searcher = new TemplateSearcher();
+
         private string _searchTerm;
         public string SearchTerm
-        { 
-            get{
+        {
+            get
+            {
                 return _searchTerm;
-            } 
-            set{
-                if(_searchTerm != value){
+            }
+            set
+            {
+                if (_searchTerm != value)
+                {
                     SetProperty(ref _searchTerm, value, nameof(SearchTerm));
                 }
             }
         }
 
-        public ICommand SearchCommand{
-            get;private set;
+        public ICommand SearchCommand
+        {
+            get; private set;
         }
 
-        public SearchPageViewModel() {
-            IsBusy = false;
-            // SearchCommand = new Command(async () =>  ExecuteSearchCommand());
-            SearchCommand = new Command(()=>ExecuteSearchCommand());
-            SearchTerm = "foo";
+        public ObservableCollection<SearchTemplateViewModel> FoundItems { get; set; }
+        protected void SetFoundItems(IList<Template> templates){
+            if(templates != null){
+                FoundItems.Clear();
+                foreach(var item in templates){
+                    FoundItems.Add(new SearchTemplateViewModel(item));
+                }
+                NumSearchResults = FoundItems.Count;
+                NumSearchResultLabelVisible = true;
+            }
+            else{
+                FoundItems = null;
+                NumSearchResults = 0;
+            }
         }
 
-         void ExecuteSearchCommand(){
-            if(IsBusy){
+        private int _numSearchResults;
+        public int NumSearchResults{
+            get{
+                return _numSearchResults;
+            }
+            set{
+                if(_numSearchResults != value){
+                    SetProperty(ref _numSearchResults, value, nameof(NumSearchResults));
+                }
+            }
+        }
+
+        private bool _numSearchResultLabelVisible;
+        public bool NumSearchResultLabelVisible{
+            get{
+                return _numSearchResultLabelVisible;
+            }
+            set{
+                if(_numSearchResultLabelVisible != value){
+                    SetProperty(ref _numSearchResultLabelVisible, value, nameof(NumSearchResultLabelVisible));
+                }
+            }
+        }
+
+        void ExecuteSearchCommand()
+        {
+            if (IsBusy)
+            {
                 return;
             }
 
-            try{
-
+            try
+            {
+                var helper = new TemplateHelper();
+                var allTemplates = helper.GetTemplatePacks();
+                var foundTemplates = _searcher.Search(SearchTerm, allTemplates);
+                SetFoundItems(foundTemplates);
+                
             }
-            finally{
+            finally
+            {
                 IsBusy = false;
             }
         }

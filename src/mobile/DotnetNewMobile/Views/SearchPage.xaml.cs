@@ -16,7 +16,7 @@ namespace DotnetNewMobile.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            // this.entrySearch.Focus();
+            this.entrySearch.Focus();
         }
     }
 }
