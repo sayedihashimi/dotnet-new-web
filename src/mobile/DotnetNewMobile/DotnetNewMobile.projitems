@@ -56,7 +56,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\TemplateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchTemplateViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\EntryCompletedBehavior.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\EntryCompletedEventArgsToEventArgsConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\EventToCommandBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\BehaviorBase.cs" />
   </ItemGroup>

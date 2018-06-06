@@ -3,6 +3,8 @@ using Xamarin.Forms;
 
 namespace DotnetNewMobile
 {
+    // from: https://blog.xamarin.com/turn-events-into-commands-with-behaviors/
+    //       https://github.com/davidbritch/xamarin-forms/blob/master/ItemSelectedBehavior/ItemSelectedBehavior/Behaviors/BehaviorBase.cs
     public class BehaviorBase<T> : Behavior<T> where T : BindableObject
     {
         public T AssociatedObject { get; private set; }
