@@ -11,14 +11,15 @@ namespace DotnetNewMobile
 {
     public class SearchPageViewModel : BaseViewModel
     {
-        public SearchPageViewModel()
+        public SearchPageViewModel(INavigation navigation)
         {
             IsBusy = false;
-            // SearchCommand = new Command(async () =>  ExecuteSearchCommand());
             SearchCommand = new Command(() => ExecuteSearchCommand());
-            SearchTerm = "Mads";
             FoundItems = new ObservableCollection<SearchTemplateViewModel>();
+            Navigation = navigation;
         }
+
+        public INavigation Navigation { get; set; }
 
         private TemplateSearcher _searcher = new TemplateSearcher();
 
@@ -43,12 +44,14 @@ namespace DotnetNewMobile
             get; private set;
         }
 
+
+
         public ObservableCollection<SearchTemplateViewModel> FoundItems { get; set; }
         protected void SetFoundItems(IList<Template> templates){
             if(templates != null){
                 FoundItems.Clear();
                 foreach(var item in templates){
-                    FoundItems.Add(new SearchTemplateViewModel(item));
+                    FoundItems.Add(new SearchTemplateViewModel(item, Navigation));
                 }
                 NumSearchResults = FoundItems.Count;
                 NumSearchResultLabelVisible = true;

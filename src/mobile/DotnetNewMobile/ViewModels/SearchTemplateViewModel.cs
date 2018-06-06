@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Text;
+using System.Windows.Input;
+using DotnetNewMobile.Views;
 using TemplatesShared;
+using Xamarin.Forms;
 
 namespace DotnetNewMobile.ViewModels
 {
     public class SearchTemplateViewModel : BaseViewModel
     {
-        public SearchTemplateViewModel(Template template){
+        public SearchTemplateViewModel(Template template, INavigation navigation){
             Template = template;
+            Navigation = navigation;
+            NavigateToTemplatePackCommand = new Command(() => ExecuteNavigateToTemplatePack());
         }
 
+        public INavigation Navigation { get; set; }
         private Template _template;
         public Template Template
         {
@@ -62,6 +68,14 @@ namespace DotnetNewMobile.ViewModels
                 }
                 ClassificationsString = classificationsBuilder.ToString();
             }
+        }
+
+        public ICommand NavigateToTemplatePackCommand { get; set; }
+        public async void ExecuteNavigateToTemplatePack(){
+            var helper = new TemplateHelper();
+            TemplatePack pack = helper.GetTemplatePackById(Template.TemplatePackId, helper.GetTemplatePacks());
+
+            await Navigation.PushAsync(new TemplatePackPage( new TemplatePackViewModel(pack)));
         }
     }
 }

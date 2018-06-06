@@ -44,7 +44,8 @@
 
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="In: " LineBreakMode="NoWrap"/>
-                                    <Label Text="{Binding Template.TemplatePackId}" TextColor="#0000EE" LineBreakMode="NoWrap" />
+                                    <!-- <Label Text="{Binding Template.TemplatePackId}" TextColor="#0000EE" LineBreakMode="NoWrap" /> -->
+                                    <Button Text="{Binding Template.TemplatePackId}" Command="{Binding NavigateToTemplatePackCommand}" Margin="0,0,0,0" HeightRequest="15" />
                                 </StackLayout>
                                 
                                 <StackLayout Orientation="Horizontal">

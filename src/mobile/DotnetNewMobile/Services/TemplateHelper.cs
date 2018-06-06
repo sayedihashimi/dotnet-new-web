@@ -42,6 +42,16 @@ namespace DotnetNewMobile
             return TemplatePack.CreateFromText(text);
         }
 
+        public TemplatePack GetTemplatePackById(string package, List<TemplatePack>packs){
+            TemplatePack pack = null;
+            foreach(var p in packs){
+                if(string.Compare(package, p.Package,StringComparison.OrdinalIgnoreCase) == 0){
+                    pack = p;
+                    break;
+                }
+            }
+            return pack;
+        }
     }
 
 }
