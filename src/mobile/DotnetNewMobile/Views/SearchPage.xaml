@@ -4,14 +4,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="DotnetNewMobile.Views.SearchPage"
              Title="Search">
+    <ContentPage.Resources>
+   <!--     <ResourceDictionary>
+            <local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+        </ResourceDictionary>-->
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="10,20,10,0">
-
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Entry  x:Name="entrySearch"
                         Text="{Binding SearchTerm,Mode=TwoWay}"
                         BackgroundColor="#ccffff" 
-                        WidthRequest="200"  />
+                        WidthRequest="200">
+                    <Entry.Behaviors>
+                        <local:EventToCommandBehavior EventName="Completed" Command="{Binding SearchCommand}" />
+                    </Entry.Behaviors>
+                </Entry>
                 <Button Text="Search"  
                         Command="{Binding SearchCommand}"
                         BackgroundColor="{StaticResource Primary}" 

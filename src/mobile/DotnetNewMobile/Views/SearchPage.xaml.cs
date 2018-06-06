@@ -9,6 +9,7 @@ namespace DotnetNewMobile.Views
     public partial class SearchPage : BaseContentPage
     {
         private SearchPageViewModel viewModel;
+        private bool FirstRun = true;
         public SearchPage() : base()
         {
             InitializeComponent();
@@ -17,8 +18,11 @@ namespace DotnetNewMobile.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.entrySearch.Focus();
-
+            if (FirstRun)
+            {
+                this.entrySearch.Focus();
+                FirstRun = false;
+            }
             // disable the selected gesture - from https://forums.xamarin.com/discussion/comment/261433/#Comment_261433
             if (!searchResultList.GestureRecognizers.Any())
             {

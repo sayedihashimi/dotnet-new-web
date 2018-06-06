@@ -55,6 +55,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TemplateHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SearchTemplateViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\EntryCompletedBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\EntryCompletedEventArgsToEventArgsConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\EventToCommandBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\BehaviorBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -82,5 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Assets\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Commands\" />
   </ItemGroup>
 </Project>
