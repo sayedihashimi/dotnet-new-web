@@ -4,7 +4,7 @@
              x:Class="DotnetNewMobile.Views.TemplatePackPage"
              Title="{Binding PackageString}">
     <ContentPage.Content>
-       <!-- <ScrollView>-->
+       <ScrollView>
             <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical" Margin="5,0,0,0">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="{Binding IconPngUrl}" WidthRequest="100" HeightRequest="100" Margin="-5,0,0,0" />
@@ -23,9 +23,9 @@
                     <Label Text="{Binding DownloadCount}" />
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical" Margin="0,10,0,0">
+                <StackLayout Orientation="Vertical" Margin="0,10,0,0" HeightRequest="250">
                     <Label Text="Templates" FontSize="40"/>
-                    <ScrollView>
+                    <ScrollView IsVisible="true">
                     <ListView ItemsSource="{Binding Pack.Templates}" Margin="10,0,0,0" IsEnabled="false">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -71,6 +71,6 @@
                     </Label>
                 </StackLayout>
             </StackLayout>
-<!--        </ScrollView>
--->    </ContentPage.Content>
+        </ScrollView>
+    </ContentPage.Content>
 </ContentPage>
