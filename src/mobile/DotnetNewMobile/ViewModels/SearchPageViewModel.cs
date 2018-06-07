@@ -45,6 +45,7 @@ namespace DotnetNewMobile
             get; private set;
         }
 
+
         private bool _isSearchEnabled;
         public bool IsSearchEnabled{
             get{
@@ -120,5 +121,7 @@ namespace DotnetNewMobile
                 IsBusy = false;
             }
         }
+
+
     }
 }

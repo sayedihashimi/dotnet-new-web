@@ -41,8 +41,9 @@
                     </ScrollView>
                 </StackLayout>
 
-                <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
-                    <!-- TODO: Change image -->
+                <Button Text="Actions" Image="share.png" Command="{Binding ShowActions}" HorizontalOptions="Start" WidthRequest="160" BorderWidth="1" BorderColor="Blue"/>
+                
+                <!--<StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
                     <Image Source="nuget-logo-20x20.png" WidthRequest="20"/>
                     <Label Text="View on nuget.org" TextColor="#0000EE">
                         <Label.GestureRecognizers>
@@ -52,7 +53,6 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0" IsVisible="{Binding HasProjectUrl}">
-                    <!-- TODO: Change image -->
                     <Image Source="globe-19x19.png" WidthRequest="20"/>
                     <Label Text="Go to project site" TextColor="#0000EE">
                         <Label.GestureRecognizers>
@@ -62,7 +62,6 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0" IsVisible="{Binding HasLicense}">
-                    <!-- TODO: Change image -->
                     <Image Source="icon-license.png" WidthRequest="20"/>
                     <Label Text="View license" TextColor="#0000EE">
                         <Label.GestureRecognizers>
@@ -73,7 +72,7 @@
                 <StackLayout Orientation="Horizontal" Margin="0, 0, 0, 10" IsVisible="{Binding HasLicense}">
                     <Image Source="share.png" WidthRequest="20"/>
                     <Button Text="Share" Command="{Binding ShareCommand}"/>
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

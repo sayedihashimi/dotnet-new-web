@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Windows.Input;
+using System.Linq;
 using Plugin.Share;
 using Plugin.Share.Abstractions;
 using TemplatesShared;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace DotnetNewMobile.ViewModels
 {
@@ -15,6 +18,7 @@ namespace DotnetNewMobile.ViewModels
             BrowseProjectSite = new Command(ExecuteBrowseProjectSite);
             BrowseLicense = new Command(ExecuteBrowseToLicense);
             ShareCommand = new Command(ExecuteShare);
+            ShowActions = new Command(() => ExecuteShowActions());
         }
 
         public TemplatePack Pack
@@ -38,6 +42,7 @@ namespace DotnetNewMobile.ViewModels
         public ICommand ShareCommand{
             get;private set;
         }
+        public ICommand ShowActions { get; private set; }
 
         public string DownloadCount
         {
@@ -125,10 +130,72 @@ namespace DotnetNewMobile.ViewModels
         public async void ExecuteShare(){
             ShareMessage msg = new ShareMessage();
             msg.Title = "Share";
-            msg.Text = "Check this out";
-            msg.Url = "https://google.com";
+            msg.Text = "Check out this dotnet template";
+            msg.Url = $"http://dotnetnew.azurewebsites.net/pack/{PackageString}";
             await CrossShare.Current.Share(msg);
         }
+
+        async void ExecuteShowActions()
+        {
+            var actions = GetTemplatePackActions();
+            var result2 = await Application.Current.MainPage.DisplayActionSheet(
+                "Actions", "Cancel", null, TemplateDisplayActions.GetActionStrings(actions));
+
+            if(string.Compare("Cancel",result2,StringComparison.OrdinalIgnoreCase) != 0){
+                TemplateDisplayActions.ExecuteAction(result2, actions);
+            }
+        }
+
+        private List<TemplateDisplayActions>GetTemplatePackActions(){
+            List<TemplateDisplayActions> actions =  new List<TemplateDisplayActions>
+            {
+                new TemplateDisplayActions("View on nuget.org",()=>ExecuteBrowseToNuget(null), true),
+                new TemplateDisplayActions("Go to project site",()=>ExecuteBrowseProjectSite(), !string.IsNullOrWhiteSpace(ProjectUrl)),
+                new TemplateDisplayActions("View license",()=>ExecuteBrowseToLicense(null), !string.IsNullOrWhiteSpace(LicenseUrl) ),
+                new TemplateDisplayActions("Share",()=>ExecuteShare(), true)
+            };
+
+            return actions;
+        }
+        private Page GetMainPage(){
+            return Application.Current.MainPage;
+        }
+    }
+
+    public class TemplateDisplayActions{
+        public TemplateDisplayActions(string actionString, Action action,bool isEnabled){
+            ActionString = actionString;
+            Action = action;
+            IsEnabled = isEnabled;
+        }
+
+        public string ActionString {
+            get; set;
+        }
+        public Action Action {
+            get; set;
+        }
+        public bool IsEnabled{
+            get;set;
+        }
+        public static string[] GetActionStrings(IEnumerable<TemplateDisplayActions>actions){
+            List<string> actStrings = new List<string>();
+            foreach(var act in actions){
+                if(act.IsEnabled){
+                    actStrings.Add(act.ActionString);
+                }
+            }
+            return actStrings.ToArray();
+        }
+
+        public static void ExecuteAction(string name,IEnumerable<TemplateDisplayActions>actions){
+            foreach(var action in actions){
+                if(string.Compare(name, action.ActionString, StringComparison.OrdinalIgnoreCase)==0){
+                    action.Action();
+                    break;
+                }
+            }
+        } 
     }
 }
 
