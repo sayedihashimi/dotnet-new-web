@@ -65,7 +65,7 @@ namespace DotnetNewMobile.ViewModels
 
         public string OwnerString{
             get{
-                return Pack != null ? $"By {Pack.Owners}": string.Empty;
+                return Pack != null ? $"{Pack.Owners}": string.Empty;
             }
         }
 
@@ -111,6 +111,12 @@ namespace DotnetNewMobile.ViewModels
             get
             {
                 return Pack != null ? $"https://www.nuget.org/packages/{Pack.Package}" : string.Empty;
+            }
+        }
+
+        public string InstallString{
+            get{
+                return Pack != null ? $"> dotnet new -i {PackageString}" : string.Empty;
             }
         }
 

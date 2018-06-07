@@ -15,7 +15,7 @@
 
                 <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
                     <Label Text="By: " WidthRequest="100"/>
-                    <Label Text="{Binding PackageString}" TextColor="#0000EE" />
+                    <Label Text="{Binding OwnerString}" TextColor="#0000EE" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
@@ -41,6 +41,14 @@
                     </ScrollView>
                 </StackLayout>
 
+                <Frame BackgroundColor="Black" MinimumWidthRequest="400" MinimumHeightRequest="100" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding InstallString}" FontFamily="Courier" TextColor="White" FontSize="25" />
+                    </StackLayout>
+                </Frame>
+
+
+                
                 <Button Text="Actions" Image="share.png" Command="{Binding ShowActions}" HorizontalOptions="Start" WidthRequest="160" BorderWidth="1" BorderColor="Blue"/>
                 
                 <!--<StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0">
