@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
+using Plugin.Share;
+using Plugin.Share.Abstractions;
 using TemplatesShared;
 using Xamarin.Forms;
 
@@ -12,6 +14,7 @@ namespace DotnetNewMobile.ViewModels
             BrowseToNuGet = new Command(ExecuteBrowseToNuget);
             BrowseProjectSite = new Command(ExecuteBrowseProjectSite);
             BrowseLicense = new Command(ExecuteBrowseToLicense);
+            ShareCommand = new Command(ExecuteShare);
         }
 
         public TemplatePack Pack
@@ -30,6 +33,10 @@ namespace DotnetNewMobile.ViewModels
 
         public ICommand BrowseLicense{
             get; private set;
+        }
+
+        public ICommand ShareCommand{
+            get;private set;
         }
 
         public string DownloadCount
@@ -113,6 +120,14 @@ namespace DotnetNewMobile.ViewModels
         public void ExecuteBrowseToLicense(object s)
         {
             Device.OpenUri(new System.Uri(LicenseUrl));
+        }
+
+        public async void ExecuteShare(){
+            ShareMessage msg = new ShareMessage();
+            msg.Title = "Share";
+            msg.Text = "Check this out";
+            msg.Url = "https://google.com";
+            await CrossShare.Current.Share(msg);
         }
     }
 }

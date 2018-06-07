@@ -43,6 +43,10 @@ namespace TemplatesShared {
             return GetTemplateById(templateName, new List<TemplatePack> { templatePack });
         }
         public List<Template> Search(string searchTerm, List<TemplatePack> templatePacks) {
+            if(searchTerm == null){
+                searchTerm = string.Empty;
+            }
+            searchTerm = searchTerm.Trim();
             if (string.IsNullOrWhiteSpace(searchTerm)) {
                 return GetAllTemplates(templatePacks);
             }

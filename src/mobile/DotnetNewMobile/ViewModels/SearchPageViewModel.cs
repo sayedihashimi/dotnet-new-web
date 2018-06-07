@@ -35,6 +35,7 @@ namespace DotnetNewMobile
                 if (_searchTerm != value)
                 {
                     SetProperty(ref _searchTerm, value, nameof(SearchTerm));
+                    UpdateIsSearchEnabled();
                 }
             }
         }
@@ -44,7 +45,20 @@ namespace DotnetNewMobile
             get; private set;
         }
 
-
+        private bool _isSearchEnabled;
+        public bool IsSearchEnabled{
+            get{
+                return _isSearchEnabled;
+            }
+            set{
+                if(_isSearchEnabled != value){
+                    SetProperty(ref _isSearchEnabled, value, nameof(IsSearchEnabled));
+                }
+            }
+        }
+        private void UpdateIsSearchEnabled(){
+            IsSearchEnabled = !string.IsNullOrWhiteSpace(SearchTerm);
+        }
 
         public ObservableCollection<SearchTemplateViewModel> FoundItems { get; set; }
         protected void SetFoundItems(IList<Template> templates){
