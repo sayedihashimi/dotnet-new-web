@@ -138,21 +138,21 @@ namespace DotnetNewMobile.ViewModels
         async void ExecuteShowActions()
         {
             var actions = GetTemplatePackActions();
-            var result2 = await Application.Current.MainPage.DisplayActionSheet(
-                "Actions", "Cancel", null, TemplateDisplayActions.GetActionStrings(actions));
+            var actionSelection = await Application.Current.MainPage.DisplayActionSheet(
+                "Actions", "Cancel", null, TemplateDisplayAction.GetActionStrings(actions));
 
-            if(string.Compare("Cancel",result2,StringComparison.OrdinalIgnoreCase) != 0){
-                TemplateDisplayActions.ExecuteAction(result2, actions);
+            if(string.Compare("Cancel",actionSelection,StringComparison.OrdinalIgnoreCase) != 0){
+                TemplateDisplayAction.ExecuteAction(actionSelection, actions);
             }
         }
 
-        private List<TemplateDisplayActions>GetTemplatePackActions(){
-            List<TemplateDisplayActions> actions =  new List<TemplateDisplayActions>
+        private List<TemplateDisplayAction>GetTemplatePackActions(){
+            List<TemplateDisplayAction> actions =  new List<TemplateDisplayAction>
             {
-                new TemplateDisplayActions("View on nuget.org",()=>ExecuteBrowseToNuget(null), true),
-                new TemplateDisplayActions("Go to project site",()=>ExecuteBrowseProjectSite(), !string.IsNullOrWhiteSpace(ProjectUrl)),
-                new TemplateDisplayActions("View license",()=>ExecuteBrowseToLicense(null), !string.IsNullOrWhiteSpace(LicenseUrl) ),
-                new TemplateDisplayActions("Share",()=>ExecuteShare(), true)
+                new TemplateDisplayAction("View on nuget.org",()=>ExecuteBrowseToNuget(null), true),
+                new TemplateDisplayAction("Go to project site",()=>ExecuteBrowseProjectSite(), !string.IsNullOrWhiteSpace(ProjectUrl)),
+                new TemplateDisplayAction("View license",()=>ExecuteBrowseToLicense(null), !string.IsNullOrWhiteSpace(LicenseUrl) ),
+                new TemplateDisplayAction("Share",()=>ExecuteShare(), true)
             };
 
             return actions;
@@ -160,42 +160,6 @@ namespace DotnetNewMobile.ViewModels
         private Page GetMainPage(){
             return Application.Current.MainPage;
         }
-    }
-
-    public class TemplateDisplayActions{
-        public TemplateDisplayActions(string actionString, Action action,bool isEnabled){
-            ActionString = actionString;
-            Action = action;
-            IsEnabled = isEnabled;
-        }
-
-        public string ActionString {
-            get; set;
-        }
-        public Action Action {
-            get; set;
-        }
-        public bool IsEnabled{
-            get;set;
-        }
-        public static string[] GetActionStrings(IEnumerable<TemplateDisplayActions>actions){
-            List<string> actStrings = new List<string>();
-            foreach(var act in actions){
-                if(act.IsEnabled){
-                    actStrings.Add(act.ActionString);
-                }
-            }
-            return actStrings.ToArray();
-        }
-
-        public static void ExecuteAction(string name,IEnumerable<TemplateDisplayActions>actions){
-            foreach(var action in actions){
-                if(string.Compare(name, action.ActionString, StringComparison.OrdinalIgnoreCase)==0){
-                    action.Action();
-                    break;
-                }
-            }
-        } 
     }
 }
 

@@ -58,6 +58,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\EntryCompletedBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\EventToCommandBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\BehaviorBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TemplateDisplayAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
