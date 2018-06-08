@@ -20,11 +20,11 @@
                     <local:ListViewSelectedItemBehavior Command="{Binding TappedCommand}" Converter="{StaticResource SelectedItemConverter}"/>
                 </ListView.Behaviors>
                 <ListView.Header>
-                    <StackLayout Margin="0,10,0,10" Padding="0,20,0,20">
-                    <Label FontFamily="Courier" Text="{Binding OverallDownloadsString}"/>
-                    <Label FontFamily="Courier" Text="{Binding NumTemplatesString}"/>
-                    <Label FontFamily="Courier" Text="{Binding NumTemplatePacksString}"/>
-                    <Label FontFamily="Courier" Text="{Binding NumAuthorsString}"/>
+                    <StackLayout Padding="20,20,0,20">
+                        <Label FontFamily="Courier" Text="{Binding OverallDownloadsString}"/>
+                        <Label FontFamily="Courier" Text="{Binding NumTemplatesString}"/>
+                        <Label FontFamily="Courier" Text="{Binding NumTemplatePacksString}"/>
+                        <Label FontFamily="Courier" Text="{Binding NumAuthorsString}"/>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>
