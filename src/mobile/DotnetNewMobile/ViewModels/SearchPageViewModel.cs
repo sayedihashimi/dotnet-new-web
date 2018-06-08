@@ -11,12 +11,25 @@ namespace DotnetNewMobile
 {
     public class SearchPageViewModel : BaseViewModel
     {
-        public SearchPageViewModel(INavigation navigation)
+        public SearchPageViewModel(INavigation navigation) : this(navigation, null, null)
         {
+
+        }
+
+        public SearchPageViewModel(INavigation navigation,string searchTerm, IList<Template>foundTemplates){
             IsBusy = false;
             SearchCommand = new Command(() => ExecuteSearchCommand());
-            FoundItems = new ObservableCollection<SearchTemplateViewModel>();
+            SearchAuthor = new Command(ExecuteSearchAuthor);
             Navigation = navigation;
+            SearchTerm = searchTerm;
+
+            FoundItems = new ObservableCollection<SearchTemplateViewModel>();
+            if(foundTemplates != null && foundTemplates.Count > 0){
+                foreach(var template in foundTemplates){
+                    FoundItems.Add(new SearchTemplateViewModel(template, navigation,this));
+                }
+            }
+            NumSearchResults = FoundItems.Count;
         }
 
         public INavigation Navigation { get; set; }
@@ -45,6 +58,10 @@ namespace DotnetNewMobile
             get; private set;
         }
 
+        public ICommand SearchAuthor{
+            get; private set;
+        }
+
 
         private bool _isSearchEnabled;
         public bool IsSearchEnabled{
@@ -62,11 +79,11 @@ namespace DotnetNewMobile
         }
 
         public ObservableCollection<SearchTemplateViewModel> FoundItems { get; set; }
-        protected void SetFoundItems(IList<Template> templates){
+        internal void SetFoundItems(IList<Template> templates){
             if(templates != null){
                 FoundItems.Clear();
                 foreach(var item in templates){
-                    FoundItems.Add(new SearchTemplateViewModel(item, Navigation));
+                    FoundItems.Add(new SearchTemplateViewModel(item, Navigation, this));
                 }
                 NumSearchResults = FoundItems.Count;
                 NumSearchResultLabelVisible = true;
@@ -85,6 +102,7 @@ namespace DotnetNewMobile
             set{
                 if(_numSearchResults != value){
                     SetProperty(ref _numSearchResults, value, nameof(NumSearchResults));
+                    NumSearchResultLabelVisible = value > 0;
                 }
             }
         }
@@ -122,6 +140,13 @@ namespace DotnetNewMobile
             }
         }
 
+        public void ExecuteSearchAuthor(object param){
+            string author = (string)param;
+            var helper = new TemplateHelper();
+            var allTemplates = helper.GetTemplatePacks();
+            var foundTemplates = _searcher.SearchByAuthor(author, allTemplates);
+            SetFoundItems(foundTemplates);
+        }
 
     }
 }

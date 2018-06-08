@@ -7,18 +7,25 @@ using Plugin.Share.Abstractions;
 using TemplatesShared;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using DotnetNewMobile.Views;
 
 namespace DotnetNewMobile.ViewModels
 {
     public class TemplatePackViewModel
     {
-        public TemplatePackViewModel(TemplatePack pack){
+        public TemplatePackViewModel(TemplatePack pack, INavigation navigation){
             Pack = pack;
+            Navigation = navigation;
             BrowseToNuGet = new Command(ExecuteBrowseToNuget);
             BrowseProjectSite = new Command(ExecuteBrowseProjectSite);
             BrowseLicense = new Command(ExecuteBrowseToLicense);
             ShareCommand = new Command(ExecuteShare);
             ShowActions = new Command(() => ExecuteShowActions());
+            SearchAuthor = new Command(() => ExecuteSearchAuthor());
+        }
+
+        protected INavigation Navigation{
+            get; private set;
         }
 
         public TemplatePack Pack
@@ -43,6 +50,8 @@ namespace DotnetNewMobile.ViewModels
             get;private set;
         }
         public ICommand ShowActions { get; private set; }
+
+        public ICommand SearchAuthor { get; private set; }
 
         public string DownloadCount
         {
@@ -150,6 +159,13 @@ namespace DotnetNewMobile.ViewModels
             if(string.Compare("Cancel",actionSelection,StringComparison.OrdinalIgnoreCase) != 0){
                 TemplateDisplayAction.ExecuteAction(actionSelection, actions);
             }
+        }
+
+        async void ExecuteSearchAuthor(){
+            var searcher = new TemplateSearcher();
+            IList<Template>foundTemplates = searcher.SearchByAuthor(Pack.Authors, new TemplateHelper().GetTemplatePacks());
+            await Navigation.PushAsync(
+                new NavigationPage(new SearchPage($"author=\"{Pack.Authors}\"", foundTemplates)));
         }
 
         private List<TemplateDisplayAction>GetTemplatePackActions(){

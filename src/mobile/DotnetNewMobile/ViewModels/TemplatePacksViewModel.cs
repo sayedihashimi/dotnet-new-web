@@ -101,7 +101,7 @@ namespace DotnetNewMobile.ViewModels
                 TemplateList = await TemplatePack.CreateFromTextAsync(GetJsonFileContents());
                 foreach (var item in TemplateList)
                 {
-                    Items.Add(new TemplatePackViewModel(item));
+                    Items.Add(new TemplatePackViewModel(item, Navigation));
                 }
                 UpdateSummaryData();
             }

@@ -9,12 +9,15 @@ namespace DotnetNewMobile.ViewModels
 {
     public class SearchTemplateViewModel : BaseViewModel
     {
-        public SearchTemplateViewModel(Template template, INavigation navigation){
+        public SearchTemplateViewModel(Template template, INavigation navigation, SearchPageViewModel searchPage){
             Template = template;
             Navigation = navigation;
             NavigateToTemplatePackCommand = new Command(() => ExecuteNavigateToTemplatePack());
+            SearchAuthor = new Command(ExecuteSearchAuthor);
+            SearchPage = searchPage;
         }
 
+        private SearchPageViewModel SearchPage { get; set; }
         public INavigation Navigation { get; set; }
         private Template _template;
         public Template Template
@@ -75,7 +78,23 @@ namespace DotnetNewMobile.ViewModels
             var helper = new TemplateHelper();
             TemplatePack pack = helper.GetTemplatePackById(Template.TemplatePackId, helper.GetTemplatePacks());
 
-            await Navigation.PushAsync(new TemplatePackPage( new TemplatePackViewModel(pack)));
+            await Navigation.PushAsync(new TemplatePackPage( new TemplatePackViewModel(pack,Navigation)));
+        }
+
+        private TemplateSearcher _searcher = new TemplateSearcher();
+
+        public ICommand SearchAuthor
+        {
+            get; private set;
+        }
+        void ExecuteSearchAuthor(object param)
+        {
+            string author = (string)param;
+            var helper = new TemplateHelper();
+            var allTemplates = helper.GetTemplatePacks();
+            var foundTemplates = _searcher.SearchByAuthor(author, allTemplates);
+            SearchPage.SetFoundItems(foundTemplates);
+            SearchPage.SearchTerm = $"author=\"{author}\"";
         }
     }
 }

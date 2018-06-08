@@ -47,7 +47,7 @@
                                         <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" />
                                         <Label Text="{Binding NumTemplatesString}" LineBreakMode="NoWrap" />
                                         <Label Text="{Binding OwnerString}" LineBreakMode="NoWrap" />
-                                        <Label Text="{Binding DownloadString}" LineBreakMode="NoWrap" />
+                                        <!--<Label Text="{Binding DownloadString}" LineBreakMode="NoWrap" />-->
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

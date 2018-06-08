@@ -80,6 +80,64 @@ namespace TemplatesShared {
             // return matches.Keys;
             return retv.ToList();
         }
+
+        public IList<Template>SearchByAuthor(string author,List<TemplatePack>templatePacks){
+            if(author == null){
+                author = string.Empty;
+            }
+            if(string.IsNullOrWhiteSpace(author) || templatePacks == null || templatePacks.Count <=0){
+                return GetAllTemplates(templatePacks);
+            }
+            var matches = new List<Template>();
+            foreach(var tp in templatePacks){
+                int score = 0;
+
+                foreach(var template in tp.Templates){
+                    var searchResult = SearchTemplateByAuthor(author, template, tp);
+                    if(searchResult.IsMatch){
+                        template.SearchScore = searchResult.SearchValue;
+                        if(string.IsNullOrEmpty(template.TemplatePackId)){
+                            template.TemplatePackId = tp.Package;
+                        }
+                        matches.Add(template);
+                    }
+                }
+
+                // var r = SearchTemplateByAuthor(author,tp)
+
+                //foreach(var template in tp.Templates){
+                //    var authorRes = IsStringMatch(author, template.Author);
+                //    if (authorRes.IsExactMatch)
+                //        score += 500;
+                //    else if (authorRes.StartsWith)
+                //        score += 100;
+                //    else if (authorRes.IsPartialMatch)
+                //        score += 50;
+
+                //    template.SearchScore = score;
+                //}
+
+                //var matchResult = new TemplateSearchResult
+                //{
+                //    IsMatch = (score > 0),
+                //    SearchValue = score
+                //};
+            }
+
+
+            if (matches.Count <= 0)
+            {
+                return new List<Template>();
+            }
+
+            var returnResult = (from m in matches
+                                orderby m.SearchScore descending
+                                select m).ToList();
+
+            return returnResult;
+            return matches;
+        }
+
         private List<Template> GetAllTemplates(IEnumerable<TemplatePack> templatePacks) {
             List<Template> result = new List<Template>();
             foreach (var tp in templatePacks) {
@@ -192,6 +250,30 @@ namespace TemplatesShared {
 
             return new TemplateSearchResult {
                 IsMatch =  (score > 0),
+                SearchValue = score
+            };
+        }
+
+        internal TemplateSearchResult SearchTemplateByAuthor(string author, Template template, TemplatePack pack)
+        {
+            int score = 0;
+
+            var authorRes = IsStringMatch(author, template.Author);
+            if (authorRes.IsExactMatch)
+                score += 500;
+            else if (authorRes.StartsWith)
+                score += 100;
+            else if (authorRes.IsPartialMatch)
+                score += 50;
+
+            // see if there is a match with the TemplatePack itself
+            var packAuthorMatch = IsStringMatch(author, pack.Authors);
+            if (packAuthorMatch.IsExactMatch || packAuthorMatch.StartsWith || packAuthorMatch.IsPartialMatch)
+                score += 10;
+            
+            return new TemplateSearchResult
+            {
+                IsMatch = (score > 0),
                 SearchValue = score
             };
         }

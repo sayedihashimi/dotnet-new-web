@@ -46,14 +46,16 @@
                                 <Label Text="{Binding Template.Name}" FontAttributes="Bold" Margin="-20,0,0,0" FontSize="25"/>
 
                                 <StackLayout Margin="0,5,0,0" Orientation="Horizontal">
-                                    <Label Text="By: " LineBreakMode="NoWrap"/>
-                                    <Label Text="{Binding Template.Author}" />
+                                    <Label Text="By: " LineBreakMode="NoWrap" HeightRequest="20"/>
+                                    <Button Text="{Binding Template.Author}" 
+                                            Command="{Binding SearchAuthor}" CommandParameter="{Binding Template.Author}" HeightRequest="20" />
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="In: " LineBreakMode="NoWrap"/>
-                                    <!-- <Label Text="{Binding Template.TemplatePackId}" TextColor="#0000EE" LineBreakMode="NoWrap" /> -->
-                                    <Button Text="{Binding Template.TemplatePackId}" Command="{Binding NavigateToTemplatePackCommand}" Margin="0,0,0,0" HeightRequest="15" />
+                                    <Button Text="{Binding Template.TemplatePackId}" 
+                                            Command="{Binding NavigateToTemplatePackCommand}" 
+                                            Margin="0,0,0,0" HeightRequest="15" />
                                 </StackLayout>
                                 
                                 <StackLayout Orientation="Horizontal">

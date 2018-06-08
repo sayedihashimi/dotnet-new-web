@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DotnetNewMobile;
 using System.Linq;
 using Xamarin.Forms;
+using TemplatesShared;
 
 namespace DotnetNewMobile.Views
 {
@@ -10,10 +11,13 @@ namespace DotnetNewMobile.Views
     {
         private SearchPageViewModel viewModel;
         private bool FirstRun = true;
-        public SearchPage() : base()
+        public SearchPage() : this(null,null)
         {
+            
+        }
+        public SearchPage(string searchTerm, IList<Template>foundTemplates): base(){
             InitializeComponent();
-            BindingContext = viewModel = new SearchPageViewModel(Navigation);
+            BindingContext = viewModel = new SearchPageViewModel(Navigation,searchTerm,foundTemplates);
         }
         protected override void OnAppearing()
         {
