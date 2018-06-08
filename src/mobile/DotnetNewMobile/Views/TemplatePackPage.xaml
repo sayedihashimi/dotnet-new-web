@@ -42,11 +42,8 @@
                 </StackLayout>
                 
                 <Label Text="Install command" FontSize="30" />
-                <Frame BackgroundColor="Black" MinimumWidthRequest="400" MinimumHeightRequest="120" HorizontalOptions="CenterAndExpand">
-                    
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{Binding InstallString}" FontFamily="Courier" TextColor="White" FontSize="25" />
-                    </StackLayout>
+                <Frame BackgroundColor="Black" MinimumHeightRequest="120" Margin="10,0,15,0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding InstallString}" FontFamily="Courier" TextColor="White" FontSize="25" />
                 </Frame>
 
                 <Button Text="Actions" Image="share.png" Margin="0,10,0,0" Command="{Binding ShowActions}" HorizontalOptions="Start" 

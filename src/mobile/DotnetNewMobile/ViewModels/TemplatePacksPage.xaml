@@ -32,23 +32,15 @@
                         <ViewCell>
                             <Frame Margin="0,5,0,5">
                                 <StackLayout Orientation="Horizontal">
-                                    <StackLayout Orientation="Horizontal" 
+                                    <!--<StackLayout Orientation="Horizontal" 
                                                  VerticalOptions="CenterAndExpand">
-                                        <Image Source="{Binding IconPngUrl}" HeightRequest="64" 
-                                               WidthRequest="64">
-                                           <!-- <Image.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding TappedCommand}"
-                                                    CommandParameter="Image1" />
-                                            </Image.GestureRecognizers>-->
-                                        </Image>
-                                    </StackLayout>
+                                        
+                                    </StackLayout>-->
+                                    <Image Source="{Binding IconPngUrl}" HeightRequest="64" WidthRequest="64" VerticalOptions="Start" />
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" HeightRequest="20" />
                                         <Label Text="{Binding NumTemplatesString}" LineBreakMode="NoWrap" HeightRequest="20" />
-                                        <!--<Label Text="{Binding OwnerString}" LineBreakMode="NoWrap" />-->
                                         <Button Text="{Binding OwnerString}" Command="{Binding SearchAuthor}" HeightRequest="20" HorizontalOptions="Start" />
-                                        <!--<Label Text="{Binding DownloadString}" LineBreakMode="NoWrap" />-->
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
