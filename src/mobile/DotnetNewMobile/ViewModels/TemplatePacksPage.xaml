@@ -44,9 +44,10 @@
                                         </Image>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
-                                        <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" />
-                                        <Label Text="{Binding NumTemplatesString}" LineBreakMode="NoWrap" />
-                                        <Label Text="{Binding OwnerString}" LineBreakMode="NoWrap" />
+                                        <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" HeightRequest="20" />
+                                        <Label Text="{Binding NumTemplatesString}" LineBreakMode="NoWrap" HeightRequest="20" />
+                                        <!--<Label Text="{Binding OwnerString}" LineBreakMode="NoWrap" />-->
+                                        <Button Text="{Binding OwnerString}" Command="{Binding SearchAuthor}" HeightRequest="20" HorizontalOptions="Start" />
                                         <!--<Label Text="{Binding DownloadString}" LineBreakMode="NoWrap" />-->
                                     </StackLayout>
                                 </StackLayout>

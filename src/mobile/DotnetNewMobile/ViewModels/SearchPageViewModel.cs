@@ -19,7 +19,6 @@ namespace DotnetNewMobile
         public SearchPageViewModel(INavigation navigation,string searchTerm, IList<Template>foundTemplates){
             IsBusy = false;
             SearchCommand = new Command(() => ExecuteSearchCommand());
-            SearchAuthor = new Command(ExecuteSearchAuthor);
             Navigation = navigation;
             SearchTerm = searchTerm;
 
@@ -57,11 +56,6 @@ namespace DotnetNewMobile
         {
             get; private set;
         }
-
-        public ICommand SearchAuthor{
-            get; private set;
-        }
-
 
         private bool _isSearchEnabled;
         public bool IsSearchEnabled{
@@ -139,14 +133,5 @@ namespace DotnetNewMobile
                 IsBusy = false;
             }
         }
-
-        public void ExecuteSearchAuthor(object param){
-            string author = (string)param;
-            var helper = new TemplateHelper();
-            var allTemplates = helper.GetTemplatePacks();
-            var foundTemplates = _searcher.SearchByAuthor(author, allTemplates);
-            SetFoundItems(foundTemplates);
-        }
-
     }
 }
