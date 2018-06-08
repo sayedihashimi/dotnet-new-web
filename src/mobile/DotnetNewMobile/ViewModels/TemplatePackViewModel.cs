@@ -125,7 +125,7 @@ namespace DotnetNewMobile.ViewModels
 
         public string InstallString{
             get{
-                return Pack != null ? $"> dotnet new -i {PackageString}" : string.Empty;
+                return Pack != null ? $"dotnet new -i {PackageString}" : string.Empty;
             }
         }
 

@@ -114,6 +114,9 @@
     <Reference Include="Plugin.Share">
       <HintPath>..\packages\Plugin.Share.7.1.1\lib\Xamarin.iOS10\Plugin.Share.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.0.6.0-preview\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -162,6 +165,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="SaveAndLoad.cs" />
+    <Compile Include="Controls\LabelWithCopyOnLongPressRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Entitlements.plist" />
@@ -176,6 +180,9 @@
       <Project>{E9927D1B-FCC7-4071-82FE-BDDE8340FA6C}</Project>
       <Name>TemplatesShared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="..\DotnetNewMobile\DotnetNewMobile.projitems" Label="Shared" Condition="Exists('..\DotnetNewMobile\DotnetNewMobile.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

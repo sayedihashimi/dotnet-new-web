@@ -9,7 +9,7 @@ namespace DotnetNewMobile.Views
 {
     public partial class SearchPage : BaseContentPage
     {
-        private SearchPageViewModel viewModel;
+        internal SearchPageViewModel ViewModel { get; set; }
         private bool FirstRun = true;
         public SearchPage() : this(null,null)
         {
@@ -17,7 +17,7 @@ namespace DotnetNewMobile.Views
         }
         public SearchPage(string searchTerm, IList<Template>foundTemplates): base(){
             InitializeComponent();
-            BindingContext = viewModel = new SearchPageViewModel(Navigation,searchTerm,foundTemplates);
+            BindingContext = ViewModel = new SearchPageViewModel(Navigation,searchTerm,foundTemplates);
         }
         protected override void OnAppearing()
         {

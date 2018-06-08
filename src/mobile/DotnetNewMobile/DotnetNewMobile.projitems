@@ -59,6 +59,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\EventToCommandBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\BehaviorBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)TemplateDisplayAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\LabelWithCopyOnLongPress.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml" />
@@ -87,5 +88,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Assets\" />
     <Folder Include="$(MSBuildThisFileDirectory)Commands\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
   </ItemGroup>
 </Project>
