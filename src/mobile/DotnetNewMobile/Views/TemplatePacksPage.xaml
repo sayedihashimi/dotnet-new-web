@@ -21,10 +21,10 @@
                 </ListView.Behaviors>
                 <ListView.Header>
                     <StackLayout Padding="20,20,0,20">
-                        <Label FontFamily="Courier" Text="{Binding OverallDownloadsString}"/>
-                        <Label FontFamily="Courier" Text="{Binding NumTemplatesString}"/>
-                        <Label FontFamily="Courier" Text="{Binding NumTemplatePacksString}"/>
-                        <Label FontFamily="Courier" Text="{Binding NumAuthorsString}"/>
+                        <Label FontFamily="Courier" Text="{Binding OverallDownloads,StringFormat='Overall downloads:       {0}'}"/>
+                        <Label FontFamily="Courier" Text="{Binding NumTemplates,StringFormat='Num of templates:        {0}'}"/>
+                        <Label FontFamily="Courier" Text="{Binding NumTemplatePacks,StringFormat='Num of template packs:   {0}'}"/>
+                        <Label FontFamily="Courier" Text="{Binding NumAuthors,StringFormat='Num of template authors: {0}'}"/>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>
@@ -39,8 +39,8 @@
                                     <Image Source="{Binding IconPngUrl}" HeightRequest="64" WidthRequest="64" VerticalOptions="Start" />
                                     <StackLayout Orientation="Vertical">
                                         <Label Text="{Binding PackageString}" LineBreakMode="NoWrap" HeightRequest="20" />
-                                        <Label Text="{Binding NumTemplatesString}" LineBreakMode="NoWrap" HeightRequest="20" />
-                                        <Button Text="{Binding OwnerString}" Command="{Binding SearchAuthor}" HeightRequest="20" HorizontalOptions="Start" />
+                                        <Label Text="{Binding Pack.Templates.Length,StringFormat='{0} templates'}" LineBreakMode="NoWrap" HeightRequest="20" />
+                                        <Button Text="{Binding OwnerString,StringFormat='By {0}'}" Command="{Binding SearchAuthor}" HeightRequest="20" HorizontalOptions="Start" />
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

@@ -29,55 +29,63 @@ namespace DotnetNewMobile.ViewModels
             Title = "dotnet new templates";
         }
 
-        public int OverallDownloads { get; set; }
-        public int NumTemplates { get; set; }
-        public int NumTemplatePacks { get; set; }
-        public int NumAuthors { get; set; }
-
-        private string _overallDownloadString;
-        public string OverallDownloadsString { 
+        private int _overallDownloads;
+        public int OverallDownloads 
+        { 
             get{
-                return _overallDownloadString;
+                return _overallDownloads;
             }
             set{
-                if(_overallDownloadString != value){
-                    SetProperty(ref _overallDownloadString, value, nameof(OverallDownloadsString));
+                if(_overallDownloads != value){
+                    SetProperty(ref _overallDownloads, value, nameof(OverallDownloads));
                 }
             }
         }
 
-        private string _numTemplateString;
-        public string NumTemplatesString { 
-            get{
-                return _numTemplateString;
+        private int _numTemplates;
+        public int NumTemplates
+        {
+            get
+            {
+                return _numTemplates;
             }
-            set{
-                if(_numTemplateString != value){
-                    SetProperty(ref _numTemplateString, value, nameof(NumTemplatesString));
+            set
+            {
+                if (_numTemplates != value)
+                {
+                    SetProperty(ref _numTemplates, value, nameof(NumTemplates));
                 }
             }
         }
 
-        private string _numTemplatePacksString;
-        public string NumTemplatePacksString { 
-            get{
-                return _numTemplatePacksString;
-            } 
-            set{
-                if(_numTemplatePacksString != value){
-                    SetProperty(ref _numTemplatePacksString, value, nameof(NumTemplatePacksString));
+        private int _numTemplatePacks;
+        public int NumTemplatePacks
+        {
+            get
+            {
+                return _numTemplatePacks;
+            }
+            set
+            {
+                if (_numTemplatePacks != value)
+                {
+                    SetProperty(ref _numTemplatePacks, value, nameof(NumTemplatePacks));
                 }
             }
         }
 
-        private string _numAuthorsString;
-        public string NumAuthorsString { 
-            get{
-                return _numAuthorsString;
-            } 
-            set{
-                if(_numAuthorsString != value){
-                    SetProperty(ref _numAuthorsString, value, nameof(NumAuthorsString));
+        private int _numAuthors;
+        public int NumAuthors
+        {
+            get
+            {
+                return _numAuthors;
+            }
+            set
+            {
+                if (_numAuthors != value)
+                {
+                    SetProperty(ref _numAuthors, value, nameof(NumAuthors));
                 }
             }
         }
@@ -115,12 +123,12 @@ namespace DotnetNewMobile.ViewModels
             }
         }
         public void UpdateSummaryData(){
-            if(Items != null){
-                OverallDownloads = 0;
-                NumTemplates = 0;
-                NumTemplatePacks = 0;
-                NumAuthors = 0;
+            OverallDownloads = 0;
+            NumTemplates = 0;
+            NumTemplatePacks = 0;
+            NumAuthors = 0;
 
+            if(Items != null){
                 foreach(var i in Items){
                     if (i.Pack != null)
                     {
@@ -134,24 +142,8 @@ namespace DotnetNewMobile.ViewModels
                               select tp.Pack.Authors).Distinct().ToList().Count;
 
             }
-            else{
-                OverallDownloads = 0;
-                NumTemplates = 0;
-                NumTemplatePacks = 0;
-                NumAuthors = 0;
-            }
-
-
-            OverallDownloadsString = $"Overall downloads:       {OverallDownloads}";
-            NumTemplatesString = $"Num of templates:        {NumTemplates}";
-            NumTemplatePacksString = $"Num of template packs:   {NumTemplatePacks}";
-            NumAuthorsString = $"Num of template authors: {NumAuthors}";
         }
-        List<TemplatePack> GetTemplatePacks()
-        {
-            var text = GetJsonFileContents();
-            return TemplatePack.CreateFromText(text);
-        }
+
         protected string GetJsonFileContents()
         {
             // if the file exists locally use that file instead of the built in one
