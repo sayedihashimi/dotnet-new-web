@@ -25,7 +25,7 @@ namespace DotnetNewMobile
 
             // fallback to embedded file
             string resxname = $"DotnetNewMobile.iOS.Assets.{filename}";
-            var assembly = typeof(ItemsPage).GetTypeInfo().Assembly;
+            var assembly = typeof(SearchPageViewModel).GetTypeInfo().Assembly;
             string text = null;
             using (var stream = assembly.GetManifestResourceStream(resxname))
             using (var reader = new System.IO.StreamReader(stream))

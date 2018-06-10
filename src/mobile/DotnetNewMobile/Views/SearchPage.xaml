@@ -4,11 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="DotnetNewMobile.Views.SearchPage"
              Title="Search">
-    <ContentPage.Resources>
-   <!--     <ResourceDictionary>
-            <local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-        </ResourceDictionary>-->
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Margin="10,20,10,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">

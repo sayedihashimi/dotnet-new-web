@@ -122,6 +122,7 @@ namespace DotnetNewMobile
 
             try
             {
+                IsBusy = true;
                 var helper = new TemplateHelper();
                 var allTemplates = helper.GetTemplatePacks();
                 var foundTemplates = _searcher.Search(SearchTerm, allTemplates);

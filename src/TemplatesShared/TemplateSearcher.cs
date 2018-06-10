@@ -5,12 +5,12 @@ using System.Linq;
 
 namespace TemplatesShared {
     public class TemplateSearcher : ITemplateSearcher {
-        public TemplatePack FindTemplatePackByName(string name, List<TemplatePack>templatePacks) {
-            if (string.IsNullOrWhiteSpace(name) || templatePacks == null || templatePacks.Count <=0 ) {
+        public TemplatePack FindTemplatePackByName(string name, List<TemplatePack> templatePacks) {
+            if (string.IsNullOrWhiteSpace(name) || templatePacks == null || templatePacks.Count <= 0) {
                 return null;
             }
 
-            foreach(var tp in templatePacks) {
+            foreach (var tp in templatePacks) {
                 if (string.Equals(name, tp.Package, StringComparison.OrdinalIgnoreCase)) {
                     return tp;
                 }
@@ -26,11 +26,11 @@ namespace TemplatesShared {
             return FindTemplatePackByName(template.TemplatePackId, templatePacks);
         }
         public Template GetTemplateById(string templateName, IEnumerable<TemplatePack> templatePacks) {
-            if(templateName == null || templatePacks == null || templatePacks.Count() <= 0) {
+            if (templateName == null || templatePacks == null || templatePacks.Count() <= 0) {
                 return null;
             }
-            foreach(var tp in templatePacks) {
-                foreach(var t in tp.Templates) {
+            foreach (var tp in templatePacks) {
+                foreach (var t in tp.Templates) {
                     if (string.Equals(templateName, t.Identity, StringComparison.OrdinalIgnoreCase)) {
                         return t;
                     }
@@ -43,10 +43,10 @@ namespace TemplatesShared {
             return GetTemplateById(templateName, new List<TemplatePack> { templatePack });
         }
         public List<Template> Search(string searchTerm, List<TemplatePack> templatePacks) {
-            if(searchTerm == null){
+            if (searchTerm == null) {
                 searchTerm = string.Empty;
             }
-            searchTerm = searchTerm.Trim();
+
             if (string.IsNullOrWhiteSpace(searchTerm)) {
                 return GetAllTemplates(templatePacks);
             }
@@ -55,21 +55,23 @@ namespace TemplatesShared {
                 return null;
             }
 
+            searchTerm = searchTerm.Trim();
+
             var matches = new List<Template>();
-            foreach(var tp in templatePacks) {
-                foreach(Template t in tp.Templates) {
-                    var r = SearchTemplate(searchTerm, t, tp);
-                    if (r.IsMatch) {
-                        t.SearchScore = r.SearchValue;
-                        if(string.IsNullOrEmpty(t.TemplatePackId)){
-                            t.TemplatePackId = tp.Package;
+            foreach (var tp in templatePacks) {
+                foreach (Template template in tp.Templates) {
+                    var searchResult = SearchTemplate(searchTerm, template, tp);
+                    if (searchResult.IsMatch) {
+                        template.SearchScore = searchResult.SearchValue;
+                        if (string.IsNullOrEmpty(template.TemplatePackId)) {
+                            template.TemplatePackId = tp.Package;
                         }
-                        matches.Add(t);
+                        matches.Add(template);
                     }
                 }
             }
 
-            if(matches.Count <= 0) {
+            if (matches.Count <= 0) {
                 return new List<Template>();
             }
 
@@ -81,22 +83,22 @@ namespace TemplatesShared {
             return retv.ToList();
         }
 
-        public IList<Template>SearchByAuthor(string author,List<TemplatePack>templatePacks){
-            if(author == null){
+        public IList<Template> SearchByAuthor(string author, List<TemplatePack> templatePacks) {
+            if (author == null) {
                 author = string.Empty;
             }
-            if(string.IsNullOrWhiteSpace(author) || templatePacks == null || templatePacks.Count <=0){
+            if (string.IsNullOrWhiteSpace(author) || templatePacks == null || templatePacks.Count <= 0) {
                 return GetAllTemplates(templatePacks);
             }
             var matches = new List<Template>();
-            foreach(var tp in templatePacks){
+            foreach (var tp in templatePacks) {
                 int score = 0;
 
-                foreach(var template in tp.Templates){
+                foreach (var template in tp.Templates) {
                     var searchResult = SearchTemplateByAuthor(author, template, tp);
-                    if(searchResult.IsMatch){
+                    if (searchResult.IsMatch) {
                         template.SearchScore = searchResult.SearchValue;
-                        if(string.IsNullOrEmpty(template.TemplatePackId)){
+                        if (string.IsNullOrEmpty(template.TemplatePackId)) {
                             template.TemplatePackId = tp.Package;
                         }
                         matches.Add(template);
@@ -125,8 +127,7 @@ namespace TemplatesShared {
             }
 
 
-            if (matches.Count <= 0)
-            {
+            if (matches.Count <= 0) {
                 return new List<Template>();
             }
 
@@ -198,7 +199,7 @@ namespace TemplatesShared {
                 score += 50;
 
             // to avoid nullref error
-            if(template.Tags == null) { 
+            if (template.Tags == null) {
                 template.Tags = new Dictionary<string, string>();
             }
 
@@ -206,7 +207,7 @@ namespace TemplatesShared {
             var tagValuesRes = IsStringMatch(searchTerm, template.Tags.Values);
 
             var tagRes = Combine(
-                            IsStringMatch(searchTerm, template.Tags.Keys), 
+                            IsStringMatch(searchTerm, template.Tags.Keys),
                             IsStringMatch(searchTerm, template.Tags.Values));
             if (tagRes.IsExactMatch)
                 score += 250;
@@ -227,13 +228,13 @@ namespace TemplatesShared {
             var packAuthorMatch = IsStringMatch(searchTerm, pack.Authors);
             if (packAuthorMatch.IsExactMatch || packAuthorMatch.StartsWith || packAuthorMatch.IsPartialMatch)
                 score += 10;
-            
+
             var copyMatch = IsStringMatch(searchTerm, pack.Copyright);
             if (copyMatch.IsExactMatch || copyMatch.StartsWith || copyMatch.IsPartialMatch)
                 score += 10;
 
             var descMatch = IsStringMatch(searchTerm, pack.Description);
-            if(descMatch.IsExactMatch || descMatch.StartsWith || descMatch.IsPartialMatch)
+            if (descMatch.IsExactMatch || descMatch.StartsWith || descMatch.IsPartialMatch)
                 score += 10;
 
             var ownerMatch = IsStringMatch(searchTerm, pack.Owners);
@@ -249,13 +250,12 @@ namespace TemplatesShared {
                 score += 10;
 
             return new TemplateSearchResult {
-                IsMatch =  (score > 0),
+                IsMatch = (score > 0),
                 SearchValue = score
             };
         }
 
-        internal TemplateSearchResult SearchTemplateByAuthor(string author, Template template, TemplatePack pack)
-        {
+        internal TemplateSearchResult SearchTemplateByAuthor(string author, Template template, TemplatePack pack) {
             int score = 0;
 
             var authorRes = IsStringMatch(author, template.Author);
@@ -268,11 +268,28 @@ namespace TemplatesShared {
 
             // see if there is a match with the TemplatePack itself
             var packAuthorMatch = IsStringMatch(author, pack.Authors);
-            if (packAuthorMatch.IsExactMatch || packAuthorMatch.StartsWith || packAuthorMatch.IsPartialMatch)
-                score += 10;
-            
-            return new TemplateSearchResult
-            {
+            if (packAuthorMatch.IsExactMatch) {
+                score += 75;
+            }
+            else if (packAuthorMatch.StartsWith) {
+                score += 40;
+            }
+            else if (packAuthorMatch.IsPartialMatch) {
+                score += 20;
+            }
+
+            var packOwnerMatch = IsStringMatch(author, pack.Owners);
+            if (packOwnerMatch.IsExactMatch) {
+                score += 70;
+            }
+            else if (packOwnerMatch.StartsWith) {
+                score += 35;
+            }
+            else if (packOwnerMatch.IsPartialMatch) {
+                score += 15;
+            }
+
+            return new TemplateSearchResult {
                 IsMatch = (score > 0),
                 SearchValue = score
             };
@@ -282,7 +299,7 @@ namespace TemplatesShared {
                 throw new ArgumentNullException("match1");
             if (match2 == null)
                 throw new ArgumentNullException("match2");
-            
+
             return new TemplateMatchResult {
                 IsExactMatch = (match1.IsExactMatch || match2.IsExactMatch),
                 IsPartialMatch = (match1.IsPartialMatch || match2.IsPartialMatch),
@@ -294,7 +311,7 @@ namespace TemplatesShared {
                 throw new ArgumentNullException("matches");
 
             var result = new TemplateMatchResult();
-            foreach(var m in matches) {
+            foreach (var m in matches) {
                 result = Combine(result, m);
             }
             return result;
@@ -311,7 +328,7 @@ namespace TemplatesShared {
                 };
             }
 
-            if(strToSearch.IndexOf(search,StringComparison.OrdinalIgnoreCase) == 0) {
+            if (strToSearch.IndexOf(search, StringComparison.OrdinalIgnoreCase) == 0) {
                 var res = new TemplateMatchResult {
                     IsPartialMatch = true
                 };
@@ -331,14 +348,14 @@ namespace TemplatesShared {
 
             var result = new TemplateMatchResult();
             List<TemplateMatchResult> matches = new List<TemplateMatchResult>();
-            foreach(var str in strToSearch) {
+            foreach (var str in strToSearch) {
                 result = Combine(result, IsStringMatch(search, str));
             }
 
             return result;
         }
     }
-    
+
     internal class TemplateSearchResult : ITemplateSearchResult {
         public bool IsMatch { get; set; }
         public int SearchValue { get; set; } = 0;
