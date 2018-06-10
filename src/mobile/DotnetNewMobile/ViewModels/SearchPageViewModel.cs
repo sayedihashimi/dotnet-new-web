@@ -83,7 +83,7 @@ namespace DotnetNewMobile
                 NumSearchResultLabelVisible = true;
             }
             else{
-                FoundItems = null;
+                FoundItems.Clear();
                 NumSearchResults = 0;
             }
         }

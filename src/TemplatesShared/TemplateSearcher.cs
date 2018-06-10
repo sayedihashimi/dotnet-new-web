@@ -104,26 +104,6 @@ namespace TemplatesShared {
                         matches.Add(template);
                     }
                 }
-
-                // var r = SearchTemplateByAuthor(author,tp)
-
-                //foreach(var template in tp.Templates){
-                //    var authorRes = IsStringMatch(author, template.Author);
-                //    if (authorRes.IsExactMatch)
-                //        score += 500;
-                //    else if (authorRes.StartsWith)
-                //        score += 100;
-                //    else if (authorRes.IsPartialMatch)
-                //        score += 50;
-
-                //    template.SearchScore = score;
-                //}
-
-                //var matchResult = new TemplateSearchResult
-                //{
-                //    IsMatch = (score > 0),
-                //    SearchValue = score
-                //};
             }
 
 
@@ -136,7 +116,6 @@ namespace TemplatesShared {
                                 select m).ToList();
 
             return returnResult;
-            return matches;
         }
 
         private List<Template> GetAllTemplates(IEnumerable<TemplatePack> templatePacks) {

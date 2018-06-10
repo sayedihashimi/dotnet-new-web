@@ -58,18 +58,28 @@ namespace DotnetNewMobile.ViewModels
             if(_template != template){
                 SetProperty(ref _template, template, nameof(Template));
 
-                StringBuilder tagBuilder = new StringBuilder();
-                foreach(var tag in template.Tags){
-                    tagBuilder.Append($"{tag.Key}={tag.Value}; ");
+                if (template.Tags != null) {
+                    StringBuilder tagBuilder = new StringBuilder();
+                    foreach (var tag in template.Tags) {
+                        tagBuilder.Append($"{tag.Key}={tag.Value}; ");
+                    }
+
+                    TagsString = tagBuilder.ToString();
+                }
+                else{
+                    TagsString = string.Empty;
                 }
 
-                TagsString = tagBuilder.ToString();
-
-                StringBuilder classificationsBuilder = new StringBuilder();
-                foreach(var citem in template.Classifications){
-                    classificationsBuilder.Append($"{citem}; ");
+                if (template.Classifications != null) {
+                    StringBuilder classificationsBuilder = new StringBuilder();
+                    foreach (var citem in template.Classifications) {
+                        classificationsBuilder.Append($"{citem}; ");
+                    }
+                    ClassificationsString = classificationsBuilder.ToString();
                 }
-                ClassificationsString = classificationsBuilder.ToString();
+                else{
+                    ClassificationsString = string.Empty;
+                }
             }
         }
 
