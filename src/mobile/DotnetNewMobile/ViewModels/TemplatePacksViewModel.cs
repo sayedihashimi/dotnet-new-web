@@ -106,7 +106,8 @@ namespace DotnetNewMobile.ViewModels
             try
             {
                 Items.Clear();
-                TemplateList = await TemplatePack.CreateFromTextAsync(GetJsonFileContents());
+                TemplateList = new TemplateHelper().GetTemplatePacks();
+                // TemplateList = await TemplatePack.CreateFromTextAsync(GetJsonFileContents());
                 foreach (var item in TemplateList)
                 {
                     Items.Add(new TemplatePackViewModel(item, Navigation));
@@ -144,29 +145,29 @@ namespace DotnetNewMobile.ViewModels
             }
         }
 
-        protected string GetJsonFileContents()
-        {
-            // if the file exists locally use that file instead of the built in one
-            var fileHelper = new SaveAndLoad();
-            if(fileHelper.DoesFileExist("dotnetnew-template-report.json")){
-                try{
-                    return fileHelper.LoadText("dotnetnew-template-report.json");  
-                }
-                catch{
-                }
-            }
+        //protected string GetJsonFileContents()
+        //{
+        //    // if the file exists locally use that file instead of the built in one
+        //    var fileHelper = new SaveAndLoad();
+        //    if(fileHelper.DoesFileExist("dotnetnew-template-report.json")){
+        //        try{
+        //            return fileHelper.LoadText("dotnetnew-template-report.json");  
+        //        }
+        //        catch{
+        //        }
+        //    }
 
-            // fallback to embedded file
-            string resxname = "DotnetNewMobile.iOS.Assets.template-report.json";
-            var assembly = typeof(SearchPage).GetTypeInfo().Assembly;
-            string text = null;
-            using (var stream = assembly.GetManifestResourceStream(resxname))
-            using (var reader = new System.IO.StreamReader(stream))
-            {
-                text = reader.ReadToEnd();
-            }
-            return text;
+        //    // fallback to embedded file
+        //    string resxname = "DotnetNewMobile.iOS.Assets.template-report.json";
+        //    var assembly = typeof(SearchPage).GetTypeInfo().Assembly;
+        //    string text = null;
+        //    using (var stream = assembly.GetManifestResourceStream(resxname))
+        //    using (var reader = new System.IO.StreamReader(stream))
+        //    {
+        //        text = reader.ReadToEnd();
+        //    }
+        //    return text;
 
-        }
+        //}
     }
 }

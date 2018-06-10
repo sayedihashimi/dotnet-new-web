@@ -44,7 +44,7 @@
                 
                 <Label Text="Install command" FontSize="30" />
                 <Frame BackgroundColor="Black" MinimumHeightRequest="120" Margin="10,0,15,0" HorizontalOptions="CenterAndExpand">
-                    <localctrls:LabelWithCopyOnLongPress Text="{Binding InstallString}" FontFamily="Courier" TextColor="White" FontSize="25" />
+                    <localctrls:LabelWithCopyOnLongPress Text="{Binding PackageString,StringFormat='dotnet new -i {0}'}" FontFamily="Courier" TextColor="White" FontSize="25" />
                 </Frame>
 
                 <Button Text="Actions" Image="share.png" Margin="0,10,0,0" Command="{Binding ShowActions}" HorizontalOptions="Start" 

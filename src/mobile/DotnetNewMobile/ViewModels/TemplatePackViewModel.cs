@@ -66,12 +66,6 @@ namespace DotnetNewMobile.ViewModels
             }
         }
 
-        //public string NumTemplatesString{
-        //    get{
-        //        return Pack != null ? $"{Pack.Templates.Length} templates" : string.Empty;
-        //    }
-        //}
-
         public string OwnerString{
             get{
                 return Pack != null ? $"{Pack.Owners}": string.Empty;
