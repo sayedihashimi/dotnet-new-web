@@ -12,15 +12,6 @@ namespace DotnetNewMobile
         {
             Page templatePacksPage = null;
             Page searchPage = null;
-            //try{
-            //    string url = "http://dotnetnew-api.azurewebsites.net/template-report.json";
-            //    string filename = "template-report.json";
-            //    new SaveAndLoad().DownloadAndSave(url, filename);
-            //    string res = new SaveAndLoad().LoadText(filename);
-            //}
-            //catch(Exception ex){
-            //    System.Console.WriteLine(ex.ToString());
-            //}
 
             switch (Device.RuntimePlatform)
             {
@@ -34,8 +25,6 @@ namespace DotnetNewMobile
                     {
                         Title = "Search"
                     };
-                    //itemsPage.Icon = "tab_feed.png";
-                    //aboutPage.Icon = "tab_about.png";
 
                     searchPage.Icon = "search.png";
                     templatePacksPage.Icon = "tab_home.png";
@@ -45,8 +34,6 @@ namespace DotnetNewMobile
 
                     break;
             }
-
-
 
             Children.Add(templatePacksPage);
             Children.Add(searchPage);
