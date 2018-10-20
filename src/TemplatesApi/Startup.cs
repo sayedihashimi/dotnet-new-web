@@ -34,6 +34,7 @@ namespace TemplatesApi {
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }
