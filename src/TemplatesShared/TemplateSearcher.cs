@@ -92,8 +92,6 @@ namespace TemplatesShared {
             }
             var matches = new List<Template>();
             foreach (var tp in templatePacks) {
-                int score = 0;
-
                 foreach (var template in tp.Templates) {
                     var searchResult = SearchTemplateByAuthor(author, template, tp);
                     if (searchResult.IsMatch) {

@@ -169,7 +169,7 @@ namespace TemplatesShared
                 result = serializer.Deserialize<string[]>(reader);
                 wasSuccess = true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 wasSuccess = false;
             }
@@ -182,7 +182,7 @@ namespace TemplatesShared
                     result = new string[1] { serializer.Deserialize<string>(reader) };
                     wasSuccess = true;
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     wasSuccess = false;
                 }

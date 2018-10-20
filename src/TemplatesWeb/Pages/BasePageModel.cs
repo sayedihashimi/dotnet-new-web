@@ -19,7 +19,7 @@ namespace TemplatesWeb.Pages
 
             BaseUrl = Config.TemplatesApiBaseUrl;
             if (string.IsNullOrWhiteSpace(BaseUrl) || BaseUrl.StartsWith(@"D:\")) {
-                BaseUrl = @"http://dotnetnew-api.azurewebsites.net/api/";
+                BaseUrl = @"https://dotnetnew-api.azurewebsites.net/api/";
             }
         }
         

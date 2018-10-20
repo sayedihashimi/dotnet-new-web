@@ -6,6 +6,6 @@ namespace TemplatesShared
 {
     public class TemplateWebConfig
     {
-        public string TemplatesApiBaseUrl { get; set; } = @"http://localhost:52108/api/";
+        public string TemplatesApiBaseUrl { get; set; } = @"https://localhost:52108/api/";
     }
 }
