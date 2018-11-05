@@ -26,7 +26,6 @@ namespace TemplatesWeb.Pages {
         }
         public void OnGet() {
             TemplatePacks = GetFromApi<List<TemplatePack>>("templatepack");
-
             if (TemplatePacks != null) {
                 OverallDownloads = (from tp in TemplatePacks
                                         select tp.DownloadCount).Sum();
