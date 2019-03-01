@@ -12,4 +12,10 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
     
+  <ItemGroup>
+    <None Remove="nupkg\**\*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
+  </ItemGroup>
 </Project>
