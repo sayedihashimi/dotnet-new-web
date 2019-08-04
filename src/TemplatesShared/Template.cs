@@ -129,7 +129,6 @@ namespace TemplatesShared
             }
 
             return result;
-            // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
     }
     public class TemplateConverter : JsonConverter
