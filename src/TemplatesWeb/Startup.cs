@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TemplatesShared;
+using Microsoft.Extensions.Hosting;
 
 namespace TemplatesWeb {
     public class Startup {
@@ -28,13 +29,14 @@ namespace TemplatesWeb {
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().AddMvcOptions(opt => opt.EnableEndpointRouting = false);
             services.AddOptions();
             services.Configure<TemplateWebConfig>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
@@ -47,6 +49,7 @@ namespace TemplatesWeb {
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            //MvcOptions.
             app.UseMvc();
         }
     }
