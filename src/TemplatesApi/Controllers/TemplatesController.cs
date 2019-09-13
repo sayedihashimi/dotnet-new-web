@@ -13,7 +13,7 @@ namespace TemplatesApi.Controllers
     [Route("api/[controller]")]
     public class TemplatesController : Controller
     {
-        public TemplatesController(IHostingEnvironment hostingEnvironment)
+        public TemplatesController(IWebHostEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
             _webRoot = _hostingEnvironment.WebRootPath;
@@ -25,7 +25,7 @@ namespace TemplatesApi.Controllers
             Filepath = filepath;
             TemplatePacks = TemplatePack.CreateFromFile(filepath);
         }
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private string _webRoot { get; set; }
         private string Filepath { get; set; }
         private List<TemplatePack> TemplatePacks { get; set; }

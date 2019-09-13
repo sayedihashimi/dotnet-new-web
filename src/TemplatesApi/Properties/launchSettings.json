@@ -20,7 +20,7 @@
     "TemplatesApi": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/templatepack",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

@@ -29,7 +29,6 @@ namespace TemplatesWeb {
             });
 
 
-            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddMvc().AddMvcOptions(opt => opt.EnableEndpointRouting = false);
             services.AddOptions();
             services.Configure<TemplateWebConfig>(Configuration);

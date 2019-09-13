@@ -13,7 +13,7 @@ namespace TemplatesApi.Controllers
     [Route("api/[controller]")]
     public class SearchController : Controller
     {
-        public SearchController(IHostingEnvironment hostingEnvironment) {
+        public SearchController(IWebHostEnvironment hostingEnvironment) {
             _hostingEnvironment = hostingEnvironment;
             _webRoot = _hostingEnvironment.WebRootPath;
             SetFilepath(@"template-report.json");
@@ -23,7 +23,7 @@ namespace TemplatesApi.Controllers
             Filepath = filepath;
             TemplatePacks = TemplatePack.CreateFromFile(filepath);
         }
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private static string _webRoot { get; set; }
         private static string Filepath { get; set; }
         private static List<TemplatePack> TemplatePacks { get; set; }

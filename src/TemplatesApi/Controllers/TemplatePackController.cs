@@ -11,12 +11,12 @@ using Microsoft.AspNetCore.Hosting;
 namespace TemplatesApi.Controllers {
     [Route("api/[controller]")]
     public class TemplatePackController : Controller {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _hostingEnvironment;
         private static string _webRoot { get; set; }
         private static string Filepath { get; set; }
         private static List<TemplatePack> TemplatePacks { get; set; }
 
-        public TemplatePackController(IHostingEnvironment hostingEnvironment) {
+        public TemplatePackController(IWebHostEnvironment hostingEnvironment) {
             _hostingEnvironment = hostingEnvironment;
             _webRoot = _hostingEnvironment.WebRootPath;
             SetFilepath(@"template-report.json");
