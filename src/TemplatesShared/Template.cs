@@ -51,15 +51,13 @@ namespace TemplatesShared
         public string IconUrl {
             get {
                 if(string.IsNullOrWhiteSpace(_iconurl)){
-                    return @"images/NuGet_project_logo.svg";
-                    //return @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
+                    return @"/images/NuGet_project_logo.svg";
                 }
                 return _iconurl; 
             }
             set {
                 if (string.IsNullOrWhiteSpace(value)) {
-                    //value = @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
-                    value = @"images/NuGet_project_logo.svg";
+                    value = @"/images/NuGet_project_logo.svg";
                 }
                 _iconurl = value;
             }
@@ -67,10 +65,9 @@ namespace TemplatesShared
 
         public string IconPngUrl{
             get{
-                //string defaultIconUrl = "http://dotnetnew.azurewebsites.net/images/create-project-64.png";
-                string defaultIconUrl = @"images/NuGet_project_logo.svg";
+                string defaultIconUrl = @"/images/NuGet_project_logo.svg";
                 if(string.IsNullOrWhiteSpace(IconUrl) || 
-                   IconUrl.EndsWith(".svg",StringComparison.OrdinalIgnoreCase)){
+                   IconUrl.EndsWith("µ.svg",StringComparison.OrdinalIgnoreCase)){
                     return defaultIconUrl;
                 }
 
