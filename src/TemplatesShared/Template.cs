@@ -51,13 +51,13 @@ namespace TemplatesShared
         public string IconUrl {
             get {
                 if(string.IsNullOrWhiteSpace(_iconurl)){
-                    return @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
+                    return @"https://www.nuget.org/Content/gallery/img/default-package-icon.svg";
                 }
                 return _iconurl; 
             }
             set {
                 if (string.IsNullOrWhiteSpace(value)) {
-                    value = @"https://preview.nuget.org/Content/gallery/img/default-package-icon.svg";
+                    value = @"https://www.nuget.org/Content/gallery/img/default-package-icon.svg";
                 }
                 _iconurl = value;
             }
