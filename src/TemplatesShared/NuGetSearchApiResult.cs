@@ -7,9 +7,10 @@ namespace TemplatesShared
 {
     public class NuGetSearchApiResult
     {
-        [JsonProperty("@Context")]
+        [JsonProperty("@context")]
         public NuGetApiContext Context { get; set; }
-        public NuGetPackage[] Data { get; set; }
+        [JsonProperty("data")]
+        public NuGetPackage[] Packages { get; set; }
     }
     public class NuGetApiContext
     {
