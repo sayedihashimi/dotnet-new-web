@@ -1,0 +1,45 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TemplatesShared
+{
+    // class to use to represent a NuGet package when calling nuget apis
+    public class NuGetPackage
+    {
+        [JsonProperty("@Id")]
+        public string ApiId { get; set; }
+        [JsonProperty("@Type")]
+        public string Type { get; set; }
+
+        public string Id { get; set; }
+        public string Version { get; set; }
+        public string Description { get; set; }
+        public NuGetVersion[] Versions { get; set; }
+        public string[] Authors { get; set; }
+        public string IconUrl { get; set; }
+        public string LicenseUrl { get; set; }
+        public string[] Owners { get; set; }
+        public string ProjectUrl { get; set; }
+        public string Registration { get; set; }
+        public string Summary { get; set; }
+        public string[] Tags { get; set; }
+        public string Title { get; set; }
+        public int TotalDownloads { get; set; }
+        public bool Verified { get; set; }
+        public NuGetPackageType[] PackageTypes { get; set; }
+    }
+
+    public class NuGetVersion
+    {
+        public string Version { get; set; }
+        public int Downloads { get; set; }
+        [JsonProperty("@Id")]
+        public string ID { get; set; }
+    }
+    public class NuGetPackageType
+    {
+        public string Name { get; set; }
+    }
+}
