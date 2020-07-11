@@ -3,22 +3,36 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+  
+    <!-- nuget related properties -->
+    <Authors>Sayed Ibrahim Hashimi</Authors>
+    <Description>.NET Core tool that creates a JSON report of .NET Core templates in nuget.org.</Description>
+    <Version>0.0.1</Version>
+    <Copyright>Copyright 2019 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/sayedihashimi/sayedha.commands</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/sayedihashimi/sayedha.commands</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageType>DotNetCliTool</PackageType>
+  
+    <!-- tool related properties -->
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>templatereport</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
-
-
-
-
+  
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
-
-
-
 
   <ItemGroup>
     <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
 
-
-
+  <Target Name="InstallTool" DependsOnTargets="Pack">
+    <Exec Command="dotnet tool uninstall --global $(MSBuildProjectName)" IgnoreExitCode="true"/>
+    <Exec Command="dotnet tool install --global --add-source $(PackageOutputPath) $(MSBuildProjectName)"/>
+    <Exec Command="$(ToolCommandName) --help" />
+  </Target>
 </Project>
