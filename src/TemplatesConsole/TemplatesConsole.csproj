@@ -23,16 +23,19 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.6" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\sayedha.commands\SayedHa.Commands.Shared\SayedHa.Commands.Shared.csproj" />
     <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
 
   <Target Name="InstallTool" DependsOnTargets="Pack">
-    <Exec Command="dotnet tool uninstall --global $(MSBuildProjectName)" IgnoreExitCode="true"/>
-    <Exec Command="dotnet tool install --global --add-source $(PackageOutputPath) $(MSBuildProjectName)"/>
+    <Exec Command="dotnet tool uninstall --global $(MSBuildProjectName)" IgnoreExitCode="true" />
+    <Exec Command="dotnet tool install --global --add-source $(PackageOutputPath) $(MSBuildProjectName)" />
     <Exec Command="$(ToolCommandName) --help" />
   </Target>
 </Project>
