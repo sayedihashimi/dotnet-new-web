@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace TemplatesConsole {
-    public class HelloCommand<T> : BaseCommandLineApplication<T> where T:class{
-        public HelloCommand() : base(
+    public class MyHelloCommand : BaseCommandLineApplication {
+        public MyHelloCommand() : base(
             "hello",
             "helloCommand",
             "Says hello") {
@@ -19,14 +19,16 @@ namespace TemplatesConsole {
         }
     }
 
-    public class FooCommand<T> : CommandLineApplication<T> where T:class {
-        T foo { get; set; }
-        public FooCommand() : base(){
-            }
+    public class FooCommand : BaseCommandLineApplication {
+        public FooCommand() : base(
+            "foo",
+            "fooCommand",
+            "Foo command here") {
 
 
-        public void Foo() {
-            var f = new CommandLineApplication<String>();
+            this.OnExecute(() => {
+                Console.WriteLine("foo says hello");
+            });
         }
     }
 
