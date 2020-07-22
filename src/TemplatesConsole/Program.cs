@@ -8,10 +8,16 @@ using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using System.Diagnostics;
 using McMaster.Extensions.CommandLineUtils;
+using Microsoft.Extensions.Hosting;
+using System.Threading.Tasks;
 
 namespace TemplatesConsole {
     class Program {
+        static ServiceCollection _services = null;
+        static ServiceProvider _serviceProvider = null;
         static int Main(string[] args) {
+            RegisterServices();
+
             var app = new CommandLineApplication {
                 Name = "templatereport",
                 Description = "template report tool"
@@ -21,7 +27,9 @@ namespace TemplatesConsole {
 
             var helloCommand = new MyHelloCommand2();
             var barCommand = new MyBarCommad();
+            var queryCommand = new QueryCommand(GetFromServices<INuGetHelper>());
 
+            app.Command(queryCommand.Name, queryCommand.Setup);
             app.Command(helloCommand.Name, helloCommand.Setup);
             app.Command(barCommand.Name, barCommand.Setup);
 
@@ -34,23 +42,14 @@ namespace TemplatesConsole {
             return app.Execute(args);
         }
 
-        static async System.Threading.Tasks.Task QueryOld(string[] args) {
-            string baseurl = "https://azuresearch-usnc.nuget.org/query";
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(baseurl);
-            var result = await client.GetStringAsync(@"?q=sidewaffle&take=50&prerelease=true");
+        private static void RegisterServices() {
+            _services = new ServiceCollection();
+            _serviceProvider = _services.AddSingleton<INuGetHelper, NuGetHelper>()
+                                .BuildServiceProvider();
+        }
 
-            try {
-                var list = JsonConvert.DeserializeObject<NuGetSearchApiResult>(result);
-            }
-            catch (Exception ex) {
-                System.Console.WriteLine(ex.ToString());
-            }
-            // var result = JsonConvert.DeserializeObject<List<TemplatePack>>(text);
-
-
-
-            Console.WriteLine("Hello World!");
+        private static TType GetFromServices<TType>() {
+            return _serviceProvider.GetRequiredService<TType>();
         }
     }
 }

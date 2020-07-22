@@ -29,6 +29,10 @@ namespace TemplatesShared
         public int TotalDownloads { get; set; }
         public bool Verified { get; set; }
         public NuGetPackageType[] PackageTypes { get; set; }
+
+        public override string ToString() {
+            return $"id={Id}\tTitle={Title}";
+        }
     }
 
     public class NuGetVersion

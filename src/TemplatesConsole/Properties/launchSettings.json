@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TemplatesConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "query -st template"
+    }
+  }
+}
