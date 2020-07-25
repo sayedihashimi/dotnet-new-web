@@ -18,5 +18,17 @@ namespace TemplateTest {
 
             Assert.True(File.Exists(localFile), $"local file not found at '{localFile}'");
         }
+        [Fact]
+        public void TestGetRemoteFileThatIsPresentLocally() {
+            string urltodownload = @"https://raw.githubusercontent.com/sayedihashimi/dotnet-new-web/master/src/template-report.json";
+            string filename = "knownfilename.txt";
+            var remoteFile = new RemoteFile();
+            // make sure that the file exists in the cachefolder
+            var expectedFilepath = remoteFile.GetLocalFilepathFor(filename);
+            if (!File.Exists(expectedFilepath)) {
+                // create a dummy file
+                File.WriteAllText(expectedFilepath, "12345");
+            }
+        }
     }
 }

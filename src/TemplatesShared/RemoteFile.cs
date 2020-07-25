@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace TemplatesShared {
@@ -14,7 +15,7 @@ namespace TemplatesShared {
     }
 
     public class RemoteFile : IRemoteFile {
-        protected string CacheFolderpath { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "templatereport");
+        protected internal string CacheFolderpath { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "templatereport");
         // todo: should have a better way to conditionally print to the console
         public bool Verbose { get; set; }
         public void SetCacheFolderpath(string folderpath) {
@@ -54,7 +55,7 @@ namespace TemplatesShared {
             return expectedFilePath;
         }
 
-        protected string GetLocalFilepathFor(string filename) {
+        protected internal string GetLocalFilepathFor(string filename) {
             return Path.Combine(CacheFolderpath, filename);
         }
     }
