@@ -45,6 +45,7 @@ namespace TemplatesConsole {
         private static void RegisterServices() {
             _services = new ServiceCollection();
             _serviceProvider = _services.AddSingleton<INuGetHelper, NuGetHelper>()
+                                        .AddSingleton<IRemoteFile, RemoteFile>()
                                 .BuildServiceProvider();
         }
 
