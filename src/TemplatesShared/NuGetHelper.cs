@@ -71,7 +71,7 @@ namespace TemplatesShared {
         public async Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string query) {
             int skip = 0;
             List<string> queryStrings = await GetAllQueryUrisAsync(httpClient, query, NumPackagesToTake);
-
+            // https://blog.stephencleary.com/2012/11/async-producerconsumer-queue-using.html
             var queryStringsQueue = new BufferBlock<string>(new DataflowBlockOptions { BoundedCapacity = NumParallelTasks });
             // start producer and consumer
             var producer = Produce(queryStringsQueue, queryStrings);

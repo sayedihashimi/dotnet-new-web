@@ -33,6 +33,16 @@ namespace TemplatesShared
         public override string ToString() {
             return $"id={Id}\tTitle={Title}";
         }
+
+        [JsonIgnore]
+        internal string LocalFilepath { get; set; }
+        internal string GetPackageFilename() {
+            // {LOWER_ID}.{LOWER_VERSION}.nupkg
+            return $"{Normalize(Id)}.{Normalize(Version)}.nupkg";
+        }
+        internal string Normalize(string keyStr) {
+            return keyStr.ToLowerInvariant();
+        }
     }
 
     public class NuGetVersion
