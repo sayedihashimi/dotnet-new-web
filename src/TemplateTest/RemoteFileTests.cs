@@ -30,5 +30,18 @@ namespace TemplateTest {
                 File.WriteAllText(expectedFilepath, "12345");
             }
         }
+
+        [Fact]
+        public void TestExtractZipLocally() {
+            // todo: extract from resource
+            string urltodownload = @"https://www.nuget.org/api/v2/package/Take.Blip.Client.Templates/0.6.15-beta";
+            string filename = "Take.Blip.Client.Templates.0.6.15-beta.zip";
+            var remoteFile = new RemoteFile();
+            var downloadPath = remoteFile.GetRemoteFile(urltodownload, filename);
+            var extractPath = remoteFile.ExtractZipLocally(downloadPath);
+
+            Assert.True(!string.IsNullOrEmpty(extractPath));
+            Assert.True(Directory.Exists(extractPath));
+        }
     }
 }

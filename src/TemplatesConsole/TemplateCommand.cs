@@ -40,6 +40,17 @@ namespace TemplatesConsole {
                 throw new TemplateCommandSetupException("description is empty");
             }
         }
+
+        public void WriteVerbose(bool verboseEnabled, string str) {
+            if (verboseEnabled) {
+                Console.WriteLine(str);
+            }
+        }
+        public void WriteOutput(bool verboseEnabled, string str) {
+            if (verboseEnabled) {
+                Console.WriteLine(str);
+            }
+        }
     }
 
     public class MyHelloCommand2 : TemplateCommand {
