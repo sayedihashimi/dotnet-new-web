@@ -52,14 +52,64 @@ namespace TemplatesShared {
             Debug.Assert(packageList != null && packageList.Count > 0);
 
             // urls to download
-            BufferBlock<NuGetPackage> urlDownloadQueue = new BufferBlock<NuGetPackage>();
+            // TODO: dont hard code the num of producer/consumer
+            List<NuGetPackage> downloadedPackages1 = new List<NuGetPackage>();
+            List<NuGetPackage> downloadedPackages2 = new List<NuGetPackage>();
+            List<NuGetPackage> downloadedPackages3 = new List<NuGetPackage>();
+            List<NuGetPackage> downloadedPackages4 = new List<NuGetPackage>();
+            List<NuGetPackage> downloadedPackages5 = new List<NuGetPackage>();
+            // TODO: rename
+            BufferBlock<NuGetPackage> urlDownloadQueue = new BufferBlock<NuGetPackage>(new DataflowBlockOptions { BoundedCapacity = 5 });
+            var consumerOptions = new ExecutionDataflowBlockOptions { BoundedCapacity = 1 };
+            
+            // todo: needs to be refactored
+            var consumer1 = new ActionBlock<NuGetPackage>(async pkg => {
+                var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
+                var localfilepath = await _remoteFile.GetRemoteFileAsync(downloadUrl, pkg.GetPackageFilename());
+                pkg.LocalFilepath = localfilepath;
+                downloadedPackages1.Add(pkg);
+            }, consumerOptions);
+            var consumer2 = new ActionBlock<NuGetPackage>(async pkg => {
+                var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
+                var localfilepath = await _remoteFile.GetRemoteFileAsync(downloadUrl, pkg.GetPackageFilename());
+                pkg.LocalFilepath = localfilepath;
+                downloadedPackages2.Add(pkg);
+            }, consumerOptions);
+            var consumer3 = new ActionBlock<NuGetPackage>(async pkg => {
+                var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
+                var localfilepath = await _remoteFile.GetRemoteFileAsync(downloadUrl, pkg.GetPackageFilename());
+                pkg.LocalFilepath = localfilepath;
+                downloadedPackages3.Add(pkg);
+            }, consumerOptions);
+            var consumer4 = new ActionBlock<NuGetPackage>(async pkg => {
+                var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
+                var localfilepath = await _remoteFile.GetRemoteFileAsync(downloadUrl, pkg.GetPackageFilename());
+                pkg.LocalFilepath = localfilepath;
+                downloadedPackages4.Add(pkg);
+            }, consumerOptions);
+            var consumer5 = new ActionBlock<NuGetPackage>(async pkg => {
+                var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
+                var localfilepath = await _remoteFile.GetRemoteFileAsync(downloadUrl, pkg.GetPackageFilename());
+                pkg.LocalFilepath = localfilepath;
+                downloadedPackages5.Add(pkg);
+            }, consumerOptions);
+
+            urlDownloadQueue.LinkTo(consumer1, new DataflowLinkOptions { PropagateCompletion = true });
+            urlDownloadQueue.LinkTo(consumer2, new DataflowLinkOptions { PropagateCompletion = true });
+            urlDownloadQueue.LinkTo(consumer3, new DataflowLinkOptions { PropagateCompletion = true });
+            urlDownloadQueue.LinkTo(consumer4, new DataflowLinkOptions { PropagateCompletion = true });
+            urlDownloadQueue.LinkTo(consumer5, new DataflowLinkOptions { PropagateCompletion = true });
+
             var producer = ProduceAsync(urlDownloadQueue, packageList);
-            var consumer = ConsumeAsync(urlDownloadQueue, _remoteFile);
+            //var consumer = ConsumeAsync(urlDownloadQueue, _remoteFile);
 
-            await Task.WhenAll(producer, consumer, urlDownloadQueue.Completion);
-            var result = await consumer;
+            await Task.WhenAll(producer, consumer1.Completion,consumer2.Completion, consumer3.Completion, consumer4.Completion, consumer5.Completion);
 
-            return result.ToList();
+            var allResults = downloadedPackages1.Concat(downloadedPackages2).Concat(downloadedPackages3).Concat(downloadedPackages4).Concat(downloadedPackages5).ToList();
+
+            return allResults;
+
+            // return downloadedPackages;
         }
 
         protected async Task ProduceAsync(BufferBlock<NuGetPackage> packageQueue, List<NuGetPackage> packagesList) {
