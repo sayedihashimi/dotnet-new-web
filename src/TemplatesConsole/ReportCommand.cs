@@ -46,10 +46,7 @@ namespace TemplatesConsole {
             OnExecute = () => {
                 var verbose = OptionVerbose.HasValue();
                 
-                // 1: query nuget for search results
-                // 2: download nuget packages locally
-                // 3: extract nuget package to local folder
-                // 4: look into extract folder for a template json file
+ 
 
 
                 return 1;

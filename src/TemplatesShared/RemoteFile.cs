@@ -5,6 +5,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
+using System.Timers;
 
 namespace TemplatesShared {
     public interface IRemoteFile {
@@ -12,8 +14,11 @@ namespace TemplatesShared {
         string CacheFolderpath { get; }
 
         string ExtractZipLocally(string zipfilepath);
-        string GetRemoteFile(string downloadUrl, string filename, bool forceDownload = false);
-        string GetRemoteFile(Uri uri, string filename, bool forceDownlaod = false);
+        Task<string> GetRemoteFileAsync(string downloadUrl, string filename, bool forceDownload = false);
+        Task<string> GetRemoteFileAsync(Uri uri, string filename, bool forceDownlaod = false);
+
+        //string GetRemoteFileAsync(string downloadUrl, string filename, bool forceDownload = false);
+        //string GetRemoteFileAsync(Uri uri, string filename, bool forceDownlaod = false);
         void SetCacheFolderpath(string folderpath);
     }
 
@@ -29,13 +34,13 @@ namespace TemplatesShared {
             CacheFolderpath = folderpath;
         }
 
-        public string GetRemoteFile(string downloadUrl, string filename, bool forceDownload = false) {
+        public async Task<string> GetRemoteFileAsync(string downloadUrl, string filename, bool forceDownload = false) {
             if (string.IsNullOrEmpty(downloadUrl)) {
                 throw new ArgumentNullException(nameof(downloadUrl), $"{nameof(downloadUrl)} is empty");
             }
-            return GetRemoteFile(new Uri(downloadUrl), filename, forceDownload);
+            return await GetRemoteFileAsync(new Uri(downloadUrl), filename, forceDownload);
         }
-        public string GetRemoteFile(Uri uri, string filename, bool forceDownlaod = false) {
+        public async Task<string> GetRemoteFileAsync(Uri uri, string filename, bool forceDownlaod = false) {
             // check to see if the file has already been downloaded
             var expectedFilePath = GetLocalFilepathFor(filename);
             if (File.Exists(expectedFilePath) && forceDownlaod) {
@@ -53,7 +58,23 @@ namespace TemplatesShared {
 
             // download the file now
             var webClient = new System.Net.WebClient();
-            webClient.DownloadFile(uri, expectedFilePath);
+            // webClient.DownloadFile(uri, expectedFilePath);
+            webClient.DownloadFileAsync(uri, expectedFilePath);
+
+            var isDownloadComplete = false;
+            webClient.DownloadFileCompleted += (object sender, System.ComponentModel.AsyncCompletedEventArgs e) => {
+                isDownloadComplete = true;
+            };
+
+            int timeoutSec = 60;
+            bool timeoutPassed = false;
+            var startTime = DateTime.Now;
+            // wait until the file is downloaded
+            do {
+                await Task.Delay(10 * 1000);
+                var elapsedTime = (DateTime.Now).Subtract(startTime);
+                timeoutPassed = elapsedTime.Seconds > timeoutSec;
+            } while (!isDownloadComplete && !timeoutPassed);
 
             return expectedFilePath;
         }
