@@ -7,28 +7,56 @@ using System.Linq;
 using System.Threading.Tasks.Dataflow;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace TemplatesShared {
     public class TemplateReport {
         private INuGetHelper _nugetHelper;
         private HttpClient _httpClient;
-        public TemplateReport(INuGetHelper nugetHelper, HttpClient httpClient) {
+        private INuGetPackageDownloader _nugetDownloader;
+        private IRemoteFile _remoteFile;
+        public TemplateReport(INuGetHelper nugetHelper, HttpClient httpClient, INuGetPackageDownloader nugetDownloader, IRemoteFile remoteFile) {
             Debug.Assert(nugetHelper != null);
             Debug.Assert(httpClient != null);
+            Debug.Assert(nugetDownloader != null);
+            Debug.Assert(remoteFile != null);
 
             _nugetHelper = nugetHelper;
             _httpClient = httpClient;
+            _nugetDownloader = nugetDownloader;
+            _remoteFile = remoteFile;
         }
-        public void GenerateTemplateJsonReport(string[] searchTerms, string jsonReportFilepath) {
+        public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
             Debug.Assert(!string.IsNullOrEmpty(jsonReportFilepath));
 
             // 1: query nuget for search results
-            var foundPackages = _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, GetPackagesToIgnore());
+            var foundPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, GetPackagesToIgnore());
             // 2: download nuget packages locally
+            var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(foundPackages);
 
             // 3: extract nuget package to local folder
-            // 4: look into extract folder for a template json file
+            var templatePackages = new List<NuGetPackage>();
+            var listPackagesWithNotemplates = new List<NuGetPackage>();
+            var pkgNamesWitoutPackages = new List<string>();
+            foreach(var pkg in downloadedPackages) {
+                var extractPath = _remoteFile.ExtractZipLocally(pkg.LocalFilepath);
+                // see if there is a .template
+                var foundDirs  = Directory.EnumerateDirectories(extractPath, ".template.config", new EnumerationOptions { RecurseSubdirectories = true });
+                if(foundDirs.Count() > 0) {
+                    templatePackages.Add(pkg);
+                }
+                else {
+                    Console.WriteLine($"pkg has no templates: {pkg.Id}");
+                    listPackagesWithNotemplates.Add(pkg);
+                    pkgNamesWitoutPackages.Add(pkg.Id);
+                }
+            }
+            // todo: remove this
+            File.WriteAllText(@"c:\temp\packages-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates));
+            File.WriteAllText(@"c:\temp\package-names-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages));
+
+            // 4: look at TemplatePackages
 
 
             throw new NotImplementedException();
@@ -40,7 +68,7 @@ namespace TemplatesShared {
         }
     }
 
-    public class NuGetPackageDownloader {
+    public class NuGetPackageDownloader : INuGetPackageDownloader {
         private int numDownloaders = 5;
         private INuGetHelper _nugetHelper;
         private IRemoteFile _remoteFile;
@@ -61,7 +89,7 @@ namespace TemplatesShared {
             // TODO: rename
             BufferBlock<NuGetPackage> urlDownloadQueue = new BufferBlock<NuGetPackage>(new DataflowBlockOptions { BoundedCapacity = 5 });
             var consumerOptions = new ExecutionDataflowBlockOptions { BoundedCapacity = 1 };
-            
+
             // todo: needs to be refactored
             var consumer1 = new ActionBlock<NuGetPackage>(async pkg => {
                 var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
@@ -103,17 +131,15 @@ namespace TemplatesShared {
             var producer = ProduceAsync(urlDownloadQueue, packageList);
             //var consumer = ConsumeAsync(urlDownloadQueue, _remoteFile);
 
-            await Task.WhenAll(producer, consumer1.Completion,consumer2.Completion, consumer3.Completion, consumer4.Completion, consumer5.Completion);
+            await Task.WhenAll(producer, consumer1.Completion, consumer2.Completion, consumer3.Completion, consumer4.Completion, consumer5.Completion);
 
             var allResults = downloadedPackages1.Concat(downloadedPackages2).Concat(downloadedPackages3).Concat(downloadedPackages4).Concat(downloadedPackages5).ToList();
 
             return allResults;
-
-            // return downloadedPackages;
         }
 
         protected async Task ProduceAsync(BufferBlock<NuGetPackage> packageQueue, List<NuGetPackage> packagesList) {
-            foreach(var pkg in packagesList) {
+            foreach (var pkg in packagesList) {
                 await packageQueue.SendAsync<NuGetPackage>(pkg);
             }
 
@@ -123,7 +149,7 @@ namespace TemplatesShared {
         protected async Task<IEnumerable<NuGetPackage>> ConsumeAsync(BufferBlock<NuGetPackage> packkageQueue, IRemoteFile remoteFile) {
             var resultList = new List<NuGetPackage>();
 
-            while(await packkageQueue.OutputAvailableAsync()) {
+            while (await packkageQueue.OutputAvailableAsync()) {
                 var pkg = await packkageQueue.ReceiveAsync<NuGetPackage>();
                 var downloadUrl = _nugetHelper.GetDownloadUrlFor(pkg);
                 var localFilepath = await remoteFile.GetRemoteFileAsync(downloadUrl, pkg.GetPackageFilename());

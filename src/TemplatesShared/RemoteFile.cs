@@ -96,7 +96,12 @@ namespace TemplatesShared {
 
             // TODO: would be good to have an async api here to call
             // extract the zip to the folder path
-            ZipFile.ExtractToDirectory(zipfilepath, expectedFolderPath);
+            try {
+                ZipFile.ExtractToDirectory(zipfilepath, expectedFolderPath);
+            }
+            catch(Exception ex) {
+                Console.WriteLine($"ERROR: {ex.ToString()}");
+            }
 
             if (!Directory.Exists(expectedFolderPath)) {
                 throw new ExtractZipException($"Unknown error. Unable to extract zip to path '{expectedFolderPath}'");

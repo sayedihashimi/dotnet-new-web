@@ -47,6 +47,7 @@ namespace TemplatesConsole {
             _serviceProvider = _services.AddSingleton<INuGetHelper, NuGetHelper>()
                                         .AddSingleton<IRemoteFile, RemoteFile>()
                                         .AddSingleton<HttpClient>()
+                                        .AddSingleton<INuGetPackageDownloader,NuGetPackageDownloader>()
                                 .BuildServiceProvider();
         }
 

@@ -31,11 +31,12 @@ namespace TemplateTest {
         private HttpClient httpClient;
         private IRemoteFile remoteFile;
         private INuGetHelper nugetHelper;
-
+        private INuGetPackageDownloader nugetDownloader;
         public NuGetPackageDownloaderTests() {
             httpClient = new HttpClient();
             remoteFile = new RemoteFile();
             nugetHelper = new NuGetHelper(remoteFile);
+            nugetDownloader = new NuGetPackageDownloader(nugetHelper, remoteFile);
         }
 
         [Fact]
@@ -49,6 +50,14 @@ namespace TemplateTest {
             Assert.Equal(packages.Count, result.Count);
             Assert.True(!string.IsNullOrEmpty(packages[0].LocalFilepath));
             Assert.True(File.Exists(packages[0].LocalFilepath));
+        }
+
+        [Fact]
+        public async Task TestTemplateReport01Async() {
+            var templateReport = new TemplateReport(nugetHelper, httpClient, nugetDownloader, remoteFile);
+            await templateReport.GenerateTemplateJsonReportAsync(new string[] { "template" }, @"");
+
+            Assert.True(1 == 1);
         }
     }
 }
