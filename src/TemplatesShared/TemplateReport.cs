@@ -90,6 +90,8 @@ namespace TemplatesShared {
                 }
             }
 
+            templatePacks = templatePacks.OrderBy((tp) => -1 * tp.DownloadCount).ToList();
+
             // TODO: Write to some other folder
             File.WriteAllText(@"c:\temp\template-result.json", JsonConvert.SerializeObject(templatePacks));
 
