@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -69,6 +70,15 @@ namespace TemplateTest {
 
             Assert.NotNull(nuspec);
             Assert.True(!string.IsNullOrEmpty(nuspec.Metadata.Id));
+        }
+        [Fact]
+        public void TestCreateTemplatePack01() {
+            string nuspecfilepath = @"C:\Users\sayedha\AppData\Local\templatereport\extracted\microsoft.dotnet.web.projecttemplates.2.2.2.2.8.nupkg\Microsoft.DotNet.Web.ProjectTemplates.2.2.nuspec";
+            string[]templateFiles = Directory.GetFiles(Path.GetDirectoryName(nuspecfilepath), "template.json",new EnumerationOptions { RecurseSubdirectories = true });
+
+            var templatePack = TemplatePack.CreateFromNuSpec(nuspecfilepath, templateFiles.ToList());
+
+            Assert.NotNull(templatePack);
         }
     }
 }

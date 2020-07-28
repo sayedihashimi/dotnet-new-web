@@ -136,18 +136,40 @@ namespace TemplatesShared
             return result;
             // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
+        // TODO: Move these methods somewhere else
         public static TemplatePack CreateFromNuSpec(string pathToNuspecFile, List<string>pathToTemplateJsonFiles) {
             Debug.Assert(File.Exists(pathToNuspecFile));
             Debug.Assert(pathToTemplateJsonFiles != null && pathToTemplateJsonFiles.Count > 0);
 
+            var nuspec = NuspecFile.CreateFromNuspecFile(pathToNuspecFile);
+            var templateList = new List<Template>();
+            foreach(var filepath in pathToTemplateJsonFiles) {
+                var template = CreateTemplateFromJsonFile(filepath);
+                templateList.Add(template);
+            }
 
+            // TODO: get download count
+            var templatePack = new TemplatePack {
+                Authors = nuspec.Metadata.Authors,
+                Copyright = nuspec.Metadata.Copyright,
+                Description = nuspec.Metadata.Description,
+                IconUrl = nuspec.Metadata.IconUrl,
+                LicenseUrl = nuspec.Metadata.LicenseUrl,
+                Owners = nuspec.Metadata.Owners,
+                ProjectUrl = nuspec.Metadata.ProjectUrl,
+                Version = nuspec.Metadata.Version,
+                Templates = templateList.ToArray()
+            };
 
-            //var result = new TemplatePack {
-            //    Authors = String.Join(';', nugetPackage.Authors)
-            //};
+            return templatePack;
+        }
 
-            throw new NotImplementedException();
+        public static Template CreateTemplateFromJsonFile(string filepath) {
+            if (!File.Exists(filepath)) {
+                throw new ArgumentNullException($"Cannot find template json file at '{filepath}");
+            }
 
+            return JsonConvert.DeserializeObject<Template>(File.ReadAllText(filepath));
         }
     }
     public class TemplateConverter : JsonConverter
