@@ -52,33 +52,4 @@ namespace TemplatesConsole {
             }
         }
     }
-
-    public class MyHelloCommand2 : TemplateCommand {
-        public MyHelloCommand2() : base() {
-            Name = "hello";
-            Description = "hello command";
-        }
-
-        public override void Setup(CommandLineApplication command) {
-            base.Setup(command);
-
-            var argName = command.Argument("name", "your name");
-            var optionLastName = command.Option<string>("-ln|--last-name", "your last name", CommandOptionType.SingleValue);
-            OnExecute = () => {
-                Console.WriteLine($"hello {argName.Value} {optionLastName.Value()}");
-                return 1;
-            };
-        }
-    }
-
-    public class MyBarCommad : TemplateCommand {
-        public MyBarCommad() : base() {
-            Name = "bar";
-            Description = "bar command here";
-            OnExecute = () => {
-                Console.WriteLine("hello from bar");
-                return 1;
-            };
-        }
-    }
 }
