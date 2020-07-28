@@ -25,8 +25,6 @@ namespace TemplatesConsole {
 
             app.HelpOption(inherited: true);
 
-            var helloCommand = new MyHelloCommand2();
-            var barCommand = new MyBarCommad();
             var queryCommand = new QueryCommand(GetFromServices<INuGetHelper>());
             var reportCommand = new ReportCommand(
                 GetFromServices<HttpClient>(),
@@ -36,8 +34,6 @@ namespace TemplatesConsole {
 
             app.Command(queryCommand.Name, queryCommand.Setup);
             app.Command(reportCommand.Name, reportCommand.Setup);
-            app.Command(helloCommand.Name, helloCommand.Setup);
-            app.Command(barCommand.Name, barCommand.Setup);
 
             app.OnExecute(() => {
                 Console.WriteLine("Specify a subcommand to execute\n");
