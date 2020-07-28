@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace TemplatesShared {
-    [XmlRoot("package",Namespace = @"http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd")]
+    [XmlRoot("package")]
     public class NuspecFile {
         [XmlElement("metadata")]
         public NuspecMetadata Metadata { get; set; }
@@ -17,8 +19,14 @@ namespace TemplatesShared {
             }
             var nuspecNs = @"http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd";
 
+            // get the xmlns from the document
+            XDocument xmldoc = XDocument.Parse(File.ReadAllText(filepath));
+            var result = xmldoc.Root.Attributes().
+                Where(a => a.IsNamespaceDeclaration).
+                First().Value;
+
             using var filestream = File.Open(filepath, FileMode.Open);
-            var serializer = new XmlSerializer(typeof(NuspecFile));
+            var serializer = new XmlSerializer(typeof(NuspecFile), result);
             var nuspec = (NuspecFile)serializer.Deserialize(filestream);
 
             return nuspec;

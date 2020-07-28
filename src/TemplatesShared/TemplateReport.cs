@@ -42,6 +42,7 @@ namespace TemplatesShared {
             var pkgNamesWitoutPackages = new List<string>();
             foreach(var pkg in downloadedPackages) {
                 var extractPath = _remoteFile.ExtractZipLocally(pkg.LocalFilepath);
+                pkg.LocalExtractPath = extractPath;
                 // see if there is a .template
                 var foundDirs  = Directory.EnumerateDirectories(extractPath, ".template.config", new EnumerationOptions { RecurseSubdirectories = true });
                 if(foundDirs.Count() > 0) {
@@ -58,10 +59,46 @@ namespace TemplatesShared {
             File.WriteAllText(@"c:\temp\packages-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates));
             File.WriteAllText(@"c:\temp\package-names-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages));
 
+            var templatePacks = new List<TemplatePack>();
+            foreach(var pkg in templatePackages) {
+                // get nuspec file path
+                var nuspecFile = Directory.GetFiles(pkg.LocalExtractPath, $"{pkg.Id}.nuspec").FirstOrDefault();
+                if(nuspecFile == null) {
+                    Console.WriteLine($"warning: nuspec not found in folder {pkg.LocalFilepath}");
+                    continue;
+                }
+                // get template folders
+                var contentDir = Path.Combine(pkg.LocalExtractPath, "content");
+                if (!Directory.Exists(contentDir)) {
+                    continue;
+                }
+                var templateFolders = Directory.GetDirectories(contentDir, ".template.config", SearchOption.AllDirectories);
+                var templateFiles = new List<string>();
+                foreach(var folder in templateFolders) {
+                    var files = Directory.GetFiles(folder, "template.json", new EnumerationOptions { RecurseSubdirectories = true });
+                    if(files != null && files.Length > 0) {
+                        templateFiles.AddRange(files);
+                    }
+                }
+
+                try {
+                    var tp = TemplatePack.CreateFromNuSpec(pkg, nuspecFile, templateFiles);
+                    templatePacks.Add(tp);
+                }
+                catch(Exception ex) {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+
+            // TODO: Write to some other folder
+            File.WriteAllText(@"c:\temp\template-result.json", JsonConvert.SerializeObject(templatePacks));
 
             // write to temp folder and then copy to dest
             var tempfile = Path.GetTempFileName();
             File.WriteAllText(tempfile, JsonConvert.SerializeObject(templatePackages));
+            if (File.Exists(jsonReportFilepath)) {
+                File.Delete(jsonReportFilepath);
+            }
             File.Move(tempfile, jsonReportFilepath);
             // 4: look at TemplatePackages
         }

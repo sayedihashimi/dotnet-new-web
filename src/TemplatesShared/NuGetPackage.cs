@@ -36,6 +36,8 @@ namespace TemplatesShared
 
         [JsonIgnore]
         internal string LocalFilepath { get; set; }
+        [JsonIgnore]
+        internal string LocalExtractPath { get; set; }
         internal string GetPackageFilename() {
             // {LOWER_ID}.{LOWER_VERSION}.nupkg
             return $"{Normalize(Id)}.{Normalize(Version)}.nupkg";
