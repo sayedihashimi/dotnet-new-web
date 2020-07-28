@@ -2342,32 +2342,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Roozbeh GH.",
-    "Version": "1.19.325.4",
-    "DownloadCount": 9961,
-    "Templates": [
-      {
-        "Author": "Roozbeh GH.",
-        "Name": "C/C++/CPP/VCXPROJ Build Template using GCC/G++",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Common", "Console"],
-        "ShortName": ["gccbuild"],
-        "GroupIdentity": null,
-        "Identity": "GCC.Build.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "MSBuild template to make use of GCC/g++ for compiling Microsoft C++ projects (VcxProj). Use it with dotnet new. You need to have a vcxproj or sln solution in current directory.",
-    "Copyright": null,
-    "Authors": "Roozbeh GH.",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Jason Taylor",
     "Version": "1.1.1",
     "DownloadCount": 9539,
@@ -4363,6 +4337,32 @@
     "IconPngUrl": "https://www.honosoft.com/img/logo.png"
   },
   {
+    "Owners": "tintoy",
+    "Version": "0.2.2",
+    "DownloadCount": 4478,
+    "Templates": [
+      {
+        "Author": "Adam Friedman (tintoy@tintoy.io)",
+        "Name": "PowerShell Core RC2 module",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "PowerShell"],
+        "ShortName": ["ps-core-module"],
+        "GroupIdentity": null,
+        "Identity": "tintoy.powershell.core.module",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "PowerShell Core templates for \"dotnet new\".",
+    "Copyright": null,
+    "Authors": "tintoy",
+    "LicenseUrl": "https://raw.githubusercontent.com/tintoy/ps-core-module-template/master/LICENSE",
+    "ProjectUrl": "https://github.com/tintoy/ps-core-module-template",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Jeff Brown",
     "Version": "1.1.0",
     "DownloadCount": 4477,
@@ -4491,6 +4491,32 @@
     "Package": null,
     "IconUrl": "https://github.com/CarterCommunity/Media/raw/master/carterlogo.png",
     "IconPngUrl": "https://github.com/CarterCommunity/Media/raw/master/carterlogo.png"
+  },
+  {
+    "Owners": "Andrey Popov",
+    "Version": "2.0.7.1",
+    "DownloadCount": 4286,
+    "Templates": [
+      {
+        "Author": "Andrey Popov",
+        "Name": "ASP.NET Core Web API (extended)",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["api", "swagger", "docker"],
+        "ShortName": ["httpapi"],
+        "GroupIdentity": null,
+        "Identity": "Popov1024.HttpApi.Template.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "HTTP Api template. Included swagger and docker",
+    "Copyright": "Copyright 2017-2018",
+    "Authors": "Andrey Popov",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/popov1024/httpapi-template-sharp",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
     "Owners": "tintoy",
@@ -4761,32 +4787,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Shane Logsdon",
-    "Version": "0.1.1",
-    "DownloadCount": 3754,
-    "Templates": [
-      {
-        "Author": "Shane Logsdon",
-        "Name": "Fable JavaScript Library",
-        "Tags": { "language": "F#", "type": "project" },
-        "Classifications": ["Fable", "JavaScript"],
-        "ShortName": ["fable-js-lib"],
-        "GroupIdentity": null,
-        "Identity": "Fable.Template.JavaScriptLibrary",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "JavaScript library built with Fable + FSharp",
-    "Copyright": null,
-    "Authors": "Shane Logsdon",
-    "LicenseUrl": "https://github.com/slogsdon/Fable.Template.JavaScriptLibrary/blob/master/LICENSE.md",
-    "ProjectUrl": "https://github.com/slogsdon/Fable.Template.JavaScriptLibrary",
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Oskar Dudycz",
     "Version": "4.0.1",
     "DownloadCount": 3720,
@@ -4921,32 +4921,6 @@
     "IconPngUrl": "https://cdn.rawgit.com/nspec/NSpec/gh-pages/assets/images/logo.png"
   },
   {
-    "Owners": "Apache TinkerPop",
-    "Version": "3.4.7",
-    "DownloadCount": 3553,
-    "Templates": [
-      {
-        "Author": "Apache TinkerPop",
-        "Name": "Gremlin.Net Template",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["TinkerPop", "Gremlin", "Gremlin.Net"],
-        "ShortName": ["gremlin"],
-        "GroupIdentity": null,
-        "Identity": "Gremlin.Net.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Gremlin.Net template to create a console application with dotnet new.",
-    "Copyright": null,
-    "Authors": "Apache TinkerPop",
-    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
-    "ProjectUrl": "http://tinkerpop.apache.org/",
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Jimmy Byrd",
     "Version": "0.1.0",
     "DownloadCount": 3553,
@@ -4968,6 +4942,32 @@
     "Authors": "Jimmy Byrd",
     "LicenseUrl": "https://github.com/TheAngryByrd/Fable.Library.Template/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/TheAngryByrd/Fable.Library.Template",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Apache TinkerPop",
+    "Version": "3.4.7",
+    "DownloadCount": 3553,
+    "Templates": [
+      {
+        "Author": "Apache TinkerPop",
+        "Name": "Gremlin.Net Template",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["TinkerPop", "Gremlin", "Gremlin.Net"],
+        "ShortName": ["gremlin"],
+        "GroupIdentity": null,
+        "Identity": "Gremlin.Net.Template",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Gremlin.Net template to create a console application with dotnet new.",
+    "Copyright": null,
+    "Authors": "Apache TinkerPop",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": "http://tinkerpop.apache.org/",
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -5204,32 +5204,6 @@
     "Authors": "FewBox",
     "LicenseUrl": null,
     "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "Glen Hallworth",
-    "Version": "0.1.0",
-    "DownloadCount": 3179,
-    "Templates": [
-      {
-        "Author": "Glen Hallworth",
-        "Name": "Web Api with SPA",
-        "Tags": {},
-        "Classifications": ["Custom Templates"],
-        "ShortName": ["WebApiWithSpa"],
-        "GroupIdentity": null,
-        "Identity": "GlenHallworth.WebApiWithSpa.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Web Api with SPA template for dotnet core 2.0",
-    "Copyright": "Copyright 2017",
-    "Authors": "Glen Hallworth",
-    "LicenseUrl": "https://github.com/glenhallworth/WebApiWithSpa/blob/master/Licence.txt",
-    "ProjectUrl": "https://github.com/glenhallworth/WebApiWithSpa",
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -5599,6 +5573,42 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Nacho Coll",
+    "Version": "1.0.19",
+    "DownloadCount": 2875,
+    "Templates": [
+      {
+        "Author": "Nacho Coll",
+        "Name": "AWS API Gateway and Lambda demo project to use with Cloudformation4dotNET (cf4dotnet).",
+        "Tags": { "language": "C#" },
+        "Classifications": ["AWS", "Cloudformation", "C#"],
+        "ShortName": ["cf4dotnet"],
+        "GroupIdentity": null,
+        "Identity": "NachoColl.Cloudformation4dotNET.Templates.cf4dotnet",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "Nacho Coll",
+        "Name": "AWS API Gateway and Lambda demo project to use with Cloudformation4dotNET and Travis.",
+        "Tags": { "language": "C#" },
+        "Classifications": ["AWS", "Cloudformation", "C#"],
+        "ShortName": ["cf4dotnet-travis"],
+        "GroupIdentity": null,
+        "Identity": "NachoColl.Cloudformation4dotNET.Templates.cf4dotnet-travis",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "dotnet templates to use with Cloudformation4dotNET (cf4dotnet) tool.",
+    "Copyright": null,
+    "Authors": "Nacho Coll",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Jimmy Byrd",
     "Version": "0.1.0",
     "DownloadCount": 2870,
@@ -5911,32 +5921,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Soda Digital",
-    "Version": "0.0.2",
-    "DownloadCount": 2609,
-    "Templates": [
-      {
-        "Author": "Soda Digital",
-        "Name": "Soda Razor Template",
-        "Tags": { "language": "C#" },
-        "Classifications": ["Web", "Razor", "Soda"],
-        "ShortName": ["soda-razor"],
-        "GroupIdentity": null,
-        "Identity": "Soda.RazorTemplate",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Soda Razor Template",
-    "Copyright": null,
-    "Authors": "Soda Digital",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Brad McDavid",
     "Version": "1.0.2",
     "DownloadCount": 2595,
@@ -6171,6 +6155,32 @@
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Manuel Grundner",
+    "Version": "0.3.1",
+    "DownloadCount": 2528,
+    "Templates": [
+      {
+        "Author": "Manuel Grundner",
+        "Name": "expressApp Framework Empty Module",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "Console"],
+        "ShortName": ["xaf-module"],
+        "GroupIdentity": null,
+        "Identity": "Scissors.XafModuleTemplate.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates an empty expressApp module.",
+    "Copyright": null,
+    "Authors": "Manuel Grundner",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "https://blog.delegate.at/img/favicon.ico",
+    "IconPngUrl": "https://blog.delegate.at/img/favicon.ico"
   },
   {
     "Owners": "Michał Niegrzybowski",
@@ -6762,6 +6772,32 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Zrean Tofiq",
+    "Version": "1.10.0",
+    "DownloadCount": 2114,
+    "Templates": [
+      {
+        "Author": "Zrean Tofiq",
+        "Name": "ServiceBlock sample service",
+        "Tags": {},
+        "Classifications": ["Web", "ServiceBlock"],
+        "ShortName": ["serviceblock"],
+        "GroupIdentity": null,
+        "Identity": "ServiceBlock.Sample.SampleService",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating a ServiceBlock application.",
+    "Copyright": null,
+    "Authors": "Zrean Tofiq",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "NorDroN",
     "Version": "0.1.6",
     "DownloadCount": 2114,
@@ -7298,30 +7334,60 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Juan Blanco",
-    "Version": "0.1.0",
-    "DownloadCount": 1766,
+    "Owners": "Newbe",
+    "Version": "1.18.2",
+    "DownloadCount": 1810,
     "Templates": [
       {
-        "Author": "Juan Blanco",
-        "Name": "Nethereum Web Faucet",
-        "Tags": { "language": "C#" },
-        "Classifications": ["Web", "Blockchain", "Ethereum"],
-        "ShortName": ["nethereumfaucet"],
+        "Author": "newbe36524",
+        "Name": "Template with Newbe.Mahua for all QQ robot platform",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Newbe.Mahua", "Library", "Plugin"],
+        "ShortName": ["newbe.mahua.all"],
         "GroupIdentity": null,
-        "Identity": "Nethereum.Faucet",
+        "Identity": "Newbe.Mahua.Template.Plugins.All",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "newbe36524",
+        "Name": "Template with Newbe.Mahua for CQP",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Newbe.Mahua", "Library", "Plugin", "CQP"],
+        "ShortName": ["newbe.mahua.cqp"],
+        "GroupIdentity": null,
+        "Identity": "Newbe.Mahua.Template.Plugins.CQP",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "newbe36524",
+        "Name": "Template with Newbe.Mahua for MPQ",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Newbe.Mahua", "Library", "Plugin", "MPQ"],
+        "ShortName": ["newbe.mahua.mpq"],
+        "GroupIdentity": null,
+        "Identity": "Newbe.Mahua.Template.Plugins.MPQ",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "newbe36524",
+        "Name": "Template with Newbe.Mahua for QQLight",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Newbe.Mahua", "Library", "Plugin", "QQLight"],
+        "ShortName": ["newbe.mahua.qqlight"],
+        "GroupIdentity": null,
+        "Identity": "Newbe.Mahua.Template.Plugins.QQLight",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "Nethereum Template Faucet: The Nethereum template faucet, is a web application template for a simple faucet to provide a limited amount of Ether to accounts in your Ethereum deployment",
-    "Copyright": "Copyright 2017: Juan Blanco",
-    "Authors": "Juan Blanco",
-    "LicenseUrl": "https://raw.githubusercontent.com/Nethereum/Nethereum/master/LICENSE.md",
-    "ProjectUrl": "http://www.nethereum.com/",
+    "Description": "包含了使用 Newbe.Mahua 进行QQ机器人开发所需要的项目模板",
+    "Copyright": "Copyright (c) Everyone, except Author",
+    "Authors": "Newbe",
+    "LicenseUrl": "https://raw.githubusercontent.com/newbe36524/Newbe.Mahua.Framework.V1/master/LICENSE",
+    "ProjectUrl": "https://github.com/newbe36524/Newbe.Mahua.Framework.V1",
     "Package": null,
-    "IconUrl": "https://raw.githubusercontent.com/Nethereum/Nethereum/master/logos/logo64x64.png",
-    "IconPngUrl": "https://raw.githubusercontent.com/Nethereum/Nethereum/master/logos/logo64x64.png"
+    "IconUrl": "https://raw.githubusercontent.com/Newbe36524/Newbe.Mahua.Framework.V1/master/logo.png",
+    "IconPngUrl": "https://raw.githubusercontent.com/Newbe36524/Newbe.Mahua.Framework.V1/master/logo.png"
   },
   {
     "Owners": "Vincent Maverick Durano",
@@ -7354,6 +7420,32 @@
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Juan Blanco",
+    "Version": "0.1.0",
+    "DownloadCount": 1766,
+    "Templates": [
+      {
+        "Author": "Juan Blanco",
+        "Name": "Nethereum Web Faucet",
+        "Tags": { "language": "C#" },
+        "Classifications": ["Web", "Blockchain", "Ethereum"],
+        "ShortName": ["nethereumfaucet"],
+        "GroupIdentity": null,
+        "Identity": "Nethereum.Faucet",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Nethereum Template Faucet: The Nethereum template faucet, is a web application template for a simple faucet to provide a limited amount of Ether to accounts in your Ethereum deployment",
+    "Copyright": "Copyright 2017: Juan Blanco",
+    "Authors": "Juan Blanco",
+    "LicenseUrl": "https://raw.githubusercontent.com/Nethereum/Nethereum/master/LICENSE.md",
+    "ProjectUrl": "http://www.nethereum.com/",
+    "Package": null,
+    "IconUrl": "https://raw.githubusercontent.com/Nethereum/Nethereum/master/logos/logo64x64.png",
+    "IconPngUrl": "https://raw.githubusercontent.com/Nethereum/Nethereum/master/logos/logo64x64.png"
   },
   {
     "Owners": "Jeff Brown",
@@ -7529,6 +7621,32 @@
     "IconPngUrl": "https://nventive-email-assets.s3.amazonaws.com/packages/nv-package-logo%400%2C25x.png"
   },
   {
+    "Owners": "Jim Bennett",
+    "Version": "1.0.1",
+    "DownloadCount": 1710,
+    "Templates": [
+      {
+        "Author": "Jim Bennett",
+        "Name": "MvvmCross Single Page Native Application",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": [],
+        "ShortName": ["MvvmCrossNativeSinglePage"],
+        "GroupIdentity": "MvvmCrossNativeSinglePage",
+        "Identity": "MvvmCrossNativeSinglePage.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates an example single page MvvmCross app for iOS and Android.",
+    "Copyright": null,
+    "Authors": "Jim Bennett",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/jimbobbennett/MvvmCross-Templates",
+    "Package": null,
+    "IconUrl": "https://raw.githubusercontent.com/jimbobbennett/MvvmCross-Templates/master/MvvmCrossFormsMultiplePages/.template.config/project-icon.png",
+    "IconPngUrl": "https://raw.githubusercontent.com/jimbobbennett/MvvmCross-Templates/master/MvvmCrossFormsMultiplePages/.template.config/project-icon.png"
+  },
+  {
     "Owners": "Hosho",
     "Version": "0.1.5",
     "DownloadCount": 1698,
@@ -7553,32 +7671,6 @@
     "Package": null,
     "IconUrl": "https://github.com/MeadowSuite/Meadow/raw/master/images/meadow-icon-64x64.png?raw=true",
     "IconPngUrl": "https://github.com/MeadowSuite/Meadow/raw/master/images/meadow-icon-64x64.png?raw=true"
-  },
-  {
-    "Owners": "Optivem",
-    "Version": "1.0.16.2",
-    "DownloadCount": 1696,
-    "Templates": [
-      {
-        "Author": "Optivem",
-        "Name": "Optivem .NET Core 2.2 Application",
-        "Tags": {},
-        "Classifications": ["Template", "Web"],
-        "ShortName": ["optivem"],
-        "GroupIdentity": null,
-        "Identity": "Optivem.Template.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Optivem",
-    "Copyright": null,
-    "Authors": "Optivem",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
     "Owners": "EmailHippo",
@@ -8075,32 +8167,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Daniel Oliver",
-    "Version": "0.5.0",
-    "DownloadCount": 1474,
-    "Templates": [
-      {
-        "Author": "Daniel Oliver",
-        "Name": "ASP.NET Core with GatsbyJS",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web", "MVC", "SPA"],
-        "ShortName": ["gatsby"],
-        "GroupIdentity": "OliverCoding.GatsbyTemplate",
-        "Identity": "OliverCoding.GatsbyTemplate.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates a new Gatsby template",
-    "Copyright": null,
-    "Authors": "Daniel Oliver",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Stephen Quattlebaum",
     "Version": "0.1.5",
     "DownloadCount": 1474,
@@ -8120,6 +8186,32 @@
     "Description": "Creates an XPNet X-Plane plugin.",
     "Copyright": null,
     "Authors": "Stephen Quattlebaum",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Daniel Oliver",
+    "Version": "0.5.0",
+    "DownloadCount": 1474,
+    "Templates": [
+      {
+        "Author": "Daniel Oliver",
+        "Name": "ASP.NET Core with GatsbyJS",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Web", "MVC", "SPA"],
+        "ShortName": ["gatsby"],
+        "GroupIdentity": "OliverCoding.GatsbyTemplate",
+        "Identity": "OliverCoding.GatsbyTemplate.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates a new Gatsby template",
+    "Copyright": null,
+    "Authors": "Daniel Oliver",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -8433,6 +8525,42 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "COWI",
+    "Version": "1.0.12",
+    "DownloadCount": 1325,
+    "Templates": [
+      {
+        "Author": "COWI",
+        "Name": "Simple Forge Macro for COWI Tools Assistant",
+        "Tags": {},
+        "Classifications": ["Forge", "COWI Tools", "COWI Tools Macro"],
+        "ShortName": ["cwforgesm"],
+        "GroupIdentity": null,
+        "Identity": "COWI.Tools.Forge.SimpleMacro",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "COWI",
+        "Name": "Simple Macro for COWI Tools Assistant",
+        "Tags": {},
+        "Classifications": ["Revit", "COWI Tools", "COWI Tools Macro"],
+        "ShortName": ["cwrvtsm"],
+        "GroupIdentity": null,
+        "Identity": "COWI.Tools.Revit.SimpleMacro",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating an macro for COWI Tools Assistant in Autodesk Revit.",
+    "Copyright": null,
+    "Authors": "COWI",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "yaofeng",
     "Version": "1.0.6",
     "DownloadCount": 1313,
@@ -8544,32 +8672,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Manuel Grundner",
-    "Version": "0.3.1",
-    "DownloadCount": 1288,
-    "Templates": [
-      {
-        "Author": "Manuel Grundner",
-        "Name": "expressApp Framework Winforms Application",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Common", "Console"],
-        "ShortName": ["xaf-win"],
-        "GroupIdentity": null,
-        "Identity": "Scissors.XafWinTemplate.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates an expressApp.Win application.",
-    "Copyright": null,
-    "Authors": "Manuel Grundner",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "https://blog.delegate.at/img/favicon.ico",
-    "IconPngUrl": "https://blog.delegate.at/img/favicon.ico"
-  },
-  {
     "Owners": "Kristian Brimble",
     "Version": "1.0.1",
     "DownloadCount": 1288,
@@ -8600,6 +8702,32 @@
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Manuel Grundner",
+    "Version": "0.3.1",
+    "DownloadCount": 1288,
+    "Templates": [
+      {
+        "Author": "Manuel Grundner",
+        "Name": "expressApp Framework Winforms Application",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "Console"],
+        "ShortName": ["xaf-win"],
+        "GroupIdentity": null,
+        "Identity": "Scissors.XafWinTemplate.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates an expressApp.Win application.",
+    "Copyright": null,
+    "Authors": "Manuel Grundner",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "https://blog.delegate.at/img/favicon.ico",
+    "IconPngUrl": "https://blog.delegate.at/img/favicon.ico"
   },
   {
     "Owners": "Microsoft",
@@ -9001,6 +9129,32 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Christian Glessner",
+    "Version": "0.0.4",
+    "DownloadCount": 1175,
+    "Templates": [
+      {
+        "Author": "Christian Glessner",
+        "Name": "Bot v4 - Echo",
+        "Tags": { "language": "C#" },
+        "Classifications": ["Web", "Bot"],
+        "ShortName": ["bot-echo"],
+        "GroupIdentity": null,
+        "Identity": "Ltwlf.BotV4.Echo",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Dotnet new template for a Bot Builder SDK v4 Echo Bot",
+    "Copyright": null,
+    "Authors": "Christian Glessner",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/ltwlf/dotnet-new-templates-bot",
+    "Package": null,
+    "IconUrl": "https://raw.githubusercontent.com/ltwlf/dotnet-new-templates-bot/master/Assets/icon.png",
+    "IconPngUrl": "https://raw.githubusercontent.com/ltwlf/dotnet-new-templates-bot/master/Assets/icon.png"
+  },
+  {
     "Owners": "Jeroen Broekhuizen",
     "Version": "0.2.1",
     "DownloadCount": 1173,
@@ -9129,6 +9283,32 @@
     "Package": null,
     "IconUrl": "https://pbs.twimg.com/profile_images/487954549441691649/O3KsHAsb_400x400.png",
     "IconPngUrl": "https://pbs.twimg.com/profile_images/487954549441691649/O3KsHAsb_400x400.png"
+  },
+  {
+    "Owners": "Christian Glessner",
+    "Version": "0.0.4",
+    "DownloadCount": 1143,
+    "Templates": [
+      {
+        "Author": "Christian Glessner",
+        "Name": "Bot v4 - Basic",
+        "Tags": { "language": "C#" },
+        "Classifications": ["Web", "Bot"],
+        "ShortName": ["bot-basic"],
+        "GroupIdentity": null,
+        "Identity": "Ltwlf.BotV4.Basic",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Dotnet new template for a Bot Builder SDK v4 Basic Bot",
+    "Copyright": null,
+    "Authors": "Christian Glessner",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/ltwlf/dotnet-new-templates-bot",
+    "Package": null,
+    "IconUrl": "https://raw.githubusercontent.com/ltwlf/dotnet-new-templates-bot/master/Assets/icon.png",
+    "IconPngUrl": "https://raw.githubusercontent.com/ltwlf/dotnet-new-templates-bot/master/Assets/icon.png"
   },
   {
     "Owners": "Data Juggler",
@@ -9289,6 +9469,32 @@
     "Package": null,
     "IconUrl": "https://raw.githubusercontent.com/TimeWarpEngineering/blazor-state/master/assets/Logo.png",
     "IconPngUrl": "https://raw.githubusercontent.com/TimeWarpEngineering/blazor-state/master/assets/Logo.png"
+  },
+  {
+    "Owners": "riina",
+    "Version": "0.3.8",
+    "DownloadCount": 1069,
+    "Templates": [
+      {
+        "Author": "teamRokuro",
+        "Name": "Fp tool skeleton",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "Console"],
+        "ShortName": ["fpt"],
+        "GroupIdentity": null,
+        "Identity": "TeamRokuro.Fpt",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates for Fp-based projects.",
+    "Copyright": "Copyright ©2020 teamRokuro",
+    "Authors": "riina",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/teamRokuro/Fp",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
     "Owners": "Sjef van Leeuwen",
@@ -9879,32 +10085,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "liyuqihxc",
-    "Version": "1.0.2",
-    "DownloadCount": 924,
-    "Templates": [
-      {
-        "Author": "liyuqihxc",
-        "Name": "Asp.Net Core With Abp",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["abp", "aspnetcore"],
-        "ShortName": ["hxc-aspnetcore"],
-        "GroupIdentity": null,
-        "Identity": "hxc.AspNetCoreTemplate",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Abp Asp.Net Core Project Template.",
-    "Copyright": null,
-    "Authors": "liyuqihxc",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Microsoft",
     "Version": "0.4.1",
     "DownloadCount": 924,
@@ -9933,6 +10113,32 @@
     "Authors": "Microsoft",
     "LicenseUrl": "https://github.com/Azure/TypeEdge/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/Azure/TypeEdge",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "liyuqihxc",
+    "Version": "1.0.2",
+    "DownloadCount": 924,
+    "Templates": [
+      {
+        "Author": "liyuqihxc",
+        "Name": "Asp.Net Core With Abp",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["abp", "aspnetcore"],
+        "ShortName": ["hxc-aspnetcore"],
+        "GroupIdentity": null,
+        "Identity": "hxc.AspNetCoreTemplate",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Abp Asp.Net Core Project Template.",
+    "Copyright": null,
+    "Authors": "liyuqihxc",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -10010,32 +10216,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Poul K. Sørensen",
-    "Version": "2.1.1",
-    "DownloadCount": 900,
-    "Templates": [
-      {
-        "Author": "Poul K. S�rensen",
-        "Name": "VSTS C# Task Template",
-        "Tags": {},
-        "Classifications": ["VSTS", "Task", "csharp"],
-        "ShortName": ["vsts-csharp-task"],
-        "GroupIdentity": null,
-        "Identity": "DotNetDevOps.VstsCSharpTask.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "VSTS C# Template",
-    "Copyright": null,
-    "Authors": "Poul K. Sørensen",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Devon Newsom",
     "Version": "1.0.0",
     "DownloadCount": 900,
@@ -10055,6 +10235,32 @@
     "Description": "Creates a lean MVC Template (Coding Dojo)",
     "Copyright": null,
     "Authors": "Devon Newsom",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Poul K. Sørensen",
+    "Version": "2.1.1",
+    "DownloadCount": 900,
+    "Templates": [
+      {
+        "Author": "Poul K. S�rensen",
+        "Name": "VSTS C# Task Template",
+        "Tags": {},
+        "Classifications": ["VSTS", "Task", "csharp"],
+        "ShortName": ["vsts-csharp-task"],
+        "GroupIdentity": null,
+        "Identity": "DotNetDevOps.VstsCSharpTask.Template",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "VSTS C# Template",
+    "Copyright": null,
+    "Authors": "Poul K. Sørensen",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -10374,32 +10580,6 @@
     "IconPngUrl": "https://github.com/AXOOM/Templates.Service/raw/master/axoom.png"
   },
   {
-    "Owners": "Jude Daryl Clarino",
-    "Version": "1.0.7",
-    "DownloadCount": 822,
-    "Templates": [
-      {
-        "Author": "Jude Daryl Clarino",
-        "Name": "PubSub Worker Template",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": [".NET Core", "GCP", "C#8", "PubSub", "Worker"],
-        "ShortName": ["pubsubworker"],
-        "GroupIdentity": null,
-        "Identity": "pubsubworker",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "A .NET Core project template optimized for handling GCP PubSub Events.",
-    "Copyright": null,
-    "Authors": "Jude Daryl Clarino",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Ares Chen | 陈希章",
     "Version": "1.0.2",
     "DownloadCount": 822,
@@ -10419,6 +10599,32 @@
     "Description": "A template for Excel add-in。这是一个Excel插件的模板。",
     "Copyright": null,
     "Authors": "Ares Chen | 陈希章",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Jude Daryl Clarino",
+    "Version": "1.0.7",
+    "DownloadCount": 822,
+    "Templates": [
+      {
+        "Author": "Jude Daryl Clarino",
+        "Name": "PubSub Worker Template",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": [".NET Core", "GCP", "C#8", "PubSub", "Worker"],
+        "ShortName": ["pubsubworker"],
+        "GroupIdentity": null,
+        "Identity": "pubsubworker",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A .NET Core project template optimized for handling GCP PubSub Events.",
+    "Copyright": null,
+    "Authors": "Jude Daryl Clarino",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -10508,32 +10714,6 @@
     "Copyright": "Copyright © 2018 Tommi Johtela",
     "Authors": "Tommi Johtela",
     "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "cyao, ajaganathan, Pivotal",
-    "Version": "3.0.0",
-    "DownloadCount": 804,
-    "Templates": [
-      {
-        "Author": "cyao, ajaganathan, Pivotal",
-        "Name": "PCF Ready ASP.NET Core WebAPI",
-        "Tags": { "language": "C#" },
-        "Classifications": ["PCF", "WebAPI", "Web"],
-        "ShortName": ["pvtlwebapi"],
-        "GroupIdentity": null,
-        "Identity": "PivotalServices.WebApiTemplate.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "dotnet new template for creating a PCF ready dotnet core web api application with unit and integration tests",
-    "Copyright": null,
-    "Authors": "cyao, ajaganathan, Pivotal",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
@@ -10860,32 +11040,6 @@
     "IconPngUrl": "https://github.com/giacomelli/GeneticSharp/raw/master/docs/logo/icon-64x64-transparent.png"
   },
   {
-    "Owners": "Tsyhankov Mykyta",
-    "Version": "1.4.0",
-    "DownloadCount": 735,
-    "Templates": [
-      {
-        "Author": "Tsyhankov Mykyta",
-        "Name": "IBWT Framework template",
-        "Tags": {},
-        "Classifications": ["Telegram", "Bot", "Web"],
-        "ShortName": ["ibwt"],
-        "GroupIdentity": null,
-        "Identity": "IBWT.Framework",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Telegram Api Bot Extentions",
-    "Copyright": null,
-    "Authors": "Tsyhankov Mykyta",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Daniel Abbatt",
     "Version": "1.0.4",
     "DownloadCount": 735,
@@ -10910,6 +11064,32 @@
     "Package": null,
     "IconUrl": "https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200",
     "IconPngUrl": "https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200"
+  },
+  {
+    "Owners": "Tsyhankov Mykyta",
+    "Version": "1.4.0",
+    "DownloadCount": 735,
+    "Templates": [
+      {
+        "Author": "Tsyhankov Mykyta",
+        "Name": "IBWT Framework template",
+        "Tags": {},
+        "Classifications": ["Telegram", "Bot", "Web"],
+        "ShortName": ["ibwt"],
+        "GroupIdentity": null,
+        "Identity": "IBWT.Framework",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Telegram Api Bot Extentions",
+    "Copyright": null,
+    "Authors": "Tsyhankov Mykyta",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
     "Owners": "CitizenFX Collective",
@@ -10948,30 +11128,50 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "GHUA",
-    "Version": "1.0.0",
-    "DownloadCount": 693,
+    "Owners": "eidias",
+    "Version": "1.1.1",
+    "DownloadCount": 710,
     "Templates": [
       {
-        "Author": "GHUA",
-        "Name": "Abp.Zero Dotnet",
+        "Author": "eidias",
+        "Name": "Templements ASP.NET Core Web App",
         "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["Abp460"],
-        "GroupIdentity": null,
-        "Identity": "Abp.Zero.Template",
+        "Classifications": ["Templements", "Web"],
+        "ShortName": ["templementsweb"],
+        "GroupIdentity": "Templements.AspNetCore.Minimal",
+        "Identity": "Templements.AspNetCore.Minimal.CSharp",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "eidias",
+        "Name": "Templements console application",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Templements", "Console"],
+        "ShortName": ["templementsconsole"],
+        "GroupIdentity": "Templements.NetCore.ConsoleApp",
+        "Identity": "Templements.NetCore.ConsoleApp.CSharp",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "eidias",
+        "Name": "Templements class library",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Templements", "Library"],
+        "ShortName": ["templementslib"],
+        "GroupIdentity": "Templements.NetCore.Library",
+        "Identity": "Templements.NetCore.Library.CSharp",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "Creates a Abp460 Template app.",
+    "Description": "Custom built and optimized templates for various .NET application types.",
     "Copyright": null,
-    "Authors": "GHUA",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "Authors": "eidias",
+    "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
+    "IconUrl": "https://eidiasassets.blob.core.windows.net/logos/eidias_icon_color_inverted.png",
+    "IconPngUrl": "https://eidiasassets.blob.core.windows.net/logos/eidias_icon_color_inverted.png"
   },
   {
     "Owners": "John Azariah",
@@ -11134,32 +11334,6 @@
     "Package": null,
     "IconUrl": "https://raw.githubusercontent.com/arcus-azure/arcus/master/media/arcus.png",
     "IconPngUrl": "https://raw.githubusercontent.com/arcus-azure/arcus/master/media/arcus.png"
-  },
-  {
-    "Owners": "M.cc",
-    "Version": "1.1.0",
-    "DownloadCount": 678,
-    "Templates": [
-      {
-        "Author": "M.cc",
-        "Name": "TDAI.Core Dotnet",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["tdaicoretpl"],
-        "GroupIdentity": null,
-        "Identity": "TDAI.Core.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Create a TDAI.Core Webapi Project",
-    "Copyright": null,
-    "Authors": "M.cc",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
     "Owners": "eirc yang",
@@ -11355,6 +11529,42 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Gokulnath Murugesan",
+    "Version": "0.3.2",
+    "DownloadCount": 619,
+    "Templates": [
+      {
+        "Author": "BoltOn",
+        "Name": "BoltOn Handler",
+        "Tags": { "language": "C#" },
+        "Classifications": ["Class"],
+        "ShortName": ["bohandler"],
+        "GroupIdentity": null,
+        "Identity": "bohandler",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "BoltOn",
+        "Name": "BoltOn WebAPI",
+        "Tags": { "language": "C#" },
+        "Classifications": ["Web/WebAPI"],
+        "ShortName": ["bowebapi"],
+        "GroupIdentity": null,
+        "Identity": "bowebapi",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating an application using BoltOn Application Framework",
+    "Copyright": "BoltOn",
+    "Authors": "Gokulnath Murugesan",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Tairan Wang",
     "Version": "0.1.0",
     "DownloadCount": 619,
@@ -11401,42 +11611,6 @@
     "Copyright": null,
     "Authors": "Julio Ramos",
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "Gokulnath Murugesan",
-    "Version": "0.3.2",
-    "DownloadCount": 619,
-    "Templates": [
-      {
-        "Author": "BoltOn",
-        "Name": "BoltOn Handler",
-        "Tags": { "language": "C#" },
-        "Classifications": ["Class"],
-        "ShortName": ["bohandler"],
-        "GroupIdentity": null,
-        "Identity": "bohandler",
-        "TemplatePackId": null
-      },
-      {
-        "Author": "BoltOn",
-        "Name": "BoltOn WebAPI",
-        "Tags": { "language": "C#" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["bowebapi"],
-        "GroupIdentity": null,
-        "Identity": "bowebapi",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Templates to use when creating an application using BoltOn Application Framework",
-    "Copyright": "BoltOn",
-    "Authors": "Gokulnath Murugesan",
-    "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
@@ -11743,6 +11917,32 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Vytautas Maciulskis",
+    "Version": "1.0.1",
+    "DownloadCount": 559,
+    "Templates": [
+      {
+        "Author": "Vytautas Maciulskis",
+        "Name": "dotnet core webapi with RabbitMQ",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["webapi", "rabbitmq"],
+        "ShortName": ["webapi-rabbitmq"],
+        "GroupIdentity": null,
+        "Identity": "db.webapi.rabbit.mq.Template.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "webapi template with RabbitMQ. Dockerfile, docker-compose, xUnit are included. After creating webapi-rabbitmq application, run \"dotnet restore\" in project folder, to get back nuget packages",
+    "Copyright": "Copyright 2019",
+    "Authors": "Vytautas Maciulskis",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Alexander Loktionov",
     "Version": "1.0.0",
     "DownloadCount": 558,
@@ -11841,32 +12041,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Giancarlo Lelli",
-    "Version": "1.0.0",
-    "DownloadCount": 545,
-    "Templates": [
-      {
-        "Author": "Giancarlo Lelli",
-        "Name": "Console App (.NET Core & UWP)",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Console", "UWP"],
-        "ShortName": ["coreuwp"],
-        "GroupIdentity": "GiancarloLelli.UWP.Console",
-        "Identity": "GiancarloLelli.UWP.Console.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "A .NET CLI Project Template to use the UWP APIs inside a .NET Core 3.0 Console App",
-    "Copyright": null,
-    "Authors": "Giancarlo Lelli",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "newbe36524",
     "Version": "0.5.7",
     "DownloadCount": 543,
@@ -11919,32 +12093,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Panoramic Data Limited",
-    "Version": "1.0.8",
-    "DownloadCount": 536,
-    "Templates": [
-      {
-        "Author": "Panoramic Data Limited",
-        "Name": "Meraki Cli Application",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Meraki", "API", "Console", "CLI"],
-        "ShortName": ["meraki"],
-        "GroupIdentity": null,
-        "Identity": "Meraki.Cli",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates a template Meraki project for .NET Core 3.1.\n\nTo install (or update) the template, type:\n\n\tdotnet new -i Meraki.Cli\n\nOnce installed, go to an empty folder and type:\n\n\tdotnet new Meraki [--name Project.Namespace] [--apiKey=YourApiKey]\n\nIf you do not specify the namespace with --name, the folder name is used instead.\nIf you do not specify an API key, modify the appsettings.json file.  After this, build and run with:\n\n\tdotnet run\n\nThis should provide some basic information about your Meraki account to demonstrate a working project.\n\nYou should then inspect and modify the contents of Application.cs.",
-    "Copyright": "Panoramic Data Limited 2020",
-    "Authors": "David Bond",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
-    "ProjectUrl": "https://github.com/panoramicdata/Meraki.Cli",
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "@cra0zy",
     "Version": "3.8.0.5",
     "DownloadCount": 536,
@@ -11969,6 +12117,32 @@
     "Package": null,
     "IconUrl": "https://pbs.twimg.com/profile_images/487954549441691649/O3KsHAsb_400x400.png",
     "IconPngUrl": "https://pbs.twimg.com/profile_images/487954549441691649/O3KsHAsb_400x400.png"
+  },
+  {
+    "Owners": "Panoramic Data Limited",
+    "Version": "1.0.8",
+    "DownloadCount": 536,
+    "Templates": [
+      {
+        "Author": "Panoramic Data Limited",
+        "Name": "Meraki Cli Application",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Meraki", "API", "Console", "CLI"],
+        "ShortName": ["meraki"],
+        "GroupIdentity": null,
+        "Identity": "Meraki.Cli",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates a template Meraki project for .NET Core 3.1.\n\nTo install (or update) the template, type:\n\n\tdotnet new -i Meraki.Cli\n\nOnce installed, go to an empty folder and type:\n\n\tdotnet new Meraki [--name Project.Namespace] [--apiKey=YourApiKey]\n\nIf you do not specify the namespace with --name, the folder name is used instead.\nIf you do not specify an API key, modify the appsettings.json file.  After this, build and run with:\n\n\tdotnet run\n\nThis should provide some basic information about your Meraki account to demonstrate a working project.\n\nYou should then inspect and modify the contents of Application.cs.",
+    "Copyright": "Panoramic Data Limited 2020",
+    "Authors": "David Bond",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/panoramicdata/Meraki.Cli",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
     "Owners": "Microsoft",
@@ -12131,6 +12305,42 @@
     "IconPngUrl": "https://ionide.io/static/images/logo.png"
   },
   {
+    "Owners": "David Whitney",
+    "Version": "1.5.0.3",
+    "DownloadCount": 518,
+    "Templates": [
+      {
+        "Author": "David Whitney",
+        "Name": "C# Lib + GitHub Actions Build + NuGet Publishing",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common/Library"],
+        "ShortName": ["csghlib"],
+        "GroupIdentity": "electrichead-csghlib",
+        "Identity": "csghlib",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "David Whitney",
+        "Name": "C# Tool + GitHub Actions Build + NuGet Publishing",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Console"],
+        "ShortName": ["csghtool"],
+        "GroupIdentity": "electrichead-csghtool",
+        "Identity": "csghtool",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "4228e629bea6c6fbd49eed1e819b4ec50f5b78e2",
+    "Copyright": null,
+    "Authors": "David Whitney",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Wang Chuang",
     "Version": "1.0.0",
     "DownloadCount": 514,
@@ -12261,32 +12471,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "yaofeng",
-    "Version": "1.0.2",
-    "DownloadCount": 484,
-    "Templates": [
-      {
-        "Author": "yaofeng",
-        "Name": "Overt.GrpcTemplateV3.Service",
-        "Tags": {},
-        "Classifications": ["Common", "Console"],
-        "ShortName": ["OvertGrpcTemplateV3"],
-        "GroupIdentity": null,
-        "Identity": "Overt.GrpcTemplateV3.Service",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates the Grpc Service console app (by dotnetcore 3.1).",
-    "Copyright": null,
-    "Authors": "yaofeng",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Keven van Zuijlen",
     "Version": "1.0.0",
     "DownloadCount": 484,
@@ -12308,6 +12492,32 @@
     "Authors": "Keven van Zuijlen",
     "LicenseUrl": "https://github.com/Kevenvz/AspNetCoreVueBoilerplate/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/Kevenvz/AspNetCoreVueBoilerplate/",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "yaofeng",
+    "Version": "1.0.2",
+    "DownloadCount": 484,
+    "Templates": [
+      {
+        "Author": "yaofeng",
+        "Name": "Overt.GrpcTemplateV3.Service",
+        "Tags": {},
+        "Classifications": ["Common", "Console"],
+        "ShortName": ["OvertGrpcTemplateV3"],
+        "GroupIdentity": null,
+        "Identity": "Overt.GrpcTemplateV3.Service",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates the Grpc Service console app (by dotnetcore 3.1).",
+    "Copyright": null,
+    "Authors": "yaofeng",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -12947,6 +13157,32 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "WQL",
+    "Version": "1.0.2",
+    "DownloadCount": 360,
+    "Templates": [
+      {
+        "Author": "WQL",
+        "Name": "WQLWebAPITemplate",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Web/WebAPI"],
+        "ShortName": ["wqlwebapi"],
+        "GroupIdentity": null,
+        "Identity": "WQLWebAPI.Mongodb",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "ASP.NET CORE WebAPI with Mongodb",
+    "Copyright": null,
+    "Authors": "WQL",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": null,
     "Version": "1.0.4",
     "DownloadCount": 360,
@@ -12986,32 +13222,6 @@
     "Description": "Templates to create new SadConsole projects",
     "Copyright": null,
     "Authors": "Thraka",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "WQL",
-    "Version": "1.0.2",
-    "DownloadCount": 360,
-    "Templates": [
-      {
-        "Author": "WQL",
-        "Name": "WQLWebAPITemplate",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["wqlwebapi"],
-        "GroupIdentity": null,
-        "Identity": "WQLWebAPI.Mongodb",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "ASP.NET CORE WebAPI with Mongodb",
-    "Copyright": null,
-    "Authors": "WQL",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -13787,6 +13997,40 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Walther Alexis Pacheco Mazo",
+    "Version": "1.1.1",
+    "DownloadCount": 285,
+    "Templates": [
+      {
+        "Author": "Walther Alexis Pacheco",
+        "Name": "Exito Project DDD",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": [
+          "Web",
+          "WebAPI",
+          "Common",
+          "Library",
+          "Test",
+          "MSTest",
+          "Solution"
+        ],
+        "ShortName": ["exitoddd"],
+        "GroupIdentity": "Exito.Project.DDD",
+        "Identity": "Exito.Project.DDD.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating an application for Grupo Exito.",
+    "Copyright": null,
+    "Authors": "Walther Alexis Pacheco Mazo",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Larsson",
     "Version": "1.0.3",
     "DownloadCount": 284,
@@ -14107,32 +14351,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Arcus",
-    "Version": "0.4.0",
-    "DownloadCount": 268,
-    "Templates": [
-      {
-        "Author": "Arcus",
-        "Name": "Arcus Service Bus Topic v0.4.0",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Worker", "Service Bus", "Topic", "BoilerPlate"],
-        "ShortName": ["arcus-servicebus-topic"],
-        "GroupIdentity": null,
-        "Identity": "Arcus.Templates.ServiceBus.Topic",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Provide a template to easily build workers on a Azure Service Bus Topic.",
-    "Copyright": "Copyright (c) Arcus",
-    "Authors": "Arcus",
-    "LicenseUrl": "https://github.com/arcus-azure/arcus.templates/blob/master/LICENSE",
-    "ProjectUrl": "https://github.com/arcus-azure/arcus.templates",
-    "Package": null,
-    "IconUrl": "https://raw.githubusercontent.com/arcus-azure/arcus/master/media/arcus.png",
-    "IconPngUrl": "https://raw.githubusercontent.com/arcus-azure/arcus/master/media/arcus.png"
-  },
-  {
     "Owners": "Wiz",
     "Version": "1.1.27974",
     "DownloadCount": 268,
@@ -14157,6 +14375,32 @@
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Arcus",
+    "Version": "0.4.0",
+    "DownloadCount": 268,
+    "Templates": [
+      {
+        "Author": "Arcus",
+        "Name": "Arcus Service Bus Topic v0.4.0",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Worker", "Service Bus", "Topic", "BoilerPlate"],
+        "ShortName": ["arcus-servicebus-topic"],
+        "GroupIdentity": null,
+        "Identity": "Arcus.Templates.ServiceBus.Topic",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Provide a template to easily build workers on a Azure Service Bus Topic.",
+    "Copyright": "Copyright (c) Arcus",
+    "Authors": "Arcus",
+    "LicenseUrl": "https://github.com/arcus-azure/arcus.templates/blob/master/LICENSE",
+    "ProjectUrl": "https://github.com/arcus-azure/arcus.templates",
+    "Package": null,
+    "IconUrl": "https://raw.githubusercontent.com/arcus-azure/arcus/master/media/arcus.png",
+    "IconPngUrl": "https://raw.githubusercontent.com/arcus-azure/arcus/master/media/arcus.png"
   },
   {
     "Owners": "Object.NET, Inc.",
@@ -14403,6 +14647,32 @@
     "IconPngUrl": "http://trackableentities.github.io/images/tracking.png"
   },
   {
+    "Owners": "Daniel Carrera",
+    "Version": "0.1.1",
+    "DownloadCount": 225,
+    "Templates": [
+      {
+        "Author": "Daniel Carrera",
+        "Name": "Open Source Single-Sign-On Solution",
+        "Tags": {},
+        "Classifications": ["Web", "Solution", "Identity", "SSO"],
+        "ShortName": ["sso-sln"],
+        "GroupIdentity": null,
+        "Identity": "Wundr.Community.CreateIdentitySolution",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A (nearly) production ready Single-Sign-On Solution",
+    "Copyright": null,
+    "Authors": "Daniel Carrera",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Wiz",
     "Version": "1.1.26703",
     "DownloadCount": 224,
@@ -14455,32 +14725,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Jason Taylor",
-    "Version": "1.0.1",
-    "DownloadCount": 220,
-    "Templates": [
-      {
-        "Author": "Jason Taylor",
-        "Name": "Fixie Test Project",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Test", "Fixie"],
-        "ShortName": ["fixie"],
-        "GroupIdentity": null,
-        "Identity": "Fixie.NetCore.CSharp",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "A project that contains Fixie tests that can run on .NET Core on Windows, Linux, and MacOS.",
-    "Copyright": null,
-    "Authors": "Jason Taylor",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
-    "ProjectUrl": "https://github.com/jasontaylordev/Fixie.NetCore.ProjectTemplates",
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Aardvark Platform Team",
     "Version": "1.0.0",
     "DownloadCount": 220,
@@ -14512,6 +14756,32 @@
     "Authors": "Aardvark Platform Team",
     "LicenseUrl": null,
     "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Jason Taylor",
+    "Version": "1.0.1",
+    "DownloadCount": 220,
+    "Templates": [
+      {
+        "Author": "Jason Taylor",
+        "Name": "Fixie Test Project",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Test", "Fixie"],
+        "ShortName": ["fixie"],
+        "GroupIdentity": null,
+        "Identity": "Fixie.NetCore.CSharp",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A project that contains Fixie tests that can run on .NET Core on Windows, Linux, and MacOS.",
+    "Copyright": null,
+    "Authors": "Jason Taylor",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/jasontaylordev/Fixie.NetCore.ProjectTemplates",
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -14701,6 +14971,32 @@
     "IconPngUrl": "http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png"
   },
   {
+    "Owners": "David Coats",
+    "Version": "1.1.0",
+    "DownloadCount": 197,
+    "Templates": [
+      {
+        "Author": "David Coats",
+        "Name": "VS2017 Solution File",
+        "Tags": {},
+        "Classifications": ["Solution"],
+        "ShortName": ["sln2017"],
+        "GroupIdentity": null,
+        "Identity": "R5T.Templates.VS2017.Solution",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Create an empty Visual Studio 2017 solution containing no projects.",
+    "Copyright": null,
+    "Authors": "David Coats",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Haryz Izzudin",
     "Version": "3.0.0",
     "DownloadCount": 197,
@@ -14753,32 +15049,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "qingsong youdao",
-    "Version": "1.0.1",
-    "DownloadCount": 193,
-    "Templates": [
-      {
-        "Author": "qingsong yuodao",
-        "Name": "QsModular Dotnet",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["qsmodulartpl"],
-        "GroupIdentity": null,
-        "Identity": "QsModular.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates a core webapi app.",
-    "Copyright": null,
-    "Authors": "qingsong youdao",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Ioannis G.",
     "Version": "1.1.0",
     "DownloadCount": 193,
@@ -14800,6 +15070,32 @@
     "Authors": "Ioannis G.",
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/JohnTheGr8/Wox.Plugin.Template",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "qingsong youdao",
+    "Version": "1.0.1",
+    "DownloadCount": 193,
+    "Templates": [
+      {
+        "Author": "qingsong yuodao",
+        "Name": "QsModular Dotnet",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Web/WebAPI"],
+        "ShortName": ["qsmodulartpl"],
+        "GroupIdentity": null,
+        "Identity": "QsModular.Template",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates a core webapi app.",
+    "Copyright": null,
+    "Authors": "qingsong youdao",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -15070,32 +15366,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Fabian Juette",
-    "Version": "1.0.2",
-    "DownloadCount": 165,
-    "Templates": [
-      {
-        "Author": "Fabian Juette",
-        "Name": "MS WebApi template in ddd style",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["DDD-Api", "C#8"],
-        "ShortName": ["ddd-webapi"],
-        "GroupIdentity": "FJuette.Template",
-        "Identity": "FJuette.Template.WebApi",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": ".Net Core 3.1 WebApi template with ddd example model classes.\n      Preconfigured with Automapper, MediatR, FluentValidation, XUnit, FluentAssertations, Health Checks,\n      JwtAuthentication, FxCopAnalyzers, EF Core 3.1, Serilog and Swagger.",
-    "Copyright": "Fabian Juette",
-    "Authors": "Fabian Juette",
-    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
-    "ProjectUrl": "https://github.com/FJuette/tusk-ms",
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": null,
     "Version": "0.0.3",
     "DownloadCount": 165,
@@ -15124,6 +15394,32 @@
     "Authors": "datascience-project-template",
     "LicenseUrl": null,
     "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Fabian Juette",
+    "Version": "1.0.2",
+    "DownloadCount": 165,
+    "Templates": [
+      {
+        "Author": "Fabian Juette",
+        "Name": "MS WebApi template in ddd style",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["DDD-Api", "C#8"],
+        "ShortName": ["ddd-webapi"],
+        "GroupIdentity": "FJuette.Template",
+        "Identity": "FJuette.Template.WebApi",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": ".Net Core 3.1 WebApi template with ddd example model classes.\n      Preconfigured with Automapper, MediatR, FluentValidation, XUnit, FluentAssertations, Health Checks,\n      JwtAuthentication, FxCopAnalyzers, EF Core 3.1, Serilog and Swagger.",
+    "Copyright": "Fabian Juette",
+    "Authors": "Fabian Juette",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": "https://github.com/FJuette/tusk-ms",
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -15343,32 +15639,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Eric Peng",
-    "Version": "1.0.0",
-    "DownloadCount": 152,
-    "Templates": [
-      {
-        "Author": "Eric Peng",
-        "Name": "Kyrios.Core Dotnet",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["kyrioscoretpl"],
-        "GroupIdentity": null,
-        "Identity": "Kyrios.Core.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates a Kyrios core webapi app.",
-    "Copyright": null,
-    "Authors": "Eric Peng",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "ericsink",
     "Version": "0.1.1",
     "DownloadCount": 152,
@@ -15415,25 +15685,25 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "zhu yi",
-    "Version": "1.2.0",
-    "DownloadCount": 151,
+    "Owners": "Eric Peng",
+    "Version": "1.0.0",
+    "DownloadCount": 152,
     "Templates": [
       {
-        "Author": "zhu yi",
-        "Name": "zyCATApi.Template.Core Dotnet",
+        "Author": "Eric Peng",
+        "Name": "Kyrios.Core Dotnet",
         "Tags": { "language": "C#", "type": "project" },
         "Classifications": ["Web/WebAPI"],
-        "ShortName": ["zyCATApi"],
+        "ShortName": ["kyrioscoretpl"],
         "GroupIdentity": null,
-        "Identity": "zyCATApi.Template.Core",
+        "Identity": "Kyrios.Core.Template",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "Creates a Blog.Core.Webapi core webapi app.",
+    "Description": "Creates a Kyrios core webapi app.",
     "Copyright": null,
-    "Authors": "zhu yi",
+    "Authors": "Eric Peng",
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": null,
@@ -15503,6 +15773,32 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "zhu yi",
+    "Version": "1.2.0",
+    "DownloadCount": 151,
+    "Templates": [
+      {
+        "Author": "zhu yi",
+        "Name": "zyCATApi.Template.Core Dotnet",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Web/WebAPI"],
+        "ShortName": ["zyCATApi"],
+        "GroupIdentity": null,
+        "Identity": "zyCATApi.Template.Core",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates a Blog.Core.Webapi core webapi app.",
+    "Copyright": null,
+    "Authors": "zhu yi",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Yas Ikeda (ycode.laboratory@gmail.com)",
     "Version": "1.1.0",
     "DownloadCount": 148,
@@ -15555,35 +15851,45 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "Otávio Larrosa",
-    "Version": "1.0.0",
-    "DownloadCount": 141,
+    "Owners": "Mega International",
+    "Version": "1.0.7",
+    "DownloadCount": 145,
     "Templates": [
       {
-        "Author": "Otávio Larrosa",
-        "Name": "MongoDb Microservice Base",
-        "Tags": {},
-        "Classifications": ["Common", "Microservices"],
-        "ShortName": ["mongodb-ms-base"],
-        "GroupIdentity": null,
-        "Identity": "mongodb-ms",
+        "Author": "Mega International",
+        "Name": "HAS macro",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Hopex", "HAS", "Mega", "Macro"],
+        "ShortName": ["has-macro"],
+        "GroupIdentity": "Mega.HasMacro",
+        "Identity": "Mega.HasMacro",
         "TemplatePackId": null
       },
       {
-        "Author": "Otávio Larrosa",
-        "Name": "NHibernate Microservice Base",
-        "Tags": {},
-        "Classifications": ["Common", "Microservices"],
-        "ShortName": ["nh-ms-base"],
-        "GroupIdentity": null,
-        "Identity": "nhibernate-ms",
+        "Author": "Mega International",
+        "Name": "HAS web macro",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Hopex", "HAS", "Mega", "WebService", "Macro"],
+        "ShortName": ["has-webmacro"],
+        "GroupIdentity": "Mega.HasWebMacro",
+        "Identity": "Mega.HasWebMacro",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "Mega International",
+        "Name": "HAS web site module",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Hopex", "has", "Mega", "Site"],
+        "ShortName": ["has-website"],
+        "GroupIdentity": "Mega.HasWebSite",
+        "Identity": "Mega.HasWebSite",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "Templates to use when creating an application.",
+    "Description": "Templates to use with Hopex Application Server.",
     "Copyright": null,
-    "Authors": "Otávio Larrosa",
+    "Authors": "Mega International",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -15648,6 +15954,42 @@
     "Authors": "Darcy Thomas (darcyio)",
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/darcythomas/DextroLevo.WebTemplate",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Otávio Larrosa",
+    "Version": "1.0.0",
+    "DownloadCount": 141,
+    "Templates": [
+      {
+        "Author": "Otávio Larrosa",
+        "Name": "MongoDb Microservice Base",
+        "Tags": {},
+        "Classifications": ["Common", "Microservices"],
+        "ShortName": ["mongodb-ms-base"],
+        "GroupIdentity": null,
+        "Identity": "mongodb-ms",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "Otávio Larrosa",
+        "Name": "NHibernate Microservice Base",
+        "Tags": {},
+        "Classifications": ["Common", "Microservices"],
+        "ShortName": ["nh-ms-base"],
+        "GroupIdentity": null,
+        "Identity": "nhibernate-ms",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating an application.",
+    "Copyright": null,
+    "Authors": "Otávio Larrosa",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -15855,6 +16197,32 @@
     "IconPngUrl": "https://en.gravatar.com/userimage/33568853/8935cd04180f2c2e1c639cd310b60875.png?size=200"
   },
   {
+    "Owners": "David Tung",
+    "Version": "1.0.6",
+    "DownloadCount": 121,
+    "Templates": [
+      {
+        "Author": "David Tung",
+        "Name": "isRock.Template.LineLogin",
+        "Tags": { "language": "C#", "type": "item" },
+        "Classifications": ["Web", "ASP.NET"],
+        "ShortName": ["linelogin"],
+        "GroupIdentity": null,
+        "Identity": "isRock.Template.LineLogin",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "LINE Login Item Templates",
+    "Copyright": "isRock",
+    "Authors": "David Tung",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "LeaFrock",
     "Version": "0.1.0",
     "DownloadCount": 121,
@@ -15881,25 +16249,25 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "David Tung",
-    "Version": "1.0.6",
-    "DownloadCount": 121,
+    "Owners": "Lucas Mundim, Paulo H Abreu",
+    "Version": "1.0.0",
+    "DownloadCount": 119,
     "Templates": [
       {
-        "Author": "David Tung",
-        "Name": "isRock.Template.LineLogin",
-        "Tags": { "language": "C#", "type": "item" },
-        "Classifications": ["Web", "ASP.NET"],
-        "ShortName": ["linelogin"],
+        "Author": "Paulo H Abreu",
+        "Name": "BLiP Template - Digital Employee",
+        "Tags": { "language": "C#" },
+        "Classifications": ["API", "ASP.NET Core", "BLiP"],
+        "ShortName": ["blip-digitalemployee"],
         "GroupIdentity": null,
-        "Identity": "isRock.Template.LineLogin",
+        "Identity": "Blip.Template.DigitalEmployee",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "LINE Login Item Templates",
-    "Copyright": "isRock",
-    "Authors": "David Tung",
+    "Description": "Starts a new Digital Employee BLiP project",
+    "Copyright": null,
+    "Authors": "Lucas Mundim, Paulo H Abreu",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -15927,32 +16295,6 @@
     "Copyright": null,
     "Authors": "jian-tong.li",
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "Lucas Mundim, Paulo H Abreu",
-    "Version": "1.0.0",
-    "DownloadCount": 119,
-    "Templates": [
-      {
-        "Author": "Paulo H Abreu",
-        "Name": "BLiP Template - Digital Employee",
-        "Tags": { "language": "C#" },
-        "Classifications": ["API", "ASP.NET Core", "BLiP"],
-        "ShortName": ["blip-digitalemployee"],
-        "GroupIdentity": null,
-        "Identity": "Blip.Template.DigitalEmployee",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Starts a new Digital Employee BLiP project",
-    "Copyright": null,
-    "Authors": "Lucas Mundim, Paulo H Abreu",
-    "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
@@ -16177,58 +16519,6 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "CodeBlaze",
-    "Version": "1.0.0",
-    "DownloadCount": 106,
-    "Templates": [
-      {
-        "Author": "CodeBlaze",
-        "Name": "CortexEngine Cortals Project",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["CortexEngine", "Cortals"],
-        "ShortName": ["cortexengine-cortals"],
-        "GroupIdentity": null,
-        "Identity": "CortexEngine.Cortals",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Templates for CortexEngine",
-    "Copyright": null,
-    "Authors": "CodeBlaze",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "Ole Consignado",
-    "Version": "1.0.0",
-    "DownloadCount": 106,
-    "Templates": [
-      {
-        "Author": "Ole Consignado",
-        "Name": "Subscriber Hosted Worker",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["HostedService"],
-        "ShortName": ["subscriberhostedworker"],
-        "GroupIdentity": null,
-        "Identity": "SubscriberHostedWorker",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Otc.Messaging.Subscriber.HW project template.",
-    "Copyright": null,
-    "Authors": "Ole Consignado",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
     "Owners": "Artech",
     "Version": "1.0.1",
     "DownloadCount": 106,
@@ -16265,6 +16555,94 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "Ole Consignado",
+    "Version": "1.0.0",
+    "DownloadCount": 106,
+    "Templates": [
+      {
+        "Author": "Ole Consignado",
+        "Name": "Subscriber Hosted Worker",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["HostedService"],
+        "ShortName": ["subscriberhostedworker"],
+        "GroupIdentity": null,
+        "Identity": "SubscriberHostedWorker",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Otc.Messaging.Subscriber.HW project template.",
+    "Copyright": null,
+    "Authors": "Ole Consignado",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "CodeBlaze",
+    "Version": "1.0.0",
+    "DownloadCount": 106,
+    "Templates": [
+      {
+        "Author": "CodeBlaze",
+        "Name": "CortexEngine Cortals Project",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["CortexEngine", "Cortals"],
+        "ShortName": ["cortexengine-cortals"],
+        "GroupIdentity": null,
+        "Identity": "CortexEngine.Cortals",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates for CortexEngine",
+    "Copyright": null,
+    "Authors": "CodeBlaze",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Me",
+    "Version": "1.1.0",
+    "DownloadCount": 104,
+    "Templates": [
+      {
+        "Author": "Me",
+        "Name": "EDAQuickstart template for microservice with ASP.Net enabled",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Event", "Quickstart", "Event Driven Architecture"],
+        "ShortName": ["edaq-template-asp"],
+        "GroupIdentity": null,
+        "Identity": "EDAQuickstart.Template.Asp",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "Me",
+        "Name": "EDAQuickstart template",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "Console", "C#8"],
+        "ShortName": ["helloworldextended"],
+        "GroupIdentity": null,
+        "Identity": "EDAQuickstart.HelloWorld",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating an application for Adatum Corporation.",
+    "Copyright": null,
+    "Authors": "Me",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "周游",
     "Version": "1.0.0.2",
     "DownloadCount": 102,
@@ -16286,58 +16664,6 @@
     "Authors": "周游",
     "LicenseUrl": null,
     "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "Maple512",
-    "Version": "1.0.0",
-    "DownloadCount": 101,
-    "Templates": [
-      {
-        "Author": "Maple512",
-        "Name": "Maple branch module template",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Solution"],
-        "ShortName": ["mt"],
-        "GroupIdentity": null,
-        "Identity": "Maple.Branch.Module",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Based on abp",
-    "Copyright": null,
-    "Authors": "Maple512",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "https://github.com/chrisfcarroll",
-    "Version": "1.0.0.1",
-    "DownloadCount": 101,
-    "Templates": [
-      {
-        "Author": "https://github.com/chrisfcarroll",
-        "Name": "Consoleable Component",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Common", "Console", "ClassLibrary"],
-        "ShortName": ["consoleable"],
-        "GroupIdentity": null,
-        "Identity": "consoleable.1",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "A very-slightly-opinionated `dotnet new` template for a component which may be used\nfrom the commandline or as an class library.\n\nUsage:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ndotnet new consoleable [--name MyName] [--xunit] [--nunit] [--sln] [--serilog] [--testbase]\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n# --xunit : also generate a skeleton xunit test project for the new project\n# --nunit : also generate a skeleton nunit test project for the new project\n# --sln : also generate a solution file referencing the new project(s).\n# --serilog : use Serilog for logging\n# --testbase : add TestBase fluent assertions to your test project\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nhttps://github.com/chrisfcarroll/Consoleable",
-    "Copyright": "(c) Chris F. Carroll, 2013-2020",
-    "Authors": "https://github.com/chrisfcarroll",
-    "LicenseUrl": "https://licenses.nuget.org/GPL-3.0-only",
-    "ProjectUrl": "https://github.com/chrisfcarroll/Consoleable",
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -16372,6 +16698,32 @@
     "Authors": "Walther Alexis Pacheco Mazo",
     "LicenseUrl": null,
     "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "https://github.com/chrisfcarroll",
+    "Version": "1.0.0.1",
+    "DownloadCount": 101,
+    "Templates": [
+      {
+        "Author": "https://github.com/chrisfcarroll",
+        "Name": "Consoleable Component",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "Console", "ClassLibrary"],
+        "ShortName": ["consoleable"],
+        "GroupIdentity": null,
+        "Identity": "consoleable.1",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A very-slightly-opinionated `dotnet new` template for a component which may be used\nfrom the commandline or as an class library.\n\nUsage:\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\ndotnet new consoleable [--name MyName] [--xunit] [--nunit] [--sln] [--serilog] [--testbase]\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n# --xunit : also generate a skeleton xunit test project for the new project\n# --nunit : also generate a skeleton nunit test project for the new project\n# --sln : also generate a solution file referencing the new project(s).\n# --serilog : use Serilog for logging\n# --testbase : add TestBase fluent assertions to your test project\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\nhttps://github.com/chrisfcarroll/Consoleable",
+    "Copyright": "(c) Chris F. Carroll, 2013-2020",
+    "Authors": "https://github.com/chrisfcarroll",
+    "LicenseUrl": "https://licenses.nuget.org/GPL-3.0-only",
+    "ProjectUrl": "https://github.com/chrisfcarroll/Consoleable",
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
     "IconPngUrl": "/images/NuGet_project_logo.svg"
@@ -16573,25 +16925,271 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "xiaobao",
+    "Owners": "João Paulo de Castro Lima",
     "Version": "1.0.0",
     "DownloadCount": 90,
     "Templates": [
       {
-        "Author": "xiaobao",
-        "Name": "xiaobaoDdd template",
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Abstract Factory",
         "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["WebApi"],
-        "ShortName": ["xiaobaoDdd template"],
-        "GroupIdentity": "xiaobaoDdd template",
-        "Identity": "xiaobaoDdd template",
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofaf"],
+        "GroupIdentity": null,
+        "Identity": "GoF.AF",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Adapter",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofadapt"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Adapt",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Bridge",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofbridge"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Bridge",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Builder",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofbuil"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Builder",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Chain",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofchain"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Chain",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Command",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofcommand"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Command",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Composite",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofcompo"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Composite",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Decorator",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofdeco"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Decorator",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Facade",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["goffaca"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Facade",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Factory Method",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["goffm"],
+        "GroupIdentity": null,
+        "Identity": "GoF.FM",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Flyweight",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["goffly"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Flyweight",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Interpreter",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofinter"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Interpreter",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Iterator",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofitera"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Iterator",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Mediator",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofmedia"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Mediator",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Memento",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofmeme"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Memento",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Observer",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofobs"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Observer",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Prototype",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofproto"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Prototype",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Proxy",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofproxy"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Proxy",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Singleton",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofsingle"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Singleton",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: State",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofstate"],
+        "GroupIdentity": null,
+        "Identity": "GoF.State",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Strategy",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofstra"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Strategy",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Template Method",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["goftm"],
+        "GroupIdentity": null,
+        "Identity": "GoF.TemplateMethod",
+        "TemplatePackId": null
+      },
+      {
+        "Author": "João Paulo de Castro Lima",
+        "Name": "GoF: Visitor",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Common", "ClassLibrary", "C#"],
+        "ShortName": ["gofvisitor"],
+        "GroupIdentity": null,
+        "Identity": "GoF.Visitor",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "Custom Template, including WebApi",
+    "Description": "Gang of Four Pattern Templates",
     "Copyright": null,
-    "Authors": "xiaobao",
+    "Authors": "João Paulo de Castro Lima",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/joao2391/DotNetGoF",
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Brady Gaster",
+    "Version": "1.0.0",
+    "DownloadCount": 90,
+    "Templates": [
+      {
+        "Author": "Brady Gaster",
+        "Name": "downr blog post",
+        "Tags": {},
+        "Classifications": ["post", "blog"],
+        "ShortName": ["post"],
+        "GroupIdentity": null,
+        "Identity": "downr.post",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to make it easier to blog using downr.",
+    "Copyright": null,
+    "Authors": "Brady Gaster",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -16730,6 +17328,32 @@
     "Description": "Custom Template, including WebApi",
     "Copyright": null,
     "Authors": "xiaobao",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
+    "Owners": "Walther Alexis Pacheco Mazo",
+    "Version": "1.0.0",
+    "DownloadCount": 83,
+    "Templates": [
+      {
+        "Author": "Walther Alexis Pacheco",
+        "Name": "Exito  Fargate",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Config"],
+        "ShortName": ["exitofargate"],
+        "GroupIdentity": "Exito.Fargate",
+        "Identity": "Exito.Fargate",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates used when it's creating an fargate with cloudformation for Grupo Exito.",
+    "Copyright": null,
+    "Authors": "Walther Alexis Pacheco Mazo",
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
@@ -16991,6 +17615,32 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
+    "Owners": "yyh",
+    "Version": "1.0.0",
+    "DownloadCount": 69,
+    "Templates": [
+      {
+        "Author": "yyh",
+        "Name": "YYH.Core.Webapi.Template",
+        "Tags": { "language": "C#", "type": "project" },
+        "Classifications": ["Web/WebAPI"],
+        "ShortName": ["yyhcorewebapi"],
+        "GroupIdentity": null,
+        "Identity": "YYH.Core.Webapi.Template",
+        "TemplatePackId": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": ".net core3.1 webapi template",
+    "Copyright": "Copyright 2020",
+    "Authors": "yyh",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": null,
+    "Package": null,
+    "IconUrl": "/images/NuGet_project_logo.svg",
+    "IconPngUrl": "/images/NuGet_project_logo.svg"
+  },
+  {
     "Owners": "Info Support",
     "Version": "1.0.0",
     "DownloadCount": 69,
@@ -17021,32 +17671,6 @@
     "Copyright": null,
     "Authors": "Info Support",
     "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": null,
-    "IconUrl": "/images/NuGet_project_logo.svg",
-    "IconPngUrl": "/images/NuGet_project_logo.svg"
-  },
-  {
-    "Owners": "yyh",
-    "Version": "1.0.0",
-    "DownloadCount": 69,
-    "Templates": [
-      {
-        "Author": "yyh",
-        "Name": "YYH.Core.Webapi.Template",
-        "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["yyhcorewebapi"],
-        "GroupIdentity": null,
-        "Identity": "YYH.Core.Webapi.Template",
-        "TemplatePackId": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": ".net core3.1 webapi template",
-    "Copyright": "Copyright 2020",
-    "Authors": "yyh",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",
@@ -17437,26 +18061,26 @@
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
-    "Owners": "PGS",
-    "Version": "1.0.2",
-    "DownloadCount": 0,
+    "Owners": "Walther Alexis Pacheco Mazo",
+    "Version": "1.0.0",
+    "DownloadCount": 41,
     "Templates": [
       {
-        "Author": "lao zhang",
-        "Name": "PSharp.Core Dotnet",
+        "Author": "Walther Alexis Pacheco",
+        "Name": "Exito  Buildspec",
         "Tags": { "language": "C#", "type": "project" },
-        "Classifications": ["Web/WebAPI"],
-        "ShortName": ["PSharp.Template"],
-        "GroupIdentity": null,
-        "Identity": "PSharp.Core.Template",
+        "Classifications": ["Web"],
+        "ShortName": ["exitobuildspec"],
+        "GroupIdentity": "Exito.Buildsdpec",
+        "Identity": "Exito.Buildspec",
         "TemplatePackId": null
       }
     ],
     "DownloadUrl": null,
-    "Description": "Creates a core webapi app.",
+    "Description": "Templates used when it's creating an buildspec for Grupo Exito.",
     "Copyright": null,
-    "Authors": "PGS",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "Authors": "Walther Alexis Pacheco Mazo",
+    "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": null,
     "IconUrl": "/images/NuGet_project_logo.svg",

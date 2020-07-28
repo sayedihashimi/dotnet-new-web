@@ -2,7 +2,7 @@
   "profiles": {
     "TemplatesConsole": {
       "commandName": "Project",
-      "commandLineArgs": "report --verbose -st template"
+      "commandLineArgs": "report --verbose -st template -st templates"
     }
   }
 }
