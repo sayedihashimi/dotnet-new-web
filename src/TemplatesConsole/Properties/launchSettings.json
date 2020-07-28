@@ -2,7 +2,7 @@
   "profiles": {
     "TemplatesConsole": {
       "commandName": "Project",
-      "commandLineArgs": "query --verbose -f c:\\temp\\templates.json -st template"
+      "commandLineArgs": "report --verbose -st template"
     }
   }
 }

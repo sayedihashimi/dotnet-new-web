@@ -28,8 +28,14 @@ namespace TemplatesConsole {
             var helloCommand = new MyHelloCommand2();
             var barCommand = new MyBarCommad();
             var queryCommand = new QueryCommand(GetFromServices<INuGetHelper>());
+            var reportCommand = new ReportCommand(
+                GetFromServices<HttpClient>(),
+                GetFromServices<INuGetHelper>(),
+                GetFromServices<IRemoteFile>(),
+                GetFromServices<INuGetPackageDownloader>());
 
             app.Command(queryCommand.Name, queryCommand.Setup);
+            app.Command(reportCommand.Name, reportCommand.Setup);
             app.Command(helloCommand.Name, helloCommand.Setup);
             app.Command(barCommand.Name, barCommand.Setup);
 

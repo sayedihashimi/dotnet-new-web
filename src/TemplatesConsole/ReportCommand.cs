@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using TemplatesShared;
@@ -12,14 +13,20 @@ namespace TemplatesConsole {
         protected HttpClient _httpClient = new HttpClient();
         private INuGetHelper _nugetHelper;
         private IRemoteFile _remoteFile;
-        public ReportCommand(HttpClient httpClient, INuGetHelper nugetHelper, IRemoteFile remoteFile): base() {
+        private INuGetPackageDownloader _nugetPkgDownloader;
+        public ReportCommand(HttpClient httpClient, INuGetHelper nugetHelper, IRemoteFile remoteFile, INuGetPackageDownloader nugetPkgDownloader): base() {
             Debug.Assert(httpClient != null);
             Debug.Assert(nugetHelper != null);
             Debug.Assert(remoteFile != null);
+            Debug.Assert(nugetPkgDownloader != null);
 
             _httpClient = httpClient;
             _nugetHelper = nugetHelper;
             _remoteFile = remoteFile;
+            _nugetPkgDownloader = nugetPkgDownloader;
+
+            Name = "report";
+            Description = "will create the template report into a json file";
         }
 
         public override void Setup(CommandLineApplication command) {
@@ -41,13 +48,24 @@ namespace TemplatesConsole {
                 "-st|--searchTerm",
                 "term to search on nuget. This option may be provided multiple times. If not provided the default set of values will be used.",
                 CommandOptionType.MultipleValue);
-            optionSearchTerms.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
+            // optionSearchTerms.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
 
             OnExecute = () => {
-                var verbose = OptionVerbose.HasValue();
-                
- 
+                EnableVerboseOption = OptionVerbose.HasValue();
 
+                var report = new TemplateReport(_nugetHelper, _httpClient, _nugetPkgDownloader, _remoteFile);
+
+                var searchTerms = GetDefaultSearchTerms();
+                if (optionSearchTerms.HasValue()) {
+                    searchTerms = optionSearchTerms.Values.ToArray();
+                }
+
+                var templateReportPath = Path.Combine(Directory.GetCurrentDirectory(), "template-report.json");
+                if (optionReportJsonPath.HasValue()) {
+                    templateReportPath = optionReportJsonPath.Value();
+                }
+
+                report.GenerateTemplateJsonReportAsync(searchTerms, templateReportPath).Wait();
 
                 return 1;
             };

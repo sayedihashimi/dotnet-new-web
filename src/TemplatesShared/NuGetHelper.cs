@@ -96,9 +96,19 @@ namespace TemplatesShared {
         protected async Task<IEnumerable<NuGetPackage>> Consume(BufferBlock<string>queryStringsQueue, HttpClient httpClient) {
             var resultList = new List<NuGetPackage>();
 
+            List<string> processed = new List<string>();
+
             while(await queryStringsQueue.OutputAvailableAsync()) {
-                var result = await ExecuteQueryAsync(httpClient, await queryStringsQueue.ReceiveAsync());
-                resultList.AddRange(result.Packages);
+                var query = await queryStringsQueue.ReceiveAsync();
+                if (!processed.Contains(query)) {
+                    var result = await ExecuteQueryAsync(httpClient, query);
+                    resultList.AddRange(result.Packages);
+                    
+                    processed.Add(query);
+                }
+                else {
+                    Console.WriteLine("skipping");
+                }
             }
 
             return resultList;
@@ -138,8 +148,10 @@ namespace TemplatesShared {
             NuGetSearchApiResult result = null;
             while(numRuns < numRetries) {
                 try {
+                    Console.WriteLine($"query: {queryUri.ToString()}");
                     var resultJson = await httpClient.GetStringAsync(queryUri);
                     result = JsonConvert.DeserializeObject<NuGetSearchApiResult>(resultJson);
+                    break;
                 }
                 catch(Exception ex) {
                     Console.WriteLine($"warning: {ex.ToString()}");

@@ -8,6 +8,7 @@ using System.Threading.Tasks.Dataflow;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace TemplatesShared {
     public class TemplateReport {
@@ -52,14 +53,17 @@ namespace TemplatesShared {
                     pkgNamesWitoutPackages.Add(pkg.Id);
                 }
             }
+
             // todo: remove this
             File.WriteAllText(@"c:\temp\packages-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates));
             File.WriteAllText(@"c:\temp\package-names-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages));
 
+
+            // write to temp folder and then copy to dest
+            var tempfile = Path.GetTempFileName();
+            File.WriteAllText(tempfile, JsonConvert.SerializeObject(templatePackages));
+            File.Move(tempfile, jsonReportFilepath);
             // 4: look at TemplatePackages
-
-
-            throw new NotImplementedException();
         }
 
         // todo: improve this
