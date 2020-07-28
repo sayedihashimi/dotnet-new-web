@@ -2,6 +2,8 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,9 @@ namespace TemplatesShared
         public string Author { get; set; }
         public string Name { get; set; }
         public Dictionary<string, string> Tags { get; set; } = new Dictionary<string, string>();
+
+        // TODO: with new json file generator I believe that this attribute is no longer needed. 
+        // It should harm much though.
         [JsonConverter(typeof(StringArrayConverter))]
         public string[] Classifications { get; set; }
         public string ShortName { get; set; }
@@ -130,6 +135,19 @@ namespace TemplatesShared
 
             return result;
             // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
+        }
+        public static TemplatePack CreateFromNuSpec(string pathToNuspecFile, List<string>pathToTemplateJsonFiles) {
+            Debug.Assert(File.Exists(pathToNuspecFile));
+            Debug.Assert(pathToTemplateJsonFiles != null && pathToTemplateJsonFiles.Count > 0);
+
+
+
+            //var result = new TemplatePack {
+            //    Authors = String.Join(';', nugetPackage.Authors)
+            //};
+
+            throw new NotImplementedException();
+
         }
     }
     public class TemplateConverter : JsonConverter

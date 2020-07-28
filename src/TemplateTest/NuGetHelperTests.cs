@@ -59,5 +59,16 @@ namespace TemplateTest {
 
             Assert.True(1 == 1);
         }
+
+
+        [Fact]
+        public void TestNuspecReader01() {
+            // todo: fix to remove this
+            string nuspecfilepath = @"C:\Users\sayedha\AppData\Local\templatereport\extracted\microsoft.dotnet.web.projecttemplates.2.2.2.2.8.nupkg\Microsoft.DotNet.Web.ProjectTemplates.2.2.nuspec";
+            NuspecFile nuspec = NuspecFile.CreateFromNuspecFile(nuspecfilepath);
+
+            Assert.NotNull(nuspec);
+            Assert.True(!string.IsNullOrEmpty(nuspec.Metadata.Id));
+        }
     }
 }
