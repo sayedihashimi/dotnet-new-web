@@ -2,7 +2,11 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,10 +16,15 @@ namespace TemplatesShared
     {
         public string Author { get; set; }
         public string Name { get; set; }
+        [JsonConverter(typeof(DictionaryConverter))]
         public Dictionary<string, string> Tags { get; set; } = new Dictionary<string, string>();
+
+        // TODO: with new json file generator I believe that this attribute is no longer needed. 
+        // It should harm much though.
         [JsonConverter(typeof(StringArrayConverter))]
         public string[] Classifications { get; set; }
-        public string ShortName { get; set; }
+        [JsonConverter(typeof(StringArrayConverter))]
+        public string[] ShortName { get; set; }
         public string GroupIdentity { get; set; }
         public string Identity { get; set; }
         [JsonIgnore()]
@@ -92,6 +101,8 @@ namespace TemplatesShared
                 }
             }
 
+            results = results.OrderBy((t) => -1*t.DownloadCount).ToList();
+
             return results;
         }
 
@@ -130,6 +141,56 @@ namespace TemplatesShared
 
             return result;
             // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
+        }
+        // TODO: Move these methods somewhere else
+        public static TemplatePack CreateFromNuSpec(NuGetPackage pkg, string pathToNuspecFile, List<string>pathToTemplateJsonFiles) {
+            Debug.Assert(pkg != null);
+            Debug.Assert(File.Exists(pathToNuspecFile));
+            Debug.Assert(pathToTemplateJsonFiles != null && pathToTemplateJsonFiles.Count > 0);
+
+            try {
+                var nuspec = NuspecFile.CreateFromNuspecFile(pathToNuspecFile);
+                var templateList = new List<Template>();
+                foreach (var filepath in pathToTemplateJsonFiles) {
+                    Console.WriteLine($"reading template file from {filepath}");
+                    try {
+                        var template = CreateTemplateFromJsonFile(filepath);
+                        templateList.Add(template);
+                    }
+                    catch(Exception ex) {
+                        Console.WriteLine(ex.ToString());
+                        throw ex;
+                    }
+                }
+
+                // TODO: get download count
+                var templatePack = new TemplatePack {
+                    Authors = nuspec.Metadata.Authors,
+                    Copyright = nuspec.Metadata.Copyright,
+                    Description = nuspec.Metadata.Description,
+                    IconUrl = nuspec.Metadata.IconUrl,
+                    LicenseUrl = nuspec.Metadata.LicenseUrl,
+                    Owners = nuspec.Metadata.Owners,
+                    ProjectUrl = nuspec.Metadata.ProjectUrl,
+                    Version = nuspec.Metadata.Version,
+                    Templates = templateList.ToArray(),
+                    DownloadCount = pkg.TotalDownloads
+                };
+
+                return templatePack;
+            }
+            catch(Exception ex) {
+                Console.WriteLine(ex.ToString());
+                throw ex;
+            }
+        }
+
+        public static Template CreateTemplateFromJsonFile(string filepath) {
+            if (!File.Exists(filepath)) {
+                throw new ArgumentNullException($"Cannot find template json file at '{filepath}");
+            }
+
+            return JsonConvert.DeserializeObject<Template>(File.ReadAllText(filepath));
         }
     }
     public class TemplateConverter : JsonConverter
@@ -200,6 +261,28 @@ namespace TemplatesShared
         {
             JToken t = JToken.FromObject(value);
             t.WriteTo(writer);
+        }
+    }
+    public class DictionaryConverter : JsonConverter {
+        public override bool CanConvert(Type objectType) {
+            return (objectType == typeof(Dictionary<string,string>) || objectType == typeof(Dictionary<string, object>));
+        }
+        public override bool CanRead => true;
+        public override bool CanWrite => false;
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+            var mapStringObj = serializer.Deserialize<Dictionary<string, object>>(reader);
+            var result = new Dictionary<string, string>();
+            foreach(var key in mapStringObj.Keys) {
+                var obj = mapStringObj[key];
+                if (obj.GetType() == typeof(string)) {
+                    result.Add(key, (string)obj);
+                }
+            }
+
+            return result;
+        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+            throw new NotImplementedException();
         }
     }
 }

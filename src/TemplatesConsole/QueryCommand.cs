@@ -24,11 +24,11 @@ namespace TemplatesConsole {
         public override void Setup(CommandLineApplication command) {
             base.Setup(command);
 
-            var optionQuery = command.Option<string>(
+            var optionSearchTerms = command.Option<string>(
                 "-st|--searchTerm",
                 "term to search on nuget. This option may be provided multiple times.",
                 CommandOptionType.MultipleValue);
-            optionQuery.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
+            optionSearchTerms.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
 
             var optionSaveFilePath = command.Option<string>(
                 "-f|--savefilepath",
@@ -42,7 +42,7 @@ namespace TemplatesConsole {
 
             OnExecute = () => {
                 var verbose = OptionVerbose.HasValue();
-                var searchTerms = optionQuery.ParsedValues.ToArray<string>();
+                var searchTerms = optionSearchTerms.ParsedValues.ToArray<string>();
                 string filepath = optionSaveFilePath.HasValue() ? optionSaveFilePath.Value() : null;
                 bool printResults = optionNoOutput.HasValue() ? true : false;
 

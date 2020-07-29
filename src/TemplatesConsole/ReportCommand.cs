@@ -1,0 +1,79 @@
+﻿using McMaster.Extensions.CommandLineUtils;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using TemplatesShared;
+
+namespace TemplatesConsole {
+    public class ReportCommand : TemplateCommand {
+        protected HttpClient _httpClient = new HttpClient();
+        private INuGetHelper _nugetHelper;
+        private IRemoteFile _remoteFile;
+        private INuGetPackageDownloader _nugetPkgDownloader;
+        public ReportCommand(HttpClient httpClient, INuGetHelper nugetHelper, IRemoteFile remoteFile, INuGetPackageDownloader nugetPkgDownloader): base() {
+            Debug.Assert(httpClient != null);
+            Debug.Assert(nugetHelper != null);
+            Debug.Assert(remoteFile != null);
+            Debug.Assert(nugetPkgDownloader != null);
+
+            _httpClient = httpClient;
+            _nugetHelper = nugetHelper;
+            _remoteFile = remoteFile;
+            _nugetPkgDownloader = nugetPkgDownloader;
+
+            Name = "report";
+            Description = "will create the template report into a json file";
+        }
+
+        public override void Setup(CommandLineApplication command) {
+            base.Setup(command);
+
+            var optionReportJsonPath = command.Option<string>(
+                "-rp|--jsonReportPath",
+                "path to where the json report should be written",
+                CommandOptionType.SingleValue);
+            
+            var optionCacheFolderPath = command.Option<string>(
+                "-cf|--cacheFolderPath",
+                $"directory path to where the local cache will be. Default path: '{_remoteFile.CacheFolderpath}'",
+                CommandOptionType.SingleValue);
+
+            //default: 'template','templates', 'ServiceStack.Core.Templates', 'BlackFox.DotnetNew.FSharpTemplates','libyear','libyear',
+            //'angular-cli.dotnet','Carna.ProjectTemplates','SerialSeb.Templates.ClassLibrary','Pioneer.Console.Boilerplate'
+            var optionSearchTerms = command.Option<string>(
+                "-st|--searchTerm",
+                "term to search on nuget. This option may be provided multiple times. If not provided the default set of values will be used.",
+                CommandOptionType.MultipleValue);
+            // optionSearchTerms.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
+
+            OnExecute = () => {
+                EnableVerboseOption = OptionVerbose.HasValue();
+
+                var report = new TemplateReport(_nugetHelper, _httpClient, _nugetPkgDownloader, _remoteFile);
+
+                var searchTerms = GetDefaultSearchTerms();
+                if (optionSearchTerms.HasValue()) {
+                    searchTerms = optionSearchTerms.Values.ToArray();
+                }
+
+                var templateReportPath = Path.Combine(Directory.GetCurrentDirectory(), "template-report.json");
+                if (optionReportJsonPath.HasValue()) {
+                    templateReportPath = optionReportJsonPath.Value();
+                }
+
+                report.GenerateTemplateJsonReportAsync(searchTerms, templateReportPath).Wait();
+
+                return 1;
+            };
+        }
+
+        private string[] GetDefaultSearchTerms() {
+            var str = "template,templates, ServiceStack.Core.Templates, BlackFox.DotnetNew.FSharpTemplates,libyear,libyear,angular-cli.dotnet,Carna.ProjectTemplates,SerialSeb.Templates.ClassLibrary,Pioneer.Console.Boilerplate";
+            return str.Split(',');
+        }
+    }
+}

@@ -7,7 +7,7 @@
     <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="package icon" />
 }
 
-@Model.Template.Name (@Model.Template.ShortName)
+@Model.Template.Name (@Model.Template.ShortName[0])
 </h3>
 <p>@Model.TemplatePack.Description</p>
 <section class="templateInfo">
@@ -27,7 +27,7 @@
 </section>
 <section class="installCommand">
     dotnet new --install "@Model.TemplatePack.Package"<br/>
-    dotnet new @Model.Template.ShortName
+    dotnet new @Model.Template.ShortName[0]
 </section>
 
 <section>

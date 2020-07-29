@@ -25,13 +25,15 @@ namespace TemplatesConsole {
 
             app.HelpOption(inherited: true);
 
-            var helloCommand = new MyHelloCommand2();
-            var barCommand = new MyBarCommad();
             var queryCommand = new QueryCommand(GetFromServices<INuGetHelper>());
+            var reportCommand = new ReportCommand(
+                GetFromServices<HttpClient>(),
+                GetFromServices<INuGetHelper>(),
+                GetFromServices<IRemoteFile>(),
+                GetFromServices<INuGetPackageDownloader>());
 
             app.Command(queryCommand.Name, queryCommand.Setup);
-            app.Command(helloCommand.Name, helloCommand.Setup);
-            app.Command(barCommand.Name, barCommand.Setup);
+            app.Command(reportCommand.Name, reportCommand.Setup);
 
             app.OnExecute(() => {
                 Console.WriteLine("Specify a subcommand to execute\n");
@@ -45,6 +47,9 @@ namespace TemplatesConsole {
         private static void RegisterServices() {
             _services = new ServiceCollection();
             _serviceProvider = _services.AddSingleton<INuGetHelper, NuGetHelper>()
+                                        .AddSingleton<IRemoteFile, RemoteFile>()
+                                        .AddSingleton<HttpClient>()
+                                        .AddSingleton<INuGetPackageDownloader,NuGetPackageDownloader>()
                                 .BuildServiceProvider();
         }
 

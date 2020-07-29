@@ -9,6 +9,8 @@ namespace TemplatesShared
     {
         [JsonProperty("@context")]
         public NuGetApiContext Context { get; set; }
+        [JsonProperty("totalHits")]
+        public int TotalHits { get; set; }
         [JsonProperty("data")]
         public NuGetPackage[] Packages { get; set; }
     }

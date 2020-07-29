@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>DevExpress.DotNet.Web.ProjectTemplates</id>
+    <version>20.1.6</version>
+    <authors>Developer Express Inc.</authors>
+    <owners>Developer Express Inc.</owners>
+    <description>DevExpress ASP.NET Core starter templates. Refer to https://nuget.devexpress.com/#feed-url to obtain your feed url.</description>
+    <language>en-US</language>
+    <licenseUrl>https://www.devexpress.com/Support/EULAs</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <iconUrl>https://secure.gravatar.com/avatar/6b38f1e9ffd8b069bcdc2741934fdbcf?s=512&amp;r=g&amp;d=retro</iconUrl>
+    <dependencies />
+  </metadata>
+</package>

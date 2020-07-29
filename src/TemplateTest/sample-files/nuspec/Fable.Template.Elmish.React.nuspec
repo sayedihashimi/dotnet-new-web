@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Fable.Template.Elmish.React</id>
+    <version>0.5.0</version>
+    <authors>Maxime Mangel</authors>
+    <owners>Maxime Mangel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/fable-elmish/elmish/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/fable-elmish/elmish</projectUrl>
+    <description>Simple elmish application using React as a renderer</description>
+    <tags>fable template fsharp</tags>
+    <packageTypes>
+      <packageType name="Template" />
+    </packageTypes>
+    <repository url="https://github.com/fable-elmish/fable-elmish.git" />
+    <dependencies>
+      <group targetFramework=".NETStandard1.0" />
+    </dependencies>
+  </metadata>
+</package>
