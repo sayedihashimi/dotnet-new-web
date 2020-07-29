@@ -55,9 +55,12 @@ namespace TemplatesShared {
                 }
             }
 
-            // todo: remove this
-            File.WriteAllText(@"c:\temp\packages-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates));
-            File.WriteAllText(@"c:\temp\package-names-without-templates.json", Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages));
+            var reportsPath = Path.Combine(_remoteFile.CacheFolderpath, "reports",DateTime.Now.ToString("MM.dd.yy-H.m.s.ffff"));
+            if (!Directory.Exists(reportsPath)) {
+                Directory.CreateDirectory(reportsPath);
+            }
+            Path.Combine(reportsPath, "packages-without-templates.json");
+            Path.Combine(reportsPath, "package-names-without-templates.txt");
 
             var templatePacks = new List<TemplatePack>();
             foreach(var pkg in templatePackages) {
@@ -85,24 +88,19 @@ namespace TemplatesShared {
                     var tp = TemplatePack.CreateFromNuSpec(pkg, nuspecFile, templateFiles);
                     templatePacks.Add(tp);
                 }
-                catch(Exception ex) {
-                    Console.WriteLine(ex.ToString());
+                catch (Exception ex) {
+                    Console.WriteLine($"error creating template pack {nuspecFile} {ex.ToString()}");
                 }
             }
 
             templatePacks = templatePacks.OrderBy((tp) => -1 * tp.DownloadCount).ToList();
-
-            // TODO: Write to some other folder
-            File.WriteAllText(@"c:\temp\template-result.json", JsonConvert.SerializeObject(templatePacks));
-
-            // write to temp folder and then copy to dest
-            var tempfile = Path.GetTempFileName();
-            File.WriteAllText(tempfile, JsonConvert.SerializeObject(templatePackages));
+            // write to cache folder and then copy to dest
+            var cacheFile = Path.Combine(reportsPath, "template-report.json");
+            File.WriteAllText(cacheFile, JsonConvert.SerializeObject(templatePacks));
             if (File.Exists(jsonReportFilepath)) {
                 File.Delete(jsonReportFilepath);
             }
-            File.Move(tempfile, jsonReportFilepath);
-            // 4: look at TemplatePackages
+            File.Move(cacheFile, jsonReportFilepath);
         }
 
         // todo: improve this

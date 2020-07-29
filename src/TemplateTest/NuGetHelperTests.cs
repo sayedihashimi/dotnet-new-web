@@ -33,11 +33,13 @@ namespace TemplateTest {
         private IRemoteFile remoteFile;
         private INuGetHelper nugetHelper;
         private INuGetPackageDownloader nugetDownloader;
+        private SampleFileHelper sampleFileHelper;
         public NuGetPackageDownloaderTests() {
             httpClient = new HttpClient();
             remoteFile = new RemoteFile();
             nugetHelper = new NuGetHelper(remoteFile);
             nugetDownloader = new NuGetPackageDownloader(nugetHelper, remoteFile);
+            sampleFileHelper = new SampleFileHelper();
         }
 
         [Fact]
@@ -53,36 +55,36 @@ namespace TemplateTest {
             Assert.True(File.Exists(packages[0].LocalFilepath));
         }
 
+        // takes a long time to run
+        //[Fact]
+        //public async Task TestTemplateReport01Async() {
+        //    var templateReport = new TemplateReport(nugetHelper, httpClient, nugetDownloader, remoteFile);
+        //    await templateReport.GenerateTemplateJsonReportAsync(new string[] { "template" }, @"");
+
+        //    Assert.True(1 == 1);
+        //}
         [Fact]
-        public async Task TestTemplateReport01Async() {
-            var templateReport = new TemplateReport(nugetHelper, httpClient, nugetDownloader, remoteFile);
-            await templateReport.GenerateTemplateJsonReportAsync(new string[] { "template" }, @"");
+        public void TestCreateTemplateFromJson() {
+            string templateJsonPath = Path.Combine(sampleFileHelper.GetSamplesFolder(), "templatejson", "template01.json");
 
-            Assert.True(1 == 1);
+            var result = TemplatePack.CreateTemplateFromJsonFile(templateJsonPath);
+            Assert.NotNull(result);
+            Assert.True(!string.IsNullOrEmpty(result.Identity));
+            Assert.NotNull(result.Tags);
         }
-
 
         [Fact]
         public void TestNuspecReader01() {
-            // todo: fix to remove this
-            string nuspecfilepath = @"C:\Users\sayedha\AppData\Local\templatereport\extracted\fable.template.elmish.react.0.5.0.nupkg\Fable.Template.Elmish.React.nuspec";
-            try {
-                NuspecFile nuspec = NuspecFile.CreateFromNuspecFile(nuspecfilepath);
+            var nuspecFiles = new List<string> {
+                Path.Combine(sampleFileHelper.GetSamplesFolder(), "nuspec", "Fable.Template.Elmish.React.nuspec"),
+                Path.Combine(sampleFileHelper.GetSamplesFolder(), "nuspec", "DevExpress.DotNet.Web.ProjectTemplates.nuspec")
+            };
+
+            foreach(var filepath in nuspecFiles) {
+                NuspecFile nuspec = NuspecFile.CreateFromNuspecFile(filepath);
                 Assert.NotNull(nuspec);
                 Assert.True(!string.IsNullOrEmpty(nuspec.Metadata.Id));
             }
-            catch(Exception ex) {
-                Console.WriteLine(ex.ToString());
-            }
         }
-        //[Fact]
-        //public void TestCreateTemplatePack01() {
-        //    string nuspecfilepath = @"C:\Users\sayedha\AppData\Local\templatereport\extracted\fable.template.elmish.react.0.5.0.nupkg\Fable.Template.Elmish.React.nuspec";
-        //    string[]templateFiles = Directory.GetFiles(Path.GetDirectoryName(nuspecfilepath), "template.json",new EnumerationOptions { RecurseSubdirectories = true });
-
-        //    var templatePack = TemplatePack.CreateFromNuSpec(nuspecfilepath, templateFiles.ToList());
-
-        //    Assert.NotNull(templatePack);
-        //}
     }
 }

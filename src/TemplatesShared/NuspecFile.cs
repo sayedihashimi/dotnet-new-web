@@ -22,7 +22,7 @@ namespace TemplatesShared {
             // get the xmlns from the document
             XDocument xmldoc = XDocument.Parse(File.ReadAllText(filepath));
             var result = xmldoc.Root.Attributes().
-                Where(a => a.IsNamespaceDeclaration).
+                Where(a => a.IsNamespaceDeclaration && string.Compare("xmlns",a.Name.LocalName)==0).
                 First().Value;
 
             using var filestream = File.Open(filepath, FileMode.Open);

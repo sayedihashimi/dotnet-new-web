@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -264,22 +265,21 @@ namespace TemplatesShared
     }
     public class DictionaryConverter : JsonConverter {
         public override bool CanConvert(Type objectType) {
-            throw new NotImplementedException();
+            return (objectType == typeof(Dictionary<string,string>) || objectType == typeof(Dictionary<string, object>));
         }
         public override bool CanRead => true;
         public override bool CanWrite => false;
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
-            try {
-                return serializer.Deserialize<Dictionary<string, string>>(reader);
-            }
-            catch {
-                // do nothing
+            var mapStringObj = serializer.Deserialize<Dictionary<string, object>>(reader);
+            var result = new Dictionary<string, string>();
+            foreach(var key in mapStringObj.Keys) {
+                var obj = mapStringObj[key];
+                if (obj.GetType() == typeof(string)) {
+                    result.Add(key, (string)obj);
+                }
             }
 
-            
-            // TODO: Fix this
-            return new Dictionary<string, string>() {
-                        { "unkown","error" } };
+            return result;
         }
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
             throw new NotImplementedException();
