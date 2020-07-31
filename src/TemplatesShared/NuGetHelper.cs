@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace TemplatesShared {
         string GetDownloadUrlFor(NuGetPackage pkg);
         Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string query);
         Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string[] queries, List<string> packagesToIgnore);
+        Task<string> GetLatestVersionForAsync(HttpClient httpClient, string id);
     }
 
     // TODO: rename class and interface
@@ -26,6 +28,8 @@ namespace TemplatesShared {
         protected IRemoteFile RemoteFile { get; set; }
         protected int NumParallelTasks { get; set; } = 5;
         public int NumPackagesToTake { get; set; } = 20;
+        // TODO: set this instead of hard-coding to true
+        public bool EnableVerbose { get; set; } = true;
         public async Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string[] queries, List<string> packagesToIgnore) {
             Debug.Assert(httpClient != null);
             Debug.Assert(queries != null && queries.Length > 0);
@@ -42,7 +46,7 @@ namespace TemplatesShared {
             foreach (string query in queries) {
                 try {
                     var found = await QueryNuGetAsync(httpClient, query);
-                    if (found?.Count <= 0) {
+                    if (found == null || found.Count <= 0) {
                         continue;
                     }
 
@@ -51,9 +55,9 @@ namespace TemplatesShared {
                         if (!packagesToIgnoreNormalized.Contains(key) &&
                             !foundPkgsMap.ContainsKey(key)) {
                             foundPkgsMap.Add(key, pkg);
+                            WriteVerbose($"found package '{pkg.Id}'");
                         }
                     }
-
                 }
                 catch (Exception ex) {
                     // log error to console but continue
@@ -63,7 +67,12 @@ namespace TemplatesShared {
             }
 
             return foundPkgsMap.Values.ToList<NuGetPackage>();
-
+        }
+        private void WriteVerbose(string str) {
+            if (EnableVerbose) {
+                Console.Write("verbose: ");
+                Console.WriteLine(str);
+            }
         }
         private string Normalize(string keyStr) {
             return keyStr.ToLowerInvariant();
@@ -144,20 +153,13 @@ namespace TemplatesShared {
               
             Uri queryUri = new Uri(new Uri(Strings.NuGetQueryBaseUrl), query);
 
-            int numRuns = 0;
             NuGetSearchApiResult result = null;
-            while(numRuns < numRetries) {
-                try {
-                    Console.WriteLine($"query: {queryUri.ToString()}");
-                    var resultJson = await httpClient.GetStringAsync(queryUri);
-                    result = JsonConvert.DeserializeObject<NuGetSearchApiResult>(resultJson);
-                    break;
-                }
-                catch(Exception ex) {
-                    Console.WriteLine($"warning: {ex.ToString()}");
-                }
-
-                numRuns++;
+            try {
+                var resultJson = await GetApiJsonResultsAsync(httpClient, queryUri, numRetries);
+                result = JsonConvert.DeserializeObject<NuGetSearchApiResult>(resultJson);
+            }
+            catch(Exception ex) {
+                Console.WriteLine($"warning: {ex.ToString()}");
             }
 
             if(result == null) {
@@ -166,6 +168,23 @@ namespace TemplatesShared {
 
             return result;
         }
+
+        private async Task<string> GetApiJsonResultsAsync(HttpClient httpClient, Uri uri, int numRetries) {
+            Debug.Assert(httpClient != null);
+            Debug.Assert(uri != null);
+            Debug.Assert(numRetries >= 0);
+
+            int numRuns = 0;
+
+            do {
+                Console.WriteLine($"get api result for '{uri.ToString()}'");
+                return await httpClient.GetStringAsync(uri);
+                numRetries++;
+            } while (numRuns <= numRetries);
+
+            throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri.ToString()}'");
+        }
+
         public string GetDownloadUrlFor(NuGetPackage pkg) {
             Debug.Assert(pkg != null);
 
@@ -176,6 +195,36 @@ namespace TemplatesShared {
             // GET {@id}/{LOWER_ID}/{LOWER_VERSION}/{LOWER_ID}.{LOWER_VERSION}.nupkg
             var url = $"{downloadBarUrl}/{lowerId}/{lowerVersion}/{lowerId}.{lowerVersion}.nupkg";
             return url;
+        }
+
+        public NuGetPackage GetNuGetPackageById(string id) {
+            Debug.Assert(!string.IsNullOrEmpty(id));
+
+            // https://api.nuget.org/v3/registration3/{ID}/index.json
+
+
+            throw new NotImplementedException();
+        }
+
+        // TODO: Come back to this
+        public async Task<string> GetLatestVersionForAsync(HttpClient httpClient, string id) {
+            Debug.Assert(httpClient != null);
+            Debug.Assert(!string.IsNullOrEmpty(id));
+            // https://api.nuget.org/v3-flatcontainer/{ID}/index.json
+            var normalizedId = Normalize(id);
+            var packageVersionUri = new Uri($"{Strings.NuGetPackageInfoBaseUrl}/{normalizedId}/index.json");
+
+            // get the result, it is a list of strings
+            var versionsJson = await httpClient.GetStringAsync(packageVersionUri);
+            var versionsJobj = JObject.Parse(versionsJson);
+            
+            var retValue = versionsJobj["versions"].Values<string>().ToList().Last();
+
+            return retValue;
+
+            //string[] versions = versionsJobj["versions"].Value<string[]>();
+            //// var versions = JsonConvert.DeserializeObject<string[]>(versionsJson);
+            //return versions[-1];
         }
     }
 }

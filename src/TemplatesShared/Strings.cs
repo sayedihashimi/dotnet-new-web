@@ -5,7 +5,9 @@ using System.Text;
 namespace TemplatesShared {
     internal static class Strings {
         internal static readonly string NuGetQueryBaseUrl = "https://azuresearch-usnc.nuget.org/query";
-
+        // api.nuget.org
+        internal static readonly string NuGetPackageInfoBaseUrl = @"https://api.nuget.org/v3-flatcontainer";
+        // internal static readonly string NuGetQuery
         internal static readonly string PackagesToIgnore = @"eTemplates.Shared.Net45
 TrackableEntities.CodeTemplates.Shared.Portable
 Transformer.NET

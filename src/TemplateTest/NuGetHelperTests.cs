@@ -67,7 +67,7 @@ namespace TemplateTest {
         public void TestCreateTemplateFromJson() {
             string templateJsonPath = Path.Combine(sampleFileHelper.GetSamplesFolder(), "templatejson", "template01.json");
 
-            var result = TemplatePack.CreateTemplateFromJsonFile(templateJsonPath);
+            var result = TemplatePack.CreateTemplateFromJsonFile(templateJsonPath, "test-case");
             Assert.NotNull(result);
             Assert.True(!string.IsNullOrEmpty(result.Identity));
             Assert.NotNull(result.Tags);
@@ -85,6 +85,13 @@ namespace TemplateTest {
                 Assert.NotNull(nuspec);
                 Assert.True(!string.IsNullOrEmpty(nuspec.Metadata.Id));
             }
+        }
+
+        [Fact]
+        public async Task TestGetLatestVersionForAsync01() {
+            var pkgName = @"WebJobsBuilder";
+            var latestVersion = await nugetHelper.GetLatestVersionForAsync(httpClient, pkgName);
+            var expected = "0.1.3-beta";
         }
     }
 }

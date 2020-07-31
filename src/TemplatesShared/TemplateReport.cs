@@ -16,6 +16,9 @@ namespace TemplatesShared {
         private HttpClient _httpClient;
         private INuGetPackageDownloader _nugetDownloader;
         private IRemoteFile _remoteFile;
+
+        public bool EnableVerbose{get;set;}
+
         public TemplateReport(INuGetHelper nugetHelper, HttpClient httpClient, INuGetPackageDownloader nugetDownloader, IRemoteFile remoteFile) {
             Debug.Assert(nugetHelper != null);
             Debug.Assert(httpClient != null);
@@ -27,6 +30,9 @@ namespace TemplatesShared {
             _nugetDownloader = nugetDownloader;
             _remoteFile = remoteFile;
         }
+        // TODO: add the ability to specify specific nuget package IDs to include.
+        // Some are not included in search results for some reason
+        // https://api.nuget.org/v3/registration3/amazon.lambda.templates/index.json
         public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
             Debug.Assert(!string.IsNullOrEmpty(jsonReportFilepath));
@@ -61,6 +67,14 @@ namespace TemplatesShared {
             }
             Path.Combine(reportsPath, "packages-without-templates.json");
             Path.Combine(reportsPath, "package-names-without-templates.txt");
+
+            File.WriteAllText(
+                    Path.Combine(reportsPath, "packages-without-templates.json"),
+                    Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates));
+
+            File.WriteAllText(
+                    Path.Combine(reportsPath, "package-names-without-templates.txt"),
+                    Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages));
 
             var templatePacks = new List<TemplatePack>();
             foreach(var pkg in templatePackages) {
@@ -100,12 +114,29 @@ namespace TemplatesShared {
             if (File.Exists(jsonReportFilepath)) {
                 File.Delete(jsonReportFilepath);
             }
-            File.Move(cacheFile, jsonReportFilepath);
+            File.Copy(cacheFile, jsonReportFilepath);
         }
 
         // todo: improve this
         protected List<string> GetPackagesToIgnore() {
             return Strings.PackagesToIgnore.Split("\n").ToList();
+        }
+
+        private void ReportPackages(List<NuGetPackage> packages) {
+            if(!EnableVerbose || packages == null || packages.Count <= 0) {
+                return;
+            }
+            
+            foreach(var pkg in packages) {
+                WriteVerbose($"found {pkg.Id}");
+            }
+        }
+
+        private void WriteVerbose(string str) {
+            if (EnableVerbose) {
+                Console.Write("verbose: ");
+                Console.WriteLine(str);
+            }
         }
     }
 
