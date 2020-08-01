@@ -33,12 +33,12 @@ namespace TemplatesShared {
         // TODO: add the ability to specify specific nuget package IDs to include.
         // Some are not included in search results for some reason
         // https://api.nuget.org/v3/registration3/amazon.lambda.templates/index.json
-        public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath) {
+        public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath, List<string> specificPackagesToInclude) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
             Debug.Assert(!string.IsNullOrEmpty(jsonReportFilepath));
 
             // 1: query nuget for search results
-            var foundPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, GetPackagesToIgnore());
+            var foundPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, GetPackagesToIgnore());
             // 2: download nuget packages locally
             var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(foundPackages);
 
@@ -85,7 +85,7 @@ namespace TemplatesShared {
                     continue;
                 }
                 // get template folders
-                var contentDir = Path.Combine(pkg.LocalExtractPath, "content");
+                var contentDir = Path.Combine(pkg.LocalExtractPath);
                 if (!Directory.Exists(contentDir)) {
                     continue;
                 }

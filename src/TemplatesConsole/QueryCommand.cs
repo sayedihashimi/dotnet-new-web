@@ -57,7 +57,7 @@ namespace TemplatesConsole {
                     }
                 }
 
-                var found = _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, null).Result;
+                var found = _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, null, null).Result;
 
                 writeOutput($"Num packages found: {found.Count}");
 

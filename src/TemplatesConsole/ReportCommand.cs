@@ -50,6 +50,11 @@ namespace TemplatesConsole {
                 CommandOptionType.MultipleValue);
             // optionSearchTerms.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
 
+            var optionSpecificPackagesToInclude = command.Option<string>(
+                "-p|--packageToInclude",
+                "list of specific packages that should be included.",
+                CommandOptionType.MultipleValue);
+
             OnExecute = () => {
                 EnableVerboseOption = OptionVerbose.HasValue();
 
@@ -65,7 +70,12 @@ namespace TemplatesConsole {
                     templateReportPath = optionReportJsonPath.Value();
                 }
 
-                report.GenerateTemplateJsonReportAsync(searchTerms, templateReportPath).Wait();
+                var specificPackages = new List<string>();
+                if (optionSpecificPackagesToInclude.HasValue()) {
+                    specificPackages.AddRange(optionSpecificPackagesToInclude.Values.ToArray());
+                }
+
+                report.GenerateTemplateJsonReportAsync(searchTerms, templateReportPath, specificPackages).Wait();
 
                 return 1;
             };

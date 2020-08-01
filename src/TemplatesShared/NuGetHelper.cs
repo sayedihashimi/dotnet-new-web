@@ -15,7 +15,7 @@ namespace TemplatesShared {
         int NumPackagesToTake { get; set; }
         string GetDownloadUrlFor(NuGetPackage pkg);
         Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string query);
-        Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string[] queries, List<string> packagesToIgnore);
+        Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string[] queries,List<string>specificPackagesToInclude, List<string> packagesToIgnore);
         Task<string> GetLatestVersionForAsync(HttpClient httpClient, string id);
     }
 
@@ -27,10 +27,10 @@ namespace TemplatesShared {
 
         protected IRemoteFile RemoteFile { get; set; }
         protected int NumParallelTasks { get; set; } = 5;
-        public int NumPackagesToTake { get; set; } = 20;
+        public int NumPackagesToTake { get; set; } = 100;
         // TODO: set this instead of hard-coding to true
         public bool EnableVerbose { get; set; } = true;
-        public async Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string[] queries, List<string> packagesToIgnore) {
+        public async Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string[] queries, List<string> specificPackagesToInclude, List<string> packagesToIgnore) {
             Debug.Assert(httpClient != null);
             Debug.Assert(queries != null && queries.Length > 0);
 
@@ -52,8 +52,7 @@ namespace TemplatesShared {
 
                     foreach (var pkg in found) {
                         var key = Normalize(pkg.Id);
-                        if (!packagesToIgnoreNormalized.Contains(key) &&
-                            !foundPkgsMap.ContainsKey(key)) {
+                        if (!packagesToIgnoreNormalized.Contains(key) && !foundPkgsMap.ContainsKey(key)) {
                             foundPkgsMap.Add(key, pkg);
                             WriteVerbose($"found package '{pkg.Id}'");
                         }
@@ -63,6 +62,33 @@ namespace TemplatesShared {
                     // log error to console but continue
                     // TODO: should we be continuing?
                     Console.WriteLine(ex.ToString());
+                }
+            }
+
+            // add specificPackagesToInclude now
+            if(specificPackagesToInclude != null && specificPackagesToInclude.Count> 0) {
+                var pkgsToAdd = new List<NuGetPackage>();
+
+                foreach(var pkg in specificPackagesToInclude) {
+                    var normalizedPackageId = Normalize(pkg);
+                    
+                    // if the package is in the exclude list then skip it
+                    if (packagesToIgnoreNormalized.Contains(normalizedPackageId) || foundPkgsMap.ContainsKey(normalizedPackageId)) {
+                        continue;
+                    }
+
+                    var query = $"?q={normalizedPackageId}&take=1&prerelease=true";
+                    // ExecuteQueryAsync(httpClient, $"?q={query}&take=1&prerelease=true")
+                    var foundpackage = await ExecuteQueryAsync(httpClient, query);
+                    if(foundpackage != null && foundpackage.Packages.Length == 1) {
+                        pkgsToAdd.Add(foundpackage.Packages[0]);
+
+                        foundPkgsMap.Add(normalizedPackageId, foundpackage.Packages[0]);
+                        WriteVerbose($"found package '{foundpackage.Packages[0].Id}'");
+                    }
+                    else if(foundpackage?.Packages.Length > 1) {
+                        WriteVerbose($"found more than one pkg for '{pkg}', skipping results");
+                    }
                 }
             }
 
@@ -135,10 +161,10 @@ namespace TemplatesShared {
             Debug.Assert(numPackagesToTake > 0);
 
             var queryStrings = new List<string>();
-            var initialResult = await ExecuteQueryAsync(httpClient, $"?q={query}&take=1");
+            var initialResult = await ExecuteQueryAsync(httpClient, $"?q={query}&take=1&prerelease=true");
             int numResultsSoFar = 0;
             do {
-                queryStrings.Add($"?q={query}&take={numPackagesToTake}&skip={numResultsSoFar}");
+                queryStrings.Add($"?q={query}&prerelease=true&take={numPackagesToTake}&skip={numResultsSoFar}");
                 numResultsSoFar += numPackagesToTake;
                 
                 // update numResultsSoFar
@@ -178,8 +204,16 @@ namespace TemplatesShared {
 
             do {
                 Console.WriteLine($"get api result for '{uri.ToString()}'");
-                return await httpClient.GetStringAsync(uri);
-                numRetries++;
+                string jsonResult = null;
+                try {
+                    jsonResult  = await httpClient.GetStringAsync(uri);
+                    return jsonResult;
+                }
+                catch(Exception ex) {
+                    throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri.ToString()}'");
+                }
+
+                numRuns++;
             } while (numRuns <= numRetries);
 
             throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri.ToString()}'");
@@ -221,10 +255,18 @@ namespace TemplatesShared {
             var retValue = versionsJobj["versions"].Values<string>().ToList().Last();
 
             return retValue;
+        }
 
-            //string[] versions = versionsJobj["versions"].Value<string[]>();
-            //// var versions = JsonConvert.DeserializeObject<string[]>(versionsJson);
-            //return versions[-1];
+        public async Task<NuGetPackage> GetLatestNuGetPackageForAsync(HttpClient httpClient, string id) {
+            Debug.Assert(httpClient != null);
+            Debug.Assert(!string.IsNullOrEmpty(id));
+
+            // get the latest version
+            var latestVersion = await GetLatestVersionForAsync(httpClient, id);
+
+
+
+            throw new NotImplementedException();
         }
     }
 }
