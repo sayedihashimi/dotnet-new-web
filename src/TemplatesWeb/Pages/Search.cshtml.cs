@@ -19,13 +19,13 @@ namespace TemplatesWeb.Pages
         public SearchModel(IOptions<TemplateWebConfig> config): base(config) {
         }
 
-        public IActionResult OnGet(string searchText)
+        public async Task<IActionResult> OnGetAsync(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText)){
                 return RedirectToPage("/Index");
             }
             SearchText = searchText;
-            SearchResults = GetFromApi<List<Template>>($"search/{searchText}");
+            SearchResults = await GetFromApiAsync<List<Template>>($"search/{searchText}");
             return Page();
         }
     }

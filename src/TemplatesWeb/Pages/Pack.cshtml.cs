@@ -15,13 +15,13 @@ namespace TemplatesWeb.Pages {
 
         }
         
-        public void OnGet(string packId) {
+        public async Task OnGetAsync(string packId) {
             if (string.IsNullOrWhiteSpace(packId)) {
                 return;
             }
 
             PackId = packId;
-            TemplatePack = GetFromApi<TemplatePack>($"templatepack/{PackId}");
+            TemplatePack = await GetFromApiAsync<TemplatePack>($"templatepack/{PackId}");
         }
     }
 }

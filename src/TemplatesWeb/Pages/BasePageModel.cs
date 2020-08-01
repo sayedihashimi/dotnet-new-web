@@ -23,11 +23,11 @@ namespace TemplatesWeb.Pages
             }
         }
         
-        public T GetFromApi<T>(string relurl) {
+        public async Task<T> GetFromApiAsync<T>(string relurl) {
             var url = new Uri(new Uri(BaseUrl), relurl).AbsoluteUri;
-            HttpClient client = new HttpClient();
-            HttpResponseMessage response = client.GetAsync(url).Result;
-            string json = response.Content.ReadAsStringAsync().Result;
+            var client = new HttpClient();
+            var response = await client.GetAsync(url);
+            string json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(json);
         }
     }

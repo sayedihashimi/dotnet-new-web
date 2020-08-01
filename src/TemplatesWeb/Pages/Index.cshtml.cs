@@ -24,8 +24,8 @@ namespace TemplatesWeb.Pages {
 
         public IndexModel(IOptions<TemplateWebConfig> config):base(config) {
         }
-        public void OnGet() {
-            TemplatePacks = GetFromApi<List<TemplatePack>>("templatepack");
+        public async Task OnGetAsync() {
+            TemplatePacks = await GetFromApiAsync<List<TemplatePack>>("templatepack");
             if (TemplatePacks != null) {
                 OverallDownloads = (from tp in TemplatePacks
                                         select tp.DownloadCount).Sum();

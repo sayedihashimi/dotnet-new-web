@@ -21,17 +21,13 @@ namespace TemplatesWeb.Pages
 
         public string PackId { get; set; }
 
-        public void OnGet(string packId, string templateId)
+        public async Task OnGetAsync(string packId, string templateId)
         {
             PackId = packId;
             TemplateId = templateId;
 
-            TemplatePack = GetFromApi<TemplatePack>($"templatepack/{packId}");
+            TemplatePack = await GetFromApiAsync<TemplatePack>($"templatepack/{packId}");
             Template = new TemplateSearcher().GetTemplateById(TemplateId, TemplatePack);
-            // new TemplateSearcher().FindTemplatePackById(templateName, new l)
-            // get the template pack
-            // http://localhost:61747/api/templatepack/Microsoft.AspNetCore.SpaTemplates
-
         }
     }
 }
