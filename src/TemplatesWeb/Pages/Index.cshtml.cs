@@ -26,6 +26,11 @@ namespace TemplatesWeb.Pages {
         }
         public async Task OnGetAsync() {
             TemplatePacks = await GetFromApiAsync<List<TemplatePack>>("templatepack");
+
+            // TODO: Delete this, do not check in!!!
+            TemplatePacks = TemplatePacks.GetRange(0, 50);
+            //
+
             if (TemplatePacks != null) {
                 OverallDownloads = (from tp in TemplatePacks
                                         select tp.DownloadCount).Sum();

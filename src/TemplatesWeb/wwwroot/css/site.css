@@ -1,147 +1,109 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+:root {
+    /*color palette*/
+    --imperial-red: hsla(355, 78%, 56%, 1);
+    --honeydew: hsla(105, 55%, 96%, 1);
+    --powder-blue: hsla(182, 43%, 76%, 1);
+    --celadon-blue: hsla(203, 39%, 44%, 1);
+    --prussian-blue: hsla(215, 50%, 23%, 1);
 }
-.navbar-header a img{
+body {
+    background-color: var(--powder-blue);
+    width:100%;
+}
+
+.pkgIcon {
+    width: 50px;
+    height: 50px;
+}
+nav{
+    /*text-align: center;*/
+    font-size: 6rem;
+}
+
+#content, #navbar {
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.template-pack{
+    width:auto;
+    max-width:500px;
+    min-width:100px;
+    margin:10px;
+    height:600px;
+    height: auto;
+    display:inline-block;
+    vertical-align: top;
+    background-color:var(--honeydew);
+    overflow: hidden;
+    padding: 10px;
+    border-radius:10px;
+    color:var(--prussian-blue)
+}
+.template-metadata li{
+    list-style:none;
     display:inline;
 }
-.templateInfo {
-    padding-left: 0;
+.template-details summary{
+    font-size:2rem;
+    cursor: pointer;
+    border: none;
+    padding: 2px 6px;
+    /* list-style: none; */
 }
-.templateInfo ul{
+.template-list {
+    /*background-color: aliceblue;*/
+    border: 1px solid black;
+    border-radius: 0 0 10px 10px;
+    list-style: none;
+}
+
+#searchAndStats{
+    margin: 2em;
+    padding:5px 10px;
+}
+#SearchText{
+    background-color:aliceblue;
+    width: 50em;
+    margin: 1em;
+    border-radius:0.5em;
+}
+#search-button{
+    height:1.5em;
+    width:300px;
     
 }
-    .templateInfo li {
-        list-style: none;
-        display: block;
-        unicode-bidi: embed;
-        font-family: monospace;
-        white-space: pre;
+
+/*button related items below*/
+.button4 {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.1em 0.1em 0;
+    border: 0.16em solid rgba(255,255,255,0);
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 300;
+    color: var(--honeydew);
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    text-align: center;
+    transition: all 0.2s;
+    background-color:var(--celadon-blue);
+    /* color:red; */
+}
+    .button4:hover {
+        border-color: var(--honeydew);
+        text-decoration:none;
     }
-.indexHead {
-    font-family: Consolas,'Lucida Console',monospace;
-}
-.installCommand{
-    font-family: Consolas,'Lucida Console',monospace;
-    font-size: 24px;
-    display:block;
-    padding-left:40px;
-    padding-top:20px;
-    padding-bottom:20px;
-    border:1px solid;
-    border-radius:25px;
-    margin-top:20px;
-    margin-bottom:20px;
-}
-code{
-    background-color:inherit;
-}
-#templateSearchBox input{
-    display:inline;
-    width: 300px;
-    font-size: 20px;
-}
-#templateSearchBox button {
-    display:inline;
-    font-size: 20px;
-}
-.pkgIcon{
-    max-height:50px;
-    max-width:50px;
-}
-.templateInfo ul li{
-    display:inline;
+    .button4:visited {
+        color: var(--honeydew);
+    }
     
-}
-.horizontalList {
-    padding-left: 0;
-}
-.horizontalList li {
-    display: inline;
-}
-
-#overallStats{
-    margin:0;
-    padding:0;
-    padding-top:10px;
-    padding-bottom:5px;
-}
-#overallStats li {
-    display: block;
-    unicode-bidi: embed;
-    font-family: monospace;
-    white-space: pre;
-}
-
-#overallStats li .value{
-    font-weight: bold;
-}
-
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.templatePackSection{
-    padding-bottom:15px;
-    padding-top:15px;
-}
-
-.templateList{
-    margin-left:30px;
-    padding-left:0;
-}
-.templatePackSection ul li {
-}
-.templatePackSection header{
-    margin-left:30px;
-}
-.templatePackSection h3{
-    margin-top:0px;
-    margin-bottom:0px;
-}
-.packList ul{
-    border-bottom:1px solid;
-}
-.oddrow{
-    
-}
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
-
-/* buttons and links extension to use brackets: [ click me ] */
-.btn-bracketed::before {
-    display: inline-block;
-    content: "[";
-    padding-right: 0.5em;
-}
-
-.btn-bracketed::after {
-    display: inline-block;
-    content: "]";
-    padding-left: 0.5em;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+@media all and (max-width:30em) {
+    ?.button4 {
+        display: block;
+        margin: 0.2em auto;
     }
 }

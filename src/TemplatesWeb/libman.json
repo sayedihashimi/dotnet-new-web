@@ -1,0 +1,10 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "normalize@8.0.1",
+      "destination": "wwwroot/css/normalize/"
+    }
+  ]
+}

@@ -2,34 +2,27 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
-    int counter = 0;
 }
 
-<h1 class="indexHead">
-    dotnet templates
-</h1>
-<p>
-    Find available templates for <code>dotnet</code>
-</p>
-<form method="POST">
-    <div id="templateSearchBox">
-        <input asp-for="SearchText" class="form-control" required/>
-        <button type="submit" class="btn btn-primary">Search templates</button>
-    </div>
-</form>
+<div id="content">
+    <section class="main-content-section" id="searchAndStats">
+        <form id="search-form" method="POST">
+            <input asp-for="SearchText" required />
+@*<button id="search-button" type="submit">Search templates</button>*@
+            <a href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
+        </form>
 
-<ul id="overallStats">
-    <li>Overall downloads:       <span class="value">@Model.OverallDownloads</span></li>
-    <li>Num of templates:        <span class="value">@Model.NumTemplates</span></li>
-    <li>Num of template packs:   <span class="value">@Model.NumTemplatePacks</span></li>
-    <li>Num of template authors: <span class="value">@Model.NumAuthors</span></li>
-</ul>
+        <ul id="overallStats">
+            <li>Overall downloads:       <span>@Model.OverallDownloads</span></li>
+            <li>Num of templates:        <span>@Model.NumTemplates</span></li>
+            <li>Num of template packs:   <span>@Model.NumTemplatePacks</span></li>
+            <li>Num of template authors: <span>@Model.NumAuthors</span></li>
+        </ul>
+    </section>
 
-<h2>Template packs</h2>
-
-@foreach (var tp in Model.TemplatePacks) {
-    string evenOrOdd = (counter++ % 2) == 0 ? "evenrow" : "oddrow";
-    <section class="templatePackSection @evenOrOdd">
+    <section>
+        @foreach (var tp in Model.TemplatePacks) {
+    <section class="template-pack">
         <h3>
             @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) {
                 <img class="pkgIcon" src="@tp.IconUrl" alt="package icon" />
@@ -37,25 +30,36 @@
             <a href="/pack/@tp.Package">@tp.Package</a>
         </h3>
         <quote>@tp.Description</quote>
-        <ul class="horizontalList packList">
+
+        <details class="template-details">
+            <summary>@tp.Package.Count() templates</summary>
+            <ul class="template-list">
+                @foreach (var t in tp.Templates) {
+                    <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
+                }
+            </ul>
+        </details>
+
+        <ul class="template-metadata">
             <li>by: <a href="/search/@tp.Authors">@tp.Authors</a> |</li>
             <li>
-            <img src="~/images/icon-download.png" alt="download icon"/>
-            downloads: @tp.DownloadCount |</li>
+                <img src="~/images/icon-download.png" alt="download icon" />
+                downloads: @tp.DownloadCount |
+            </li>
             @if (!string.IsNullOrWhiteSpace(tp.ProjectUrl)) {
-                <li><a href="@tp.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li> 
+                <li><a href="@tp.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li>
+
             }
             @if (!string.IsNullOrWhiteSpace(tp.LicenseUrl)) {
-                <li><a href="@tp.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li> 
+                <li><a href="@tp.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li>
+
             }
             @if (!string.IsNullOrWhiteSpace(tp.Copyright)) {
-                <li>Copyright: @tp.Copyright.Replace("Copyright ","")</li>
+                <li>Copyright: @tp.Copyright.Replace("Copyright ", "")</li>
             }
         </ul>
-        <ul class="templateList">
-            @foreach(var t in tp.Templates) {
-                <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>       
-            }
-        </ul>
+
     </section>
-}
+        }
+    </section>
+</div>
