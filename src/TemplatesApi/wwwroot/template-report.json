@@ -32,7 +32,7 @@
     "LicenseUrl": "https://go.microsoft.com/fwlink/?linkid=2028464",
     "ProjectUrl": "https://go.microsoft.com/fwlink/?linkid=848145",
     "Package": "Microsoft.Azure.WebJobs.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -231,7 +231,7 @@
     "LicenseUrl": "https://go.microsoft.com/fwlink/?linkid=2028464",
     "ProjectUrl": "https://go.microsoft.com/fwlink/?linkid=848145",
     "Package": "Microsoft.Azure.WebJobs.ItemTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -373,7 +373,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.DotNet.Web.ItemTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -499,7 +499,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.DotNet.Web.ProjectTemplates.3.0",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -545,7 +545,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.DotNet.Web.Spa.ProjectTemplates.3.0",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1017,7 +1017,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Web.ProjectTemplates.2.0",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1053,7 +1053,7 @@
     "LicenseUrl": "https://github.com/takenet/blip-sdk-csharp/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/takenet/blip-sdk-csharp",
     "Package": "Take.Blip.Client.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1099,7 +1099,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.DotNet.Web.Spa.ProjectTemplates.3.1",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1225,7 +1225,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.DotNet.Web.ProjectTemplates.3.1",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1301,7 +1301,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Test.ProjectTemplates.2.0",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1377,7 +1377,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.2.0",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -1837,7 +1837,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.AspNetCore.Components.WebAssembly.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2052,7 +2052,7 @@
     "LicenseUrl": "http://websharper.com/licensing",
     "ProjectUrl": "https://github.com/intellifactory/websharper.templates",
     "Package": "WebSharper.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2140,7 +2140,7 @@
     "LicenseUrl": "https://github.com/TheAngryByrd/MiniScaffold/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/TheAngryByrd/MiniScaffold",
     "Package": "MiniScaffold",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2186,7 +2186,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://docs.microsoft.com/en-us/quantum",
     "Package": "Microsoft.Quantum.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2262,7 +2262,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.3.1",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2288,7 +2288,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/joeaudette/cloudscribe.templates",
     "Package": "cloudscribe.templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2314,7 +2314,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/giraffe-fsharp/giraffe-template",
     "Package": "giraffe-template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2340,7 +2340,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/CynosuraPlatform/Cynosura.Template",
     "Package": "Cynosura.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2412,7 +2412,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/fable-compiler/fable-templates",
     "Package": "Fable.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2438,7 +2438,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/riganti/dotvvm",
     "Package": "DotVVM.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2474,7 +2474,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Plac3hold3r/MvxScaffolding",
     "Package": "MvxScaffolding.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2544,7 +2544,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Dotnet-Boxed/Templates",
     "Package": "Boxed.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2636,7 +2636,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/idea42co/NetCoreTemplates",
     "Package": "Idea42.NetCore.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2820,7 +2820,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/eyamenko/spa-rocks",
     "Package": "SPARocks",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2866,7 +2866,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://asp.net/",
     "Package": "Microsoft.DotNet.Web.Client.ItemTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2892,7 +2892,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/cilerler/burcin/master/LICENSE",
     "ProjectUrl": "https://github.com/cilerler/burcin",
     "Package": "Burcin.Templates.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2964,7 +2964,7 @@
     "LicenseUrl": "https://github.com/peachpiecompiler/peachpie/blob/master/LICENSE.txt",
     "ProjectUrl": "https://github.com/peachpiecompiler/peachpie",
     "Package": "Peachpie.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -2990,7 +2990,7 @@
     "LicenseUrl": "https://github.com/fable-elmish/elmish/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/fable-elmish/elmish",
     "Package": "Fable.Template.Elmish.React",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3016,7 +3016,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/jacobduijzer/CleanArchitectureTemplate",
     "Package": "JacobsApps.CleanArchitectureProjectTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3098,7 +3098,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "GCC.Build.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3150,7 +3150,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/JasonTaylorDev/CleanArchitecture",
     "Package": "Clean.Architecture.Solution.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3316,7 +3316,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/jet/dotnet-templates",
     "Package": "Equinox.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3342,7 +3342,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "http://take.net/",
     "Package": "Take.CustomerSuccess.Bot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3476,7 +3476,7 @@
     "LicenseUrl": "https://github.com/MathiasKowoll/Itsomax.AppHost.Template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/MathiasKowoll/Itsomax.AppHost.Template",
     "Package": "Itsomax.AppHost",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3502,7 +3502,7 @@
     "LicenseUrl": "https://github.com/fable-compiler/fable-templates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/fable-compiler/fable-templates",
     "Package": "Fable.Template.Electron",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3528,7 +3528,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Expload.PravdaProgramTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3660,7 +3660,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MS-PL",
     "ProjectUrl": "http://monogame.net/",
     "Package": "MonoGame.Templates.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3686,7 +3686,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Fable.Template.Jest",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3768,7 +3768,7 @@
     "LicenseUrl": "https://github.com/MNie/Expecto.Template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/MNie/Expecto.Template",
     "Package": "Expecto.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3830,7 +3830,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://www.runly.io/",
     "Package": "Runly.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -3938,7 +3938,7 @@
     "LicenseUrl": "https://github.com/ctaggart/templates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/ctaggart/templates",
     "Package": "ctaggart.templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4020,7 +4020,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Jaxelr/VueSimpleTemplate",
     "Package": "Vue.Simple.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4072,7 +4072,7 @@
     "LicenseUrl": "http://www.wortell.nl/",
     "ProjectUrl": "http://www.wortell.nl/",
     "Package": "TeamWeb.MvcTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4124,7 +4124,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/cmendible/dotnetcore.templates",
     "Package": "CodeItYourself.WebAPI.AWS.Lambda",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4150,7 +4150,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/prafullbhosale/CustomAspNetCodeGeneratorTemplate",
     "Package": "CustomAspNetCodeGeneratorTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4226,7 +4226,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.1.x",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4252,7 +4252,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/cmendible/dotnetcore.templates",
     "Package": "CodeItYourself.ASPNET.Raspberry",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4278,7 +4278,7 @@
     "LicenseUrl": "https://github.com/PioneerCode/pioneer-console-boilerplate/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "ESMicroServiceWebApiTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4490,7 +4490,7 @@
     "LicenseUrl": "http://opensource.org/licenses/MIT",
     "ProjectUrl": "https://github.com/VitalElement/AvalonStudio",
     "Package": "VitalElement.AvalonStudio.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4566,7 +4566,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Test.ProjectTemplates.1.x",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4592,7 +4592,7 @@
     "LicenseUrl": "https://github.com/fable-elmish/elmish/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/fable-elmish/elmish",
     "Package": "Fable.Template.Elmish.React.Demo",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4618,7 +4618,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Bolero.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4644,7 +4644,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Codeforces.ConsoleTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4716,7 +4716,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Linn.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4788,7 +4788,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Blip.Api.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4839,7 +4839,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://docs.particular.net/nuget/ParticularTemplates",
     "Package": "ParticularTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4885,7 +4885,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Petabridge.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4937,7 +4937,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/SoftwareAteliers/asp-net-core-vue-starter",
     "Package": "SoftwareAteliers.AspNetCoreVueStarter",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4973,7 +4973,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/ppy/osu-framework",
     "Package": "ppy.osu.Framework.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -4999,7 +4999,7 @@
     "LicenseUrl": "https://github.com/jeremylindsayni/RaspberryPiTemplate/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/jeremylindsayni/RaspberryPiTemplate",
     "Package": "RaspberryPi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5075,7 +5075,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Kralizek/AWSLambdaSharpTemplate",
     "Package": "Kralizek.Lambda.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5321,7 +5321,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Web.ProjectTemplates.1.x",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5357,7 +5357,7 @@
     "LicenseUrl": "https://github.com/takenet/blip-sdk-csharp/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/takenet/blip-sdk-csharp",
     "Package": "Take.Blip.Client.ConsoleTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5455,7 +5455,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "OrchardCore.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5511,7 +5511,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/picoe/Eto",
     "Package": "Eto.Forms.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5537,7 +5537,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "NBB.UnitTest",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5563,7 +5563,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/jchannon/Botwin",
     "Package": "BotwinTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5589,7 +5589,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "dotnetng.template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5615,7 +5615,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "NBB.Worker",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5677,7 +5677,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Unlicense",
     "ProjectUrl": "https://github.com/jsakamoto/BlazorMinimumTemplates",
     "Package": "Toolbelt.AspNetCore.Blazor.Minimum.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5703,7 +5703,7 @@
     "LicenseUrl": "https://github.com/Zaid-Ajaj/Feliz/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/Zaid-Ajaj/Feliz",
     "Package": "Feliz.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5729,7 +5729,7 @@
     "LicenseUrl": "https://github.com/xyncro/freya-template/blob/master/LICENSE.md",
     "ProjectUrl": "https://freya.io/",
     "Package": "Freya.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5801,7 +5801,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/tintoy/ps-core-module-template/master/LICENSE",
     "ProjectUrl": "https://github.com/tintoy/ps-core-module-template",
     "Package": "FiftyProtons.Templates.PSCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5827,7 +5827,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "jeffb.template.MvcVueSpa.Auth",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5853,7 +5853,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "NetFusion.Templates.MicroService",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5879,7 +5879,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/kiootic/MonoGame-core-template",
     "Package": "MonoGame.Template.NETCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5905,7 +5905,7 @@
     "LicenseUrl": "https://github.com/MNie/FSharpNetCoreWebApiTemplate/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/MNie/FSharpNetCoreWebApiTemplate",
     "Package": "WebAPI.FSharp.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -5957,7 +5957,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/popov1024/httpapi-template-sharp",
     "Package": "Popov1024.HttpApi.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6015,7 +6015,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/dj-nitehawk/MongoWebApiStarter",
     "Package": "MongoWebApiStarter",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6041,7 +6041,7 @@
     "LicenseUrl": "http://opensource.org/licenses/MIT",
     "ProjectUrl": "https://github.com/dance2die/ReactES6.Web",
     "Package": "ReactES6.Web",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6087,7 +6087,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/tintoy/dotnet-template-templates/master/LICENSE",
     "ProjectUrl": "https://github.com/tintoy/dotnet-template-templates",
     "Package": "FiftyProtons.Templates.DotNetNew",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6123,7 +6123,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://aka.ms/mobileblazorbindings",
     "Package": "Microsoft.MobileBlazorBindings.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6201,7 +6201,7 @@
     "LicenseUrl": "https://github.com/SuperJMN/RaspberryPi.Template.WebAPI/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/SuperJMN/RaspberryPi.Template.WebAPI",
     "Package": "RaspberryPi.Template.WebApi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6253,7 +6253,7 @@
     "LicenseUrl": "http://opensource.org/licenses/MIT",
     "ProjectUrl": "https://github.com/dotnet-express/AdminLTE-Starter-Kit",
     "Package": "Dynamic.NET.AdminLTE.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6319,7 +6319,7 @@
     "LicenseUrl": "https://github.com/XamarinUniversity/ContentTemplates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/XamarinUniversity/ContentTemplates",
     "Package": "XamarinUniversity.ContentTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6345,7 +6345,7 @@
     "LicenseUrl": "http://www.telerik.com/purchase/license-agreement/kendo-ui-complete",
     "ProjectUrl": "https://github.com/EdCharbeneau/kendo-ng",
     "Package": "Progress.AspNetCore.SpaTemplates.Angular",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6371,7 +6371,7 @@
     "LicenseUrl": "https://github.com/slogsdon/Fable.Template.JavaScriptLibrary/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/slogsdon/Fable.Template.JavaScriptLibrary",
     "Package": "Fable.Template.JavaScriptLibrary",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6423,7 +6423,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "dotnet-tegun.template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6479,7 +6479,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/jefersonsv/",
     "Package": "Thunder.Web.Framework.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6531,7 +6531,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "http://tinkerpop.apache.org/",
     "Package": "Gremlin.Net.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6557,7 +6557,7 @@
     "LicenseUrl": "https://github.com/TheAngryByrd/Fable.Library.Template/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/TheAngryByrd/Fable.Library.Template",
     "Package": "Fable.Template.Library",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6629,7 +6629,7 @@
     "LicenseUrl": "http://www.telerik.com/purchase/license-agreement/kendo-ui-complete",
     "ProjectUrl": "https://www.telerik.com/kendo-ui",
     "Package": "Progress.AspNetCore.SpaTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6711,7 +6711,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Fusca",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6747,7 +6747,7 @@
     "LicenseUrl": "https://github.com/iamvishnusankar/CoreTemplates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/iamvishnusankar/CoreTemplates",
     "Package": "CoreTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6793,7 +6793,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FewBox.Template.Service",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6819,7 +6819,7 @@
     "LicenseUrl": "https://github.com/glenhallworth/WebApiWithSpa/blob/master/Licence.txt",
     "ProjectUrl": "https://github.com/glenhallworth/WebApiWithSpa",
     "Package": "WebApiWithSpa.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6917,7 +6917,7 @@
     "LicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
     "ProjectUrl": "https://github.com/natemcmaster/DotNetGlobalTool",
     "Package": "McMaster.DotNet.GlobalTool.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6943,7 +6943,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/Keen83/fsharp_template",
     "Package": "ASP.NET_MVC_Core.FSharp.React",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -6999,7 +6999,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "http://www.github.com/Synergex/HarmonyCore",
     "Package": "Harmony.Core.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7025,7 +7025,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "SDG.templates.Web.React",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7051,7 +7051,7 @@
     "LicenseUrl": "http://license_url_here_or_delete_this_line/",
     "ProjectUrl": null,
     "Package": "DotNetCore2.0WebApiTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7077,7 +7077,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/ealsur/dotnetnewcosmosdbsql/",
     "Package": "CosmosDBSQLTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7103,7 +7103,7 @@
     "LicenseUrl": "https://github.com/FritzAndFriends/StreamDeckToolkit/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/FritzAndFriends/StreamDeckToolkit/",
     "Package": "StreamDeckPluginTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7155,7 +7155,7 @@
     "LicenseUrl": "https://github.com/PeterKottas/DotNetCore.WindowsService/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/PeterKottas/DotNetCore.WindowsService",
     "Package": "PeterKottas.DotNetCore.WindowsService.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7181,7 +7181,7 @@
     "LicenseUrl": "https://github.com/PioneerCode/pioneer-console-boilerplate/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "DotNetCore2WebApiTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7207,7 +7207,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Jaxelr/Nancy.Template.Webservice",
     "Package": "Nancy.Template.Webservice",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7293,7 +7293,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Magenic/MAQS",
     "Package": "Magenic.Maqs.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7357,7 +7357,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Knowit.Microservice",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7383,7 +7383,7 @@
     "LicenseUrl": "https://github.com/danijelh/aspnetcore-vue-typescript-template/blob/master/LICENCE.txt",
     "ProjectUrl": "https://github.com/danijelh/aspnetcore-vue-typescript-template",
     "Package": "AspNetCore.Vue.TypeScript.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7419,7 +7419,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "NachoColl.Cloudformation4dotNET.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7445,7 +7445,7 @@
     "LicenseUrl": "https://github.com/TheAngryByrd/BenchmarkDotNet.Template/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/TheAngryByrd/BenchmarkDotNet.Template",
     "Package": "TheAngryByrd.BenchmarkDotNet.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7471,7 +7471,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/zhusmelb/DotnetNewTemplate/wiki",
     "Package": "com.zhusmelb.Template.Project",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7497,7 +7497,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/jmazouri/SharpPad",
     "Package": "SharpPad.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7523,7 +7523,7 @@
     "LicenseUrl": "https://github.com/stevenknox/CoreBDD/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "CoreBDD.ProjectTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7575,7 +7575,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Humidifier.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7699,7 +7699,7 @@
     "LicenseUrl": "https://github.com/PioneerCode/pioneer-console-boilerplate/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "MicroServiceWebApiTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7755,7 +7755,7 @@
     "LicenseUrl": "https://licenses.nuget.org/EUPL-1.2",
     "ProjectUrl": null,
     "Package": "OpenMod.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7781,7 +7781,7 @@
     "LicenseUrl": "https://github.com/LykkeCity/DotNetCoreServiceTemplate/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/LykkeCity/DotNetCoreServiceTemplate",
     "Package": "Lykke.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7807,7 +7807,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/IntelliTect/Coalesce.Vue.Template/master/license.txt",
     "ProjectUrl": "https://github.com/IntelliTect/Coalesce.Vue.Template",
     "Package": "IntelliTect.Coalesce.Vue.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7833,7 +7833,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Sheemin.MonogameDX.CSharpTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7859,7 +7859,7 @@
     "LicenseUrl": "https://github.com/hvpaiva/aspdotnet-vuejs/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/hvpaiva/aspdotnet-vuejs",
     "Package": "aspdotnet-vuejs",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7885,7 +7885,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Blip.Api.Template.K8s",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7911,7 +7911,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/panoramicdata/LogicMonitor.Cli",
     "Package": "LogicMonitor.Cli",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7937,7 +7937,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Soda.RazorTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -7968,7 +7968,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "iD3i.NetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8020,7 +8020,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "bmcdavid.NuGetTemplate.EpiserverPackage",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8046,7 +8046,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Luigi.WpfTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8152,7 +8152,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "HanaTech.Template.Mvc_Angular",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8234,7 +8234,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "OrchardCore.Cms.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8260,7 +8260,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "jeffb.template.BareMvcAll",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8312,7 +8312,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "SDG.templates.Web.API",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8338,7 +8338,7 @@
     "LicenseUrl": "https://github.com/MNie/NancyFxCore/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/MNie/NancyFxCore",
     "Package": "NancyFx.Core.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8390,7 +8390,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/wizsolucoes/api-wiz-template",
     "Package": "Wiz.Dotnet.Template.API",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8416,7 +8416,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Leaf.Module.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8468,7 +8468,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "NetEscapades.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8503,7 +8503,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Lykke.WebApiTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8555,7 +8555,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Audit.WebApi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8581,7 +8581,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/IntelliTect/Coalesce.KnockoutJS.Template/master/license.txt",
     "ProjectUrl": "https://github.com/IntelliTect/Coalesce.KnockoutJS.Template",
     "Package": "IntelliTect.Coalesce.KnockoutJS.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8607,7 +8607,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "AspNetCore.Kubernetes.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8633,7 +8633,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "SS_API_Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8659,7 +8659,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Maverick",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8685,7 +8685,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/sheelersoft/AngularTemplate",
     "Package": "Sheelersoft.AngularTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8711,7 +8711,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Eisk.WebApi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8737,7 +8737,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Hub3c.Integration.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8829,7 +8829,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JBuschke.Glue.Starter",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8855,7 +8855,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WebHostedWorker",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8891,7 +8891,7 @@
     "LicenseUrl": "https://licenses.nuget.org/BSD-3-Clause",
     "ProjectUrl": "https://github.com/nightroman/FarNet",
     "Package": "FarNet.template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8943,7 +8943,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/NorDroN/AngularTemplate",
     "Package": "NorDroN.AngularTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8969,7 +8969,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ServiceBlock.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -8995,7 +8995,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Dapplo.Microsoft.Extensions.Hosting.CaliburnMicro.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9047,7 +9047,7 @@
     "LicenseUrl": "https://github.com/PeterKottas/DotNetCore.WindowsService/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/PeterKottas/DotNetCore.WindowsService",
     "Package": "PeterKottas.DotNetCore.WindowsService.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9105,7 +9105,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/jannikbuschke/asp-cra/master/LICENSE",
     "ProjectUrl": "https://github.com/jannikbuschke/asp-cra",
     "Package": "JBuschke.AspCra",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9157,7 +9157,7 @@
     "LicenseUrl": "https://github.com/smairo/SmairoDotNetTemplates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/smairo/SmairoDotNetTemplates",
     "Package": "Smairo.Template.Console",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9219,7 +9219,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/reactjs/react.net",
     "Package": "React.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9245,7 +9245,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Passby.Microservice.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9271,7 +9271,7 @@
     "LicenseUrl": "https://github.com/smairo/SmairoDotNetTemplates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/smairo/SmairoDotNetTemplates",
     "Package": "Smairo.Template.AzureFunction.Timer",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9323,7 +9323,7 @@
     "LicenseUrl": "https://github.com/nojaf/fable-template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/nojaf/fable-template",
     "Package": "Fable.Template.nojaf",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9359,7 +9359,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "FlowEngine.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9395,7 +9395,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/tintoy/msbuild-extension-template/master/LICENSE",
     "ProjectUrl": "https://github.com/tintoy/msbuild-extension-template",
     "Package": "MSBuildExtensionTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9447,7 +9447,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/fsprojects/FSharp.TypeProviders.SDK/",
     "Package": "FSharp.TypeProviders.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9473,7 +9473,7 @@
     "LicenseUrl": "https://github.com/jamesemann/dotnetcorestuff/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "msbot-template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9499,7 +9499,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "MK6.Tools.CakeBuild.Frosting.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9531,7 +9531,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/Microsoft/BotBuilder-Samples/tree/master/generators/dotnet-templates/",
     "Package": "Microsoft.Bot.Framework.CSharp.EchoBot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9567,7 +9567,7 @@
     "LicenseUrl": "https://github.com/syncromatics/Syncromatics.Engineering.DX.TravisCI.NetCore/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/syncromatics/Syncromatics.Engineering.DX.TravisCI.NetCore",
     "Package": "Syncromatics.Engineering.DX.TravisCI.NetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9593,7 +9593,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Overt.GrpcTemplate.Service",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9619,7 +9619,7 @@
     "LicenseUrl": "https://github.com/inchingforward/fable-pixi-template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/inchingforward/fable-pixi-template",
     "Package": "Fable.Template.Pixi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9701,7 +9701,7 @@
     "LicenseUrl": "https://github.com/nullforce/seed-github/LICENSE.md",
     "ProjectUrl": "https://github.com/nullforce/seed-github",
     "Package": "Nullforce.DotnetTemplate.GitHub",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9733,7 +9733,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/proudmonkey/ApiBoilerPlate",
     "Package": "ApiBoilerPlate.AspNetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9766,7 +9766,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/Microsoft/BotBuilder-Samples/tree/master/generators/dotnet-templates/",
     "Package": "Microsoft.Bot.Framework.CSharp.CoreBot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9818,7 +9818,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "jeffb.template.MvcVueSpa",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9870,7 +9870,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Enigmatry.Selenium.Tools.Tests.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9896,7 +9896,7 @@
     "LicenseUrl": "https://github.com/MindWrapper/ReSharper.MinimalPluginTemplate/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/MindWrapper/ReSharper.MinimalPluginTemplate",
     "Package": "ReSharper.MinimalPluginTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -9922,7 +9922,7 @@
     "LicenseUrl": "https://github.com/jet/falanx/blob/v0.6.0/LICENSE",
     "ProjectUrl": "https://github.com/jet/falanx/",
     "Package": "Falanx.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10036,7 +10036,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Optivem.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10068,7 +10068,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/Microsoft/BotBuilder-Samples/tree/master/generators/dotnet-templates/",
     "Package": "Microsoft.Bot.Framework.CSharp.EmptyBot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10120,7 +10120,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MS-PL",
     "ProjectUrl": null,
     "Package": "FNA.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10146,7 +10146,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/Korthax/MonoGameTemplate/master/LICENSE.md",
     "ProjectUrl": "https://github.com/Korthax/MonoGameTemplate",
     "Package": "MonoGameTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10252,7 +10252,7 @@
     "LicenseUrl": "https://github.com/rabbal/DNTFrameworkCoreTemplate/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/rabbal/DNTFrameworkCoreTemplate",
     "Package": "DNTFrameworkCoreTemplateAPI",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10344,7 +10344,7 @@
     "LicenseUrl": "https://github.com/Azure/azure-webjobs-sdk-templates/blob/dev/LICENSE.txt",
     "ProjectUrl": "https://go.microsoft.com/fwlink/?linkid=848145",
     "Package": "Function.Extension.RabbitMq.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10370,7 +10370,7 @@
     "LicenseUrl": "https://github.com/aurelia-toolbelt/aurelia-toolbelt/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/aurelia-toolbelt/aurelia-toolbelt",
     "Package": "AureliaToolbelt.AspNetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10396,7 +10396,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/AndrewRublyov/AspNetCoreTemplateExtended",
     "Package": "AspNetCore.Template.Extended",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10422,7 +10422,7 @@
     "LicenseUrl": "https://github.com/akamsteeg/AtleX.BenchmarkDotNet.Template.CSharp/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/akamsteeg/AtleX.BenchmarkDotNet.Template.CSharp",
     "Package": "AtleX.BenchmarkDotNet.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10448,7 +10448,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/jannikbuschke/glue-reactnetcore-template/projectUrl",
     "Package": "JannikB.Glue.NetcoreReact",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10474,7 +10474,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/egil/razor-components-testing-library",
     "Package": "Razor.Components.Testing.Library.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10500,7 +10500,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/cmendible/dotnetcore.templates",
     "Package": "CodeItYourself.WebAPI.EchoBot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10588,7 +10588,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "SuktCoreWebApi.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10634,7 +10634,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Yontech.Fat.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10660,7 +10660,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "OliverCoding.GatsbyTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10692,7 +10692,7 @@
     "LicenseUrl": "http://git.munts.com/libsimpleio/COPYING",
     "ProjectUrl": "http://git.munts.com/libsimpleio",
     "Package": "libremoteio-templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10718,7 +10718,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "XPNet.CLR.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10770,7 +10770,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Eshopworld.WebAPIFabric.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10796,7 +10796,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Genocs/clean-architecture-template",
     "Package": "Genocs.CleanArchitectureTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10822,7 +10822,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ApiBoot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10848,7 +10848,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/DavidLievrouw/DalionWebAppTemplate",
     "Package": "Dalion.WebApp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10874,7 +10874,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/kaby76/Antlr4BuildTasks/master/LICENSE.txt",
     "ProjectUrl": "https://github.com/kaby76/Antlr4BuildTasks/Templates",
     "Package": "Antlr4BuildTasks.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -10966,7 +10966,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/trinitrotoluene/DiscordBotTemplates",
     "Package": "DiscordBotTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11002,7 +11002,7 @@
     "LicenseUrl": "https://github.com/RocketMod/Rocket.Templates/blob/master/LICENSE",
     "ProjectUrl": "https://rocketmod.net/",
     "Package": "Rocket.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11028,7 +11028,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "DefiantCode.Cake.Frosting.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11064,7 +11064,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "COWI.Tools.Revit.Macro",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11116,7 +11116,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Overt.Template.Service",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11175,7 +11175,7 @@
     "LicenseUrl": "https://github.com/lazyWombat/console-command-template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/lazyWombat/console-command-template",
     "Package": "lazyWombat.Console.Commands.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11201,7 +11201,7 @@
     "LicenseUrl": "https://github.com/humhei/ClassLibWithExpecto.Template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/humhei/ClassLibWithExpecto.Template",
     "Package": "ClassLibWithExpecto.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11259,7 +11259,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/kbrimble/botbuilder-v4preview-template",
     "Package": "BotBuilder.V4PreviewTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11351,7 +11351,7 @@
     "LicenseUrl": "https://github.com/smairo/SmairoDotNetTemplates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/smairo/SmairoDotNetTemplates",
     "Package": "Smairo.Template.Api",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11524,7 +11524,7 @@
     "LicenseUrl": "http://git.munts.com/libsimpleio/COPYING",
     "ProjectUrl": "http://git.munts.com/libsimpleio",
     "Package": "libsimpleio-templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11580,7 +11580,7 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ItemTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11636,7 +11636,7 @@
     "LicenseUrl": "https://github.com/patridge/dotnet-new-project-helper/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/patridge/dotnet-new-project-helper",
     "Package": "dotnet-new-project-helper",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11688,7 +11688,7 @@
     "LicenseUrl": "https://raw.githubusercontent.com/itn3000/Itn.MsExtConsoleTemplate.CSharp/master/LICENSE",
     "ProjectUrl": "https://github.com/itn3000/Itn.MsExtConsoleTemplate.CSharp",
     "Package": "Itn.BDNTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11740,7 +11740,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/",
     "Package": "db.robot.rabbit.mq.template.csharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11766,7 +11766,7 @@
     "LicenseUrl": "https://github.com/jertje260/dotnet-core-templating/blob/master/LICENSE.txt",
     "ProjectUrl": "https://github.com/jertje260/dotnet-core-templating",
     "Package": "jertje260.Core.Project.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11818,7 +11818,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://fusee3d.org/",
     "Package": "Fusee.Template.dotnet",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11844,7 +11844,7 @@
     "LicenseUrl": "https://opensource.org/licenses/MIT",
     "ProjectUrl": "https://github.com/shahabganji/Angular6Template",
     "Package": "AspNetCore.Angular6",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11952,7 +11952,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "DataJuggler.DataTier.Net.Core.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -11978,7 +11978,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/wizsolucoes/gateway-wiz-template",
     "Package": "Wiz.Dotnet.Template.Gateway",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12004,7 +12004,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xizhaoip.Microserver.WebapiTemplateForFasthttpapi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12030,7 +12030,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Codestellation.Library.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12056,7 +12056,7 @@
     "LicenseUrl": "https://github.com/SAFE-Stack/SAFE-template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/SAFE-Stack/SAFE-template",
     "Package": "SAFE-template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12108,7 +12108,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/teamRokuro/Fp",
     "Package": "Fp.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12134,7 +12134,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "CamundaProcessTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12193,7 +12193,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Reo.Templates.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12245,7 +12245,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "BOC.NetCoreTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12271,7 +12271,7 @@
     "LicenseUrl": "https://github.com/Nyami/AspNetCore.VueCliServices/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/Nyami/AspNetCore.VueCliServices.git",
     "Package": "Nyami.AspNetCore.Vue.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12297,7 +12297,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://www.tequraanalytics.com/",
     "Package": "Tequra.ResultsProcessing.AdapterTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12353,7 +12353,7 @@
     "LicenseUrl": "https://github.com/ppy/osu-templates/blob/master/LICENCE.md",
     "ProjectUrl": "https://github.com/ppy/osu-templates",
     "Package": "ppy.osu.Game.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12405,7 +12405,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "MSFramework.AspNetCore.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12431,7 +12431,7 @@
     "LicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "ProjectUrl": null,
     "Package": "marens101.DiscordBotTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12457,7 +12457,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/claymodel/webapi-framework",
     "Package": "ZoraApi.Framework",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12483,7 +12483,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Audit.Mvc.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12509,7 +12509,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "http://github.com/canton7/Stylet",
     "Package": "Stylet.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12535,7 +12535,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/ltwlf/dotnet-new-template-react-ts",
     "Package": "Ltwlf.AspNetCoreTS",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12561,7 +12561,7 @@
     "LicenseUrl": "https://github.com/flubu-core/flubu.core/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/flubu-core/flubu.core",
     "Package": "FlubuCore.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12587,7 +12587,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": null,
     "Package": "Maple.Branch.Module",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12639,7 +12639,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/granstel/Templates.Chatbot",
     "Package": "GranSteL.Templates.Chatbot",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12670,7 +12670,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Optivem.Atomiv.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12716,7 +12716,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JaggerJo.Avalonia.FuncUI.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12749,7 +12749,7 @@
     "LicenseUrl": "https://github.com/Azure/TypeEdge/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/Azure/TypeEdge",
     "Package": "TypeEdge.Module.VsCode",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12775,7 +12775,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "hxc.AspNetCoreTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12827,7 +12827,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "AMS.StarterWeb.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12899,7 +12899,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Dojo.Mvc.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12925,7 +12925,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "DotNetDevOps.VstsCSharpTask.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -12977,7 +12977,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "templatepack.ableTemplateApp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13029,7 +13029,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "isRock.Template.LineWebHook",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13055,7 +13055,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/PageUpPeopleOrg/serverless-microservice-bootstrap-template",
     "Package": "Serverless.Microservice.Bootstrap.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13107,7 +13107,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/wizsolucoes/fn-wiz-template",
     "Package": "Wiz.Dotnet.Template.Function",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13133,7 +13133,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/QcCoding/Qc.Template.Sdk",
     "Package": "Qc.Template.Sdk",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13159,7 +13159,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "OA.RSI.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13185,7 +13185,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WorkerOracleTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13247,7 +13247,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "EDAQuickstart.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13273,7 +13273,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "chenxizhang.dotnetcore.officeaddin.excel",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13299,7 +13299,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "pubsubworker",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13325,7 +13325,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Optivem.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13377,7 +13377,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "LiterateCS.Templates.LiterateLib.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13403,7 +13403,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "PivotalServices.WebApiTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13429,7 +13429,7 @@
     "LicenseUrl": "https://github.com/nojaf/elmish-component/blob/master/LICENSE.md",
     "ProjectUrl": "https://github.com/nojaf/elmish-component",
     "Package": "Elmish.Component",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13455,7 +13455,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/softlion/NotionSharp",
     "Package": "Softlion.NotionSharp.TemplateProjects",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13537,7 +13537,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/jmw-fr/Jmw.Templates.ClassLibrary",
     "Package": "Jmw.Templates.ClassLibrary",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13563,7 +13563,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "bcxwebapi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13589,7 +13589,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/thorstenalpers/netcore-api-template",
     "Package": "NetNinja.Api.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13615,7 +13615,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/BrushtailTech/VSTemplateDocumentation",
     "Package": "Brushtail.Enterprise.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13667,7 +13667,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "TestTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13693,7 +13693,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "RTP.BasicWebApiMySQL.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13785,7 +13785,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "CitizenFX.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13811,7 +13811,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "SDG.Templates.Console",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13863,7 +13863,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "IBWT.Framework.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13889,7 +13889,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Cocoondo.Utility.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -13915,7 +13915,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "TinyLittleMvvm.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14051,7 +14051,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Orleans.Contrib.UniversalSilo.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14077,7 +14077,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ChaoyitestTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14103,7 +14103,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Abp460.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14155,7 +14155,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "TDAI.Core.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14181,7 +14181,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "http://www.github.com/Synergex/HarmonyCore",
     "Package": "Harmony.Core.WorkshopTemplates2018",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14207,7 +14207,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "YWDNetCoreWebApi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14243,7 +14243,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/seesharprun/SharpPad.Template.NETCore30",
     "Package": "SharpPad.Template.NETCore30",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14302,7 +14302,7 @@
     "LicenseUrl": "https://github.com/aguacongas/Aguacongas.RedisQueue/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/aguacongas/Aguacongas.RedisQueue",
     "Package": "Aguacongas.RedisQueue",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14328,7 +14328,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FSharp.Blazor.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14354,7 +14354,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Easify.API",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14426,7 +14426,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/semuserable/Semuserable.Fable.Templates",
     "Package": "Semuserable.Fable.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14472,7 +14472,7 @@
     "LicenseUrl": "https://github.com/LindaLawton/Daimto.GoogleApis.Templates/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/LindaLawton/Daimto.GoogleApis.Templates",
     "Package": "Daimto.GoogleApis.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14508,7 +14508,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Rti.ConnextDds.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14544,7 +14544,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "BoltOn.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14570,7 +14570,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": null,
     "Package": "GenericHost.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14596,7 +14596,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "RamosISW.Templates.NuGetLib.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14622,7 +14622,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "ReservoirDevs.Templates.API",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14648,7 +14648,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Sequor.Microservice.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14694,7 +14694,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/JBildstein/SpiderEye",
     "Package": "Bildstein.SpiderEye.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14720,7 +14720,7 @@
     "LicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
     "ProjectUrl": "https://github.com/cookie1981/.NetGlobalToolsTemplate",
     "Package": "Dave.Cook.GlobalToolsTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14746,7 +14746,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "YB.ABPCoreMPA4.1.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14782,7 +14782,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/ngdseattle/neo-templates",
     "Package": "Neo.Contract.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14834,7 +14834,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "chenxizhang.dotnetcore.officeaddin.word",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14870,7 +14870,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/ForEvolve/ForEvolve.Conventions",
     "Package": "ForEvolve.Conventions.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14896,7 +14896,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Thundra.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14922,7 +14922,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/",
     "Package": "db.webapi.rabbit.mq.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -14994,7 +14994,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "loktionov129.web",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15020,7 +15020,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Demonel.MicroserviceTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15046,7 +15046,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Newbe.Claptrap.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15072,7 +15072,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "GL.UWPNetCoreConsole.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15098,7 +15098,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "IIMes.Service.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15230,7 +15230,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/panoramicdata/Meraki.Cli",
     "Package": "Meraki.Cli",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15256,7 +15256,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/thorstenalpers/netcore-api-template",
     "Package": "NetNinja.Graphql.Api.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15360,7 +15360,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Komodo.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15416,7 +15416,7 @@
     "LicenseUrl": "https://www.jcobridge.com/trial-license",
     "ProjectUrl": "https://www.jcobridge.com/",
     "Package": "JCOBridge.Examples.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15452,7 +15452,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ElectricHead.CSharpLib",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15478,7 +15478,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Template.NetCore.WebApi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15504,7 +15504,7 @@
     "LicenseUrl": "https://gitlab.com/arachnid-project/arachnid-template/blob/master/LICENSE.md",
     "ProjectUrl": "https://gitlab.com/arachnid-project/",
     "Package": "Arachnid.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15530,7 +15530,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Chuang.Sowftware.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15556,7 +15556,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/panoramicdata/Rundeck.Cli",
     "Package": "Rundeck.Cli",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15582,7 +15582,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://gitlab.success-ss.com.vn:8888/root/rd-netcore",
     "Package": "ASPNet.Core.API.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15608,7 +15608,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FoxPro.RageMPResourceTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15634,7 +15634,7 @@
     "LicenseUrl": "http://www.wtfpl.net/",
     "ProjectUrl": "http://github.com/vborisof/netcoreapitemplate",
     "Package": "VBorisof.NetCoreApiTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15660,7 +15660,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Overt.GrpcTemplateV3.Service",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15686,7 +15686,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "MVS.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15712,7 +15712,7 @@
     "LicenseUrl": "https://github.com/Kevenvz/AspNetCoreVueBoilerplate/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/Kevenvz/AspNetCoreVueBoilerplate/",
     "Package": "AspNetCoreVueBoilerplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15738,7 +15738,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "frendstask",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15764,7 +15764,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "isRock.Template.LineBotPush",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15798,7 +15798,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JMI.DotNetCore3x.REST.API.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15824,7 +15824,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FpSoftware.WebApiTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15850,7 +15850,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "GL.NetCoreSourceLinked.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15902,7 +15902,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Qs.Base.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15932,7 +15932,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Darwoft.Api",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15964,7 +15964,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "DataJuggler.DataTier.Net.Core.ItemTemplates.BlazorDataServices",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -15990,7 +15990,7 @@
     "LicenseUrl": "http://gitlab.jwell56.com/ecommerce/basespanuget/blob/master/LICENSE.md",
     "ProjectUrl": "http://gitlab.jwell56.com/ecommerce/basespanuget",
     "Package": "Jwell.IdentityServer4.Spa.Mvc",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16026,7 +16026,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Oscarvantol.AzureFunctionsTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16106,7 +16106,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Space.WebApi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16132,7 +16132,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "MSimpson.ConsoleTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16158,7 +16158,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Anny.DotnetCore.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16246,7 +16246,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xabaril.Lucecu.K8SOperator",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16272,7 +16272,7 @@
     "LicenseUrl": "https://github.com/tomlm/CShell/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "CShell.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16298,7 +16298,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Blog.Corezy.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16324,7 +16324,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "http://github.com/itn3000/MSBuild.Sdk.CMake",
     "Package": "MSBuild.Sdk.CMake.Template.Library",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16350,7 +16350,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/egil/bunit",
     "Package": "bunit.template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16376,7 +16376,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.Test",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16428,7 +16428,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "http://github.com/itn3000/MSBuild.Sdk.CMake",
     "Package": "MSBuild.Sdk.CMake.Template.Console",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16474,7 +16474,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "SadConsole.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16500,7 +16500,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "fun.mimimi.templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16526,7 +16526,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Pursue.Template.Core",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16562,7 +16562,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WQLWebAPITemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16588,7 +16588,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/DigitalCoyote/BuildTaskNuGetPackageTemplate",
     "Package": "BuildTaskNuGetPackage.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16624,7 +16624,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/tlgkccampbell/ultraviolet",
     "Package": "Ultraviolet.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16650,7 +16650,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Atomiv.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16686,7 +16686,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/zwei222/wpf-mvvm-template",
     "Package": "WPF.MVVM.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16712,7 +16712,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ApiAdapterTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16748,7 +16748,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "RamosISW.ReactMaterialTemplate.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16794,7 +16794,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "CleanArchitecture.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16830,7 +16830,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "mikd1.net.core.templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -16856,7 +16856,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/ashkanRmk/My.Custom.Template",
     "Package": "Ashkan.Custom.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17032,7 +17032,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "BoB.BaseTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17084,7 +17084,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Aro.SolutionTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17110,7 +17110,7 @@
     "LicenseUrl": "https://github.com/humhei/CellScript.Template/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/humhei/CellScript.Template",
     "Package": "CellScript.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17136,7 +17136,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "com.scottdoxey.netstandardclasslibrary",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17202,7 +17202,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/AzureAD/microsoft-identity-web",
     "Package": "Microsoft.Identity.Web.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17228,7 +17228,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/rxweb/rxwebcore",
     "Package": "clean.architecture.aspnetcore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17254,7 +17254,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "SDG.templates.Console.Database",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17280,7 +17280,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/dieegov/aspnetcore-vue-template",
     "Package": "aspnetcore-vuejs-template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17306,7 +17306,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Freeesia/CommandLineUtils.Template",
     "Package": "StudioFreesia.CommandLineUtils.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17332,7 +17332,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "SqlAdapterTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17358,7 +17358,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JLPI.ConsoleJack",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17384,7 +17384,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Fable.Elmish.React.Electron.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17410,7 +17410,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "MichaelBrandonMorris.MvcCoreTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17436,7 +17436,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WildernessLabs.Meadow.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17482,7 +17482,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/hayer/WPF-Attached-ViewModel-Behavior-Template",
     "Package": "phu.WPFAttachedViewModelBehaviorTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17508,7 +17508,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Paul.core.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17540,7 +17540,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "TheSadRogue.GoRogueSadConsole.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17574,7 +17574,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Exito.DDD.WebApi.NetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17600,7 +17600,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Larsson.Template.RESTfulAPI",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17626,7 +17626,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/GunnerMichael/ConsoleHostTemplate",
     "Package": "ServantSoftware.ConsoleHost",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17652,7 +17652,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "NJ.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17678,7 +17678,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Bishoymly/CoreX.Extensions",
     "Package": "CoreX.Microservices.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17714,7 +17714,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WebAPIMongodbTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17740,7 +17740,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "QsModular.Module.News.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17832,7 +17832,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MS-PL",
     "ProjectUrl": "https://github.com/aarnott/CodeGeneration.Roslyn",
     "Package": "CodeGeneration.Roslyn.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17858,7 +17858,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Chroma.GameTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17884,7 +17884,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "AspNetCoreAzureTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17910,7 +17910,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/wizsolucoes/fn-wiz-data-driven-template",
     "Package": "Wiz.Dotnet.Template.Function.DataDriven",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17956,7 +17956,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Vidyano.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -17982,7 +17982,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/getmila/framework",
     "Package": "Mila.Framework.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18008,7 +18008,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Structured.Blazor.Server",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18070,7 +18070,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Ext.NET.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18096,7 +18096,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://compositionalit.github.io/farmer/",
     "Package": "Farmer.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18162,7 +18162,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "HcfNS.Template.Mvc_Layui",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18214,7 +18214,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "GT.CMS.Web.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18266,7 +18266,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "ElGuerre.ApiRest.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18292,7 +18292,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Finaps.Templates.AspNetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18318,7 +18318,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "EarthwareTemplate.API",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18396,7 +18396,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://www.duality2d.net/",
     "Package": "AdamsLair.Duality.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18448,7 +18448,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "sso-sln",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18474,7 +18474,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "h5.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18500,7 +18500,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/jasontaylordev/Fixie.NetCore.ProjectTemplates",
     "Package": "Fixie.NetCore.ProjectTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18526,7 +18526,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FD.Microservice.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18562,7 +18562,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Aardvark.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18588,7 +18588,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Blockcore.Coin.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18624,7 +18624,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/danielmackay/Clean-Architecture-CQRS-Templates",
     "Package": "CleanArchitecture.CQRS.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18650,7 +18650,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Spells.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18676,7 +18676,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Stratiteq.Microservice.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18798,7 +18798,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/erickps8/Projeto-base.git",
     "Package": "Erick.Pinheiro.Template.Api",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18824,7 +18824,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Pyrox.Templates.AspNetCore",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18850,7 +18850,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "R5T.Templates.Solution.VS2017",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18876,7 +18876,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/JohnTheGr8/Wox.Plugin.Template",
     "Package": "Wox.Plugin.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18902,7 +18902,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Webapi.Core.Template.HGD",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18928,7 +18928,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Frank.Core.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18954,7 +18954,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "QsModular.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -18980,7 +18980,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Zhusmelb.NetCore.New.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19016,7 +19016,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Siigo.Archetype.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19042,7 +19042,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JBuschke.RAANC.Module",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19068,7 +19068,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/modern-forms/Modern.Forms-Templates",
     "Package": "ModernForms.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19094,7 +19094,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.T",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19120,7 +19120,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "dotentCampus.DotnetPackageTemplateForGitHub",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19156,7 +19156,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "CreativeMinds.CQS.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19182,7 +19182,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Tridion.Connector.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19208,7 +19208,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "ijlynivfhp.Core.Template.HGD",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19234,7 +19234,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Overt.TemplateV3.Service",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19267,7 +19267,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "datascience-project-template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19293,7 +19293,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Sepmyself.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19319,7 +19319,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/FJuette/tusk-ms",
     "Package": "FJuette.Template.WebApi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19356,7 +19356,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JMI.DotNetCore3x.IoTHub.REST.API.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19382,7 +19382,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "DotNetCore-API-Starter.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19408,7 +19408,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "OriginalCircuit.AdminPanelTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19434,7 +19434,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FizzyLogic.Templates.MachineLearning",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19460,7 +19460,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Glow.Module.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19486,7 +19486,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "RobWare.Bots.Templates.BotUI",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19532,7 +19532,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": null,
     "Package": "Vio.Dotnet.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19564,7 +19564,7 @@
     "LicenseUrl": "https://github.com/marcio-eric/adminlte3-netcore/blob/master/LICENSE",
     "ProjectUrl": null,
     "Package": "marcio-eric.adminlte3-template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19590,7 +19590,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Glow.App.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19616,7 +19616,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/stratisproject/Stratis.SmartContracts.Templates",
     "Package": "Stratis.SmartContracts.Templates.CLI",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19662,7 +19662,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "KnstArchitecture.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19708,7 +19708,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://sourcegear.com/",
     "Package": "SourceGear.Rust.NET.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19734,7 +19734,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Azendoo.Templates.Service",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19760,7 +19760,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "zyCATApi.Template.Core",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19786,7 +19786,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Kyrios.Core.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19822,7 +19822,7 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://appstore.intelligentplant.com/",
     "Package": "IntelligentPlant.IndustrialAppStore.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19848,7 +19848,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/y-code/template-rest-api.git",
     "Package": "Ycode.RestApi",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19894,7 +19894,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Hopex.ApplicationServer.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19920,7 +19920,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ZY.Template.Core",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19946,7 +19946,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://github.com/darcythomas/DextroLevo.WebTemplate",
     "Package": "DextroLevo.Utility.WebTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -19982,7 +19982,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Microservices.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20018,7 +20018,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "KZM.Utility.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20044,7 +20044,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "EzFrameworkCore.Template.NetCore31",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20070,7 +20070,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Flow-Launcher/dotnet-template",
     "Package": "Flow.Launcher.Plugin.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20096,7 +20096,7 @@
     "LicenseUrl": "https://github.com/FlorianRappl/Piral.Blazor/blob/master/LICENSE",
     "ProjectUrl": "https://github.com/FlorianRappl/Piral.Blazor",
     "Package": "Piral.Blazor.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20142,7 +20142,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "RandomChance.Common.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20174,7 +20174,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/SpatialFocus/DotNetNew.XamarinFormsShell",
     "Package": "SpatialFocus.DotNetNew.XamarinFormsShell",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20200,7 +20200,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Preview.CSharp.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20226,7 +20226,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WebJob.Utility.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20252,7 +20252,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ZWSYP.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20312,7 +20312,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ExitoDDD.Template.CSharp",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20338,7 +20338,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/LeaFrock/SpiderX.Template",
     "Package": "SpiderX.TemplatePacks",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20364,7 +20364,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "isRock.Template.LineLogin",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20390,7 +20390,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WySoftPluginTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20416,7 +20416,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Blog.Template.Demo",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20442,7 +20442,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Blip.Template.DigitalEmployee",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20504,7 +20504,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "PSharp.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20530,7 +20530,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "WebJobLogic.Utility.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20556,7 +20556,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.Test.ZW",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20582,7 +20582,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Coder.Domain.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20608,7 +20608,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Dt.Core.Web.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20634,7 +20634,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "KONMUE.Templates.Xamarin",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20660,7 +20660,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "OA.RSI.Architecture.WebApi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20686,7 +20686,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "R5T.Templates.Solution.VS2019",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20712,7 +20712,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "SubscriberHostedWorker",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20738,7 +20738,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "CortexEngine.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20764,7 +20764,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.A",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20800,7 +20800,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "EDAQuickstart.HelloWorld",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20836,7 +20836,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Custom.Template.NetCore.ZW",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20862,7 +20862,7 @@
     "LicenseUrl": "https://licenses.nuget.org/GPL-3.0-only",
     "ProjectUrl": "https://github.com/chrisfcarroll/Consoleable",
     "Package": "Consoleable",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20896,7 +20896,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Exito.Project.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20922,7 +20922,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Maple.Branch.Module.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20948,7 +20948,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Custom.Template.ZW",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -20974,7 +20974,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "TeodorChirileanu.Templates.SimpleConsole",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21000,7 +21000,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "jag-templatepack",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21056,7 +21056,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Duotify.Templates.Samples.3.1",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21082,7 +21082,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.TTTT",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21328,7 +21328,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/joao2391/DotNetGoF",
     "Package": "DotNetGoF",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21354,7 +21354,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/erickps8/Projeto-base.git",
     "Package": "Rafael.Neto.Teste.Template.Api",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21380,7 +21380,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "downr-tools",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21406,7 +21406,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.TT",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21432,7 +21432,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Genocs/microservice-template",
     "Package": "Genocs.MicroserviceTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21508,7 +21508,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.3.0",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21544,7 +21544,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Dummy.Utility.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21570,7 +21570,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Exito.Fargate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21596,7 +21596,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Xiaobao.Ddd.Template.TTT",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21632,7 +21632,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Custom.Template.NetCore.ZWT",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21684,7 +21684,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "zyWebApiTemplate.Core",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21720,7 +21720,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "ABC.Utility.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21746,7 +21746,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "SH.Core.WebAPI.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21772,7 +21772,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Botframeworkv4.DotNetNew.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21798,7 +21798,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/erickps8/TemplateMultitenancy.git",
     "Package": "Template.Api.Multi.Tenancy",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21824,7 +21824,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/Genocs/clean-architecture",
     "Package": "Genocs.CleanArchitecture",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21850,7 +21850,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Sloan.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21876,7 +21876,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Blog.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21912,7 +21912,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "EDAQuickstart.Templates2",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -21938,7 +21938,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "YYH.Webapi.Core.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22014,7 +22014,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.2.2",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22040,7 +22040,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "CampusOrder.Webapi.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22116,7 +22116,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.2.1",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22142,7 +22142,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "DocsSite.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22178,7 +22178,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/ConnectingApps/DncWireMockDemo#testtemplates",
     "Package": "ConnectingApps.TestTemplates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22204,7 +22204,7 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "MosiMicroServiceTemplate",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22230,7 +22230,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "BinaryQuest.Admin.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22256,7 +22256,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/InteXX/Templates",
     "Package": "Intexx.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22282,7 +22282,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Kata.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22308,7 +22308,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Exito.Buildspec",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22334,7 +22334,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Solid.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22390,7 +22390,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Umbraco.Tools.Packages.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22446,7 +22446,7 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Jesper.Tools.Packages.Templates",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22472,7 +22472,7 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://www.lxking.cn/",
     "Package": "Hybrid.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   },
   {
@@ -22498,7 +22498,7 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/TypedRest/OpenServiceBroker/tree/master/template",
     "Package": "OpenServiceBroker.Template",
-    "IconUrl": "/images/NuGet_project_logo.svg",
+
     "IconPngUrl": "/images/NuGet_project_logo.svg"
   }
 ]
