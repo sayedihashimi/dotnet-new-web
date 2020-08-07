@@ -7,19 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;500;700;800&display=swap" rel="stylesheet">
 <environment include="Development">
     <link rel="stylesheet" href="~/css/normalize/normalize.css"/>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/flex.css" />
 </environment>
 <environment exclude="Development">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
             asp-fallback-href="~/css/normalize/normalize.css"
             asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/flex.css" asp-append-version="true" />
 </environment>
 </head>
 <body>
     <nav id="navbar">
-        <a asp-page="/Index"><img src="~/images/create-project-40x40.png" alt="create-project-icon" /></a>
+        <a asp-page="/Index"><img src="~/images/create-project-20x20.png" alt="create-project-icon" /></a>
     </nav>
     <div>
         @RenderBody()
@@ -28,13 +28,6 @@
             <p>&copy; 2017 - Sayed Ibrahim Hashimi</p>
         </footer>
     </div>
-
-<environment include="Development">
-    <script src="~/js/site.js" asp-append-version="true"></script>
-</environment>
-<environment exclude="Development">
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
-</environment>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

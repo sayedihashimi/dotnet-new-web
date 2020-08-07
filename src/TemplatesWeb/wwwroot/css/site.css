@@ -160,13 +160,9 @@ a{
     line-height: 10rem;
 }
 .terminal p{
-    /* text-align: left; */
-    /* font-size: 1.25em; */
     white-space: normal;
     overflow: hidden;
-    /* line-height: 1.5em; */
     margin-top: 0;
-    /* vertical-align: middle; */
 }
 
     .terminal span {

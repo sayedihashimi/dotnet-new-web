@@ -1,0 +1,222 @@
+:root {
+    /*color palette*/
+    --honeydew: hsla(105, 55%, 96%, 1);
+    --powder-blue: hsla(182, 43%, 76%, 1);
+    --celadon-blue: hsla(203, 39%, 44%, 1);
+    --prussian-blue: hsla(215, 50%, 23%, 1);
+    --rich-black-fogra-29: hsla(196, 60%, 5%, 1);
+    font-size: 2.5vw;
+}
+@font-face {
+    font-family: 'Menlo Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Menlo Regular'), url('../fonts/Menlo-Regular.woff') format('woff');
+}
+html,body{
+    padding:0;
+    margin:0;
+    /* font-size: 2.5vw; */
+}
+body {
+    background-color: var(--powder-blue);
+    width: 100%;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
+}
+.pkgIcon {
+    width: 3vw;
+    height: 3vw;
+}
+#navbar{
+    display:flex;
+    background-color:var(--honeydew);
+    justify-content:flex-start;
+}
+
+#searchAndStats {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background-color: var(--honeydew);
+}
+#overallStats{
+    list-style-type:none;
+    display: flex;
+    font-size:1rem;
+}
+.template-pack-container{
+    display:flex;
+    flex-wrap:wrap;
+}
+.template-pack {
+    font-size: 0.3rem;
+    margin: 1rem;
+    padding: 0 1rem;
+    border: 1px solid var(--rich-black-fogra-29);
+    border-radius: 1rem;
+    flex:0 0 auto;
+}
+.template-description {
+    text-overflow: ellipsis;
+    /* background-color: gray; */
+    display: inline-block;
+    max-width: 8vw;
+    /* height: 100px; */
+    overflow: hidden;
+    max-height: 3.3em;
+}
+@media only screen and (max-width : 650px) {
+    .template-pack-container {
+        flex-direction:column;
+        flex-wrap:nowrap;
+    }
+    .template-pack{
+        font-size:1rem;
+    }
+}
+/*************************
+    terminal related
+**************************/
+.terminal-cotainer {
+    display: flex;
+    background-color: var(--honeydew);
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.terminal {
+    font-family: "Menlo Regular","Lucida Console",monospace;
+    font-size:3vw;
+    width: 40vw;
+    height: 8vw;
+    background-color: var(--rich-black-fogra-29);
+    color: var(--honeydew);
+    display:flex;
+    align-items:center;
+}
+.line1 {
+    -webkit-animation: type 1s 1s steps(20, end) forwards;
+    -moz-animation: type 1s 1s steps(20, end) forwards;
+    -o-animation: type 1s 1s steps(20, end) forwards;
+    animation: type 1s 1s steps(20, end) forwards;
+}
+
+.cursor1 {
+    -webkit-animation: blink 1s infinite;
+    -moz-animation: blink 1s infinite;
+    -o-animation: blink 1s infinite;
+    animation: blink 1s infinite;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
+@-moz-keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
+@-o-keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
+@keyframes type {
+    to {
+        width: 17em;
+    }

@@ -3,15 +3,12 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div class="terminal">
-    <p class="line1">$ dotnet new <span class="cursor1">_</span></p>
-</div>
 
-@*<div class="terminal">
-    <div class="fakeScreen">
+<div class="terminal-cotainer">
+    <div class="terminal">
         <p class="line1">$ dotnet new <span class="cursor1">_</span></p>
     </div>
-</div>*@
+</div>
 
 <div id="content">
     <section class="main-content-section" id="searchAndStats">
@@ -22,14 +19,14 @@
         </form>
 
         <ul id="overallStats">
-            <li>Overall downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
-            <li>Num of templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
-            <li>Num of template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
-            <li>Num of template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
+            <li># downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
+            <li># templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
+            <li># template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
+            <li># template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
         </ul>
     </section>
 
-    <section>
+    <section class="template-pack-container">
         @foreach (var tp in Model.TemplatePacks) {
             <section class="template-pack">
                 <h3>

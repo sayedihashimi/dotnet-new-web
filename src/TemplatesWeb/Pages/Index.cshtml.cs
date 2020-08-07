@@ -27,9 +27,11 @@ namespace TemplatesWeb.Pages {
         public async Task OnGetAsync() {
             TemplatePacks = await GetFromApiAsync<List<TemplatePack>>("templatepack");
 
-            // TODO: Delete this, do not check in!!!
-            TemplatePacks = TemplatePacks.GetRange(0, 50);
-            //
+            var limitNumTempaltePacks = System.Environment.GetEnvironmentVariable("LimitNumOfTempaltePacks");
+            if(!string.IsNullOrWhiteSpace(limitNumTempaltePacks) &&
+                string.Compare(limitNumTempaltePacks, "True", StringComparison.OrdinalIgnoreCase) == 0) {
+                TemplatePacks = TemplatePacks.GetRange(0, 10);
+            }
 
             if (TemplatePacks != null) {
                 OverallDownloads = (from tp in TemplatePacks
