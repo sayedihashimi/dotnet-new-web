@@ -19,10 +19,10 @@
         </form>
 
         <ul id="overallStats">
-            <li># downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
-            <li># templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
-            <li># template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
-            <li># template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
+            <li>downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
+            <li>templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
+            <li>template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
+            <li>template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
         </ul>
     </section>
 
@@ -38,7 +38,7 @@
                 <quote class="template-description">@tp.Description</quote>
 
                 <details class="template-details">
-                    <summary>@tp.Package.Count() templates</summary>
+                    <summary>@tp.Templates.Length templates</summary>
                     <ul class="template-list">
                         @foreach (var t in tp.Templates) {
                             <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
@@ -49,26 +49,6 @@
                     <li><p>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</p></li>
                     <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
                 </ul>
-                
-                @*<ul class="template-metadata">
-                    <li> |</li>
-                    <li>
-                        <img src="~/images/icon-download.png" alt="icon" />
-                        downloads: @String.Format("{0:n0}", @tp.DownloadCount) |
-                    </li>
-                    @if (!string.IsNullOrWhiteSpace(tp.ProjectUrl)) {
-                        <li><a href="@tp.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li>
-
-                    }
-                    @if (!string.IsNullOrWhiteSpace(tp.LicenseUrl)) {
-                        <li><a href="@tp.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li>
-
-                    }
-                    @if (!string.IsNullOrWhiteSpace(tp.Copyright)) {
-                        <li>Copyright: @tp.Copyright.Replace("Copyright ", "")</li>
-                    }
-                </ul>*@
-
             </section>
         }
     </section>
