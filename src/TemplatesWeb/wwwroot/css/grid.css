@@ -1,0 +1,47 @@
+﻿:root {
+    /*color palette*/
+    --honeydew: hsla(105, 55%, 96%, 1);
+    --powder-blue: hsla(182, 43%, 76%, 1);
+    --celadon-blue: hsla(203, 39%, 44%, 1);
+    --prussian-blue: hsla(215, 50%, 23%, 1);
+    --rich-black-fogra-29: hsla(196, 60%, 5%, 1);
+    font-size: 2vw;
+}
+
+@font-face {
+    font-family: 'Menlo Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Menlo Regular'), url('../fonts/Menlo-Regular.woff') format('woff');
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    /* font-size: 2.5vw; */
+}
+
+body {
+    background-color: var(--honeydew);
+    width: 100%;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+#navbar{
+    grid-column: 1/5;
+}
+.terminal{
+    grid-column:1/4;
+    align-items:center;
+    justify-items: center;
+    background-color:var(--rich-black-fogra-29);
+    color:var(--honeydew);
+}
+#searchAndStats{
+    grid-column:1/4;
+    justify-content:center;
+    justify-items:center;
+    align-content:center;
+}

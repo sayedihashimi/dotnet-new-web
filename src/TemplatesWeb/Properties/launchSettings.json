@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "LimitNumOfTempaltePacks": "False"
+        "LimitNumOfTempaltePacks": "True"
       },
       "applicationUrl": "https://localhost:52109;http://localhost:52119"
     },
@@ -22,7 +22,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "LimitNumOfTempaltePacks": "False"
+        "LimitNumOfTempaltePacks": "True"
       }
     }
   }

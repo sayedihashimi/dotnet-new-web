@@ -4,52 +4,49 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="terminal-cotainer">
-    <div class="terminal">
-        <p class="line1">$ dotnet new <span class="cursor1">_</span></p>
-    </div>
+
+<div class="terminal">
+    <p class="line1">$ dotnet new <span class="cursor1">_</span></p>
 </div>
 
-<div id="content">
-    <section class="main-content-section" id="searchAndStats">
-        <form id="search-form" method="POST">
-            <input asp-for="SearchText" required />
-            @*<button id="search-button" type="submit">Search templates</button>*@
-            <a href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
-        </form>
+<section class="main-content-section" id="searchAndStats">
+    <form id="search-form" method="POST">
+        <input asp-for="SearchText" required />
+        @*<button id="search-button" type="submit">Search templates</button>*@
+        <a href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
+    </form>
 
-        <ul id="overallStats">
-            <li>downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
-            <li>templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
-            <li>template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
-            <li>template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
-        </ul>
-    </section>
+    <ul id="overallStats">
+        <li>downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
+        <li>templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
+        <li>template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
+        <li>template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
+    </ul>
+</section>
 
-    <section class="template-pack-container">
-        @foreach (var tp in Model.TemplatePacks) {
-            <section class="template-pack">
-                <h3>
-                    @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) { 
-                    <img class="pkgIcon" src="@tp.IconUrl" alt="icon" />
+<section class="template-pack-container">
+    @foreach (var tp in Model.TemplatePacks) {
+        <section class="template-pack">
+            <h3>
+                @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) { 
+                <img class="pkgIcon" src="@tp.IconUrl" alt="icon" />
+                }
+                <a href="/pack/@tp.Package">@tp.Package</a>
+            </h3>
+            <quote class="template-description">@tp.Description</quote>
+
+            <details class="template-details">
+                <summary>@tp.Templates.Length templates</summary>
+                <ul class="template-list">
+                    @foreach (var t in tp.Templates) {
+                        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
                     }
-                    <a href="/pack/@tp.Package">@tp.Package</a>
-                </h3>
-                <quote class="template-description">@tp.Description</quote>
-
-                <details class="template-details">
-                    <summary>@tp.Templates.Length templates</summary>
-                    <ul class="template-list">
-                        @foreach (var t in tp.Templates) {
-                            <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
-                        }
-                    </ul>
-                </details>
-                <ul class="template-metadata">
-                    <li><p>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</p></li>
-                    <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
                 </ul>
-            </section>
-        }
-    </section>
-</div>
+            </details>
+            <ul class="template-metadata">
+                <li><p>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</p></li>
+                <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
+            </ul>
+        </section>
+    }
+</section>
