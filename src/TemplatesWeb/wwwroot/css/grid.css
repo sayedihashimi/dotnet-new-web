@@ -5,7 +5,7 @@
     --celadon-blue: hsla(203, 39%, 44%, 1);
     --prussian-blue: hsla(215, 50%, 23%, 1);
     --rich-black-fogra-29: hsla(196, 60%, 5%, 1);
-    font-size: 2vw;
+    /* font-size: 2vw; */
 }
 
 @font-face {
@@ -29,6 +29,7 @@ body {
     flex-direction: column;
     align-content:center;
     text-align:center;
+    justify-content: center;
 }
 .pkgIcon {
     width: 3vw;
@@ -57,7 +58,7 @@ li {
     justify-content: center;
     /*margin: 0 auto;*/
     grid-gap: 0.5em;
-    font-size: 1vw;
+    /* font-size: 1vw; */
 }
 
 .template-pack {
@@ -84,6 +85,9 @@ li {
 .template-metadata li, .template-metadata li p{
     margin: 0;
     padding: 0;
+}
+.template-details summary {
+    outline: none;
 }
 #overallStats {
     display: flex;
@@ -153,7 +157,7 @@ a {
     font-family: "Menlo Regular","Lucida Console",monospace;
     color: var(--honeydew);
     height: 10vh;
-    width: 50vw;
+    /* width: 50vw; */
     font-size: 5vh;
     line-height: 10vh;
     border-radius:1vh;
