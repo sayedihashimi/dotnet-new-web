@@ -1,7 +1,9 @@
 ﻿@page "{packId}/{templateId}"
 @model TemplateModel
 
-
+<div class="navHome">    
+    <a href="/"><img src="~/images/create-project-20x20.png" /></a>
+</div>
 <h3>
 @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
     <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="icon" />

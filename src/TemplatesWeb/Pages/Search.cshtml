@@ -2,27 +2,33 @@
 @model SearchModel
 @{
 }
-
+<div class="navHome">
+    <a href="/"><img src="~/images/create-project-20x20.png" /></a>
+</div>
 <form method="POST" action="~/">
     <div id="templateSearchBox">
         <h2>
             Search
             <input asp-for="SearchText" class="form-control" />
-            <button type="submit" class="btn btn-primary">Search templates</button>
+            <button type="submit" class="button4">Search</button>
         </h2>
     </div>
 </form>
 
 Found <b>@Model.SearchResults.Count</b> matching templates
 @foreach (var template in Model.SearchResults) {
+<section class="template-pack">
     <h3><a href="~/template/@template.TemplatePackId/@template.Identity">@template.Name</a></h3>
     <ul class="horizontalList">
-        <li>by: <a href="/search/@template.Author">@template.Author</a> |</li>
-        <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li> |
+        <li>by: <a href="/search/@template.Author">@template.Author</a></li>
+        <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li>
         @if (template.Tags != null && template.Tags.Count > 0) {
-            <li>Tags: @foreach (var t in template.Tags) {@t.Key<span>:</span> <b>@t.Value<span>; </span></b>}</li> }
+            <li>Tags: @foreach (var t in template.Tags) {@t.Key<span>:</span> <b>@t.Value<span>; </span></b>}</li>
+}
 
         @if (template.Classifications != null && template.Classifications.Length > 0) {
-            <li>Classifications:   @foreach (var c in template.Classifications) {<b>@c</b><span>; </span>}</li>}
+            <li>Classifications:   @foreach (var c in template.Classifications) {<b>@c</b><span>; </span>}</li>
+}
     </ul>
+</section>
 }

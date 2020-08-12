@@ -145,6 +145,12 @@ a {
         margin: 0.2em auto;
     }
 }*/
+
+
+.navHome{
+    align-self:start;
+    padding: 1vw 1vw;
+}
 /*************************
     terminal related
 **************************/
