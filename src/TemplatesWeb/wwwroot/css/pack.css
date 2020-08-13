@@ -66,3 +66,4 @@ h4{
     justify-self:center;
     text-align:left;
 }
+/* added via css so that users can triple-click to select the command w/o the $ */

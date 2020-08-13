@@ -159,6 +159,9 @@ a {
 /*************************
     terminal related
 **************************/
+.terminal-command::before {
+    content: ' $ ';
+}
 .terminal-container {
     align-self: center;
     margin-bottom: 3vw;
