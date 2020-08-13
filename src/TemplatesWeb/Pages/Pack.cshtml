@@ -1,37 +1,51 @@
 ﻿@page "{packId}"
 @model PackModel
-
+    <section class="go-home">
+        <a href="/"><img src="~/images/create-project-20x20.png" /> go home</a>
+    </section>
 <h2>
     @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
         <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="icon" />
     }
     @Model.TemplatePack.Package
 </h2>
-<h3><i>@Model.TemplatePack.Description</i></h3>
-<section class="templateInfo">
-    <ul class="horizontalList">
-        <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a> |</li>
-        <li>downloads: @Model.TemplatePack.DownloadCount |</li>
-        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
-            <li><a href="@Model.TemplatePack.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li>
-        }
-        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
-            <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li>
-        }
-        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
-            <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ","")</li>
-        }
-    </ul>
-</section>
-<section class="installCommand">
-    dotnet new --install "@Model.TemplatePack.Package"
+<quote><i>@Model.TemplatePack.Description</i></quote>
+<section class="install-command">
+    @*dotnet new --install "@Model.TemplatePack.Package"*@
+    <p>$ dotnet new --install "@Model.TemplatePack.Package"</p>
 </section>
 
-<h3>Templates:</h3>
+
+<h4 class="templates-title">Templates:</h4>
 <section>
-    <ul>
-        @foreach(var template in Model.TemplatePack.Templates) {
+    <ul class="templates-list">
+        @foreach (var template in Model.TemplatePack.Templates) {
             <li><a href="/template/@Model.TemplatePack.Package/@template.Identity">@template.Name</a></li>
         }
     </ul>
 </section>
+<section class="links-list-container">
+    <ul class="links-list">
+        <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a></li>
+        <li>downloads:@String.Format("{0:n0}", Model.TemplatePack.DownloadCount)</li>
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
+            <li><a href="@Model.TemplatePack.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a></li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
+            <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a></li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
+            <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ", "")</li>
+        }
+    </ul>
+</section>
+
+
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/pack.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/pack.css" asp-append-version="true" />
+    </environment>
+}
