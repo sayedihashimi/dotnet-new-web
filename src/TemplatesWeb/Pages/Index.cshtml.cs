@@ -16,14 +16,13 @@ namespace TemplatesWeb.Pages {
 
         [BindProperty]
         public string SearchText { get; set; }
-        public int OverallDownloads { get; set; }
-        public int NumTemplates { get; set; }
-        public int NumTemplatePacks { get; set; }
-        public int NumAuthors { get; set; }
+        public TemplateStats Stats { get; set; }
         [BindProperty(SupportsGet =true)]
         public int Skip { get; set; }
         [BindProperty(SupportsGet =true)]
         public int Take { get; set; }
+        public ConditionalLink PreviousLink { get; set; }
+        public ConditionalLink NextLink { get; set; }
 
         public IndexModel(IOptions<TemplateWebConfig> config):base(config) {
         }
@@ -33,17 +32,18 @@ namespace TemplatesWeb.Pages {
             if(Skip < 0) {
                 Skip = 0;
             }
-            if(Take < 0) {
+            if(Take <= 0) {
                 Take = 50;
             }
 
-            var stats = await GetFromApiAsync<TemplateStats>("templatepack/stats");
-            if(stats != null) {
-                OverallDownloads = stats.NumDownloads;
-                NumTemplates = stats.NumTemplates;
-                NumTemplatePacks = stats.NumTemplatePacks;
-                NumAuthors = stats.NumAuthors;
-            }
+            Stats = await GetFromApiAsync<TemplateStats>("templatepack/stats");
+            // to avoid nullref errors
+            if (Stats == null) { Stats = new TemplateStats(); }
+
+            //if(Skip < Stats.NumTemplatePacks - Take) {
+            //    Skip = Stats.NumTemplatePacks - Take;
+            //}
+
             TemplatePacks = await GetFromApiAsync<List<TemplatePack>>($"templatepack/{Skip}/{Take}");
 
             var limitNumTempaltePacks = System.Environment.GetEnvironmentVariable("LimitNumOfTempaltePacks");
@@ -51,7 +51,23 @@ namespace TemplatesWeb.Pages {
                 string.Compare(limitNumTempaltePacks, "True", StringComparison.OrdinalIgnoreCase) == 0) {
                 TemplatePacks = TemplatePacks.GetRange(0, 10);
             }
+
+            string previousLink = "";
+            string nextLink = "";
+            int prevSkip = Skip - Take;
+            int nextSkip = Skip + Take;
+            
+            if(prevSkip >= 0) {
+                previousLink = $"?skip={prevSkip}";
+            }
+            if (nextSkip < Stats.NumTemplatePacks) {
+                nextLink = $"?skip={nextSkip}";
+            }
+
+            PreviousLink = new ConditionalLink(prevSkip >= 0, previousLink);
+            NextLink = new ConditionalLink(nextSkip < Stats.NumTemplatePacks, nextLink);
         }
+
 
         public IActionResult OnPostAsync() {
             if (!ModelState.IsValid) {

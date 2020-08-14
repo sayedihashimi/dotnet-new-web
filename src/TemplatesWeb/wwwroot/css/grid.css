@@ -150,8 +150,14 @@ a {
         margin: 0.2em auto;
     }
 }*/
-
-
+.pager-container{
+    align-self:center;
+}
+.pager {
+    display: flex;
+    justify-content: space-between;
+    width:150px;
+}
 .navHome{
     align-self:start;
     padding: 1vw 1vw;
@@ -305,3 +311,4 @@ a {
     to {
         width: 17em;
     }
+}
