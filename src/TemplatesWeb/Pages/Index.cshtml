@@ -17,14 +17,12 @@
 </form>
 
 <ul id="overallStats">
-    <li>downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
-    <li>templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
-    <!--
-    <li>template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
-    <li>template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
-    -->
+    <li>downloads:       <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></li>
+    <li>templates:        <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></li>
+    
+    @*<li>template packs:   <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplatePacks)</integer></li>
+    <li>template authors: <integer>@String.Format("{0:n0}", @Model.Stats.NumAuthors)</integer></li>*@
 </ul>
-
 
 <section class="template-pack-container">
     @foreach (var tp in Model.TemplatePacks) {
@@ -52,3 +50,31 @@
         </section>
     }
 </section>
+<div class="pager-container">
+<ul class="pager">
+    @if (Model.PreviousLink.IsEnabled) {
+        <li>
+            <a href="@(Model.PreviousLink.LinkHref)"> Previous </a>
+        </li>
+    }
+    @if (Model.NextLink.IsEnabled) {
+        <li>
+            <a href="@Model.NextLink.LinkHref"> Next </a>
+        </li>
+    }
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

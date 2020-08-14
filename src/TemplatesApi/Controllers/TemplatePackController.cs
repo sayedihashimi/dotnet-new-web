@@ -34,5 +34,36 @@ namespace TemplatesApi.Controllers {
         public List<TemplatePack> Get() {
             return TemplatePacks;
         }
+        /// <summary>
+        /// Will return a subset of the Template packs.
+        /// Typically the number of elements returned is determined by take.
+        /// 
+        /// If skip is >= the num of packs, null will be returned
+        /// </summary>
+        /// <param name="skip">num of elements to skip</param>
+        /// <param name="take">num of elements that should be returned</param>
+        /// <returns></returns>
+        [HttpGet("{skip}/{take}")]
+        public List<TemplatePack> Get(int skip, int take) {
+            int numpacks = TemplatePacks.Count;
+
+            if(skip >= numpacks) {
+                return null;
+            }
+            if(take <= 0) {
+                take = 50;
+            }
+
+            if(skip+take >= numpacks) {
+                take = numpacks - skip - 1;
+            }
+
+            return new List<TemplatePack>(TemplatePacks.GetRange(skip, take));
+        }
+
+        [HttpGet("stats")]
+        public TemplateStats GetStats() {
+            return new TemplateStats(TemplatePacks);
+        }
     }
 }
