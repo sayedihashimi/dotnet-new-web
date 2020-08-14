@@ -59,26 +59,26 @@ namespace TemplatesShared
         private string _iconurl;
         public string IconUrl {
             get {
-                if(string.IsNullOrWhiteSpace(_iconurl)){
-                    return @"/images/NuGet_project_logo.svg";
-                }
+                //if(string.IsNullOrWhiteSpace(_iconurl)){
+                //    return @"/images/NuGet_project_logo.svg";
+                //}
                 return _iconurl; 
             }
             set {
-                if (string.IsNullOrWhiteSpace(value)) {
-                    value = @"/images/NuGet_project_logo.svg";
-                }
+                //if (string.IsNullOrWhiteSpace(value)) {
+                //    value = @"/images/NuGet_project_logo.svg";
+                //}
                 _iconurl = value;
             }
         }
 
         public string IconPngUrl{
             get{
-                string defaultIconUrl = @"/images/NuGet_project_logo.svg";
-                if(string.IsNullOrWhiteSpace(IconUrl) || 
-                   IconUrl.EndsWith("µ.svg",StringComparison.OrdinalIgnoreCase)){
-                    return defaultIconUrl;
-                }
+                //string defaultIconUrl = @"/images/NuGet_project_logo.svg";
+                //if(string.IsNullOrWhiteSpace(IconUrl) || 
+                //   IconUrl.EndsWith("µ.svg",StringComparison.OrdinalIgnoreCase)){
+                //    return defaultIconUrl;
+                //}
 
                 return IconUrl;
             }

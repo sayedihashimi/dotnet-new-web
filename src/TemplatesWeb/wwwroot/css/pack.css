@@ -1,0 +1,82 @@
+:root {
+    /*color palette*/
+    --honeydew: hsla(105, 55%, 96%, 1);
+    --powder-blue: hsla(182, 43%, 76%, 1);
+    --celadon-blue: hsla(203, 39%, 44%, 1);
+    --prussian-blue: hsla(215, 50%, 23%, 1);
+    --rich-black-fogra-29: hsla(196, 60%, 5%, 1);
+}
+
+body{
+    display:grid;
+    grid-template-columns: 100%;
+    /*grid-template-rows: 1.5em 3em 1.5em 1em auto 3em 1em;*/
+    justify-content:center;
+}
+
+h3{
+    margin: 1vh 0 0 0;
+}
+h4{
+    margin:2vh 0 0 0;
+}
+.templates-list{
+    margin: 1vh 0 0 0;
+}
+.go-home{
+    justify-self:start;
+}
+.install-command {
+    font-family: "Menlo Regular","Lucida Console",monospace;
+    justify-self: center;
+    background-color: var(--rich-black-fogra-29);
+    color: var(--honeydew);
+    padding: 0 4vw;
+    border-radius: 1vmin;
+}
+.links-list-container{
+    justify-self:center;
+}
+.links-list {
+    text-align: left;
+}
+
+/*********************
+    Content for Template view
+***********************/
+@media only screen and (max-width: 900px){
+/*    strong{
+        font-size:1.5vw;
+    }*/
+}
+
+.install-and-use-command {
+    justify-self: center;
+    background-color: var(--rich-black-fogra-29);
+    font-family: "Menlo Regular","Lucida Console",monospace;
+    color: var(--honeydew);
+    /*height: calc(2vw + 10px);*/
+    font-size: 2vw;
+    line-height: 2vw;
+    border-radius: 1vmin;
+}
+.install-and-use-command ul{
+    padding-inline-start: 2vw;
+    padding-inline-end: 2vw;
+    text-align:left;
+}
+@media only screen and (max-width: 750px){
+    .install-and-use-command {
+        font-size: 2.5vw;
+    }
+}
+
+.template-info{
+    justify-self:center;
+    text-align:left;
+}
+.template-meta{
+    justify-self:center;
+    /* text-align:left; */
+}
+/* added via css so that users can triple-click to select the command w/o the $ */

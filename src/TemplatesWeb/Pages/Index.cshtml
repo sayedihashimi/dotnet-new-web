@@ -2,60 +2,53 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
-    int counter = 0;
 }
 
-<h1 class="indexHead">
-    dotnet templates
-</h1>
-<p>
-    Find available templates for <code>dotnet</code>
-</p>
-<form method="POST">
-    <div id="templateSearchBox">
-        <input asp-for="SearchText" class="form-control" required/>
-        <button type="submit" class="btn btn-primary">Search templates</button>
+
+<div class="terminal-container">
+    <div class="terminal">
+        <p class="line1 terminal-command">dotnet new <span class="cursor1">_</span></p>
     </div>
+</div>
+<form id="search-form" method="POST">
+    <input asp-for="SearchText" required />
+    @*<button id="search-button" type="submit">Search templates</button>*@
+    <a href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
 </form>
 
 <ul id="overallStats">
-    <li>Overall downloads:       <span class="value">@Model.OverallDownloads</span></li>
-    <li>Num of templates:        <span class="value">@Model.NumTemplates</span></li>
-    <li>Num of template packs:   <span class="value">@Model.NumTemplatePacks</span></li>
-    <li>Num of template authors: <span class="value">@Model.NumAuthors</span></li>
+    <li>downloads:       <integer>@String.Format("{0:n0}", @Model.OverallDownloads)</integer></li>
+    <li>templates:        <integer>@String.Format("{0:n0}", @Model.NumTemplates)</integer></li>
+    <!--
+    <li>template packs:   <integer>@String.Format("{0:n0}", @Model.NumTemplatePacks)</integer></li>
+    <li>template authors: <integer>@String.Format("{0:n0}", @Model.NumAuthors)</integer></li>
+    -->
 </ul>
 
-<h2>Template packs</h2>
 
-@foreach (var tp in Model.TemplatePacks) {
-    string evenOrOdd = (counter++ % 2) == 0 ? "evenrow" : "oddrow";
-    <section class="templatePackSection @evenOrOdd">
-        <h3>
-            @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) {
-                <img class="pkgIcon" src="@tp.IconUrl" alt="package icon" />
-            }
-            <a href="/pack/@tp.Package">@tp.Package</a>
-        </h3>
-        <quote>@tp.Description</quote>
-        <ul class="horizontalList packList">
-            <li>by: <a href="/search/@tp.Authors">@tp.Authors</a> |</li>
-            <li>
-            <img src="~/images/icon-download.png" alt="download icon"/>
-            downloads: @tp.DownloadCount |</li>
-            @if (!string.IsNullOrWhiteSpace(tp.ProjectUrl)) {
-                <li><a href="@tp.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li> 
-            }
-            @if (!string.IsNullOrWhiteSpace(tp.LicenseUrl)) {
-                <li><a href="@tp.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li> 
-            }
-            @if (!string.IsNullOrWhiteSpace(tp.Copyright)) {
-                <li>Copyright: @tp.Copyright.Replace("Copyright ","")</li>
-            }
-        </ul>
-        <ul class="templateList">
-            @foreach(var t in tp.Templates) {
-                <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>       
-            }
-        </ul>
-    </section>
-}
+<section class="template-pack-container">
+    @foreach (var tp in Model.TemplatePacks) {
+        <section class="template-pack">
+            <h4 class="template-pack-header">
+                @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) {
+                    <img class="pkgIcon" src="@tp.IconUrl" alt="icon" />
+                }
+                <a href="/pack/@tp.Package">@tp.Package</a>
+            </h4>
+            <quote class="template-description">@tp.Description</quote>
+
+            <details class="template-details">
+                <summary>@tp.Templates.Length templates</summary>
+                <ul class="template-list">
+                    @foreach (var t in tp.Templates) {
+                        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
+                    }
+                </ul>
+            </details>
+            <ul class="template-metadata">
+                <li><p>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</p></li>
+                <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
+            </ul>
+        </section>
+    }
+</section>

@@ -1,40 +1,54 @@
 ﻿@page "{packId}/{templateId}"
 @model TemplateModel
 
-
+<section class="go-home">
+    <a href="/"><img src="~/images/create-project-20x20.png" /> go home</a>
+</section>
 <h3>
 @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
-    <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="package icon" />
+    <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="icon" />
 }
-
-@Model.Template.Name (@Model.Template.ShortName[0])
+    @Model.Template.Name (@Model.Template.ShortName[0])
 </h3>
+
 <p>@Model.TemplatePack.Description</p>
-<section class="templateInfo">
+
+<section class="install-and-use-command">
+    <ul>
+        <li><p class="terminal-command">dotnet new --install "@Model.TemplatePack.Package"</p></li>
+        <li><p class="terminal-command">dotnet new @Model.Template.ShortName[0]</p></li>
+    </ul>
+</section>
+
+<section class="template-info">
     <ul class="horizontalList">
-        <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a> |</li>
-        <li>downloads: @Model.TemplatePack.DownloadCount |</li>
+        <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a></li>
+        <li>downloads: @Model.TemplatePack.DownloadCount</li>
         @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
-        <li><a href="@Model.TemplatePack.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a> |</li>
+            <li><a href="@Model.TemplatePack.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a></li>
         }
         @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
-            <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a> |</li>
+            <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a></li>
         }
         @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
-            <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ","")</li>
+            <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ", "")</li>
         }
     </ul>
 </section>
-<section class="installCommand">
-    dotnet new --install "@Model.TemplatePack.Package"<br/>
-    dotnet new @Model.Template.ShortName[0]
-</section>
 
-<section>
-    <ul class="templateInfo">
-        <li>Tags:              @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <b>@t.Value<span>; </span></b>}</li>
-        <li>Classifications:   @foreach (var c in Model.Template.Classifications) {<b>@c</b><span>; </span>}</li>        
+<section class="template-meta">
+    <strong><a href="~/pack/@Model.TemplatePack.Package">Other templates in this package</a></strong>
+    <ul>
+        <li>Tags:              @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <strong>@t.Value<span>; </span></strong>}</li>
+        <li>Classifications:   @foreach (var c in Model.Template.Classifications) {<strong>@c</strong><span>; </span>}</li>
     </ul>
-
-    <h4><a href="~/pack/@Model.TemplatePack.Package">Other templates in this package</a></h4>    
 </section>
+
+@section Styles {
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/pack.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/pack.css" asp-append-version="true" />
+    </environment>
+}
