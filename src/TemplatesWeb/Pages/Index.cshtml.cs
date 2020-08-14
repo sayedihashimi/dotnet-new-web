@@ -20,12 +20,24 @@ namespace TemplatesWeb.Pages {
         public int NumTemplates { get; set; }
         public int NumTemplatePacks { get; set; }
         public int NumAuthors { get; set; }
-
+        [BindProperty]
+        public int Skip { get; set; }
+        [BindProperty]
+        public int Take { get; set; }
 
         public IndexModel(IOptions<TemplateWebConfig> config):base(config) {
         }
         public async Task OnGetAsync() {
-            TemplatePacks = await GetFromApiAsync<List<TemplatePack>>("templatepack");
+            // TemplatePacks = await GetFromApiAsync<List<TemplatePack>>("templatepack");
+
+            if(Skip < 0) {
+                Skip = 0;
+            }
+            if(Take < 0) {
+                Take = 50;
+            }
+
+            TemplatePacks = await GetFromApiAsync<List<TemplatePack>>($"templatepack/{Skip}/{Take}");
 
             var limitNumTempaltePacks = System.Environment.GetEnvironmentVariable("LimitNumOfTempaltePacks");
             if(!string.IsNullOrWhiteSpace(limitNumTempaltePacks) &&
