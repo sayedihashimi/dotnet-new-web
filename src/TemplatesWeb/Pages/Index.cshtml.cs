@@ -20,9 +20,9 @@ namespace TemplatesWeb.Pages {
         public int NumTemplates { get; set; }
         public int NumTemplatePacks { get; set; }
         public int NumAuthors { get; set; }
-        [BindProperty]
+        [BindProperty(SupportsGet =true)]
         public int Skip { get; set; }
-        [BindProperty]
+        [BindProperty(SupportsGet =true)]
         public int Take { get; set; }
 
         public IndexModel(IOptions<TemplateWebConfig> config):base(config) {

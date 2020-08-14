@@ -53,11 +53,6 @@ namespace TemplatesApi.Controllers {
             if(take <= 0) {
                 take = 50;
             }
-            int startElement = skip;
-            //int endElement = skip + take;
-            //if(endElement >= numpacks) {
-            //    endElement = numpacks - 1;
-            //}
 
             if(skip+take >= numpacks) {
                 take = numpacks - skip - 1;
