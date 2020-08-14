@@ -60,5 +60,10 @@ namespace TemplatesApi.Controllers {
 
             return new List<TemplatePack>(TemplatePacks.GetRange(skip, take));
         }
+
+        [HttpGet("stats")]
+        public TemplateStats GetStats() {
+            return new TemplateStats(TemplatePacks);
+        }
     }
 }

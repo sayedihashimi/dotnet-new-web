@@ -37,25 +37,19 @@ namespace TemplatesWeb.Pages {
                 Take = 50;
             }
 
+            var stats = await GetFromApiAsync<TemplateStats>("templatepack/stats");
+            if(stats != null) {
+                OverallDownloads = stats.NumDownloads;
+                NumTemplates = stats.NumTemplates;
+                NumTemplatePacks = stats.NumTemplatePacks;
+                NumAuthors = stats.NumAuthors;
+            }
             TemplatePacks = await GetFromApiAsync<List<TemplatePack>>($"templatepack/{Skip}/{Take}");
 
             var limitNumTempaltePacks = System.Environment.GetEnvironmentVariable("LimitNumOfTempaltePacks");
             if(!string.IsNullOrWhiteSpace(limitNumTempaltePacks) &&
                 string.Compare(limitNumTempaltePacks, "True", StringComparison.OrdinalIgnoreCase) == 0) {
                 TemplatePacks = TemplatePacks.GetRange(0, 10);
-            }
-
-            if (TemplatePacks != null) {
-                OverallDownloads = (from tp in TemplatePacks
-                                        select tp.DownloadCount).Sum();
-
-                NumTemplates = (from tp in TemplatePacks
-                                from template in tp.Templates
-                                select template).ToList().Count;
-
-                NumTemplatePacks = TemplatePacks.Count;
-                NumAuthors = (from tp in TemplatePacks
-                                  select tp.Authors).Distinct().ToList().Count;
             }
         }
 
