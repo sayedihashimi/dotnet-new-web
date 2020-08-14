@@ -41,6 +41,15 @@ h4{
     text-align: left;
 }
 
+/*********************
+    Content for Template view
+***********************/
+@media only screen and (max-width: 900px){
+/*    strong{
+        font-size:1.5vw;
+    }*/
+}
+
 .install-and-use-command {
     justify-self: center;
     background-color: var(--rich-black-fogra-29);
@@ -56,14 +65,18 @@ h4{
     padding-inline-end: 2vw;
     text-align:left;
 }
-    .terminal {
+@media only screen and (max-width: 750px){
+    .install-and-use-command {
+        font-size: 2.5vw;
     }
+}
+
 .template-info{
     justify-self:center;
     text-align:left;
 }
 .template-meta{
     justify-self:center;
-    text-align:left;
+    /* text-align:left; */
 }
 /* added via css so that users can triple-click to select the command w/o the $ */
