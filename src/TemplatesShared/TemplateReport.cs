@@ -65,12 +65,12 @@ namespace TemplatesShared {
             }
             
             File.WriteAllText(
-                    Path.Combine(reportsPath, "packages-without-templates.json"),
-                    Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates,Formatting.Indented));
+                    Path.Combine(reportsPath, "newly-found-packages-without-templates.json"),
+                    JsonConvert.SerializeObject(listPackagesWithNotemplates,Formatting.Indented));
 
             File.WriteAllText(
-                    Path.Combine(reportsPath, "package-names-to-ignore.txt"),
-                    Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages, Formatting.Indented));
+                    Path.Combine(reportsPath, "newly-found-package-names-to-ignore.json"),
+                    JsonConvert.SerializeObject(pkgNamesWitoutPackages, Formatting.Indented));
 
             var templatePacks = new List<TemplatePack>();
             foreach(var pkg in templatePackages) {
@@ -115,20 +115,18 @@ namespace TemplatesShared {
             File.Copy(cacheFile, jsonReportFilepath);
         }
 
-        // todo: improve this
         protected List<string> GetPackagesToIgnore() {
-            var original = Strings.PackagesToIgnore.Split("\n").ToList();
-
             // read it from the file
             var pathToIgnoreFile = Path.Combine(
                     new FileInfo(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath).Directory.FullName,
-                    "package-names-to-ignore.txt");
+                    "package-names-to-ignore.json");
             if (File.Exists(pathToIgnoreFile)) {
                 var ignoreJson = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(pathToIgnoreFile));
-                original = ignoreJson.ToList();
+                var result = ignoreJson.ToList();
+                return result
             }
 
-            return original;
+            return new List<string>();
         }
 
         private void ReportPackages(List<NuGetPackage> packages) {
