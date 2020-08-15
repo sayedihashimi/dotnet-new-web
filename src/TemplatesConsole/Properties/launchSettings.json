@@ -2,7 +2,7 @@
   "profiles": {
     "TemplatesConsole": {
       "commandName": "Project",
-      "commandLineArgs": "report --verbose -st template -st templates"
+      "commandLineArgs": "report --verbose -st template -st templates --lastReport C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json"
     }
   }
 }

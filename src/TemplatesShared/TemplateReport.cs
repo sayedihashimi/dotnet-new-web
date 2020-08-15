@@ -31,14 +31,45 @@ namespace TemplatesShared {
             _nugetDownloader = nugetDownloader;
             _remoteFile = remoteFile;
         }
-        public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath, List<string> specificPackagesToInclude) {
+        public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath, List<string> specificPackagesToInclude, string previousReportPath) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
             Debug.Assert(!string.IsNullOrEmpty(jsonReportFilepath));
 
-            // 1: query nuget for search results
+            
+            Dictionary<string, TemplatePack> previousPacks = new Dictionary<string, TemplatePack>();
+            if (!string.IsNullOrEmpty(previousReportPath) && File.Exists(previousReportPath)) {
+                List<TemplatePack> previousReport = new List<TemplatePack>();
+                previousReport = JsonConvert.DeserializeObject<List<TemplatePack>>(File.ReadAllText(previousReportPath));
+                previousPacks = TemplatePack.ConvertToDictionary(previousReport);
+            }
+
+            // 1: query nuget for search results, we need to query all because we need to get the new download count
             var foundPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, GetPackagesToIgnore());
+            var pkgsToDownload = new List<NuGetPackage>();
+            // go through each found package, if pkg is in previous result with same version number, update download count and move on
+            // if not same version number, remove from dictionary and add to list to download
+            foreach(var pkg in foundPackages) {
+                var id = TemplatePack.NormalisePkgId(pkg.Id);
+                if (previousPacks.ContainsKey(id)) {
+                    var previousPackage = previousPacks[id];
+                    // check version number to see if it is the same
+                    if(string.Compare(pkg.Version, previousPackage.Version, StringComparison.OrdinalIgnoreCase) == 0) {
+                        // same version just update the download count
+                        previousPackage.DownloadCount = pkg.TotalDownloads;
+                    }
+                    else {
+                        previousPacks.Remove(id);
+                        pkgsToDownload.Add(pkg);
+                    }
+                }
+                else {
+                    pkgsToDownload.Add(pkg);
+                }
+            }
+
             // 2: download nuget packages locally
-            var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(foundPackages);
+            // var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(foundPackages);
+            var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
 
             // 3: extract nuget package to local folder
             var templatePackages = new List<NuGetPackage>();
@@ -103,6 +134,19 @@ namespace TemplatesShared {
                 }
             }
 
+            // add all the downloaded items to existing dictionary then get the full result
+            foreach(var pkg in templatePacks) {
+                var id = TemplatePack.NormalisePkgId(pkg.Package);
+                if (previousPacks.ContainsKey(id)) {
+                    // I believe it shouldn't get here, but just in case
+                    previousPacks.Remove(id);
+                }
+
+                previousPacks.Add(id, pkg);
+            }
+
+            templatePacks = previousPacks.Values.ToList();
+
             templatePacks = templatePacks.OrderBy((tp) => -1 * tp.DownloadCount).ToList();
             // write to cache folder and then copy to dest
             var cacheFile = Path.Combine(reportsPath, "template-report.json");
@@ -123,7 +167,7 @@ namespace TemplatesShared {
             if (File.Exists(pathToIgnoreFile)) {
                 var ignoreJson = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(pathToIgnoreFile));
                 var result = ignoreJson.ToList();
-                return result
+                return result;
             }
 
             return new List<string>();
