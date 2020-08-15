@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.IO;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace TemplatesShared {
     public class TemplateReport {
@@ -30,9 +31,6 @@ namespace TemplatesShared {
             _nugetDownloader = nugetDownloader;
             _remoteFile = remoteFile;
         }
-        // TODO: add the ability to specify specific nuget package IDs to include.
-        // Some are not included in search results for some reason
-        // https://api.nuget.org/v3/registration3/amazon.lambda.templates/index.json
         public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath, List<string> specificPackagesToInclude) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
             Debug.Assert(!string.IsNullOrEmpty(jsonReportFilepath));
@@ -65,16 +63,14 @@ namespace TemplatesShared {
             if (!Directory.Exists(reportsPath)) {
                 Directory.CreateDirectory(reportsPath);
             }
-            Path.Combine(reportsPath, "packages-without-templates.json");
-            Path.Combine(reportsPath, "package-names-without-templates.txt");
-
+            
             File.WriteAllText(
                     Path.Combine(reportsPath, "packages-without-templates.json"),
-                    Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates));
+                    Newtonsoft.Json.JsonConvert.SerializeObject(listPackagesWithNotemplates,Formatting.Indented));
 
             File.WriteAllText(
-                    Path.Combine(reportsPath, "package-names-without-templates.txt"),
-                    Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages));
+                    Path.Combine(reportsPath, "package-names-to-ignore.txt"),
+                    Newtonsoft.Json.JsonConvert.SerializeObject(pkgNamesWitoutPackages, Formatting.Indented));
 
             var templatePacks = new List<TemplatePack>();
             foreach(var pkg in templatePackages) {
@@ -110,16 +106,29 @@ namespace TemplatesShared {
             templatePacks = templatePacks.OrderBy((tp) => -1 * tp.DownloadCount).ToList();
             // write to cache folder and then copy to dest
             var cacheFile = Path.Combine(reportsPath, "template-report.json");
-            File.WriteAllText(cacheFile, JsonConvert.SerializeObject(templatePacks));
+            File.WriteAllText(cacheFile, JsonConvert.SerializeObject(templatePacks, Formatting.Indented));
             if (File.Exists(jsonReportFilepath)) {
                 File.Delete(jsonReportFilepath);
             }
+
+            Console.WriteLine($"Writing report to '{jsonReportFilepath}'");
             File.Copy(cacheFile, jsonReportFilepath);
         }
 
         // todo: improve this
         protected List<string> GetPackagesToIgnore() {
-            return Strings.PackagesToIgnore.Split("\n").ToList();
+            var original = Strings.PackagesToIgnore.Split("\n").ToList();
+
+            // read it from the file
+            var pathToIgnoreFile = Path.Combine(
+                    new FileInfo(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath).Directory.FullName,
+                    "package-names-to-ignore.txt");
+            if (File.Exists(pathToIgnoreFile)) {
+                var ignoreJson = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(pathToIgnoreFile));
+                original = ignoreJson.ToList();
+            }
+
+            return original;
         }
 
         private void ReportPackages(List<NuGetPackage> packages) {

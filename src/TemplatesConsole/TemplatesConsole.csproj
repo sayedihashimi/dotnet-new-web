@@ -33,6 +33,12 @@
   <ItemGroup>
     <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="package-names-to-ignore.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
   <Target Name="InstallTool" DependsOnTargets="Pack">
     <Exec Command="dotnet tool uninstall --global $(MSBuildProjectName)" IgnoreExitCode="true" />
