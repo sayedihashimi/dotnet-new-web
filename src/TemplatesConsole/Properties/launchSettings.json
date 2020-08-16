@@ -2,7 +2,7 @@
   "profiles": {
     "TemplatesConsole": {
       "commandName": "Project",
-      "commandLineArgs": "report --verbose -st template -st templates --lastReport C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json"
+      "commandLineArgs": "report --verbose -st template -st templates --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json"
     }
   }
 }
