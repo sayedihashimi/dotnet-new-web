@@ -59,32 +59,20 @@ namespace TemplatesShared
         private string _iconurl;
         public string IconUrl {
             get {
-                //if(string.IsNullOrWhiteSpace(_iconurl)){
-                //    return @"/images/NuGet_project_logo.svg";
-                //}
                 return _iconurl; 
             }
             set {
-                //if (string.IsNullOrWhiteSpace(value)) {
-                //    value = @"/images/NuGet_project_logo.svg";
-                //}
                 _iconurl = value;
             }
         }
 
         public string IconPngUrl{
             get{
-                //string defaultIconUrl = @"/images/NuGet_project_logo.svg";
-                //if(string.IsNullOrWhiteSpace(IconUrl) || 
-                //   IconUrl.EndsWith("µ.svg",StringComparison.OrdinalIgnoreCase)){
-                //    return defaultIconUrl;
-                //}
-
                 return IconUrl;
             }
         }
 
-        public static List<TemplatePack>CreateFromFile(string filepath)
+        public static List<TemplatePack> CreateFromFile(string filepath)
         {
             string jsonString = System.IO.File.ReadAllText(filepath);
 
@@ -140,8 +128,33 @@ namespace TemplatesShared
             }
 
             return result;
-            // return JsonConvert.DeserializeObject<List<TemplatePack>>(text);
         }
+
+        public static Dictionary<string,TemplatePack> ConvertToDictionary(List<TemplatePack> packs) {
+            Debug.Assert(packs != null);
+
+            Dictionary<string, TemplatePack> result = new Dictionary<string, TemplatePack>();
+
+            foreach(var pack in packs) {
+                string id = NormalisePkgId(pack.Package);
+                if (!result.ContainsKey(id)) {
+                    result.Add(id, pack);
+                }
+                else {
+                    // TODO: use reporter
+                    Console.WriteLine($"pack already in dictionary '{id}'");
+                }
+            }
+
+            return result;
+        }
+
+        public static string NormalisePkgId(string id) {
+            Debug.Assert(id != null);
+
+            return id.ToLowerInvariant();
+        }
+
         // TODO: Move these methods somewhere else
         public static TemplatePack CreateFromNuSpec(NuGetPackage pkg, string pathToNuspecFile, List<string>pathToTemplateJsonFiles) {
             Debug.Assert(pkg != null);

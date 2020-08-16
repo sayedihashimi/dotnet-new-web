@@ -32,6 +32,8 @@ namespace TemplatesConsole {
         public override void Setup(CommandLineApplication command) {
             base.Setup(command);
 
+            DateTime startTime = DateTime.Now;
+            Console.WriteLine("Starting at {0}", startTime.ToString("MM.dd.yy-H.m.s.ffff"));
             var optionReportJsonPath = command.Option<string>(
                 "-rp|--jsonReportPath",
                 "path to where the json report should be written",
@@ -48,7 +50,11 @@ namespace TemplatesConsole {
                 "-st|--searchTerm",
                 "term to search on nuget. This option may be provided multiple times. If not provided the default set of values will be used.",
                 CommandOptionType.MultipleValue);
-            // optionSearchTerms.IsRequired(allowEmptyStrings: false, errorMessage: "you must specify a search term with -st|--searchTerm");
+
+            var optionPreviousReportPath = command.Option<string>(
+                "-lr|--lastReport",
+                "path to the last template-report.json file",
+                CommandOptionType.SingleValue);
 
             var optionSpecificPackagesToInclude = command.Option<string>(
                 "-p|--packageToInclude",
@@ -75,7 +81,13 @@ namespace TemplatesConsole {
                     specificPackages.AddRange(optionSpecificPackagesToInclude.Values.ToArray());
                 }
 
-                report.GenerateTemplateJsonReportAsync(searchTerms, templateReportPath, specificPackages).Wait();
+                string previousReportPath = optionPreviousReportPath.HasValue() ? optionPreviousReportPath.Value() : null;
+
+                report.GenerateTemplateJsonReportAsync(searchTerms, templateReportPath, specificPackages, previousReportPath).Wait();
+
+                DateTime finishTime = DateTime.Now;
+                TimeSpan timespent = finishTime.Subtract(startTime);
+                Console.WriteLine("Finished at {0}\nTime taken (sec):{1}", finishTime.ToString("MM.dd.yy-H.m.s.ffff"), timespent.TotalSeconds);
 
                 return 1;
             };

@@ -6223,6 +6223,50 @@
     "IconPngUrl": "https://raw.githubusercontent.com/hq-io/HQ/master/assets/320x320.png"
   },
   {
+    "Owners": "Steve Desmond",
+    "Version": "4.0.0",
+    "DownloadCount": 7753,
+    "Templates": [
+      {
+        "Author": "Steve Desmond",
+        "Name": "LibYear",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": null,
+        "ShortName": [
+          "libyear"
+        ],
+        "GroupIdentity": null,
+        "Identity": "libyear",
+        "TemplatePackId": "libyear"
+      },
+      {
+        "Author": "Steve Desmond",
+        "Name": "LibYear",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": null,
+        "ShortName": [
+          "libyear"
+        ],
+        "GroupIdentity": null,
+        "Identity": "libyear",
+        "TemplatePackId": "libyear"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Display projects' dependencies and their outdatedness",
+    "Copyright": null,
+    "Authors": "Steve Desmond",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": null,
+    "Package": "libyear",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Cameron Taggart",
     "Version": "0.3.0",
     "DownloadCount": 7747,
@@ -6612,6 +6656,38 @@
     "LicenseUrl": "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.1.x",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Carlos Mendible (@cmendibl3)",
+    "Version": "1.0.0",
+    "DownloadCount": 7421,
+    "Templates": [
+      {
+        "Author": "Carlos Mendible",
+        "Name": "ASP.NET Core Web Application for Raspberry Pi",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "Web"
+        ],
+        "ShortName": [
+          "webrpi"
+        ],
+        "GroupIdentity": null,
+        "Identity": "codeityourself.web.raspberry",
+        "TemplatePackId": "CodeItYourself.ASPNET.Raspberry"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Create an ASP.NET Core Web application ready to run on your Raspberry Pi",
+    "Copyright": null,
+    "Authors": "Carlos Mendible (@cmendibl3)",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/cmendible/dotnetcore.templates",
+    "Package": "CodeItYourself.ASPNET.Raspberry",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -7709,6 +7785,42 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Chad Ramos (pioneercode.com)",
+    "Version": "2.0.0",
+    "DownloadCount": 5728,
+    "Templates": [
+      {
+        "Author": "Chad Ramos <chad@pioneercode.com>",
+        "Name": "Pioneer Code: Console Application with dependency injection, logging & configuration.",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "Console",
+          "Boilerplate",
+          "Dependency Injection",
+          "Logging",
+          "Configuration"
+        ],
+        "ShortName": [
+          "pioneer-console"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Pioneer.Console.Boilerplate",
+        "TemplatePackId": "Pioneer.Console.Boilerplate"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Pioneer Code: .NET Core Console Application with dependency injection, logging & configuration",
+    "Copyright": "Copyright 2017: Chad Ramos - Pioneer Code. All right Reserved.",
+    "Authors": "Chad Ramos (pioneercode.com)",
+    "LicenseUrl": "https://github.com/PioneerCode/pioneer-console-boilerplate/blob/master/LICENSE",
+    "ProjectUrl": "https://github.com/PioneerCode/pioneer-console-boilerplate",
+    "Package": "Pioneer.Console.Boilerplate",
+    "IconUrl": "http://pioneercode.com/images/logo-large.png",
+    "IconPngUrl": "http://pioneercode.com/images/logo-large.png"
+  },
+  {
     "Owners": "Renato Golia",
     "Version": "4.1.0",
     "DownloadCount": 5617,
@@ -8326,6 +8438,39 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": "https://github.com/picoe/Eto",
     "Package": "Eto.Forms.Templates",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Totalsoft",
+    "Version": "4.2.3",
+    "DownloadCount": 5075,
+    "Templates": [
+      {
+        "Author": "totalsoft",
+        "Name": "NBB Unit Test Project",
+        "Tags": {},
+        "Classifications": [
+          "C#",
+          "Unit Test",
+          "Moq",
+          "FluentAssertion"
+        ],
+        "ShortName": [
+          "NbbUnitTest"
+        ],
+        "GroupIdentity": null,
+        "Identity": "NBB.UnitTest",
+        "TemplatePackId": "NBB.UnitTest"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Template for generating a unit test project",
+    "Copyright": "Totalsoft",
+    "Authors": "Totalsoft",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "NBB.UnitTest",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -10130,7 +10275,7 @@
   },
   {
     "Owners": "Suncoast Developers Guild",
-    "Version": "4.6.3",
+    "Version": "4.6.5",
     "DownloadCount": 3293,
     "Templates": [
       {
@@ -11082,6 +11227,43 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Knowit.Microservice",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Danijel Hrček",
+    "Version": "1.0.1",
+    "DownloadCount": 2920,
+    "Templates": [
+      {
+        "Author": "Danijel Hrček",
+        "Name": "ASP.NET Core with Vue, Vuex and TypeScript",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web",
+          "MVC",
+          "SPA",
+          "Vue",
+          "TypeScript"
+        ],
+        "ShortName": [
+          "vuetypescript"
+        ],
+        "GroupIdentity": null,
+        "Identity": "AspNetCore.Vue.TypeScript.Template",
+        "TemplatePackId": "AspNetCore.Vue.TypeScript.Template"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Template integrating Vue.js with ASP.NET Core MVC application. Features Vue, Vuex, Vue router, TypeScript, Bulma, Sass, Jest and Webpack 4.",
+    "Copyright": null,
+    "Authors": "Danijel Hrček",
+    "LicenseUrl": "https://github.com/danijelh/aspnetcore-vue-typescript-template/blob/master/LICENCE.txt",
+    "ProjectUrl": "https://github.com/danijelh/aspnetcore-vue-typescript-template",
+    "Package": "AspNetCore.Vue.TypeScript.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -21708,6 +21890,41 @@
     "IconPngUrl": "https://ionide.io/static/images/logo.png"
   },
   {
+    "Owners": "Microsoft",
+    "Version": "1.0.19319.1",
+    "DownloadCount": 545,
+    "Templates": [
+      {
+        "Author": "Microsoft",
+        "Name": "Interactive documentation",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Common",
+          "Try.NET",
+          "Interactive Documentation"
+        ],
+        "ShortName": [
+          "trydotnet-tutorial"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Microsoft.DotNet.Try.ProjectTemplate.Tutorial",
+        "TemplatePackId": "Microsoft.DotNet.Try.ProjectTemplate.Tutorial"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A template for interactive documentation with Try.NET",
+    "Copyright": "© Microsoft Corporation. All rights reserved.",
+    "Authors": "Microsoft",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/dotnet/try",
+    "Package": "Microsoft.DotNet.Try.ProjectTemplate.Tutorial",
+    "IconUrl": "http://go.microsoft.com/fwlink/?LinkID=288859",
+    "IconPngUrl": "http://go.microsoft.com/fwlink/?LinkID=288859"
+  },
+  {
     "Owners": "MASES s.r.l.",
     "Version": "2.2.1",
     "DownloadCount": 544,
@@ -22120,6 +22337,40 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Tuan Cao",
+    "Version": "1.0.1",
+    "DownloadCount": 506,
+    "Templates": [
+      {
+        "Author": "Tuan Cao",
+        "Name": "ASP.Net Core Kit",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web API",
+          "ASP.Net Core"
+        ],
+        "ShortName": [
+          "aspnetcorekit"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ASPNetCoreKit",
+        "TemplatePackId": "ASPNet.Core.API.Template"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "This is a boilerplate project template for ASP.Net Core API.",
+    "Copyright": "Copyright 2019: Success Software Services - ASPNet Core API. All right Reserved.",
+    "Authors": "Tuan Cao",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://gitlab.success-ss.com.vn:8888/root/rd-netcore",
+    "Package": "ASPNet.Core.API.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "foxpro",
     "Version": "1.0.0",
     "DownloadCount": 505,
@@ -22378,6 +22629,40 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "FpSoftware.WebApiTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Giancarlo Lelli",
+    "Version": "1.0.0",
+    "DownloadCount": 470,
+    "Templates": [
+      {
+        "Author": "Giancarlo Lelli",
+        "Name": ".NET Core Source Linked Library",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Common",
+          "Library"
+        ],
+        "ShortName": [
+          "sll"
+        ],
+        "GroupIdentity": "GiancarloLelli.NetCore.SourceLinked.Library",
+        "Identity": "GiancarloLelli.NetCore.SourceLinked.Library.CSharp",
+        "TemplatePackId": "GL.NetCoreSourceLinked.CSharp"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A .NET CLI Project Template for a .NET Standard 2.0 class library set up for Source Link",
+    "Copyright": null,
+    "Authors": "Giancarlo Lelli",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "GL.NetCoreSourceLinked.CSharp",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -23038,7 +23323,7 @@
   },
   {
     "Owners": null,
-    "Version": "1.0.4",
+    "Version": "1.0.5",
     "DownloadCount": 406,
     "Templates": [
       {
@@ -23452,6 +23737,56 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Pursue.Template.Core",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "WQL",
+    "Version": "1.0.2",
+    "DownloadCount": 364,
+    "Templates": [
+      {
+        "Author": "WQL",
+        "Name": "WQLWebAPITemplate",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web/WebAPI"
+        ],
+        "ShortName": [
+          "wqlwebapi"
+        ],
+        "GroupIdentity": null,
+        "Identity": "WQLWebAPI.Mongodb",
+        "TemplatePackId": "WQLWebAPITemplate"
+      },
+      {
+        "Author": "WQL",
+        "Name": "WQLWebAPITemplate",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web/WebAPI"
+        ],
+        "ShortName": [
+          "wqlwebapi"
+        ],
+        "GroupIdentity": null,
+        "Identity": "WQLWebAPI.Mongodb",
+        "TemplatePackId": "WQLWebAPITemplate"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "ASP.NET CORE WebAPI with Mongodb",
+    "Copyright": null,
+    "Authors": "WQL",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "WQLWebAPITemplate",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -26497,6 +26832,39 @@
     "Package": "EMG.Templates",
     "IconUrl": "http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png",
     "IconPngUrl": "http://static.emg-services.net/masterpages/pics/logos/emg-icon-64.png"
+  },
+  {
+    "Owners": "PGS",
+    "Version": "1.0.4",
+    "DownloadCount": 203,
+    "Templates": [
+      {
+        "Author": "lao zhang",
+        "Name": "PSharp.Core Dotnet",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web/WebAPI"
+        ],
+        "ShortName": [
+          "PSharp.Template"
+        ],
+        "GroupIdentity": null,
+        "Identity": "PSharp.Core.Template",
+        "TemplatePackId": "PSharp.Template"
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates a core webapi app.",
+    "Copyright": null,
+    "Authors": "PGS",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": null,
+    "Package": "PSharp.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
   },
   {
     "Owners": "Erick Pinheiro",
