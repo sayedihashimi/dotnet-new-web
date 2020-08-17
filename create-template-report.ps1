@@ -80,6 +80,39 @@ function DeployTemplateReport{
         $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
     }
 }
+
+function Download-LatestTemplateReport{
+    [cmdletbinding()]
+    param(
+        [string]$publishUsername = $env:publishUsername,
+        [string]$publishPassword = $env:publishPassword,
+        [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
+        [string]$sourceRelFilepath = '.output/release/netcoreapp3.1/publish/template-report.json',
+        [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
+    )
+    process{
+
+        [string]$sourceFile = join-path $scriptDir $sourceRelFilepath | Get-FullPathNormalized
+        [string]$msdeployCmdArgs = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile,$destRelFilepath,$deployUrl,$publishUsername,$publishPassword)
+        $logfilepath = "$([System.IO.Path]::GetTempFileName()).log"
+        New-Item -Path $logfilepath -ItemType File
+        'Starting download, logfile={0}' -f $logfilepath | Write-Output
+        try{
+            'Downloading latest template-report.json from api site' | Write-Output
+            # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
+            Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs *> $logfilepath
+        }
+        catch{
+        }
+
+        $logcontent = Get-Content $logfilepath
+        if($null -eq $logcontent){
+            $logcontent = '';
+        }
+        $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
+    }
+}
+
 function Get-FullPathNormalized{
     [cmdletbinding()]
     param (
@@ -155,5 +188,8 @@ function Invoke-CommandString{
     }
 }
 
+# download latest from api site to ensure we always have the latest
+# this will ensure that build times are minimal
+Download-LatestTemplateReport
 Create-Report
 DeployTemplateReport
