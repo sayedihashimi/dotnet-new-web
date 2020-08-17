@@ -3,6 +3,12 @@ image: Visual Studio 2019
 configuration: Release
 test: off
 
+environment:
+  publishUsername:
+    secure: +of8YobtR9CSGWdE1ttUTA==
+  publishPassword:
+    secure: 5D5/0OnhJtHvQVE1Qgp69VsQ6VrJ0k+1lQ9SLgjReLawxfvzv6WDozfh9Mln/pp4A3XjnRT9/JTadxNrzCHkAw==
+
 before_build:
 - pwsh: dotnet restore
 
@@ -16,8 +22,3 @@ after_build:
 artifacts:
 - path: .output\release\netcoreapp3.1\publish\template-report.json
 
-environment:
-  publishUsername:
-    secure: +of8YobtR9CSGWdE1ttUTA==
-  publishPassword:
-    secure: 5D5/0OnhJtHvQVE1Qgp69VsQ6VrJ0k+1lQ9SLgjReLawxfvzv6WDozfh9Mln/pp4A3XjnRT9/JTadxNrzCHkAw==

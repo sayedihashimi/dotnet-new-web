@@ -107,7 +107,7 @@ function Download-LatestTemplateReport{
 
         $logcontent = Get-Content $logfilepath
         if($null -eq $logcontent){
-            $logcontent = '';
+            $logcontent = ('log file not found at "{0}"' -f $logfilepath);
         }
         $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
     }
