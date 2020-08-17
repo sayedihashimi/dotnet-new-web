@@ -19,3 +19,4 @@ steps:
 - task: PowerShell@2
   inputs:
     filePath: 'create-template-report.ps1'
+    workingDirectory: 'Build.Repository.LocalPath'
