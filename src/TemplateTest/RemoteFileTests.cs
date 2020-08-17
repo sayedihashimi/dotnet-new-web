@@ -21,7 +21,6 @@ namespace TemplateTest {
         }
         [Fact]
         public void TestGetRemoteFileThatIsPresentLocally() {
-            string urltodownload = @"https://raw.githubusercontent.com/sayedihashimi/dotnet-new-web/master/src/template-report.json";
             string filename = "knownfilename.txt";
             var remoteFile = new RemoteFile();
             // make sure that the file exists in the cachefolder

@@ -104,7 +104,6 @@ namespace TemplatesShared {
             return keyStr.ToLowerInvariant();
         }
         public async Task<List<NuGetPackage>> QueryNuGetAsync(HttpClient httpClient, string query) {
-            int skip = 0;
             List<string> queryStrings = await GetAllQueryUrisAsync(httpClient, query, NumPackagesToTake);
             // https://blog.stephencleary.com/2012/11/async-producerconsumer-queue-using.html
             var queryStringsQueue = new BufferBlock<string>(new DataflowBlockOptions { BoundedCapacity = NumParallelTasks });
@@ -185,11 +184,11 @@ namespace TemplatesShared {
                 result = JsonConvert.DeserializeObject<NuGetSearchApiResult>(resultJson);
             }
             catch(Exception ex) {
-                Console.WriteLine($"warning: {ex.ToString()}");
+                Console.WriteLine($"warning: {ex}");
             }
 
             if(result == null) {
-                throw new NuGetQueryException($"Unable to query nuget for uri: {queryUri.ToString()}");
+                throw new NuGetQueryException($"Unable to query nuget for uri: {queryUri}");
             }
 
             return result;
@@ -203,20 +202,20 @@ namespace TemplatesShared {
             int numRuns = 0;
 
             do {
-                Console.WriteLine($"get api result for '{uri.ToString()}'");
+                Console.WriteLine($"get api result for '{uri}'");
                 string jsonResult = null;
                 try {
                     jsonResult  = await httpClient.GetStringAsync(uri);
                     return jsonResult;
                 }
                 catch(Exception ex) {
-                    throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri.ToString()}'");
+                    throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri}'.\n{ex}");
                 }
 
                 numRuns++;
             } while (numRuns <= numRetries);
 
-            throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri.ToString()}'");
+            throw new NuGetQueryException($"numRetries ({numRetries}) exceed without getting a result for '{uri}'");
         }
 
         public string GetDownloadUrlFor(NuGetPackage pkg) {
@@ -255,18 +254,6 @@ namespace TemplatesShared {
             var retValue = versionsJobj["versions"].Values<string>().ToList().Last();
 
             return retValue;
-        }
-
-        public async Task<NuGetPackage> GetLatestNuGetPackageForAsync(HttpClient httpClient, string id) {
-            Debug.Assert(httpClient != null);
-            Debug.Assert(!string.IsNullOrEmpty(id));
-
-            // get the latest version
-            var latestVersion = await GetLatestVersionForAsync(httpClient, id);
-
-
-
-            throw new NotImplementedException();
         }
     }
 }

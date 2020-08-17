@@ -11,7 +11,7 @@ using Xunit;
 
 namespace TemplateTest {
     public class NuGetHelperTests {
-        private HttpClient httpClient = new HttpClient();
+        private readonly HttpClient httpClient = new HttpClient();
         [Fact]
         public async Task TestGetAllQueryUrisAsync01Async() {
             var nugetApiHelper = new NuGetHelper(new RemoteFile());
@@ -29,11 +29,11 @@ namespace TemplateTest {
         }
     }
     public class NuGetPackageDownloaderTests {
-        private HttpClient httpClient;
-        private IRemoteFile remoteFile;
-        private INuGetHelper nugetHelper;
-        private INuGetPackageDownloader nugetDownloader;
-        private SampleFileHelper sampleFileHelper;
+        private readonly HttpClient httpClient;
+        private readonly IRemoteFile remoteFile;
+        private readonly INuGetHelper nugetHelper;
+        private readonly INuGetPackageDownloader nugetDownloader;
+        private readonly SampleFileHelper sampleFileHelper;
         public NuGetPackageDownloaderTests() {
             httpClient = new HttpClient();
             remoteFile = new RemoteFile();
@@ -85,13 +85,6 @@ namespace TemplateTest {
                 Assert.NotNull(nuspec);
                 Assert.True(!string.IsNullOrEmpty(nuspec.Metadata.Id));
             }
-        }
-
-        [Fact]
-        public async Task TestGetLatestVersionForAsync01() {
-            var pkgName = @"WebJobsBuilder";
-            var latestVersion = await nugetHelper.GetLatestVersionForAsync(httpClient, pkgName);
-            var expected = "0.1.3-beta";
         }
     }
 }

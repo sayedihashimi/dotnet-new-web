@@ -13,10 +13,10 @@ using System.Reflection;
 
 namespace TemplatesShared {
     public class TemplateReport {
-        private INuGetHelper _nugetHelper;
-        private HttpClient _httpClient;
-        private INuGetPackageDownloader _nugetDownloader;
-        private IRemoteFile _remoteFile;
+        private readonly INuGetHelper _nugetHelper;
+        private readonly HttpClient _httpClient;
+        private readonly INuGetPackageDownloader _nugetDownloader;
+        private readonly IRemoteFile _remoteFile;
 
         public bool EnableVerbose{get;set;}
 
@@ -173,16 +173,6 @@ namespace TemplatesShared {
             return new List<string>();
         }
 
-        private void ReportPackages(List<NuGetPackage> packages) {
-            if(!EnableVerbose || packages == null || packages.Count <= 0) {
-                return;
-            }
-            
-            foreach(var pkg in packages) {
-                WriteVerbose($"found {pkg.Id}");
-            }
-        }
-
         private void WriteVerbose(string str) {
             if (EnableVerbose) {
                 Console.Write("verbose: ");
@@ -192,9 +182,9 @@ namespace TemplatesShared {
     }
 
     public class NuGetPackageDownloader : INuGetPackageDownloader {
-        private int numDownloaders = 5;
-        private INuGetHelper _nugetHelper;
-        private IRemoteFile _remoteFile;
+        // TODO: un-hardcode the num of consumers/producers
+        private readonly INuGetHelper _nugetHelper;
+        private readonly IRemoteFile _remoteFile;
         public NuGetPackageDownloader(INuGetHelper nugetHelper, IRemoteFile remoteFile) {
             _nugetHelper = nugetHelper;
             _remoteFile = remoteFile;

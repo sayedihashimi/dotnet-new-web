@@ -17,7 +17,6 @@ namespace TemplatesShared {
             if (!File.Exists(filepath)) {
                 throw new ArgumentNullException($"Cannot find nuspec file at '{filepath}'");
             }
-            var nuspecNs = @"http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd";
 
             // get the xmlns from the document
             XDocument xmldoc = XDocument.Parse(File.ReadAllText(filepath));
