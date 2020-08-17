@@ -196,6 +196,6 @@ function Invoke-CommandString{
 
 # download latest from api site to ensure we always have the latest
 # this will ensure that build times are minimal
-Download-LatestTemplateReport
+Download-LatestTemplateReport -publishUsername $env:publishUsername -publishPassword $env:publishPassword
 Create-Report
 DeployTemplateReport
