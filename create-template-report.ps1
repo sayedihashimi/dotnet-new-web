@@ -197,6 +197,5 @@ function Invoke-CommandString{
 # download latest from api site to ensure we always have the latest
 # this will ensure that build times are minimal
 Download-LatestTemplateReport
-return
 Create-Report
 DeployTemplateReport
