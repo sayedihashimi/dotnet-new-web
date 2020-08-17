@@ -1,0 +1,16 @@
+version: 1.0.{build}
+image: Visual Studio 2019
+configuration: Release
+
+before_build:
+  - dotnet restore
+
+build:
+  project: dotnet-new-web.sln
+  verbosity: normal
+
+after_build:
+- ps: ./create-template-report.ps1
+
+artifacts:
+- path: .output\release\netcoreapp3.1\publish\template-report.json
