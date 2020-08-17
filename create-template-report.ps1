@@ -69,7 +69,6 @@ function DeployTemplateReport{
         'Starting publish, logfile={0}' -f $logfilepath | Write-Output
         try{
             # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
-            # Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs
             Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs *> $logfilepath
         }
         catch{
@@ -79,6 +78,20 @@ function DeployTemplateReport{
             $logcontent = '';
         }
         $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
+    }
+}
+function Get-FullPathNormalized{
+    [cmdletbinding()]
+    param (
+        [Parameter(Position=0,ValueFromPipeline=$true)]
+        [string[]] $path
+    )
+    process {
+        foreach($p in $path){
+            if(-not ([string]::IsNullOrWhiteSpace($p))){
+                $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($path)
+            }
+        }
     }
 }
 function Get-MSDeploy{
