@@ -91,6 +91,12 @@ function Download-LatestTemplateReport{
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
     )
     process{
+        if([string]::IsNullOrEmpty($publishUsername)){
+            throw 'username is empty'        
+        }
+        if([string]::IsNullOrEmpty($publishPassword)){
+            throw 'password is empty'
+        }
 
         [string]$sourceFile = join-path $scriptDir $sourceRelFilepath | Get-FullPathNormalized
         [string]$msdeployCmdArgs = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile,$destRelFilepath,$deployUrl,$publishUsername,$publishPassword)
@@ -191,5 +197,6 @@ function Invoke-CommandString{
 # download latest from api site to ensure we always have the latest
 # this will ensure that build times are minimal
 Download-LatestTemplateReport
+return
 Create-Report
 DeployTemplateReport
