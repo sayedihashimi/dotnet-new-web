@@ -17,8 +17,8 @@ namespace TemplatesConsole {
             Debug.Assert(nugetHelper != null);
 
             _nugetHelper = nugetHelper;
-            Name = Strings.QueryCommandName;
-            Description = Strings.QueryCommandDesc;
+            Name = "query";
+            Description = "will query nuget for packages based on the query term";
         }
 
         public override void Setup(CommandLineApplication command) {

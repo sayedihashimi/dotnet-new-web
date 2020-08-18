@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace TemplatesShared
 {
@@ -53,9 +54,10 @@ namespace TemplatesShared
         public int Downloads { get; set; }
         [JsonProperty("@Id")]
         public string ID { get; set; }
-    }
+    }    
     public class NuGetPackageType
     {
+        [XmlAttribute("name")]
         public string Name { get; set; }
     }
 }

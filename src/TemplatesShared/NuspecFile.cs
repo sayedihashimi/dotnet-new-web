@@ -55,6 +55,8 @@ namespace TemplatesShared {
         public string Tags { get; set; }
         [XmlElement("repository")]
         public NuspecRepository Repository { get; set; }
+        [XmlElement("packageTypes")]
+        public NuGetPackageType[] PackageTypes { get; set; }
     }
     public class NuspecRepository {
         [XmlAttribute("type")]
