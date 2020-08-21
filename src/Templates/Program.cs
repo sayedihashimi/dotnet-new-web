@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.CommandLine;
 using System.CommandLine.Builder;
 using System.CommandLine.Invocation;
@@ -15,15 +16,31 @@ namespace Templates {
 
     public class TemplatesProgram {
         private Parser _parser;
+        protected ServiceCollection _services = null;
+        protected ServiceProvider _serviceProvider = null;
 
+        public TemplatesProgram() {
+            RegisterServices();
+        }
 
         public Task<int> Execute(string[] args) {
             _parser = new CommandLineBuilder()
-                        .AddCommand(new SearchCommand().CreateCommand())
+                        .AddCommand(new SearchCommand(GetFromServices<IReporter>()).CreateCommand())
                         .UseDefaults()
                         .Build();
 
             return _parser.InvokeAsync(args);
+        }
+
+        private void RegisterServices() {
+            _services = new ServiceCollection();
+            _serviceProvider = _services
+                                .AddSingleton<IReporter, Reporter>()
+                                .BuildServiceProvider();
+        }
+
+        private TType GetFromServices<TType>() {
+            return _serviceProvider.GetRequiredService<TType>();
         }
     }
 }
