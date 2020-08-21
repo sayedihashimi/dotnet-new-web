@@ -6,6 +6,7 @@ using System.CommandLine.Invocation;
 using System.CommandLine.Parsing;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using TemplatesShared;
 
 namespace Templates {
     class Program {
@@ -25,9 +26,13 @@ namespace Templates {
 
         public Task<int> Execute(string[] args) {
             _parser = new CommandLineBuilder()
-                        .AddCommand(new SearchCommand(GetFromServices<IReporter>()).CreateCommand())
-                        .UseDefaults()
-                        .Build();
+                .AddCommand(
+                new SearchCommand(
+                    GetFromServices<IReporter>(),
+                    GetFromServices<ITemplateReportLocator>(),
+                    GetFromServices<ITemplateSearcher>()).CreateCommand())
+                .UseDefaults()
+                .Build();
 
             return _parser.InvokeAsync(args);
         }
@@ -36,6 +41,8 @@ namespace Templates {
             _services = new ServiceCollection();
             _serviceProvider = _services
                                 .AddSingleton<IReporter, Reporter>()
+                                .AddSingleton<ITemplateReportLocator, TemplateReportLocator>()
+                                .AddSingleton<ITemplateSearcher, TemplateSearcher>()
                                 .BuildServiceProvider();
         }
 
