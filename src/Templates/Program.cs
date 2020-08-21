@@ -9,26 +9,21 @@ using System.Threading.Tasks;
 namespace Templates {
     class Program {
         public static Task<int> Main(string[] args) {
-            var parser = new CommandLineBuilder()
-                            .AddCommand(SearchCommand())
-                            .UseDefaults()
-                            .Build();
-
-            return parser.InvokeAsync(args);
+            return new TemplatesProgram().Execute(args);
         }
+    }
 
-        private static Command SearchCommand() =>
-            new Command(name: "hello", description: "hello command") {
-                CommandHandler.Create<string>( (searchTerm) => {
-                    Console.WriteLine($"hello {searchTerm}"); }
-                ),
-                ArgSearchTerm()
-            };
+    public class TemplatesProgram {
+        private Parser _parser;
 
-        private static Argument ArgSearchTerm() =>
-            new Argument<string>(
-                name: "search-term") {
-                Description = "search term"
-            };
+
+        public Task<int> Execute(string[] args) {
+            _parser = new CommandLineBuilder()
+                        .AddCommand(new SearchCommand().CreateCommand())
+                        .UseDefaults()
+                        .Build();
+
+            return _parser.InvokeAsync(args);
+        }
     }
 }

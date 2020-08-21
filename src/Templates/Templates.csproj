@@ -21,7 +21,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\TemplatesApi\wwwroot\template-report.json" Link="template-report.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20371.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
 
   <Target Name="InstallTool" DependsOnTargets="Pack">
