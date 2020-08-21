@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateTest", "src\Templat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatesConsole", "src\TemplatesConsole\TemplatesConsole.csproj", "{7F64A4E5-7F67-4DEC-81B5-D22A51380412}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templates", "src\Templates\Templates.csproj", "{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{7F64A4E5-7F67-4DEC-81B5-D22A51380412}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F64A4E5-7F67-4DEC-81B5-D22A51380412}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F64A4E5-7F67-4DEC-81B5-D22A51380412}.Release|Any CPU.Build.0 = Release|Any CPU
+		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
