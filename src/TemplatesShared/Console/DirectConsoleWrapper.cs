@@ -47,6 +47,16 @@ namespace TemplatesShared {
                 return Console.Read();
             }
         }
+
+        public ConsoleKeyInfo ReadKey() {
+            if (_parentWrapper != null) {
+                return _parentWrapper.ReadKey();
+            }
+            else {
+                return Console.ReadKey();
+            }
+        }
+
         public string ReadLine() {
             if (_parentWrapper != null) {
                 return _parentWrapper.ReadLine();

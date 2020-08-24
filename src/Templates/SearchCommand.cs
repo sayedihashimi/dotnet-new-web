@@ -22,6 +22,9 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>( (searchTerm) => {
+
+                    DoPromptDemo();
+                    return;
                     // load up the file
                     var templatePacks = TemplatePack.CreateFromFile(_reportLocator.GetTemplateReportJsonPath());
                     var result = _searcher.Search(searchTerm, templatePacks);
@@ -29,6 +32,26 @@ namespace Templates {
                 }),
                 ArgSearchTerm()
             };
+
+        private void DoPromptDemo() {
+            var consoleWrapper = new DirectConsoleWrapper();
+
+            var prompts = new List<Prompt> {
+                new TrueFalsePrompt("Do you agree?"),
+                new FreeTextPrompt("What is your name?"),
+                new TrueFalsePrompt("Are you over 18 years old?"),
+                new FreeTextPrompt("What is your SSN?")
+            };
+
+            //Prompt p1 = new TrueFalsePrompt("Do you agree?");
+            //Prompt p2 = new FreeTextPrompt("What is your name?");
+            //Prompt p3 = new TrueFalsePrompt("Are you over 18 years old?");
+            //Prompt p4 = new FreeTextPrompt("What is your SSN?");
+            PromptInvoker pi = new PromptInvoker(consoleWrapper);
+            var promptResult = pi.GetPromptResults(prompts);
+
+            Console.WriteLine(promptResult);
+        }
 
         protected Argument ArgSearchTerm() =>
             new Argument<string>(

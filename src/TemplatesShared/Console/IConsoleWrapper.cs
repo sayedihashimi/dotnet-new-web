@@ -10,6 +10,7 @@ namespace TemplatesShared {
         void Clear();
         (int Left, int Top) GetCursorPosition();
         int Read();
+        ConsoleKeyInfo ReadKey();
         string ReadLine();
         void SetCursorPosition(int left, int top);
         void Write(char value);
