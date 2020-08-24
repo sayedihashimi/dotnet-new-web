@@ -56,6 +56,14 @@ namespace TemplatesShared {
                 return Console.ReadKey();
             }
         }
+        public ConsoleKeyInfo ReadKey(bool intercept) {
+            if (_parentWrapper != null) {
+                return _parentWrapper.ReadKey(intercept);
+            }
+            else {
+                return Console.ReadKey(intercept);
+            }
+        }
 
         public string ReadLine() {
             if (_parentWrapper != null) {
@@ -104,6 +112,25 @@ namespace TemplatesShared {
             }
         }
 
+        protected int IndentLevel { get; set; } = 1;
+        public string IndentPrefix { get; set; } = "  ";
+        public void IncreaseIndent() { }
+        public void DecreaseIndent() { }
+        public void WriteIndent() {
+            if (_parentWrapper != null) {
+                _parentWrapper.Write(GetIndentString());
+            }
+            else {
+                Console.Write(GetIndentString());
+            }
+        }
+        public string GetIndentString() {
+            var sb = new StringBuilder();
+            for(int i = 0; i < IndentLevel; i++) {
+                sb.Append(IndentPrefix);
+            }
+            return sb.ToString();
+        }
         #endregion
 
         #region write methods
