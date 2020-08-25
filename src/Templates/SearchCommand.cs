@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Text;
 using TemplatesShared;
 
 namespace Templates {
@@ -23,35 +25,73 @@ namespace Templates {
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>( (searchTerm) => {
 
-                    DoPromptDemo();
-                    return;
+                    //DoPromptDemo();
+                    //return;
                     // load up the file
                     var templatePacks = TemplatePack.CreateFromFile(_reportLocator.GetTemplateReportJsonPath());
                     var result = _searcher.Search(searchTerm, templatePacks);
-                    WriteResults(result);
+
+                    List<UserOption>options = new List<UserOption>();
+                    foreach(var template in result) {
+                        options.Add(new UserOption($"{template.Name} - ({template.TemplatePackId})"));
+                    }
+
+                    var consoleWrapper = new DirectConsoleWrapper();
+                    PickManyPrompt pmp = new PickManyPrompt("Select templates to install",options);
+                    PromptInvoker pi = new PromptInvoker(consoleWrapper);
+
+                    var promptResult = pi.GetPromptResult(pmp);
+                    Console.WriteLine();
+                    Console.WriteLine("Selection:");
+                    PrintResults(new List<Prompt>{promptResult });
                 }),
                 ArgSearchTerm()
             };
 
+        private void PrintResults(List<Prompt>prompts) {
+            foreach (var pr in prompts) {
+                OptionsPrompt optionsPrompt = pr as OptionsPrompt;
+                if (optionsPrompt != null) {
+                    Console.WriteLine($"  {pr.Text}:");
+                    foreach (var uo in optionsPrompt.UserOptions) {
+                        if (uo.IsSelected) {
+                            Console.WriteLine($"    {uo.Text} => {uo.IsSelected}");
+                        }
+                    }
+                }
+                else {
+                    Console.WriteLine($"  {pr.Text} => {pr.Result}");
+                }
+            }
+        }
         private void DoPromptDemo() {
             var consoleWrapper = new DirectConsoleWrapper();
 
             var prompts = new List<Prompt> {
+                new FreeTextPrompt("What time is it?"),
                 new TrueFalsePrompt("Do you agree?"),
-                new FreeTextPrompt("What is your name?"),
-                new TrueFalsePrompt("Are you over 18 years old?"),
-                new FreeTextPrompt("What is your SSN?"),
                 new PickOnePrompt ("Pick an option", UserOption.ConvertToOptions(new List<string> {
                     "option 1",
                     "option 2",
-                    "option 3"
+                    "option 3",
+                    "option 4",
+                    "option 5",
+                })),
+                new PickManyPrompt ("Pick one or more options", UserOption.ConvertToOptions(new List<string> {
+                    "option 1",
+                    "option 2",
+                    "option 3",
+                    "option 4",
+                    "option 5",
                 })),
             };
 
             PromptInvoker pi = new PromptInvoker(consoleWrapper);
-            var promptResult = pi.GetPromptResults(prompts);
+            var promptResult = pi.GetPromptResult(prompts);
 
-            Console.WriteLine(promptResult);
+            Console.WriteLine();
+            Console.WriteLine("Answers:");
+            PrintResults(promptResult);
         }
 
         protected Argument ArgSearchTerm() =>
@@ -66,8 +106,8 @@ namespace Templates {
                 return;
             }
             _reporter.WriteLine($"num results: {templates.Count}");
-            foreach(var pack in templates) {
-                _reporter.WriteLine($"{pack.Name}");
+            foreach(var template in templates) {
+                _reporter.WriteLine($"{template.Name}");
             }
         }
     }

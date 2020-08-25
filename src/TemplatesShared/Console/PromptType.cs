@@ -27,10 +27,12 @@ namespace TemplatesShared {
         }
     }
     public class FreeTextPrompt : Prompt<string> {
-        public FreeTextPrompt(string text) {
+        public FreeTextPrompt(string text, bool allowEmptyResponse = false) {
             Text = text;
             PromptType = PromptType.FreeText;
+            AllowEmptyResponse = allowEmptyResponse;
         }
+        public bool AllowEmptyResponse { get; set; }
     }
     public abstract class OptionsPrompt : Prompt<string> {
         public OptionsPrompt(string text, List<UserOption> userOptions) {
@@ -50,6 +52,9 @@ namespace TemplatesShared {
         }
     }
     public class UserOption {
+        public UserOption(string text) {
+            Text = text;
+        }
         public string Text { get; set; }
         public bool IsSelected { get; set; }
         // TODO: IsRequired Not used currently
@@ -68,7 +73,7 @@ namespace TemplatesShared {
         public static List<UserOption> ConvertToOptions(List<string> optionsText) {
             var result = new List<UserOption>();
             foreach(var ot in optionsText) {
-                result.Add(new UserOption { Text = ot });
+                result.Add(new UserOption(ot));
             }
             return result;
         }
@@ -90,7 +95,7 @@ namespace TemplatesShared {
 
     public interface IPromptInvoker {
         Prompt GetPromptResult(Prompt prompt);
-        List<Prompt> GetPromptResults(List<Prompt> prompts);
+        List<Prompt> GetPromptResult(List<Prompt> prompts);
     }
 
     public class PromptInvoker : IPromptInvoker {
@@ -99,7 +104,7 @@ namespace TemplatesShared {
             Debug.Assert(consoleWrapper != null);
             _console = consoleWrapper;
         }
-        public List<Prompt> GetPromptResults(List<Prompt> prompts) {
+        public List<Prompt> GetPromptResult(List<Prompt> prompts) {
             foreach(var prompt in prompts) {
                 GetPromptResult(prompt);
             }
@@ -119,9 +124,10 @@ namespace TemplatesShared {
                     GetPromptResult(prompt as FreeTextPrompt);
                     break;
                 case PromptType.PickOne:
-                    GetPromptResult(prompt as PickOnePrompt);
+                    GetPromptResult(prompt as OptionsPrompt);
                     break;
                 case PromptType.PickMany:
+                    GetPromptResult(prompt as OptionsPrompt);
                     break;
                 default:
                     throw new NotImplementedException();
@@ -134,7 +140,21 @@ namespace TemplatesShared {
             _console.Write(" - (y/n)");
             _console.WriteLine();
             _console.Write(">>");
-            prompt.Result = ConvertToBool(_console.ReadKey().Key);
+
+            bool? result = null;
+            while (result == null) {
+                var keypressed = _console.ReadKey();
+                switch (keypressed.Key) {
+                    case ConsoleKey.Y:
+                        result = true;
+                        break;
+                    case ConsoleKey.N:
+                        result = false;
+                        break;
+                }
+            }
+
+            prompt.Result = result;
             return prompt;
         }
 
@@ -142,11 +162,23 @@ namespace TemplatesShared {
             _console.Write(" - (press enter after response)");
             _console.WriteLine();
             _console.Write(">>");
-            prompt.Result = _console.ReadLine();
+            var origPosn = _console.GetCursorPosition();
+            while (true) {
+                prompt.Result = _console.ReadLine();
+                if (!string.IsNullOrWhiteSpace((string)prompt.Result)) {
+                    prompt.Result = ((string)prompt.Result).Trim();
+                    break;
+                }
+                else {
+                    _console.SetCursorPosition(origPosn);
+                }
+            }
+            _console.SetCursorPosition(origPosn);
             return prompt;
         }
 
         protected OptionsPrompt GetPromptResult(OptionsPrompt prompt) {
+            _console.Write(" - (press enter after selection)");
             _console.WriteLine();
             _console.IncreaseIndent();
             var promptCursorMap = new Dictionary<(int CursorLeft, int CursorRight), UserOption>();
@@ -181,11 +213,18 @@ namespace TemplatesShared {
                         _console.SetCursorPosition(cursorList[currentIndex]);
                         break;
                     case ConsoleKey.Spacebar:
-                    case ConsoleKey.X:
                         var orgCursorPosn = _console.GetCursorPosition();
                         var selectedOption = GetPromptAtPosition(orgCursorPosn);
                         if(selectedOption != null) {
                             var isSelected = selectedOption.ToggleIsSelected();
+                            if (prompt.PromptType == PromptType.PickOne) {
+                                foreach (var uo in prompt.UserOptions) {
+                                    if (!uo.Equals(selectedOption)) {
+                                        uo.IsSelected = false;
+                                    }
+                                }
+                                RedrawOptionValues(promptCursorMap);
+                            }
                             var charToWrite = isSelected ? 'X' : ' ';
                             var posn = _console.GetCursorPosition();
                             _console.Write(charToWrite);
@@ -206,6 +245,18 @@ namespace TemplatesShared {
                 promptCursorMap.TryGetValue(cursorPosition, out found);
 
                 return found;
+            }
+            void ResetAllOptions(List<UserOption> userOptions) {
+                userOptions.ForEach((uo) => uo.IsSelected = false);
+            }
+            void RedrawOptionValues(Dictionary<(int CursorLeft, int CursorRight), UserOption>cursorOptionMap) {
+                var originalCursorPosn = _console.GetCursorPosition();
+                foreach(var posn in cursorOptionMap.Keys) {                    
+                    _console.SetCursorPosition(posn);
+                    var charToWrite = cursorOptionMap[posn].IsSelected ? 'X' : ' ';
+                    _console.Write(charToWrite);
+                }
+                _console.SetCursorPosition(originalCursorPosn);
             }
 
             // reset cursor to it's original location
