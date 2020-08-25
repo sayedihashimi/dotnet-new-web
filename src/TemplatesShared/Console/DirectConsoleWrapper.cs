@@ -202,6 +202,9 @@ namespace TemplatesShared {
                 Console.SetCursorPosition(left, top);
             }
         }
+        public void SetCursorPosition((int cursorLeft, int cursorTop) cursorPosition) {
+            SetCursorPosition(cursorPosition.cursorLeft, cursorPosition.cursorTop);
+        }
         public (int Left, int Top) GetCursorPosition() {
             if(_parentWrapper != null) {
                 return _parentWrapper.GetCursorPosition();

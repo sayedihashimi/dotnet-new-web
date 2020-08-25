@@ -33,31 +33,42 @@ namespace TemplatesShared {
         }
     }
     public abstract class OptionsPrompt : Prompt<string> {
-        public OptionsPrompt(string text, List<UserOptions> userOptions) {
+        public OptionsPrompt(string text, List<UserOption> userOptions) {
             Text = text;
             UserOptions = userOptions;
         }
-        public List<UserOptions> UserOptions { get; private set; }
+        public List<UserOption> UserOptions { get; private set; }
     }
     public class PickOnePrompt : OptionsPrompt {
-        public PickOnePrompt(string text,List<UserOptions>userOptions) : base(text,userOptions) {
+        public PickOnePrompt(string text,List<UserOption>userOptions) : base(text,userOptions) {
             PromptType = PromptType.PickOne;
         }
     }
     public class PickManyPrompt : OptionsPrompt {
-        public PickManyPrompt(string text, List<UserOptions> userOptions):base(text,userOptions) {
+        public PickManyPrompt(string text, List<UserOption> userOptions):base(text,userOptions) {
             PromptType = PromptType.PickMany;
         }
     }
-    public class UserOptions {
+    public class UserOption {
         public string Text { get; set; }
-        // TODO: Not used currently
+        public bool IsSelected { get; set; }
+        // TODO: IsRequired Not used currently
         public bool IsRequired { get; set; }
+        
+        /// <summary>
+        /// Will toggle the value of IsSelected and then return the new value
+        /// </summary>
+        /// <returns>New value for IsSelected</returns>
+        public bool ToggleIsSelected() {
+            IsSelected = !IsSelected;
+            return IsSelected;
+        }
 
-        public static List<UserOptions> ConvertToOptions(List<string> optionsText) {
-            var result = new List<UserOptions>();
+
+        public static List<UserOption> ConvertToOptions(List<string> optionsText) {
+            var result = new List<UserOption>();
             foreach(var ot in optionsText) {
-                result.Add(new UserOptions { Text = ot });
+                result.Add(new UserOption { Text = ot });
             }
             return result;
         }
@@ -135,24 +146,24 @@ namespace TemplatesShared {
             return prompt;
         }
 
-        protected PickOnePrompt GetPromptResult(PickOnePrompt prompt) {
+        protected OptionsPrompt GetPromptResult(OptionsPrompt prompt) {
             _console.WriteLine();
             _console.IncreaseIndent();
-            var promptCursorMap = new Dictionary<UserOptions, (int CursorLeft, int CursorRight)>();
+            var promptCursorMap = new Dictionary<(int CursorLeft, int CursorRight), UserOption>();
             var cursorList = new List<(int CursorLeft, int CursorTop)>();
             foreach(var uo in prompt.UserOptions) {
                 _console.WriteIndent();
                 _console.Write("[");
-                cursorList.Add(_console.GetCursorPosition());
-                _console.Write(" ");
                 // capture cursor location now
-                promptCursorMap.Add(uo, _console.GetCursorPosition());                
+                cursorList.Add(_console.GetCursorPosition());                
+                promptCursorMap.Add(_console.GetCursorPosition(), uo);
+                _console.Write(" ");                
                 _console.Write("] ");
                 _console.WriteLine(uo.Text);                
             }
             var endCursorLocation = _console.GetCursorPosition();
             // put cursor at first location
-            _console.SetCursorPosition(cursorList[0].CursorLeft,cursorList[0].CursorTop);
+            _console.SetCursorPosition(cursorList[0]);
 
             int currentIndex = 0;
             // handle key events
@@ -162,54 +173,48 @@ namespace TemplatesShared {
 
                 switch (key.Key) {
                     case ConsoleKey.UpArrow:
-                        currentIndex--;
-                        _console.SetCursorPosition(cursorList[currentIndex].CursorLeft, cursorList[currentIndex].CursorTop);
+                        currentIndex = currentIndex > 0 ? (--currentIndex) % cursorList.Count : cursorList.Count - 1;
+                        _console.SetCursorPosition(cursorList[currentIndex]);
                         break;
                     case ConsoleKey.DownArrow:
-                        currentIndex++;
-                        _console.SetCursorPosition(cursorList[currentIndex].CursorLeft, cursorList[currentIndex].CursorTop);
+                        currentIndex = (++currentIndex) % cursorList.Count;
+                        _console.SetCursorPosition(cursorList[currentIndex]);
                         break;
                     case ConsoleKey.Spacebar:
                     case ConsoleKey.X:
-                        _console.Write("X");
+                        var orgCursorPosn = _console.GetCursorPosition();
+                        var selectedOption = GetPromptAtPosition(orgCursorPosn);
+                        if(selectedOption != null) {
+                            var isSelected = selectedOption.ToggleIsSelected();
+                            var charToWrite = isSelected ? 'X' : ' ';
+                            var posn = _console.GetCursorPosition();
+                            _console.Write(charToWrite);
+                            _console.SetCursorPosition(posn);
+                        }
                         break;
                     case ConsoleKey.Q:
+                    case ConsoleKey.Enter:
                         continueLoop = false;
                         break;
                     default:
-                        continueLoop = false;
                         break;
                 }
             }
 
+            UserOption GetPromptAtPosition((int cursorLeft, int cursorTop) cursorPosition) {
+                UserOption found;
+                promptCursorMap.TryGetValue(cursorPosition, out found);
 
+                return found;
+            }
 
-            // wait for the user to select an option
-            _console.ReadLine();
+            // reset cursor to it's original location
+            _console.SetCursorPosition(endCursorLocation);
 
-
-            // reset cursor location 
-            _console.SetCursorPosition(endCursorLocation.Left,endCursorLocation.Top);
             _console.DecreaseIndent();
-
-
 
             return prompt;
         }
-
-        //protected bool? ConvertToBool1(ConsoleKey key) {
-        //    bool? result = false;
-
-
-        //    result = key switch
-        //    {
-        //        ConsoleKey.Y => true,
-        //        ConsoleKey.N => false,
-        //        _ => null
-        //    };
-
-        //    return result;
-        //}
 
         protected bool? ConvertToBool(ConsoleKey key) =>
             key switch

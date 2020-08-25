@@ -37,21 +37,17 @@ namespace Templates {
             var consoleWrapper = new DirectConsoleWrapper();
 
             var prompts = new List<Prompt> {
-                new PickOnePrompt ("Pick an option", UserOptions.ConvertToOptions(new List<string> {
+                new TrueFalsePrompt("Do you agree?"),
+                new FreeTextPrompt("What is your name?"),
+                new TrueFalsePrompt("Are you over 18 years old?"),
+                new FreeTextPrompt("What is your SSN?"),
+                new PickOnePrompt ("Pick an option", UserOption.ConvertToOptions(new List<string> {
                     "option 1",
                     "option 2",
                     "option 3"
                 })),
-                new TrueFalsePrompt("Do you agree?"),
-                new FreeTextPrompt("What is your name?"),
-                new TrueFalsePrompt("Are you over 18 years old?"),
-                new FreeTextPrompt("What is your SSN?")
             };
 
-            //Prompt p1 = new TrueFalsePrompt("Do you agree?");
-            //Prompt p2 = new FreeTextPrompt("What is your name?");
-            //Prompt p3 = new TrueFalsePrompt("Are you over 18 years old?");
-            //Prompt p4 = new FreeTextPrompt("What is your SSN?");
             PromptInvoker pi = new PromptInvoker(consoleWrapper);
             var promptResult = pi.GetPromptResults(prompts);
 

@@ -19,6 +19,7 @@ namespace TemplatesShared {
         ConsoleKeyInfo ReadKey(bool intercept);
         string ReadLine();
         void SetCursorPosition(int left, int top);
+        void SetCursorPosition((int cursorLeft, int cursorTop) cursorPosition);
         void Write(char value);
         void Write(object vlaue);
         void Write(string value);
