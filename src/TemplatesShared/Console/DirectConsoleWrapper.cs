@@ -39,6 +39,7 @@ namespace TemplatesShared {
             }
         }
 
+        #region read methods
         public int Read() {
             if (_parentWrapper != null) {
                 return _parentWrapper.Read();
@@ -73,6 +74,7 @@ namespace TemplatesShared {
                 return Console.ReadLine();
             }
         }
+        #endregion
 
         #region color related
         public ConsoleColor BackgroundColor {
@@ -211,6 +213,65 @@ namespace TemplatesShared {
             }
             else {
                 return (Console.CursorLeft, Console.CursorTop);
+            }
+        }
+        #endregion
+
+        #region buffer related
+        /// <summary>
+        /// Property to get/set the BufferWidth
+        /// The set here is only supported on Windows because of System.Console
+        /// </summary>
+        public int BufferWidth {
+            get {
+                if (_parentWrapper != null) {
+                    return _parentWrapper.BufferWidth;
+                }
+                else {
+                    return Console.BufferWidth;
+                }
+            }
+            set {
+                if (_parentWrapper != null) {
+                    _parentWrapper.BufferWidth = value;
+                }
+                else {
+                    Console.BufferWidth = value;
+                }
+            }
+        }
+        /// <summary>
+        /// Property to get/set the BufferWidth
+        /// The set here is only supported on Windows because of System.Console
+        /// </summary>
+        public int BufferHeight {
+            get {
+                if (_parentWrapper != null) {
+                    return _parentWrapper.BufferHeight;
+                }
+                else {
+                    return Console.BufferHeight;
+                }
+            }
+            set {
+                if (_parentWrapper != null) {
+                    _parentWrapper.BufferHeight = value;
+                }
+                else {
+                    Console.BufferHeight = value;
+                }
+            }
+        }
+        /// <summary>
+        /// Method to set the buffer size.
+        /// This is only supported on Windows because of System.Console
+        /// </summary>
+        public void SetBufferSize(int width, int height) {
+            if (_parentWrapper != null) {
+                _parentWrapper.SetBufferSize(width, height);
+            }
+            else {
+                Console.SetBufferSize(width, height);
             }
         }
         #endregion

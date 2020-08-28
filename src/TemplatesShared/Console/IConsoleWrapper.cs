@@ -8,6 +8,8 @@ namespace TemplatesShared {
         ConsoleColor BackgroundColor { get; set; }
         ConsoleColor ForegroundColor { get; set; }
         bool IsOutputRedirected { get; }
+        int BufferWidth { get; set; }
+        int BufferHeight { get; set; }
 
         void Clear();
         void DecreaseIndent();
@@ -18,6 +20,7 @@ namespace TemplatesShared {
         ConsoleKeyInfo ReadKey();
         ConsoleKeyInfo ReadKey(bool intercept);
         string ReadLine();
+        void SetBufferSize(int width, int height);
         void SetCursorPosition(int left, int top);
         void SetCursorPosition((int cursorLeft, int cursorTop) cursorPosition);
         void Write(char value);
