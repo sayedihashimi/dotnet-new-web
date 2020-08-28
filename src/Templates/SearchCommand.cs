@@ -24,7 +24,7 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>( (searchTerm) => {
-                    DoPromptDemo(true);
+                    // DoPromptDemo(true);
                     var templatePacks = TemplatePack.CreateFromFile(_reportLocator.GetTemplateReportJsonPath());
                     var result = _searcher.Search(searchTerm, templatePacks);
 
