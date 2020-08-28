@@ -25,8 +25,8 @@ namespace Templates {
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>( (searchTerm) => {
 
-                    DoSharpromptDemo();
-                    return;
+                    //DoSharpromptDemo();
+                    //return;
 
                     //DoPromptDemo();
                     //return;
@@ -41,7 +41,18 @@ namespace Templates {
 
                     var consoleWrapper = new DirectConsoleWrapper();
                     PickManyPrompt pmp = new PickManyPrompt("Select templates to install",options);
-                    PromptInvoker pi = new PromptInvoker(consoleWrapper);
+
+                    bool doSharprompt = true;
+                    IPromptInvoker pi;
+                    //if (doSharprompt) {
+                    //    pi = new SharPromptInvoker();
+                    //}
+                    //else {
+                    //    pi = new PromptInvoker(consoleWrapper);
+                        
+                    //}
+
+                    pi = doSharprompt ? (IPromptInvoker)new SharPromptInvoker() : new PromptInvoker(consoleWrapper);
 
                     var promptResult = pi.GetPromptResult(pmp);
                     Console.WriteLine();
@@ -91,6 +102,8 @@ namespace Templates {
 
             PromptInvoker pi = new PromptInvoker(consoleWrapper);
             var promptResult = pi.GetPromptResult(prompts);
+
+            
 
             Console.WriteLine();
             Console.WriteLine("Answers:");

@@ -23,6 +23,8 @@ namespace TemplatesShared {
             Text = text;
             PromptType = PromptType.TrueFalse;
         }
+
+        public bool DefaultValue { get; set; }
     }
     public class FreeTextPrompt : Prompt<string> {
         public FreeTextPrompt(string text, bool allowEmptyResponse = false) {
@@ -67,6 +69,30 @@ namespace TemplatesShared {
             return IsSelected;
         }
 
+        public override int GetHashCode() {
+            return Text.GetHashCode() + 
+                    IsSelected.GetHashCode() + 
+                    IsRequired.GetHashCode();
+        }
+        public override bool Equals(object obj) {
+            UserOption other;
+            if(obj == null || !(obj is UserOption)) {
+                return false;
+            }
+            
+            other = obj as UserOption;
+            if (other == null) {
+                return false;
+            }
+
+            return string.Equals(Text, other.Text) &&
+                    IsSelected == other.IsSelected &&
+                    IsRequired == other.IsRequired;
+        }
+
+        public override string ToString() {
+            return Text;
+        }
 
         public static List<UserOption> ConvertToOptions(List<string> optionsText) {
             var result = new List<UserOption>();
