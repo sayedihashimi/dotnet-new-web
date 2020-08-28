@@ -24,13 +24,7 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>( (searchTerm) => {
-
-                    //DoSharpromptDemo();
-                    //return;
-
-                    //DoPromptDemo();
-                    //return;
-                    // load up the file
+                    DoPromptDemo(true);
                     var templatePacks = TemplatePack.CreateFromFile(_reportLocator.GetTemplateReportJsonPath());
                     var result = _searcher.Search(searchTerm, templatePacks);
 
@@ -44,14 +38,6 @@ namespace Templates {
 
                     bool doSharprompt = true;
                     IPromptInvoker pi;
-                    //if (doSharprompt) {
-                    //    pi = new SharPromptInvoker();
-                    //}
-                    //else {
-                    //    pi = new PromptInvoker(consoleWrapper);
-                        
-                    //}
-
                     pi = doSharprompt ? (IPromptInvoker)new SharPromptInvoker() : new PromptInvoker(consoleWrapper);
 
                     var promptResult = pi.GetPromptResult(pmp);
@@ -78,7 +64,7 @@ namespace Templates {
                 }
             }
         }
-        private void DoPromptDemo() {
+        private void DoPromptDemo(bool useSharprompt) {
             var consoleWrapper = new DirectConsoleWrapper();
 
             var prompts = new List<Prompt> {
@@ -100,18 +86,15 @@ namespace Templates {
                 })),
             };
 
-            PromptInvoker pi = new PromptInvoker(consoleWrapper);
-            var promptResult = pi.GetPromptResult(prompts);
+            IPromptInvoker pi;
 
-            
+            pi = useSharprompt ? (IPromptInvoker)new SharPromptInvoker() : new PromptInvoker(consoleWrapper);
+
+            var promptResult = pi.GetPromptResult(prompts);
 
             Console.WriteLine();
             Console.WriteLine("Answers:");
             PrintResults(promptResult);
-        }
-
-        public void DoSharpromptDemo() {
-
         }
 
         protected Argument ArgSearchTerm() =>
