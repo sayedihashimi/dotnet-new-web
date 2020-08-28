@@ -25,6 +25,9 @@ namespace Templates {
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>( (searchTerm) => {
 
+                    DoSharpromptDemo();
+                    return;
+
                     //DoPromptDemo();
                     //return;
                     // load up the file
@@ -92,6 +95,10 @@ namespace Templates {
             Console.WriteLine();
             Console.WriteLine("Answers:");
             PrintResults(promptResult);
+        }
+
+        public void DoSharpromptDemo() {
+
         }
 
         protected Argument ArgSearchTerm() =>
