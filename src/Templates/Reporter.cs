@@ -7,6 +7,7 @@ namespace Templates {
         bool EnableVerbose { get; set; }
         void Write(string output);
         void WriteLine(string output);
+        void WriteLine();
         void WriteVerbose(string output);
         void WriteVerboseLine(string output, bool includePrefix = true);
     }
@@ -14,6 +15,9 @@ namespace Templates {
     public class Reporter : IReporter {
         public bool EnableVerbose { get; set; }
 
+        public void WriteLine() {
+            Console.WriteLine();
+        }
         public void WriteLine(string output) {
             Console.WriteLine(output);
         }
