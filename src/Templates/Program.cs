@@ -30,7 +30,9 @@ namespace Templates {
                 new SearchCommand(
                     GetFromServices<IReporter>(),
                     GetFromServices<ITemplateReportLocator>(),
-                    GetFromServices<ITemplateSearcher>()).CreateCommand())
+                    GetFromServices<ITemplateSearcher>(),
+                    GetFromServices<ITemplateInstaller>())
+                .CreateCommand())
                 .UseDefaults()
                 .Build();
 
@@ -43,6 +45,7 @@ namespace Templates {
                                 .AddSingleton<IReporter, Reporter>()
                                 .AddSingleton<ITemplateReportLocator, TemplateReportLocator>()
                                 .AddSingleton<ITemplateSearcher, TemplateSearcher>()
+                                .AddSingleton<ITemplateInstaller, TemplateInstaller>()
                                 .BuildServiceProvider();
         }
 

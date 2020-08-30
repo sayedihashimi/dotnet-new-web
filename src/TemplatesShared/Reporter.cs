@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Templates {
+namespace TemplatesShared {
     public interface IReporter {
         bool EnableVerbose { get; set; }
         void Write(string output);

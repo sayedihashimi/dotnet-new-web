@@ -52,14 +52,15 @@ namespace TemplatesShared {
         }
     }
     public class UserOption {
-        public UserOption(string text) {
+        public UserOption(string text, object value) {
             Text = text;
+            Value = value;
         }
         public string Text { get; set; }
         public bool IsSelected { get; set; }
         // TODO: IsRequired Not used currently
         public bool IsRequired { get; set; }
-        
+        public object Value { get; set; }
         /// <summary>
         /// Will toggle the value of IsSelected and then return the new value
         /// </summary>
@@ -70,9 +71,10 @@ namespace TemplatesShared {
         }
 
         public override int GetHashCode() {
-            return Text.GetHashCode() + 
-                    IsSelected.GetHashCode() + 
-                    IsRequired.GetHashCode();
+            return Text.GetHashCode() +
+                    IsSelected.GetHashCode() +
+                    IsRequired.GetHashCode() +
+                    (Value != null ? Value.GetHashCode() : 0);
         }
         public override bool Equals(object obj) {
             UserOption other;
@@ -87,20 +89,21 @@ namespace TemplatesShared {
 
             return string.Equals(Text, other.Text) &&
                     IsSelected == other.IsSelected &&
-                    IsRequired == other.IsRequired;
+                    IsRequired == other.IsRequired &&
+                    (Value != null ? Value.Equals(other.Value) : other.Value == null);
         }
 
         public override string ToString() {
             return Text;
         }
 
-        public static List<UserOption> ConvertToOptions(List<string> optionsText) {
-            var result = new List<UserOption>();
-            foreach(var ot in optionsText) {
-                result.Add(new UserOption(ot));
-            }
-            return result;
-        }
+        //public static List<UserOption> ConvertToOptions(List<string> optionsText) {
+        //    var result = new List<UserOption>();
+        //    foreach(var ot in optionsText) {
+        //        result.Add(new UserOption(ot));
+        //    }
+        //    return result;
+        //}
     }
     public class Prompt {
         public PromptType PromptType { get; protected set; }
