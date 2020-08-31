@@ -28,7 +28,7 @@ namespace Templates {
         }
         public override Command CreateCommand() =>
             new Command(name: "search", description: "search for templates") {
-                CommandHandler.Create<string>( (searchTerm) => {
+                CommandHandler.Create<string>(async (searchTerm) => {
                     var templatePacks = TemplatePack.CreateFromFile(_reportLocator.GetTemplateReportJsonPath());
                     var result = _searcher.Search(searchTerm, templatePacks);
 
@@ -46,23 +46,21 @@ namespace Templates {
 
                     var promptResult = pi.GetPromptResult(pmp) as PickManyPrompt;
 
-                    var templatesToInstall = promptResult.UserOptions.Select(uo => uo.Value as Template);
+                    var templatesToInstall = promptResult.UserOptions
+                                                            .Where(uo=>uo.IsSelected)
+                                                            .Select(uo=>uo.Value as Template);
                     if(templatesToInstall == null) {
                         _reporter.WriteLine("noting selected to install");
                         return;
                     }
 
-                    InstallTemplatesAsync(templatesToInstall.ToList());
-
-
-                    //Console.WriteLine();
-                    //Console.WriteLine("Selection:");
-                    //PrintResults(new List<Prompt>{promptResult });
+                    var templateInstallList = templatesToInstall.ToList();
+                    await InstallTemplatesAsync(templateInstallList);
                 }),
                 ArgSearchTerm()
             };
 
-        private void InstallTemplatesAsync(List<Template> templates) {
+        private async Task InstallTemplatesAsync(List<Template> templates) {
             Debug.Assert(templates != null && templates.Count > 0);
 
             var templatePackIds = templates.Select(t => t.TemplatePackId).Distinct().ToList();
@@ -70,7 +68,7 @@ namespace Templates {
             _reporter.WriteLine($"Istalling templates: {templatePackIds}");
 
             foreach(var tpId in templatePackIds) {
-                _installer.InstallPackageAsync(tpId);
+                await _installer.InstallPackageAsync(tpId);
             }
         }
 

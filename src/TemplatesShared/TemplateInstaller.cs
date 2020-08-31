@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TemplatesShared {
     public interface ITemplateInstaller {
-        void InstallPackageAsync(string id);
-        void InstallPackageAsync(string id, string version);
+        Task InstallPackageAsync(string id);
+        Task InstallPackageAsync(string id, string version);
     }
 
     public class TemplateInstaller : ITemplateInstaller {
@@ -15,10 +15,10 @@ namespace TemplatesShared {
         public TemplateInstaller(IReporter reporter) {
             _reporter = reporter;
         }
-        public void InstallPackageAsync(string id) {
-            InstallPackageAsync(id, null);
+        public async Task InstallPackageAsync(string id) {
+            await InstallPackageAsync(id, null);
         }
-        public void InstallPackageAsync(string id, string version) {
+        public async Task InstallPackageAsync(string id, string version) {
             // dotnet new --install pkg.id.full
             // dotnet new --install pkg.id.full::version
             string args = $"new --install \"{id}\" ";
@@ -40,8 +40,7 @@ namespace TemplatesShared {
                 _reporter.Write("installing ...");
                 while (!process.HasExited) {
                     _reporter.Write(".");
-                    // TODO: Revisit: await Task.Delay(100) doesn't work here for some reason
-                    Task.Delay(100).Wait();
+                    await Task.Delay(100);
                     _ = process.StandardOutput.ReadToEnd();
                     process.Refresh();
                 }
