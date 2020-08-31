@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using TemplatesShared;
 
 namespace Templates {
@@ -51,7 +52,7 @@ namespace Templates {
                         return;
                     }
 
-                    InstallTemplates(templatesToInstall.ToList());
+                    InstallTemplatesAsync(templatesToInstall.ToList());
 
 
                     //Console.WriteLine();
@@ -61,7 +62,7 @@ namespace Templates {
                 ArgSearchTerm()
             };
 
-        private void InstallTemplates(List<Template> templates) {
+        private void InstallTemplatesAsync(List<Template> templates) {
             Debug.Assert(templates != null && templates.Count > 0);
 
             var templatePackIds = templates.Select(t => t.TemplatePackId).Distinct().ToList();
@@ -69,7 +70,7 @@ namespace Templates {
             _reporter.WriteLine($"Istalling templates: {templatePackIds}");
 
             foreach(var tpId in templatePackIds) {
-                _installer.InstallPackage(tpId);
+                _installer.InstallPackageAsync(tpId);
             }
         }
 
