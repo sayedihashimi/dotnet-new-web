@@ -2,7 +2,7 @@
   "profiles": {
     "TemplatesConsole": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -trp C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json -arp C:\\data\\mycode\\dotnet-new-web\\template-analysis.csv"
+      "commandLineArgs": "analyze -trp C:\\\\data\\\\mycode\\\\dotnet-new-web\\\\src\\\\TemplatesApi\\\\wwwroot\\\\template-report.json -arp C:\\\\data\\\\mycode\\\\dotnet-new-web\\\\template-analysis.csv"
     }
   }
 }

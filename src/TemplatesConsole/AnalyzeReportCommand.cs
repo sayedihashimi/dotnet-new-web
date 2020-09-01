@@ -10,6 +10,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Newtonsoft.Json;
+using System.Reflection.Metadata;
 
 namespace TemplatesConsole {
     public class AnalyzeReportCommand : TemplateCommand {
@@ -57,7 +58,7 @@ namespace TemplatesConsole {
                 writer.WriteLine("package name, version, has lib folder, packagetype");
                 foreach (var tp in templatePacks) {
                     var info = new TemplatePackReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
-                    var line = GetReportLineFor(info);
+                    var line = GetTemplatePackReportLineFor(info);
                     Console.WriteLine(line);
                     writer.WriteLine(line);
                 }
@@ -70,11 +71,14 @@ namespace TemplatesConsole {
 
                 // now create the template-details.csv file
                 var allTemplates = new List<Template>();
+                var allTemplateInfos = new List<TemplateReportSummaryInfo>();
                 foreach (var tp in templatePacks) {
                     var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
                     var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
                     foreach(var template in templates) {
-                        allTemplates.Add(Template.CreateFromFile(template));
+                        var templateObj = Template.CreateFromFile(template);
+                        allTemplates.Add(templateObj);
+                        allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
                     }
                 }
 
@@ -82,25 +86,75 @@ namespace TemplatesConsole {
                 var tempTemplateDetailsFilepath = Path.GetTempFileName();
                 var allTemplatesJson = JsonConvert.SerializeObject(allTemplates,Formatting.Indented);
                 File.WriteAllText(tempTemplateDetailsFilepath, allTemplatesJson);
-                // file path is same as the results but name has -templates before the extension
+                // file path is same as the results but name has -templates and extension is .json
                 var templatesJsonFilePath = $"{resultsPath.Substring(0, resultsPath.Length - 5)}-templates.json";
                 File.Copy(tempTemplateDetailsFilepath, templatesJsonFilePath, true);
+
+                // create the template-details.csv file now
+                var templateDetailsTempFilePath = Path.GetTempFileName();
+                using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
+                templateDetailsWriter.WriteLine("name,template-pack,template-type,sourceName,primaryOutputs,tags");
+                foreach (var templateInfo in allTemplateInfos) {
+                    templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
+                }
+                templateDetailsWriter.Flush();
+                templateDetailsWriter.Close();
+
+                var templateDetailsDestPath = Path.Combine(Path.GetDirectoryName(resultsPath),"template-details.csv");
+                File.Copy(templateDetailsTempFilePath, templateDetailsDestPath, true);
+                
+                //$"{resultsPath.Substring(0, resultsPath.Length - 5)}-templates.json";
+
+
 
                 return 1;
             };
         }
-        private string GetReportLineFor(TemplatePackReportInternalSummaryInfo info) {
+        private string GetTemplatePackReportLineFor(TemplatePackReportInternalSummaryInfo info) {
             Debug.Assert(info != null);
 
-            var line = $"{info.PackageName},{info.Version},{info.HasLibFolder}, {GetReportStringFor(info.PackageType)}";
+            var line = $"{info.PackageName},{info.Version},{info.HasLibFolder}, {GetTemplatePackReportStringFor(info.PackageType)}";
             return line;
         }
-        private string GetReportStringFor(IList<string> packageType, string delim = " ") {           
+        private string GetTemplatePackReportStringFor(IList<string> packageType, string delim = " ") {           
             if(packageType == null || packageType.Count <= 0) {
                 return string.Empty;
             }
 
             return string.Join(delim, packageType);
+        }
+        private string GetTemplateDetailsReportLineFor(TemplateReportSummaryInfo templateInfo) {
+            Debug.Assert(templateInfo != null);
+            Debug.Assert(templateInfo.Template != null);
+
+            var template = templateInfo.Template;
+            var line = $"{template.Name},{template.TemplatePackId},{template.GetTemplateType()},{template.SourceName},{GetTemplateDetailsReportStringFor(template.PrimaryOutputs)},{GetTemplateDetailsStringForTags(template.Tags)}";
+
+            return line;
+        }
+        private string GetTemplateDetailsReportStringFor(PrimaryOutput[]primaryOutputs) {
+            if(primaryOutputs == null) {
+                return string.Empty;
+            }
+
+            var sb = new StringBuilder();
+            foreach (var po in primaryOutputs) {
+                sb.Append($"'{po.Path}';");
+            }
+
+            return sb.ToString();
+        }
+        private string GetTemplateDetailsStringForTags(Dictionary<string,string>tags) {
+            if(tags == null || tags.Keys.Count <= 0) {
+                return string.Empty;
+            }
+
+            var sb = new StringBuilder();
+            foreach(var key in tags.Keys) {
+                sb.Append($"'{key}':'{tags[key]}'");
+            }
+
+            return sb.ToString();
         }
     }
     public class TemplatePackReportInternalSummaryInfo {
@@ -155,8 +209,14 @@ namespace TemplatesConsole {
             return keyStr.ToLowerInvariant();
         }
     }
+
     public class TemplateReportSummaryInfo {
-        public List<Template> Templates { get; set; }
+        public Template Template { get; set; }
+
+        private void InitFrom(string templateFilepath) {
+            Debug.Assert(File.Exists(templateFilepath));
+
+        }
 
     }
 }

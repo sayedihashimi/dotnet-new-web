@@ -30,6 +30,21 @@ namespace TemplatesShared
         [JsonIgnore()]
         public int SearchScore { get; set; }
         public string TemplatePackId { get; set; }
+        public string SourceName { get; set; }
+        public PrimaryOutput[] PrimaryOutputs { get; set; }
+        /// <summary>
+        /// Returns the value of the tag with the key 'type'
+        /// </summary>
+        /// <returns></returns>
+        public string GetTemplateType() {
+            foreach(var key in Tags.Keys) {
+                if (string.Compare("type", key, StringComparison.OrdinalIgnoreCase) == 0) {
+                    return Tags[key];
+                }
+            }
+            
+            return null;
+        }
 
         public static Template CreateFromFile(string filepath) =>
             CreateFromText(File.ReadAllText(filepath));
@@ -37,7 +52,9 @@ namespace TemplatesShared
         public static Template CreateFromText(string json) =>
             JsonConvert.DeserializeObject<Template>(json);
     }
-
+    public class PrimaryOutput {
+        public string Path { get; set; }
+    }
     public class TemplatePack
     {
         public string Owners { get; set; }
