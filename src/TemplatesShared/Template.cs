@@ -37,12 +37,19 @@ namespace TemplatesShared
         /// </summary>
         /// <returns></returns>
         public string GetTemplateType() {
-            foreach(var key in Tags.Keys) {
-                if (string.Compare("type", key, StringComparison.OrdinalIgnoreCase) == 0) {
-                    return Tags[key];
+            return GetTagByKey("type");
+        }
+        public string GetLanguage() {
+            return GetTagByKey("language");
+        }
+        public string GetTagByKey(string keyname) {
+            if (Tags != null && Tags.Keys.Count > 0) {
+                foreach (var key in Tags.Keys) {
+                    if (string.Compare(keyname, key, StringComparison.OrdinalIgnoreCase) == 0) {
+                        return Tags[key];
+                    }
                 }
             }
-            
             return null;
         }
 

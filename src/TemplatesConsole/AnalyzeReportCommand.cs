@@ -93,7 +93,7 @@ namespace TemplatesConsole {
                 // create the template-details.csv file now
                 var templateDetailsTempFilePath = Path.GetTempFileName();
                 using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
-                templateDetailsWriter.WriteLine("name,template-pack,template-type,sourceName,primaryOutputs,tags");
+                templateDetailsWriter.WriteLine("name,template-type,sourceName,language,primaryOutputs,tags,identity,groupIdentity");
                 foreach (var templateInfo in allTemplateInfos) {
                     templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
                 }
@@ -128,7 +128,7 @@ namespace TemplatesConsole {
             Debug.Assert(templateInfo.Template != null);
 
             var template = templateInfo.Template;
-            var line = $"{template.Name},{template.TemplatePackId},{template.GetTemplateType()},{template.SourceName},{GetTemplateDetailsReportStringFor(template.PrimaryOutputs)},{GetTemplateDetailsStringForTags(template.Tags)}";
+            var line = $"{template.Name},{template.GetTemplateType()},{template.SourceName},{template.GetLanguage()},{GetTemplateDetailsReportStringFor(template.PrimaryOutputs)},{GetTemplateDetailsStringForTags(template.Tags)},{template.Identity},{template.GroupIdentity}";
 
             return line;
         }
