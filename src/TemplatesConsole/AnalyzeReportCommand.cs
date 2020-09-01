@@ -9,6 +9,7 @@ using TemplatesShared;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Newtonsoft.Json;
 
 namespace TemplatesConsole {
     public class AnalyzeReportCommand : TemplateCommand {
@@ -52,26 +53,43 @@ namespace TemplatesConsole {
                 // write the results to a temp file, and then copy to the final destination
                 var tempfilepath = Path.GetTempFileName();
                 var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
-                // var templateInfo = new List<TemplateReportInternalSummaryInfo>();
                 using var writer = new StreamWriter(tempfilepath);
                 writer.WriteLine("package name, version, has lib folder, packagetype");
                 foreach (var tp in templatePacks) {
-                    var info = new TemplateReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
-                    //templateInfo.Add(info);
+                    var info = new TemplatePackReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
                     var line = GetReportLineFor(info);
                     Console.WriteLine(line);
-                    writer.WriteLine(GetReportLineFor(info));
+                    writer.WriteLine(line);
                 }
                 writer.Flush();
                 writer.Close();
 
-                string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-analysis.csv";
+                string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-pack-analysis.csv";
                 Console.WriteLine($"writing analysis file to {resultsPath}");
                 File.Copy(tempfilepath, resultsPath, true);
+
+                // now create the template-details.csv file
+                var allTemplates = new List<Template>();
+                foreach (var tp in templatePacks) {
+                    var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
+                    var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
+                    foreach(var template in templates) {
+                        allTemplates.Add(Template.CreateFromFile(template));
+                    }
+                }
+
+                // write out the json file that contains all the templates
+                var tempTemplateDetailsFilepath = Path.GetTempFileName();
+                var allTemplatesJson = JsonConvert.SerializeObject(allTemplates,Formatting.Indented);
+                File.WriteAllText(tempTemplateDetailsFilepath, allTemplatesJson);
+                // file path is same as the results but name has -templates before the extension
+                var templatesJsonFilePath = $"{resultsPath.Substring(0, resultsPath.Length - 5)}-templates.json";
+                File.Copy(tempTemplateDetailsFilepath, templatesJsonFilePath, true);
+
                 return 1;
             };
         }
-        private string GetReportLineFor(TemplateReportInternalSummaryInfo info) {
+        private string GetReportLineFor(TemplatePackReportInternalSummaryInfo info) {
             Debug.Assert(info != null);
 
             var line = $"{info.PackageName},{info.Version},{info.HasLibFolder}, {GetReportStringFor(info.PackageType)}";
@@ -85,13 +103,13 @@ namespace TemplatesConsole {
             return string.Join(delim, packageType);
         }
     }
-    public class TemplateReportInternalSummaryInfo {
+    public class TemplatePackReportInternalSummaryInfo {
         private string _cacheFolderPath;
-        public TemplateReportInternalSummaryInfo() : this(null,null) { 
+        public TemplatePackReportInternalSummaryInfo() : this(null,null) { 
         }
-        public TemplateReportInternalSummaryInfo(string cacheFolderPath) : this(cacheFolderPath, null) {
+        public TemplatePackReportInternalSummaryInfo(string cacheFolderPath) : this(cacheFolderPath, null) {
         }
-        public TemplateReportInternalSummaryInfo(string cacheFolderPath, TemplatePack tp) {
+        public TemplatePackReportInternalSummaryInfo(string cacheFolderPath, TemplatePack tp) {
             _cacheFolderPath = cacheFolderPath;
             InitFrom(tp);
         }
@@ -132,30 +150,13 @@ namespace TemplatesConsole {
                        select e.Attribute("name").Value).ToList();
             packageType.Sort();
             PackageType = packageType;
-
-
-            //var doc = XDocument.Load(nuspecFilePath);
-            // var packageType = doc.Descendants("package").Descendants("metadata").Descendants("packageTypes").Descendants("packageType")
-            //            .Select(element => element.Value).ToList();
-
-                      //var xpathToGetPkgType = @"/package/metadata/packageTypes/packageType/@name";
-                      //var foo = new XPathDocument(nuspecFilePath);
-                      //var nav = foo.CreateNavigator();
-                      //var pt = nav.Evaluate(xpathToGetPkgType);
-
-
-
-
-                      //packageType.Sort();
-
-
-                      //var nuspec = NuspecFile.CreateFromNuspecFile(nuspecFilePath);
-                      //var packageType = nuspec.Metadata.PackageTypes.ToList();
-                      //packageType.Sort();
-                      // PackageType = packageType;
         }
         private string Normalize(string keyStr) {
             return keyStr.ToLowerInvariant();
         }
+    }
+    public class TemplateReportSummaryInfo {
+        public List<Template> Templates { get; set; }
+
     }
 }

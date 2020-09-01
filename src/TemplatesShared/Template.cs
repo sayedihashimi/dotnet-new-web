@@ -30,6 +30,12 @@ namespace TemplatesShared
         [JsonIgnore()]
         public int SearchScore { get; set; }
         public string TemplatePackId { get; set; }
+
+        public static Template CreateFromFile(string filepath) =>
+            CreateFromText(File.ReadAllText(filepath));
+
+        public static Template CreateFromText(string json) =>
+            JsonConvert.DeserializeObject<Template>(json);
     }
 
     public class TemplatePack
@@ -209,6 +215,21 @@ namespace TemplatesShared
             template.TemplatePackId = templatePackId;
 
             return template;
+        }
+
+        public static List<string> GetTemplateFilesUnder(string contentDir) {
+            Debug.Assert(Directory.Exists(contentDir));
+
+            var templateFolders = Directory.GetDirectories(contentDir, ".template.config", SearchOption.AllDirectories);
+            var templateFiles = new List<string>();
+            foreach (var folder in templateFolders) {
+                var files = Directory.GetFiles(folder, "template.json", new EnumerationOptions { RecurseSubdirectories = true });
+                if (files != null && files.Length > 0) {
+                    templateFiles.AddRange(files);
+                }
+            }
+
+            return templateFiles;
         }
     }
     public class TemplateConverter : JsonConverter
