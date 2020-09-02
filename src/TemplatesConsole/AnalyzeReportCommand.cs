@@ -93,7 +93,7 @@ namespace TemplatesConsole {
                 // create the template-details.csv file now
                 var templateDetailsTempFilePath = Path.GetTempFileName();
                 using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
-                templateDetailsWriter.WriteLine("name,template-type,sourceName,language,primaryOutputs,tags,identity,groupIdentity");
+                templateDetailsWriter.WriteLine("name,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity");
                 foreach (var templateInfo in allTemplateInfos) {
                     templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
                 }
@@ -104,16 +104,20 @@ namespace TemplatesConsole {
                 File.Copy(templateDetailsTempFilePath, templateDetailsDestPath, true);
                 
                 //$"{resultsPath.Substring(0, resultsPath.Length - 5)}-templates.json";
-
-
-
                 return 1;
             };
+        }
+        private string ReplaceComma(string str) {
+            if (string.IsNullOrEmpty(str)) {
+                return string.Empty;
+            }
+
+            return str.Replace(",", "|");
         }
         private string GetTemplatePackReportLineFor(TemplatePackReportInternalSummaryInfo info) {
             Debug.Assert(info != null);
 
-            var line = $"{info.PackageName},{info.Version},{info.HasLibFolder}, {GetTemplatePackReportStringFor(info.PackageType)}";
+            var line = $"{ReplaceComma(info.PackageName)},{ReplaceComma(info.Version)},{info.HasLibFolder}, {ReplaceComma(GetTemplatePackReportStringFor(info.PackageType))}";
             return line;
         }
         private string GetTemplatePackReportStringFor(IList<string> packageType, string delim = " ") {           
@@ -128,7 +132,7 @@ namespace TemplatesConsole {
             Debug.Assert(templateInfo.Template != null);
 
             var template = templateInfo.Template;
-            var line = $"{template.Name},{template.GetTemplateType()},{template.SourceName},{template.GetLanguage()},{GetTemplateDetailsReportStringFor(template.PrimaryOutputs)},{GetTemplateDetailsStringForTags(template.Tags)},{template.Identity},{template.GroupIdentity}";
+            var line = $"{ReplaceComma(template.Name)},{ReplaceComma(template.GetTemplateType())},{ReplaceComma(template.Author)},{ReplaceComma(template.SourceName)},{ReplaceComma(template.DefaultName)},{ReplaceComma(template.Baseline)},{ReplaceComma(template.GetLanguage())},{ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs))},{ReplaceComma(GetTemplateDetailsStringForTags(template.Tags))},{ReplaceComma(template.Identity)},{ReplaceComma(template.GroupIdentity)}";
 
             return line;
         }

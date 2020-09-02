@@ -31,6 +31,8 @@ namespace TemplatesShared
         public int SearchScore { get; set; }
         public string TemplatePackId { get; set; }
         public string SourceName { get; set; }
+        public string DefaultName { get; set; }
+        public string Baseline { get; set; }
         public PrimaryOutput[] PrimaryOutputs { get; set; }
         /// <summary>
         /// Returns the value of the tag with the key 'type'
