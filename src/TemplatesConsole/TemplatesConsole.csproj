@@ -21,6 +21,12 @@
     <ToolCommandName>templatereport</ToolCommandName>
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="nupkg\**" />
+    <EmbeddedResource Remove="nupkg\**" />
+    <None Remove="nupkg\**" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
