@@ -47,10 +47,6 @@ namespace TemplatesConsole {
                     throw new FileNotFoundException($"template-report.json file not found at {templateReportJsonPath}");
                 }
 
-                // load the file up and return some result
-                // 1. packages which are using PackageType != template
-                // 2. packages with dependency assembly files (check for a lib folder)
-
                 var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
                 
                 // write the results to a temp file, and then copy to the final destination

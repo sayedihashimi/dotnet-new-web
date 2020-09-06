@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using TemplatesShared.Extensions;
 
 namespace TemplatesShared
 {
@@ -103,6 +104,9 @@ namespace TemplatesShared
                 return IconUrl;
             }
         }
+
+        [JsonIgnore()]
+        public List<TemplateHostFile> HostFiles { get; set; } = new List<TemplateHostFile>();
 
         public static List<TemplatePack> CreateFromFile(string filepath)
         {
@@ -258,6 +262,64 @@ namespace TemplatesShared
             return templateFiles;
         }
     }
+
+    public class TemplateHostFile {
+        public string Icon { get; set; }
+        public string LearnMoreLink { get; set; }
+        public List<string> UiFilters { get; set; } = new List<string>();
+        public string MinFullFrameworkVersion { get; set; }
+
+        [JsonIgnore()]
+        public string LocalFilePath { get; set; }
+
+        public static TemplateHostFile CreateFromText(string text, string localFilepath = "")
+        {
+            Debug.Assert(!string.IsNullOrEmpty(text));
+
+            JObject hostFileJo = JObject.Parse(text);
+            var uiFilters = new List<string>();
+            if (hostFileJo.ContainsKey("uiFilters"))
+            {
+                uiFilters = ((JArray)hostFileJo["uiFilters"]).Select(c => (string)c).ToList();
+            }
+            
+            return new TemplateHostFile
+            {
+                Icon = hostFileJo.GetValueOrDefault<string>("icon", string.Empty),
+                LearnMoreLink = hostFileJo.GetValueOrDefault<string>("learnMoreLink", string.Empty),
+                MinFullFrameworkVersion = hostFileJo.GetValueOrDefault<string>("minFullFrameworkVersion", string.Empty),
+                LocalFilePath = localFilepath,
+                UiFilters = uiFilters
+            };
+        }
+
+        public static TemplateHostFile CreateFromFile(string filepath) =>
+            CreateFromText(File.ReadAllText(filepath));
+
+        public static List<string> GetHostFilesIn(string contentDir) {
+            Debug.Assert(Directory.Exists(contentDir));
+
+            var result = new List<string>();
+
+            var found = Directory.GetFiles(contentDir, "*.host.json", SearchOption.TopDirectoryOnly);
+
+            if(found != null && found.Length > 0) {
+                result.AddRange(found);
+            }
+
+            return result;
+        }
+    }
+
+    public class TemplateSymbolInfo {
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Datatype { get; set; }
+        public string Replaces { get; set; }
+        public string DefaultValue { get; set; }
+        public string Description { get; set; }
+    }
+
     public class TemplateConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
