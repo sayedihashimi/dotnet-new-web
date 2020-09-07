@@ -48,28 +48,45 @@ namespace TemplatesConsole {
                 }
 
                 var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
-                
+                List<string> createdFiles = new List<string>();
                 // write the results to a temp file, and then copy to the final destination
                 string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-pack-analysis.csv";
                 CreateTemplatePackFile(templatePacks, templateReportJsonPath, resultsPath);
+                createdFiles.Add(resultsPath);
 
                 // create the json file that contains all the templates                
                 var allTemplates = new List<Template>();
                 var allTemplateInfos = new List<TemplateReportSummaryInfo>();
+                var allHostFiles = new List<TemplateHostFile>();
                 foreach (var tp in templatePacks) {
                     var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
+
+                    // populate the HostFiles property of the template pack
+                    // tp.InitHostFilesFrom(extractFolderPath,);
+
                     var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
                     foreach (var template in templates) {
                         var templateObj = Template.CreateFromFile(template);
+                        templateObj.TemplatePackId = tp.Package;
+                        templateObj.InitHostFilesFrom(Path.GetDirectoryName(template), templateObj.TemplatePackId, templateObj.Name);
                         allTemplates.Add(templateObj);
                         allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
                     }
+
                 }
 
-                CreateAllTemplatesJsonFile(allTemplates, resultsPath);
-
+                var allTemplatesJsonPath = CreateAllTemplatesJsonFile(allTemplates, resultsPath);
+                createdFiles.Add(allTemplatesJsonPath);
+                
                 // create the template-details.csv file now
-                CreateTemplateDetailsCsvFile(allTemplateInfos, resultsPath);
+                var templateDetailsCsvPath = CreateTemplateDetailsCsvFile(allTemplateInfos, resultsPath);
+                createdFiles.Add(templateDetailsCsvPath);
+
+                Console.WriteLine("Created files:");
+                foreach(var cf in createdFiles)
+                {
+                    Console.WriteLine($"    {cf}");
+                }
 
                 return 1;
             };
@@ -107,7 +124,7 @@ namespace TemplatesConsole {
             }
         }
 
-        private void CreateAllTemplatesJsonFile(List<Template> allTemplates, string resultsPath) {
+        private string CreateAllTemplatesJsonFile(List<Template> allTemplates, string resultsPath) {
             // write out the json file that contains all the templates
             var tempTemplateDetailsFilepath = Path.GetTempFileName();
             var allTemplatesJson = JsonConvert.SerializeObject(allTemplates, Formatting.Indented);
@@ -115,12 +132,13 @@ namespace TemplatesConsole {
             // file path is same as the results but name has -templates and extension is .json
             var templatesJsonFilePath = $"{resultsPath.Substring(0, resultsPath.Length - 4)}-templates.json";
             File.Copy(tempTemplateDetailsFilepath, templatesJsonFilePath, true);
+            return templatesJsonFilePath;
         }
 
-        private void CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
+        private string CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
             var templateDetailsTempFilePath = Path.GetTempFileName();
             using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
-            templateDetailsWriter.WriteLine("name,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity");
+            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files");
             foreach (var templateInfo in allTemplateInfos) {
                 templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
             }
@@ -129,6 +147,8 @@ namespace TemplatesConsole {
 
             var templateDetailsDestPath = Path.Combine(Path.GetDirectoryName(resultsPath), "template-details.csv");
             File.Copy(templateDetailsTempFilePath, templateDetailsDestPath, true);
+
+            return templateDetailsDestPath;
         }
 
         private string ReplaceComma(string str) {
@@ -151,12 +171,37 @@ namespace TemplatesConsole {
 
             return string.Join(delim, packageType);
         }
+        private string GetTemplatePackReportStringForHostFiles(Template info)
+        {
+            if(info == null || info.HostFiles == null || info.HostFiles.Count <= 0)
+            {
+                return string.Empty;
+            }
+            var sb = new StringBuilder();
+
+            for(var i = 0; i<info.HostFiles.Count; i++)
+            {
+                string filepath = info.HostFiles[i].LocalFilePath;
+                if (string.IsNullOrWhiteSpace(filepath)){
+                    continue;
+                }
+                sb.Append(Path.GetFileName(filepath));
+
+                if(i < info.HostFiles.Count -1)
+                {
+                    sb.Append(";");
+                }
+            }
+
+            return sb.ToString();
+
+        }
         private string GetTemplateDetailsReportLineFor(TemplateReportSummaryInfo templateInfo) {
             Debug.Assert(templateInfo != null);
             Debug.Assert(templateInfo.Template != null);
 
             var template = templateInfo.Template;
-            var line = $"{ReplaceComma(template.Name)},{ReplaceComma(template.GetTemplateType())},{ReplaceComma(template.Author)},{ReplaceComma(template.SourceName)},{ReplaceComma(template.DefaultName)},{ReplaceComma(template.Baseline)},{ReplaceComma(template.GetLanguage())},{ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs))},{ReplaceComma(GetTemplateDetailsStringForTags(template.Tags))},{ReplaceComma(template.Identity)},{ReplaceComma(template.GroupIdentity)}";
+            var line = $"{ReplaceComma(template.Name)},{ReplaceComma(template.TemplatePackId)},{ReplaceComma(template.GetTemplateType())},{ReplaceComma(template.Author)},{ReplaceComma(template.SourceName)},{ReplaceComma(template.DefaultName)},{ReplaceComma(template.Baseline)},{ReplaceComma(template.GetLanguage())},{ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs))},{ReplaceComma(GetTemplateDetailsStringForTags(template.Tags))},{ReplaceComma(template.Identity)},{ReplaceComma(template.GroupIdentity)},{ReplaceComma(GetTemplatePackReportStringForHostFiles(template))}";
 
             return line;
         }
@@ -199,7 +244,7 @@ namespace TemplatesConsole {
         public string Version { get; set; }
         public List<string> PackageType { get; set; }
         public bool HasLibFolder { get; set; }
-
+        public List<string> HostFiles { get; set; }
         private void InitFrom(TemplatePack tp) {
             Debug.Assert(tp != null);
 
@@ -245,6 +290,5 @@ namespace TemplatesConsole {
             Debug.Assert(File.Exists(templateFilepath));
 
         }
-
     }
 }

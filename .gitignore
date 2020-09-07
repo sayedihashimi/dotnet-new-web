@@ -1,7 +1,6 @@
 
-template-analysis-templates.json
-template-analysis.csv
-template-details.csv
+template-*.json
+template-*.csv
 
 
 ## Ignore Visual Studio temporary files, build results, and

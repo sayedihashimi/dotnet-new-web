@@ -19,7 +19,7 @@ namespace TemplatesConsole {
         static int Main(string[] args) {
             RegisterServices();
 
-            DoDemo();return 1;
+            // DoDemo();return 1;
 
             var app = new CommandLineApplication {
                 Name = "templatereport",

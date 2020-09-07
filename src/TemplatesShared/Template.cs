@@ -35,6 +35,27 @@ namespace TemplatesShared
         public string DefaultName { get; set; }
         public string Baseline { get; set; }
         public PrimaryOutput[] PrimaryOutputs { get; set; }
+
+        [JsonIgnore()]
+        public List<TemplateHostFile> HostFiles { get; set; } = new List<TemplateHostFile>();
+
+        /// <summary>
+        /// Call this method, to populate the HostFiles property
+        /// </summary>
+        /// <param name="dirPath">root directory to where the template pack is located</param>
+        public void InitHostFilesFrom(string dirPath, string templatePackId = "", string templateName = "") {
+            HostFiles = new List<TemplateHostFile>();
+            var hostFilePaths = TemplateHostFile.GetHostFilesIn(dirPath);
+            if (hostFilePaths != null && hostFilePaths.Count > 0) {
+                foreach (var hfp in hostFilePaths)
+                {
+                    var hf = TemplateHostFile.CreateFromFile(hfp, templatePackId, templateName);
+                    if (hf != null) {
+                        HostFiles.Add(hf);
+                    }
+                }
+            }
+        }
         /// <summary>
         /// Returns the value of the tag with the key 'type'
         /// </summary>
@@ -104,9 +125,6 @@ namespace TemplatesShared
                 return IconUrl;
             }
         }
-
-        [JsonIgnore()]
-        public List<TemplateHostFile> HostFiles { get; set; } = new List<TemplateHostFile>();
 
         public static List<TemplatePack> CreateFromFile(string filepath)
         {
@@ -264,6 +282,8 @@ namespace TemplatesShared
     }
 
     public class TemplateHostFile {
+        public string TempaltePackId { get; set; }
+        public string TemplateName { get; set; }
         public string Icon { get; set; }
         public string LearnMoreLink { get; set; }
         public List<string> UiFilters { get; set; } = new List<string>();
@@ -272,29 +292,49 @@ namespace TemplatesShared
         [JsonIgnore()]
         public string LocalFilePath { get; set; }
 
-        public static TemplateHostFile CreateFromText(string text, string localFilepath = "")
+        public static TemplateHostFile CreateFromText(string text, string localFilepath, string templatePackId,string templateName)
         {
-            Debug.Assert(!string.IsNullOrEmpty(text));
-
-            JObject hostFileJo = JObject.Parse(text);
-            var uiFilters = new List<string>();
-            if (hostFileJo.ContainsKey("uiFilters"))
+            if (string.IsNullOrEmpty(text))
             {
-                uiFilters = ((JArray)hostFileJo["uiFilters"]).Select(c => (string)c).ToList();
+                return null;
             }
-            
-            return new TemplateHostFile
+
+            JObject hostFileJo = null;
+            try
             {
-                Icon = hostFileJo.GetValueOrDefault<string>("icon", string.Empty),
-                LearnMoreLink = hostFileJo.GetValueOrDefault<string>("learnMoreLink", string.Empty),
-                MinFullFrameworkVersion = hostFileJo.GetValueOrDefault<string>("minFullFrameworkVersion", string.Empty),
-                LocalFilePath = localFilepath,
-                UiFilters = uiFilters
-            };
+                hostFileJo = JObject.Parse(text);
+            }
+            catch(JsonReaderException ex)
+            {
+                Console.WriteLine("Json error in file '{0}. Error:\n{1}", localFilepath, ex.ToString());
+            }
+
+            if (hostFileJo != null)
+            {
+                var uiFilters = new List<string>();
+                if (hostFileJo.ContainsKey("uiFilters"))
+                {
+                    uiFilters = ((JArray)hostFileJo["uiFilters"]).Select(c => (string)c).ToList();
+                }
+
+                return new TemplateHostFile
+                {
+                    TempaltePackId = templatePackId,
+                    Icon = hostFileJo.GetValueOrDefault<string>("icon", string.Empty),
+                    LearnMoreLink = hostFileJo.GetValueOrDefault<string>("learnMoreLink", string.Empty),
+                    MinFullFrameworkVersion = hostFileJo.GetValueOrDefault<string>("minFullFrameworkVersion", string.Empty),
+                    LocalFilePath = localFilepath,
+                    UiFilters = uiFilters
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public static TemplateHostFile CreateFromFile(string filepath) =>
-            CreateFromText(File.ReadAllText(filepath));
+        public static TemplateHostFile CreateFromFile(string filepath, string templatePackId = "",string templateName="") =>
+            CreateFromText(File.ReadAllText(filepath), filepath, templatePackId, templateName);
 
         public static List<string> GetHostFilesIn(string contentDir) {
             Debug.Assert(Directory.Exists(contentDir));
