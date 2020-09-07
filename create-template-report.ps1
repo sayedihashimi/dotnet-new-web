@@ -49,10 +49,12 @@ function DeployTemplateReport{
     # msdeploy -verb:sync -whatif -source:contentPath='C:\data\mycode\sayed-tools\powershell\dotnet\template-report2.json' -dest:contentPath='wwwroot/template-report.json',ComputerName="https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api",UserName='%pubusername%',Password='%pubpwd%',AuthType='Basic'
 
         if([string]::IsNullOrWhiteSpace($publishUsername)){
-            throw '$publishUsername empty, cannot publish'
+            '$publishUsername empty, cannot publish' | Write-Output
+            return;
         }
         if([string]::IsNullOrWhiteSpace($publishPassword)){
-            throw '$publishPassword empty, cannot publish'
+            '$publishPassword empty, cannot publish' | Write-Output
+            return;
         }
 
         # check that the source file is on disk
@@ -194,8 +196,17 @@ function Invoke-CommandString{
     }
 }
 
+
+$prnum = $env:APPVEYOR_PULL_REQUEST_NUMBER
+
 # download latest from api site to ensure we always have the latest
 # this will ensure that build times are minimal
-Download-LatestTemplateReport -publishUsername $env:publishUsername -publishPassword $env:publishPassword
+if([string]::IsNullOrEmpty($prnum)){
+    Download-LatestTemplateReport -publishUsername $env:publishUsername -publishPassword $env:publishPassword
+}
+
 Create-Report
-DeployTemplateReport
+
+if([string]::IsNullOrEmpty($prnum)){
+    DeployTemplateReport
+}

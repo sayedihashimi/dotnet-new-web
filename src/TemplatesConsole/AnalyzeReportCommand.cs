@@ -9,6 +9,8 @@ using TemplatesShared;
 using System.Linq;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Newtonsoft.Json;
+using System.Reflection.Metadata;
 
 namespace TemplatesConsole {
     public class AnalyzeReportCommand : TemplateCommand {
@@ -32,9 +34,14 @@ namespace TemplatesConsole {
                 CommandOptionType.SingleValue);
             optionTemplateReportJsonPath.IsRequired();
 
-            var optionAnalysisResultFilePath = command.Option<string>(
-                "-arp|--analysisResultPath",
-                "path to where the results will be written to",
+            //var optionAnalysisResultFilePath = command.Option<string>(
+            //    "-arp|--analysisResultPath",
+            //    "path to where the results will be written to",
+            //    CommandOptionType.SingleValue);
+
+            var optionOutputDir = command.Option<string>(
+                "-od|--output-dir",
+                "folder path where files will be written",
                 CommandOptionType.SingleValue);
 
             OnExecute = () => {
@@ -45,53 +52,195 @@ namespace TemplatesConsole {
                     throw new FileNotFoundException($"template-report.json file not found at {templateReportJsonPath}");
                 }
 
-                // load the file up and return some result
-                // 1. packages which are using PackageType != template
-                // 2. packages with dependency assembly files (check for a lib folder)
-
-                // write the results to a temp file, and then copy to the final destination
-                var tempfilepath = Path.GetTempFileName();
                 var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
-                // var templateInfo = new List<TemplateReportInternalSummaryInfo>();
-                using var writer = new StreamWriter(tempfilepath);
-                writer.WriteLine("package name, version, has lib folder, packagetype");
-                foreach (var tp in templatePacks) {
-                    var info = new TemplateReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
-                    //templateInfo.Add(info);
-                    var line = GetReportLineFor(info);
-                    Console.WriteLine(line);
-                    writer.WriteLine(GetReportLineFor(info));
-                }
-                writer.Flush();
-                writer.Close();
+                List<string> createdFiles = new List<string>();
 
-                string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-analysis.csv";
-                Console.WriteLine($"writing analysis file to {resultsPath}");
-                File.Copy(tempfilepath, resultsPath, true);
+                string outdir = optionOutputDir.HasValue() ? optionOutputDir.Value() : Directory.GetCurrentDirectory();
+
+                string templatePackFile = Path.Combine(outdir, "template-pack-analysis.csv");
+                CreateTemplatePackFile(templatePacks, templateReportJsonPath, templatePackFile);
+                createdFiles.Add(templatePackFile);
+
+                // create the json file that contains all the templates                
+                var allTemplates = new List<Template>();
+                var allTemplateInfos = new List<TemplateReportSummaryInfo>();
+                var allHostFiles = new List<TemplateHostFile>();
+                foreach (var tp in templatePacks) {
+                    var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
+
+                    // populate the HostFiles property of the template pack
+                    var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
+                    foreach (var template in templates) {
+                        var templateObj = Template.CreateFromFile(template);
+                        templateObj.TemplatePackId = tp.Package;
+                        templateObj.InitHostFilesFrom(Path.GetDirectoryName(template), templateObj.TemplatePackId, templateObj.Name);
+                        allTemplates.Add(templateObj);
+                        allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
+                    }
+                }
+
+                var allTemplatesJsonPath = Path.Combine(outdir, "templates-all.json");
+                CreateAllTemplatesJsonFile(allTemplates, allTemplatesJsonPath);
+                createdFiles.Add(allTemplatesJsonPath);
+
+                // create the template-details.csv file now
+                var templateDetailsCsvPath = Path.Combine(outdir, "template-details.csv");
+                CreateTemplateDetailsCsvFile(allTemplateInfos, templateDetailsCsvPath);
+                createdFiles.Add(templateDetailsCsvPath);
+
+                Console.WriteLine("Created files:");
+                foreach(var cf in createdFiles)
+                {
+                    Console.WriteLine($"    {cf}");
+                }
+
                 return 1;
             };
         }
-        private string GetReportLineFor(TemplateReportInternalSummaryInfo info) {
+
+        private void CreateTemplatePackFile(List<TemplatePack> templatePacks,string templateReportJsonPath, string resultsPath) {
+            // write the results to a temp file, and then copy to the final destination
+            var tempfilepath = Path.GetTempFileName();
+            //var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
+            using var writer = new StreamWriter(tempfilepath);
+            writer.WriteLine("package name, version, has lib folder, packagetype");
+            foreach (var tp in templatePacks) {
+                var info = new TemplatePackReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
+                var line = GetTemplatePackReportLineFor(info);
+                Console.WriteLine(line);
+                writer.WriteLine(line);
+            }
+            writer.Flush();
+            writer.Close();
+
+            // string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-pack-analysis.csv";
+            Console.WriteLine($"writing analysis file to {resultsPath}");
+            File.Copy(tempfilepath, resultsPath, true);
+
+            // now create the template-details.csv file
+            var allTemplates = new List<Template>();
+            var allTemplateInfos = new List<TemplateReportSummaryInfo>();
+            foreach (var tp in templatePacks) {
+                var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
+                var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
+                foreach (var template in templates) {
+                    var templateObj = Template.CreateFromFile(template);
+                    allTemplates.Add(templateObj);
+                    allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
+                }
+            }
+        }
+
+        private void CreateAllTemplatesJsonFile(List<Template> allTemplates, string resultsPath) {
+            // write out the json file that contains all the templates
+            var tempTemplateDetailsFilepath = Path.GetTempFileName();
+            var allTemplatesJson = JsonConvert.SerializeObject(allTemplates, Formatting.Indented);
+            File.WriteAllText(tempTemplateDetailsFilepath, allTemplatesJson);
+            File.Copy(tempTemplateDetailsFilepath, resultsPath, true);
+        }
+
+        private string CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
+            var templateDetailsTempFilePath = Path.GetTempFileName();
+            using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
+            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files");
+            foreach (var templateInfo in allTemplateInfos) {
+                templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
+            }
+            templateDetailsWriter.Flush();
+            templateDetailsWriter.Close();
+
+            var templateDetailsDestPath = Path.Combine(Path.GetDirectoryName(resultsPath), "template-details.csv");
+            File.Copy(templateDetailsTempFilePath, templateDetailsDestPath, true);
+
+            return templateDetailsDestPath;
+        }
+
+        private string ReplaceComma(string str) {
+            if (string.IsNullOrEmpty(str)) {
+                return string.Empty;
+            }
+
+            return str.Replace(",", "|");
+        }
+        private string GetTemplatePackReportLineFor(TemplatePackReportInternalSummaryInfo info) {
             Debug.Assert(info != null);
 
-            var line = $"{info.PackageName},{info.Version},{info.HasLibFolder}, {GetReportStringFor(info.PackageType)}";
+            var line = $"{ReplaceComma(info.PackageName)},{ReplaceComma(info.Version)},{info.HasLibFolder}, {ReplaceComma(GetTemplatePackReportStringFor(info.PackageType))}";
             return line;
         }
-        private string GetReportStringFor(IList<string> packageType, string delim = " ") {           
+        private string GetTemplatePackReportStringFor(IList<string> packageType, string delim = " ") {           
             if(packageType == null || packageType.Count <= 0) {
                 return string.Empty;
             }
 
             return string.Join(delim, packageType);
         }
+        private string GetTemplatePackReportStringForHostFiles(Template info)
+        {
+            if(info == null || info.HostFiles == null || info.HostFiles.Count <= 0)
+            {
+                return string.Empty;
+            }
+            var sb = new StringBuilder();
+
+            for(var i = 0; i<info.HostFiles.Count; i++)
+            {
+                string filepath = info.HostFiles[i].LocalFilePath;
+                if (string.IsNullOrWhiteSpace(filepath)){
+                    continue;
+                }
+                sb.Append(Path.GetFileName(filepath));
+
+                if(i < info.HostFiles.Count -1)
+                {
+                    sb.Append(";");
+                }
+            }
+
+            return sb.ToString();
+
+        }
+        private string GetTemplateDetailsReportLineFor(TemplateReportSummaryInfo templateInfo) {
+            Debug.Assert(templateInfo != null);
+            Debug.Assert(templateInfo.Template != null);
+
+            var template = templateInfo.Template;
+            var line = $"{ReplaceComma(template.Name)},{ReplaceComma(template.TemplatePackId)},{ReplaceComma(template.GetTemplateType())},{ReplaceComma(template.Author)},{ReplaceComma(template.SourceName)},{ReplaceComma(template.DefaultName)},{ReplaceComma(template.Baseline)},{ReplaceComma(template.GetLanguage())},{ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs))},{ReplaceComma(GetTemplateDetailsStringForTags(template.Tags))},{ReplaceComma(template.Identity)},{ReplaceComma(template.GroupIdentity)},{ReplaceComma(GetTemplatePackReportStringForHostFiles(template))}";
+
+            return line;
+        }
+        private string GetTemplateDetailsReportStringFor(PrimaryOutput[]primaryOutputs) {
+            if(primaryOutputs == null) {
+                return string.Empty;
+            }
+
+            var sb = new StringBuilder();
+            foreach (var po in primaryOutputs) {
+                sb.Append($"'{po.Path}';");
+            }
+
+            return sb.ToString();
+        }
+        private string GetTemplateDetailsStringForTags(Dictionary<string,string>tags) {
+            if(tags == null || tags.Keys.Count <= 0) {
+                return string.Empty;
+            }
+
+            var sb = new StringBuilder();
+            foreach(var key in tags.Keys) {
+                sb.Append($"'{key}':'{tags[key]}'");
+            }
+
+            return sb.ToString();
+        }
     }
-    public class TemplateReportInternalSummaryInfo {
+    public class TemplatePackReportInternalSummaryInfo {
         private string _cacheFolderPath;
-        public TemplateReportInternalSummaryInfo() : this(null,null) { 
+        public TemplatePackReportInternalSummaryInfo() : this(null,null) { 
         }
-        public TemplateReportInternalSummaryInfo(string cacheFolderPath) : this(cacheFolderPath, null) {
+        public TemplatePackReportInternalSummaryInfo(string cacheFolderPath) : this(cacheFolderPath, null) {
         }
-        public TemplateReportInternalSummaryInfo(string cacheFolderPath, TemplatePack tp) {
+        public TemplatePackReportInternalSummaryInfo(string cacheFolderPath, TemplatePack tp) {
             _cacheFolderPath = cacheFolderPath;
             InitFrom(tp);
         }
@@ -99,7 +248,7 @@ namespace TemplatesConsole {
         public string Version { get; set; }
         public List<string> PackageType { get; set; }
         public bool HasLibFolder { get; set; }
-
+        public List<string> HostFiles { get; set; }
         private void InitFrom(TemplatePack tp) {
             Debug.Assert(tp != null);
 
@@ -132,30 +281,18 @@ namespace TemplatesConsole {
                        select e.Attribute("name").Value).ToList();
             packageType.Sort();
             PackageType = packageType;
-
-
-            //var doc = XDocument.Load(nuspecFilePath);
-            // var packageType = doc.Descendants("package").Descendants("metadata").Descendants("packageTypes").Descendants("packageType")
-            //            .Select(element => element.Value).ToList();
-
-                      //var xpathToGetPkgType = @"/package/metadata/packageTypes/packageType/@name";
-                      //var foo = new XPathDocument(nuspecFilePath);
-                      //var nav = foo.CreateNavigator();
-                      //var pt = nav.Evaluate(xpathToGetPkgType);
-
-
-
-
-                      //packageType.Sort();
-
-
-                      //var nuspec = NuspecFile.CreateFromNuspecFile(nuspecFilePath);
-                      //var packageType = nuspec.Metadata.PackageTypes.ToList();
-                      //packageType.Sort();
-                      // PackageType = packageType;
         }
         private string Normalize(string keyStr) {
             return keyStr.ToLowerInvariant();
+        }
+    }
+
+    public class TemplateReportSummaryInfo {
+        public Template Template { get; set; }
+
+        private void InitFrom(string templateFilepath) {
+            Debug.Assert(File.Exists(templateFilepath));
+
         }
     }
 }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Templates": {
+      "commandName": "Project",
+      "commandLineArgs": "search mads"
+    }
+  }
+}

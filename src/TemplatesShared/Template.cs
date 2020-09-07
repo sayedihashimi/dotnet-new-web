@@ -9,6 +9,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using TemplatesShared.Extensions;
 
 namespace TemplatesShared
 {
@@ -30,8 +31,61 @@ namespace TemplatesShared
         [JsonIgnore()]
         public int SearchScore { get; set; }
         public string TemplatePackId { get; set; }
-    }
+        public string SourceName { get; set; }
+        public string DefaultName { get; set; }
+        public string Baseline { get; set; }
+        public PrimaryOutput[] PrimaryOutputs { get; set; }
 
+        [JsonIgnore()]
+        public List<TemplateHostFile> HostFiles { get; set; } = new List<TemplateHostFile>();
+
+        /// <summary>
+        /// Call this method, to populate the HostFiles property
+        /// </summary>
+        /// <param name="dirPath">root directory to where the template pack is located</param>
+        public void InitHostFilesFrom(string dirPath, string templatePackId = "", string templateName = "") {
+            HostFiles = new List<TemplateHostFile>();
+            var hostFilePaths = TemplateHostFile.GetHostFilesIn(dirPath);
+            if (hostFilePaths != null && hostFilePaths.Count > 0) {
+                foreach (var hfp in hostFilePaths)
+                {
+                    var hf = TemplateHostFile.CreateFromFile(hfp, templatePackId, templateName);
+                    if (hf != null) {
+                        HostFiles.Add(hf);
+                    }
+                }
+            }
+        }
+        /// <summary>
+        /// Returns the value of the tag with the key 'type'
+        /// </summary>
+        /// <returns></returns>
+        public string GetTemplateType() {
+            return GetTagByKey("type");
+        }
+        public string GetLanguage() {
+            return GetTagByKey("language");
+        }
+        public string GetTagByKey(string keyname) {
+            if (Tags != null && Tags.Keys.Count > 0) {
+                foreach (var key in Tags.Keys) {
+                    if (string.Compare(keyname, key, StringComparison.OrdinalIgnoreCase) == 0) {
+                        return Tags[key];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static Template CreateFromFile(string filepath) =>
+            CreateFromText(File.ReadAllText(filepath));
+
+        public static Template CreateFromText(string json) =>
+            JsonConvert.DeserializeObject<Template>(json);
+    }
+    public class PrimaryOutput {
+        public string Path { get; set; }
+    }
     public class TemplatePack
     {
         public string Owners { get; set; }
@@ -210,7 +264,102 @@ namespace TemplatesShared
 
             return template;
         }
+
+        public static List<string> GetTemplateFilesUnder(string contentDir) {
+            Debug.Assert(Directory.Exists(contentDir));
+
+            var templateFolders = Directory.GetDirectories(contentDir, ".template.config", SearchOption.AllDirectories);
+            var templateFiles = new List<string>();
+            foreach (var folder in templateFolders) {
+                var files = Directory.GetFiles(folder, "template.json", new EnumerationOptions { RecurseSubdirectories = true });
+                if (files != null && files.Length > 0) {
+                    templateFiles.AddRange(files);
+                }
+            }
+
+            return templateFiles;
+        }
     }
+
+    public class TemplateHostFile {
+        public string TempaltePackId { get; set; }
+        public string TemplateName { get; set; }
+        public string Icon { get; set; }
+        public string LearnMoreLink { get; set; }
+        public List<string> UiFilters { get; set; } = new List<string>();
+        public string MinFullFrameworkVersion { get; set; }
+
+        [JsonIgnore()]
+        public string LocalFilePath { get; set; }
+
+        public static TemplateHostFile CreateFromText(string text, string localFilepath, string templatePackId,string templateName)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return null;
+            }
+
+            JObject hostFileJo = null;
+            try
+            {
+                hostFileJo = JObject.Parse(text);
+            }
+            catch(JsonReaderException ex)
+            {
+                Console.WriteLine("Json error in file '{0}. Error:\n{1}", localFilepath, ex.ToString());
+            }
+
+            if (hostFileJo != null)
+            {
+                var uiFilters = new List<string>();
+                if (hostFileJo.ContainsKey("uiFilters"))
+                {
+                    uiFilters = ((JArray)hostFileJo["uiFilters"]).Select(c => (string)c).ToList();
+                }
+
+                return new TemplateHostFile
+                {
+                    TempaltePackId = templatePackId,
+                    Icon = hostFileJo.GetValueOrDefault<string>("icon", string.Empty),
+                    LearnMoreLink = hostFileJo.GetValueOrDefault<string>("learnMoreLink", string.Empty),
+                    MinFullFrameworkVersion = hostFileJo.GetValueOrDefault<string>("minFullFrameworkVersion", string.Empty),
+                    LocalFilePath = localFilepath,
+                    UiFilters = uiFilters
+                };
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static TemplateHostFile CreateFromFile(string filepath, string templatePackId = "",string templateName="") =>
+            CreateFromText(File.ReadAllText(filepath), filepath, templatePackId, templateName);
+
+        public static List<string> GetHostFilesIn(string contentDir) {
+            Debug.Assert(Directory.Exists(contentDir));
+
+            var result = new List<string>();
+
+            var found = Directory.GetFiles(contentDir, "*.host.json", SearchOption.TopDirectoryOnly);
+
+            if(found != null && found.Length > 0) {
+                result.AddRange(found);
+            }
+
+            return result;
+        }
+    }
+
+    public class TemplateSymbolInfo {
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Datatype { get; set; }
+        public string Replaces { get; set; }
+        public string DefaultValue { get; set; }
+        public string Description { get; set; }
+    }
+
     public class TemplateConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)

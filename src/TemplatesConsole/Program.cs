@@ -10,6 +10,7 @@ using System.Diagnostics;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Hosting;
 using System.Threading.Tasks;
+using System.Net;
 
 namespace TemplatesConsole {
     class Program {
@@ -17,6 +18,8 @@ namespace TemplatesConsole {
         static ServiceProvider _serviceProvider = null;
         static int Main(string[] args) {
             RegisterServices();
+
+            // DoDemo();return 1;
 
             var app = new CommandLineApplication {
                 Name = "templatereport",
@@ -57,6 +60,13 @@ namespace TemplatesConsole {
 
         private static TType GetFromServices<TType>() {
             return _serviceProvider.GetRequiredService<TType>();
+        }
+
+        private static void DoDemo()
+        {
+            //var r = TemplateHostFile.CreateFromFile(@"C:\Users\sayedha\AppData\Local\templatereport\extracted\piral.blazor.template.0.1.2.nupkg\content\content\.template.config\vs-2017.3.host.json");
+            var r2 = TemplateHostFile.CreateFromFile(@"C:\data\mycode\OSS\aspnetcore\src\ProjectTemplates\Web.ProjectTemplates\content\RazorPagesWeb-CSharp\.template.config\vs-2017.3.host.json");
+            Console.WriteLine("Done");
         }
     }
 }

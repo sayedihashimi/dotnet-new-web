@@ -116,14 +116,7 @@ namespace TemplatesShared {
                 if (!Directory.Exists(contentDir)) {
                     continue;
                 }
-                var templateFolders = Directory.GetDirectories(contentDir, ".template.config", SearchOption.AllDirectories);
-                var templateFiles = new List<string>();
-                foreach(var folder in templateFolders) {
-                    var files = Directory.GetFiles(folder, "template.json", new EnumerationOptions { RecurseSubdirectories = true });
-                    if(files != null && files.Length > 0) {
-                        templateFiles.AddRange(files);
-                    }
-                }
+                var templateFiles = TemplatePack.GetTemplateFilesUnder(contentDir);
 
                 try {
                     var tp = TemplatePack.CreateFromNuSpec(pkg, nuspecFile, templateFiles);
