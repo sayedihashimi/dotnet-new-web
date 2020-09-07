@@ -34,9 +34,14 @@ namespace TemplatesConsole {
                 CommandOptionType.SingleValue);
             optionTemplateReportJsonPath.IsRequired();
 
-            var optionAnalysisResultFilePath = command.Option<string>(
-                "-arp|--analysisResultPath",
-                "path to where the results will be written to",
+            //var optionAnalysisResultFilePath = command.Option<string>(
+            //    "-arp|--analysisResultPath",
+            //    "path to where the results will be written to",
+            //    CommandOptionType.SingleValue);
+
+            var optionOutputDir = command.Option<string>(
+                "-od|--output-dir",
+                "folder path where files will be written",
                 CommandOptionType.SingleValue);
 
             OnExecute = () => {
@@ -49,10 +54,12 @@ namespace TemplatesConsole {
 
                 var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
                 List<string> createdFiles = new List<string>();
-                // write the results to a temp file, and then copy to the final destination
-                string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-pack-analysis.csv";
-                CreateTemplatePackFile(templatePacks, templateReportJsonPath, resultsPath);
-                createdFiles.Add(resultsPath);
+
+                string outdir = optionOutputDir.HasValue() ? optionOutputDir.Value() : Directory.GetCurrentDirectory();
+
+                string templatePackFile = Path.Combine(outdir, "template-pack-analysis.csv");
+                CreateTemplatePackFile(templatePacks, templateReportJsonPath, templatePackFile);
+                createdFiles.Add(templatePackFile);
 
                 // create the json file that contains all the templates                
                 var allTemplates = new List<Template>();
@@ -62,8 +69,6 @@ namespace TemplatesConsole {
                     var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
 
                     // populate the HostFiles property of the template pack
-                    // tp.InitHostFilesFrom(extractFolderPath,);
-
                     var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
                     foreach (var template in templates) {
                         var templateObj = Template.CreateFromFile(template);
@@ -72,14 +77,15 @@ namespace TemplatesConsole {
                         allTemplates.Add(templateObj);
                         allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
                     }
-
                 }
 
-                var allTemplatesJsonPath = CreateAllTemplatesJsonFile(allTemplates, resultsPath);
+                var allTemplatesJsonPath = Path.Combine(outdir, "templates-all.json");
+                CreateAllTemplatesJsonFile(allTemplates, allTemplatesJsonPath);
                 createdFiles.Add(allTemplatesJsonPath);
-                
+
                 // create the template-details.csv file now
-                var templateDetailsCsvPath = CreateTemplateDetailsCsvFile(allTemplateInfos, resultsPath);
+                var templateDetailsCsvPath = Path.Combine(outdir, "template-details.csv");
+                CreateTemplateDetailsCsvFile(allTemplateInfos, templateDetailsCsvPath);
                 createdFiles.Add(templateDetailsCsvPath);
 
                 Console.WriteLine("Created files:");
@@ -93,6 +99,7 @@ namespace TemplatesConsole {
         }
 
         private void CreateTemplatePackFile(List<TemplatePack> templatePacks,string templateReportJsonPath, string resultsPath) {
+            // write the results to a temp file, and then copy to the final destination
             var tempfilepath = Path.GetTempFileName();
             //var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
             using var writer = new StreamWriter(tempfilepath);
@@ -124,15 +131,12 @@ namespace TemplatesConsole {
             }
         }
 
-        private string CreateAllTemplatesJsonFile(List<Template> allTemplates, string resultsPath) {
+        private void CreateAllTemplatesJsonFile(List<Template> allTemplates, string resultsPath) {
             // write out the json file that contains all the templates
             var tempTemplateDetailsFilepath = Path.GetTempFileName();
             var allTemplatesJson = JsonConvert.SerializeObject(allTemplates, Formatting.Indented);
             File.WriteAllText(tempTemplateDetailsFilepath, allTemplatesJson);
-            // file path is same as the results but name has -templates and extension is .json
-            var templatesJsonFilePath = $"{resultsPath.Substring(0, resultsPath.Length - 4)}-templates.json";
-            File.Copy(tempTemplateDetailsFilepath, templatesJsonFilePath, true);
-            return templatesJsonFilePath;
+            File.Copy(tempTemplateDetailsFilepath, resultsPath, true);
         }
 
         private string CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
