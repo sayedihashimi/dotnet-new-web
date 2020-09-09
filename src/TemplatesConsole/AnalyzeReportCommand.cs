@@ -83,7 +83,7 @@ namespace TemplatesConsole {
                     }
                 }
 
-                var allTemplatesJsonPath = Path.Combine(outdir, "templates-all.json");
+                var allTemplatesJsonPath = Path.Combine(outdir, "template-all.json");
                 CreateAllTemplatesJsonFile(allTemplates, allTemplatesJsonPath);
                 createdFiles.Add(allTemplatesJsonPath);
 
@@ -150,7 +150,7 @@ namespace TemplatesConsole {
         private void CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
             var templateDetailsTempFilePath = Path.GetTempFileName();
             using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
-            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files");
+            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files,local-file-path");
             foreach (var templateInfo in allTemplateInfos) {
                 templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
             }
@@ -172,7 +172,7 @@ namespace TemplatesConsole {
 
             var hfTempfilepath = Path.GetTempFileName();
             using var hfWriter = new StreamWriter(hfTempfilepath);
-            hfWriter.WriteLine("template-pack-id,template-name,icon,learn-more-link,ui-filters,minfullframeworkversion");
+            hfWriter.WriteLine("template-pack-id,template-name,icon,learn-more-link,ui-filters,minfullframeworkversion,local-file-path,template-local-file-path");
             foreach(var hf in hostFiles) {
                 if(hf == null) {
                     continue;
@@ -236,9 +236,36 @@ namespace TemplatesConsole {
             Debug.Assert(templateInfo.Template != null);
 
             var template = templateInfo.Template;
-            var line = $"{ReplaceComma(template.Name)},{ReplaceComma(template.TemplatePackId)},{ReplaceComma(template.GetTemplateType())},{ReplaceComma(template.Author)},{ReplaceComma(template.SourceName)},{ReplaceComma(template.DefaultName)},{ReplaceComma(template.Baseline)},{ReplaceComma(template.GetLanguage())},{ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs))},{ReplaceComma(GetTemplateDetailsStringForTags(template.Tags))},{ReplaceComma(template.Identity)},{ReplaceComma(template.GroupIdentity)},{ReplaceComma(GetTemplatePackReportStringForHostFiles(template))}";
+            var sb = new StringBuilder();
+            sb.Append(ReplaceComma(ReplaceComma(template.Name)));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.TemplatePackId));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.GetTemplateType()));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.Author));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.SourceName));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.DefaultName));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.Baseline));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.GetLanguage()));
+            sb.Append(",");
+            sb.Append(ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs)));
+            sb.Append(",");
+            sb.Append(ReplaceComma(GetTemplateDetailsStringForTags(template.Tags)));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.Identity));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.GroupIdentity));
+            sb.Append(",");
+            sb.Append(ReplaceComma(GetTemplatePackReportStringForHostFiles(template)));
+            sb.Append(",");
+            sb.Append(ReplaceComma(template.LocalFilePath));
 
-            return line;
+            return sb.ToString();
         }
         private string GetHostFilesLineFor(TemplateHostFile hostFile)
         {
@@ -247,7 +274,7 @@ namespace TemplatesConsole {
                 return string.Empty;
             }
             var sb = new StringBuilder();
-            // template-pack-id,template-name,icon,learn-more-link,ui-filters,minfullframeworkversion
+            // template-pack-id,template-name,icon,learn-more-link,ui-filters,minfullframeworkversion,local-file-path
             sb.Append(ReplaceComma(hostFile.TempaltePackId));
             sb.Append(",");
             sb.Append(ReplaceComma(hostFile.TemplateName));
@@ -258,7 +285,12 @@ namespace TemplatesConsole {
             sb.Append(",");
             sb.Append(ReplaceComma(string.Join(';', hostFile.UiFilters)));
             sb.Append(",");
-            sb.Append(ReplaceComma(hostFile.MinFullFrameworkVersion));            
+            sb.Append(ReplaceComma(hostFile.MinFullFrameworkVersion));
+            sb.Append(",");
+            sb.Append(ReplaceComma(hostFile.LocalFilePath));
+            sb.Append(",");
+            sb.Append(ReplaceComma(hostFile.TemplateLocalFilePath));
+
 
             return sb.ToString();
         }
