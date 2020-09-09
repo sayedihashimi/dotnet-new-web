@@ -37,19 +37,23 @@ namespace TemplatesShared
         public PrimaryOutput[] PrimaryOutputs { get; set; }
 
         [JsonIgnore()]
+        public string LocalFilePath { get; set; }
+
+        [JsonIgnore()]
         public List<TemplateHostFile> HostFiles { get; set; } = new List<TemplateHostFile>();
 
         /// <summary>
         /// Call this method, to populate the HostFiles property
         /// </summary>
         /// <param name="dirPath">root directory to where the template pack is located</param>
-        public void InitHostFilesFrom(string dirPath, string templatePackId = "", string templateName = "") {
+        public void InitHostFilesFrom(string dirPath, string templatePackId, string templateName) {
             HostFiles = new List<TemplateHostFile>();
             var hostFilePaths = TemplateHostFile.GetHostFilesIn(dirPath);
             if (hostFilePaths != null && hostFilePaths.Count > 0) {
                 foreach (var hfp in hostFilePaths)
                 {
                     var hf = TemplateHostFile.CreateFromFile(hfp, templatePackId, templateName);
+                    hf.TemplateLocalFilePath = LocalFilePath;
                     if (hf != null) {
                         HostFiles.Add(hf);
                     }
@@ -78,10 +82,15 @@ namespace TemplatesShared
         }
 
         public static Template CreateFromFile(string filepath) =>
-            CreateFromText(File.ReadAllText(filepath));
+            CreateFromText(File.ReadAllText(filepath), filepath);
 
-        public static Template CreateFromText(string json) =>
-            JsonConvert.DeserializeObject<Template>(json);
+        public static Template CreateFromText(string json, string localFilepath)
+        {
+            var result = JsonConvert.DeserializeObject<Template>(json);
+            result.LocalFilePath = localFilepath;
+            return result;
+        }
+            
     }
     public class PrimaryOutput {
         public string Path { get; set; }
@@ -125,7 +134,8 @@ namespace TemplatesShared
                 return IconUrl;
             }
         }
-
+        [JsonIgnore()]
+        public string LocalFilePath { get; set; }
         public static List<TemplatePack> CreateFromFile(string filepath)
         {
             string jsonString = System.IO.File.ReadAllText(filepath);
@@ -288,9 +298,12 @@ namespace TemplatesShared
         public string LearnMoreLink { get; set; }
         public List<string> UiFilters { get; set; } = new List<string>();
         public string MinFullFrameworkVersion { get; set; }
+        
 
         [JsonIgnore()]
         public string LocalFilePath { get; set; }
+        [JsonIgnore()]
+        public string TemplateLocalFilePath { get; set; }
 
         public static TemplateHostFile CreateFromText(string text, string localFilepath, string templatePackId,string templateName)
         {
@@ -320,6 +333,7 @@ namespace TemplatesShared
                 return new TemplateHostFile
                 {
                     TempaltePackId = templatePackId,
+                    TemplateName = templateName,
                     Icon = hostFileJo.GetValueOrDefault<string>("icon", string.Empty),
                     LearnMoreLink = hostFileJo.GetValueOrDefault<string>("learnMoreLink", string.Empty),
                     MinFullFrameworkVersion = hostFileJo.GetValueOrDefault<string>("minFullFrameworkVersion", string.Empty),
