@@ -74,8 +74,12 @@ namespace TemplatesConsole {
                         var templateObj = Template.CreateFromFile(template);
                         templateObj.TemplatePackId = tp.Package;
                         templateObj.InitHostFilesFrom(Path.GetDirectoryName(template), templateObj.TemplatePackId, templateObj.Name);
+                        
                         allTemplates.Add(templateObj);
                         allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
+                        if(templateObj.HostFiles != null && templateObj.HostFiles.Count > 0) {
+                            allHostFiles.AddRange(templateObj.HostFiles);
+                        }
                     }
                 }
 
@@ -87,6 +91,10 @@ namespace TemplatesConsole {
                 var templateDetailsCsvPath = Path.Combine(outdir, "template-details.csv");
                 CreateTemplateDetailsCsvFile(allTemplateInfos, templateDetailsCsvPath);
                 createdFiles.Add(templateDetailsCsvPath);
+
+                var hostFileDetailsCsvPath = Path.Combine(outdir, "template-host-files.csv");
+                CreateHostFilesDetailsCsvFile(allHostFiles, hostFileDetailsCsvPath);
+                createdFiles.Add(hostFileDetailsCsvPath);
 
                 Console.WriteLine("Created files:");
                 foreach(var cf in createdFiles)
@@ -139,7 +147,7 @@ namespace TemplatesConsole {
             File.Copy(tempTemplateDetailsFilepath, resultsPath, true);
         }
 
-        private string CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
+        private void CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
             var templateDetailsTempFilePath = Path.GetTempFileName();
             using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
             templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files");
@@ -150,10 +158,33 @@ namespace TemplatesConsole {
             templateDetailsWriter.Close();
 
             var templateDetailsDestPath = Path.Combine(Path.GetDirectoryName(resultsPath), "template-details.csv");
-            File.Copy(templateDetailsTempFilePath, templateDetailsDestPath, true);
-
-            return templateDetailsDestPath;
+            File.Copy(templateDetailsTempFilePath, resultsPath, true);
         }
+        private void CreateHostFilesDetailsCsvFile(List<TemplateHostFile>hostFiles, string resultsPath)
+        {
+            if (string.IsNullOrWhiteSpace(resultsPath)) {
+                throw new ArgumentNullException("Cannot create host file because resultsPath is empty");
+            }
+            if(hostFiles == null || hostFiles.Count <= 0) {
+                Console.WriteLine("skipping host file csv creation because host file list is empty");
+                return;
+            }
+
+            var hfTempfilepath = Path.GetTempFileName();
+            using var hfWriter = new StreamWriter(hfTempfilepath);
+            hfWriter.WriteLine("template-pack-id,template-name,icon,learn-more-link,ui-filters,minfullframeworkversion");
+            foreach(var hf in hostFiles) {
+                if(hf == null) {
+                    continue;
+                }
+                hfWriter.WriteLine(GetHostFilesLineFor(hf));
+            }
+            hfWriter.Flush();
+            hfWriter.Close();
+
+            File.Copy(hfTempfilepath, resultsPath, true);
+        }
+        
 
         private string ReplaceComma(string str) {
             if (string.IsNullOrEmpty(str)) {
@@ -208,6 +239,28 @@ namespace TemplatesConsole {
             var line = $"{ReplaceComma(template.Name)},{ReplaceComma(template.TemplatePackId)},{ReplaceComma(template.GetTemplateType())},{ReplaceComma(template.Author)},{ReplaceComma(template.SourceName)},{ReplaceComma(template.DefaultName)},{ReplaceComma(template.Baseline)},{ReplaceComma(template.GetLanguage())},{ReplaceComma(GetTemplateDetailsReportStringFor(template.PrimaryOutputs))},{ReplaceComma(GetTemplateDetailsStringForTags(template.Tags))},{ReplaceComma(template.Identity)},{ReplaceComma(template.GroupIdentity)},{ReplaceComma(GetTemplatePackReportStringForHostFiles(template))}";
 
             return line;
+        }
+        private string GetHostFilesLineFor(TemplateHostFile hostFile)
+        {
+            if(hostFile == null)
+            {
+                return string.Empty;
+            }
+            var sb = new StringBuilder();
+            // template-pack-id,template-name,icon,learn-more-link,ui-filters,minfullframeworkversion
+            sb.Append(ReplaceComma(hostFile.TempaltePackId));
+            sb.Append(",");
+            sb.Append(ReplaceComma(hostFile.TemplateName));
+            sb.Append(",");
+            sb.Append(ReplaceComma(hostFile.Icon));
+            sb.Append(",");
+            sb.Append(ReplaceComma(hostFile.LearnMoreLink));
+            sb.Append(",");
+            sb.Append(ReplaceComma(string.Join(';', hostFile.UiFilters)));
+            sb.Append(",");
+            sb.Append(ReplaceComma(hostFile.MinFullFrameworkVersion));            
+
+            return sb.ToString();
         }
         private string GetTemplateDetailsReportStringFor(PrimaryOutput[]primaryOutputs) {
             if(primaryOutputs == null) {
