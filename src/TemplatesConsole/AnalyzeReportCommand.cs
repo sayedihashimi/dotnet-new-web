@@ -111,7 +111,7 @@ namespace TemplatesConsole {
             var tempfilepath = Path.GetTempFileName();
             //var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
             using var writer = new StreamWriter(tempfilepath);
-            writer.WriteLine("package name, version, has lib folder, packagetype");
+            writer.WriteLine("package name, version, has lib folder, packagetype,num-downloads");
             foreach (var tp in templatePacks) {
                 var info = new TemplatePackReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
                 var line = GetTemplatePackReportLineFor(info);
@@ -196,7 +196,7 @@ namespace TemplatesConsole {
         private string GetTemplatePackReportLineFor(TemplatePackReportInternalSummaryInfo info) {
             Debug.Assert(info != null);
 
-            var line = $"{ReplaceComma(info.PackageName)},{ReplaceComma(info.Version)},{info.HasLibFolder}, {ReplaceComma(GetTemplatePackReportStringFor(info.PackageType))}";
+            var line = $"{ReplaceComma(info.PackageName)},{ReplaceComma(info.Version)},{info.HasLibFolder}, {ReplaceComma(GetTemplatePackReportStringFor(info.PackageType))},{info.DownloadCount}";
             return line;
         }
         private string GetTemplatePackReportStringFor(IList<string> packageType, string delim = " ") {           
@@ -334,6 +334,8 @@ namespace TemplatesConsole {
         public List<string> PackageType { get; set; }
         public bool HasLibFolder { get; set; }
         public List<string> HostFiles { get; set; }
+        public int DownloadCount { get; set; }
+
         private void InitFrom(TemplatePack tp) {
             Debug.Assert(tp != null);
 
@@ -366,6 +368,7 @@ namespace TemplatesConsole {
                        select e.Attribute("name").Value).ToList();
             packageType.Sort();
             PackageType = packageType;
+            DownloadCount = tp.DownloadCount;
         }
         private string Normalize(string keyStr) {
             return keyStr.ToLowerInvariant();
