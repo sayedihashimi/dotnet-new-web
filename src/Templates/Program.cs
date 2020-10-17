@@ -27,12 +27,17 @@ namespace Templates {
         public Task<int> Execute(string[] args) {
             _parser = new CommandLineBuilder()
                 .AddCommand(
-                new SearchCommand(
-                    GetFromServices<IReporter>(),
-                    GetFromServices<ITemplateReportLocator>(),
-                    GetFromServices<ITemplateSearcher>(),
-                    GetFromServices<ITemplateInstaller>())
-                .CreateCommand())
+                    new SearchCommand(
+                        GetFromServices<IReporter>(),
+                        GetFromServices<ITemplateReportLocator>(),
+                        GetFromServices<ITemplateSearcher>(),
+                        GetFromServices<ITemplateInstaller>())
+                    .CreateCommand())
+                .AddCommand(
+                    new AnalyzeTemplateCommand(
+                        GetFromServices<IReporter>())
+                    .CreateCommand()
+                )
                 .UseDefaults()
                 .Build();
 
