@@ -22,15 +22,12 @@ namespace TemplatesShared {
     /// </summary>
     public class TemplateAnalyzer : ITemplateAnalyzer {
 
-        public TemplateAnalyzer(IReporter reporter, IJsonSchemaHelper schemaHelper) {
+        public TemplateAnalyzer(IReporter reporter) {
             Debug.Assert(reporter != null);
-            Debug.Assert(schemaHelper != null);
             _reporter = reporter;
-            _schemaHelper = schemaHelper;
         }
 
         private IReporter _reporter;
-        private IJsonSchemaHelper _schemaHelper;
 
         public void Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
@@ -46,31 +43,6 @@ namespace TemplatesShared {
                 _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", "    ");
                 return;
             }
-
-            var templateJsonSchemaUrl = @"https://json.schemastore.org/template";
-            // templateJsonSchemaUrl = @"https://gist.githubusercontent.com/sayedihashimi/950195c4cfc4cdfee6f5184cf1ab000a/raw/d5ed30b3b3ab93a0c5d126fe33932d635651f705/template.schema.json";
-            var schemaFile = _schemaHelper.GetSchemaFileFor(templateJsonSchemaUrl);
-            
-            var errors = _schemaHelper.Validate(schemaFile, templateJsonFile);
-            if (errors == null || errors.Count == 0) {
-                _reporter.WriteLine("    No schema issues found", "    ");
-            }
-            else {
-                foreach (var vr in errors) {
-                    _reporter.WriteLine(_schemaHelper.GetErrorStringFor(vr), "    ");
-                }
-            }
-        }
-
-        protected IList<ValidationError> ValidateUsingSchema(string schemaPath, string fileToValidate) {
-            Debug.Assert(File.Exists(schemaPath));
-            Debug.Assert(File.Exists(fileToValidate));
-
-            _reporter.WriteLine($"Validating file: {fileToValidate}");
-            var prefix = "    ";
-            var vResult = _schemaHelper.Validate(schemaPath, fileToValidate);
-            return vResult;
-
         }
     }
 
