@@ -8,6 +8,7 @@ namespace TemplatesShared {
         void Write(string output);
         void WriteLine(string output);
         void WriteLine();
+        void WriteLine(string output, string prefix);
         void WriteVerbose(string output);
         void WriteVerboseLine(string output, bool includePrefix = true);
     }
@@ -23,6 +24,10 @@ namespace TemplatesShared {
         }
         public void Write(string output) {
             Console.Write(output);
+        }
+        public void WriteLine(string output, string prefix) {
+            Console.Write(output);
+            Console.WriteLine(prefix);
         }
         public void WriteVerboseLine(string output, bool includePrefix = true) {
             if (EnableVerbose) {

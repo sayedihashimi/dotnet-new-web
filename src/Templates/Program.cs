@@ -35,7 +35,8 @@ namespace Templates {
                     .CreateCommand())
                 .AddCommand(
                     new AnalyzeTemplateCommand(
-                        GetFromServices<IReporter>())
+                        GetFromServices<IReporter>(),
+                        GetFromServices<ITemplateAnalyzer>())
                     .CreateCommand()
                 )
                 .UseDefaults()
@@ -51,6 +52,8 @@ namespace Templates {
                                 .AddSingleton<ITemplateReportLocator, TemplateReportLocator>()
                                 .AddSingleton<ITemplateSearcher, TemplateSearcher>()
                                 .AddSingleton<ITemplateInstaller, TemplateInstaller>()
+                                .AddSingleton<IJsonSchemaHelper, JsonSchemaHelper>()
+                                .AddSingleton<ITemplateAnalyzer,TemplateAnalyzer>()
                                 .BuildServiceProvider();
         }
 
