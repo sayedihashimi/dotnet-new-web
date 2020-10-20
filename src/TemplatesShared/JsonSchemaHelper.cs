@@ -26,7 +26,47 @@ namespace TemplatesShared {
             _reporter = reporter;
         }
         public List<ValidationError>Validate(string schemaPath, string jsonPath) {
+            ValidateNew(schemaPath, jsonPath);
             return Validate(GetSchemaFor(schemaPath), GetJObjectFor(jsonPath));
+        }
+
+        private Manatee.Json.Serialization.JsonSerializer js = new Manatee.Json.Serialization.JsonSerializer();
+        public void ValidateNew(string schemaPath, string jsonPath) {
+
+            // Manatee.Json.Schema.JsonSchema js = new Manatee.Json.Schema.JsonSchema()
+            //var json = JsonValue.Parse(text);
+            //var mySchema = serializer.Deserialize<JsonSchema>(json);
+
+            // load schema
+            var schemaText = File.ReadAllText(schemaPath);
+            var schemaJson = Manatee.Json.JsonValue.Parse(schemaText);
+            var schema = new Manatee.Json.Serialization.JsonSerializer().Deserialize<Manatee.Json.Schema.JsonSchema>(schemaJson);
+            // schema.Validate()
+
+            // load json as JsonObject
+            try {
+                var jValue = Manatee.Json.JsonValue.Parse(File.ReadAllText(jsonPath));
+                Manatee.Json.Schema.JsonSchemaOptions jso = new Manatee.Json.Schema.JsonSchemaOptions() {
+                    OutputFormat = Manatee.Json.Schema.SchemaValidationOutputFormat.Basic
+                };
+                var results = schema.Validate(jValue, jso);
+                var resultsFlattened = results.Flatten();
+                var resultsCondensed = results.Condense();
+
+                if (!results.IsValid) {
+                    var errors = (from r in results.NestedResults
+                                 where !r.IsValid
+                                 select r).ToList();
+                    var errorDetails = results.ToJson(js).ToString();
+
+                    Console.WriteLine("delete this");
+                }
+
+            }
+            catch (Manatee.Json.JsonSyntaxException) {
+                _reporter.WriteLine($"ERROR:\tInvalid json file '{jsonPath}'");
+                return;
+            }
         }
 
         public List<ValidationError> Validate(JSchema schema, JObject jobj) {

@@ -48,7 +48,7 @@ namespace TemplatesShared {
             }
 
             var templateJsonSchemaUrl = @"https://json.schemastore.org/template";
-            templateJsonSchemaUrl = @"https://gist.githubusercontent.com/sayedihashimi/950195c4cfc4cdfee6f5184cf1ab000a/raw/d5ed30b3b3ab93a0c5d126fe33932d635651f705/template.schema.json";
+            // templateJsonSchemaUrl = @"https://gist.githubusercontent.com/sayedihashimi/950195c4cfc4cdfee6f5184cf1ab000a/raw/d5ed30b3b3ab93a0c5d126fe33932d635651f705/template.schema.json";
             var schemaFile = _schemaHelper.GetSchemaFileFor(templateJsonSchemaUrl);
             
             var errors = _schemaHelper.Validate(schemaFile, templateJsonFile);
