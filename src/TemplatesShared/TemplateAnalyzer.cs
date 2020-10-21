@@ -8,9 +8,11 @@ namespace TemplatesShared {
     /// <summary>
     /// Checks:
     ///      1. Check for required, and recommended, properties in the template.json file
-    ///      2. Analyze symbols for issues (todo: talk to Phil)
-    ///      3. Check for ide.host.json (or similar filename) and for recommended properties
-    ///      4. Analyze symbolInfo for issues (todo: talk to Phil)
+    ///      2. Check for recommended properties
+    ///             defaultName, description
+    ///      3. Analyze symbols for issues (todo: talk to Phil)
+    ///      4. Check for ide.host.json (or similar filename) and for recommended properties
+    ///      5. Analyze symbolInfo for issues (todo: talk to Phil)
     /// required properties of the template.json file
     ///  name, sourceName, tags:type==[project,item]
     /// recommended properties of the template.json file
@@ -33,7 +35,7 @@ namespace TemplatesShared {
         public void Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             _reporter.WriteLine();
-            _reporter.WriteLine($"Validating folder '{templateFolder}'");
+            _reporter.WriteLine($@"Validating '{templateFolder}\.template.config\template.json'");
 
             string indentPrefix = "    ";
             // validate the folder has a .template.config folder
@@ -49,7 +51,7 @@ namespace TemplatesShared {
             }
             try {
                 var jobj = _jsonHelper.LoadJsonFrom(templateJsonFile);
-                var foundIssues = CheckTemplateForRequiredProperties(jobj);
+                var foundIssues = CheckTemplateProperties(jobj);
                 if (!foundIssues) {
                     _reporter.WriteLine("√ no issues found", indentPrefix);
                 }
@@ -67,21 +69,25 @@ namespace TemplatesShared {
         /// </summary>
         /// <param name="jobj"></param>
         /// <returns>true if errors were detected otherwise false</returns>
-        protected bool CheckTemplateForRequiredProperties(JToken jobj) {
+        protected bool CheckTemplateProperties(JToken jobj) {
             Debug.Assert(jobj != null);
+            string indentPrefix = "    ";
+
+            // check for required properties
             bool foundIssues = false;
             var requiredProps = new List<string> {
                 "author",
+                "sourceName",
                 "classifications",
                 "identity",
                 "name",
                 "shortName",
                 "tags"
             };
-            string indentPrefix = "    ";
+            
             foreach(var rp in requiredProps) {
                 if (!HasValue(jobj[rp])) {
-                    WriteError($"ERROR: missing required property '{rp}'");
+                    WriteOutput($"ERROR: Missing required property: '{rp}'");
                 }
             }
 
@@ -94,22 +100,34 @@ namespace TemplatesShared {
             }
 
             if (!HasValue(langVal)) {
-                WriteError($"ERROR: Missing required property: 'tags/language'");
+                WriteOutput($"ERROR: Missing required property: 'tags/language'");
             }
 
             if (!HasValue(typeVal)) {
-                WriteError($"ERROR: Missing required property: 'tags/type'");
+                WriteOutput($"ERROR: Missing required property: 'tags/type'");
             }
             else {
                 var val = ((Newtonsoft.Json.Linq.JValue)(jobj["tags"]["type"])).Value.ToString();
 
                 if (string.Compare("project", val, true) != 0 &&
                     string.Compare("item", val, true) != 0) {
-                    WriteError($"value for tags/type should be 'project' or 'item'. Unknown value used:'{val}'");
+                    WriteOutput($"ERROR: value for tags/type should be 'project' or 'item'. Unknown value used:'{val}'");
                 }
             }
 
-            void WriteError(string msg) {
+            // check for recommended properties: defaultName, description
+            var recProps = new List<string> {
+                "defaultName",
+                "description",
+            };
+
+            foreach (var recP in recProps) {
+                if (!HasValue(jobj[recP])) {
+                    WriteOutput($"WARNING: Missing recommended property: '{recP}'");
+                }
+            }
+
+            void WriteOutput(string msg) {
                 foundIssues = true;
                 _reporter.WriteLine(msg, indentPrefix);
             }
