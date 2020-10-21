@@ -26,8 +26,8 @@ namespace TemplatesShared {
             Console.Write(output);
         }
         public void WriteLine(string output, string prefix) {
-            Console.Write(output);
-            Console.WriteLine(prefix);
+            Console.Write(prefix);
+            Console.WriteLine(output);
         }
         public void WriteVerboseLine(string output, bool includePrefix = true) {
             if (EnableVerbose) {

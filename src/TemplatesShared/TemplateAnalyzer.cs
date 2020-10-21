@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Schema;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,12 +7,10 @@ using System.Text;
 namespace TemplatesShared {
     /// <summary>
     /// Checks:
-    ///      1. template.json => validate with latest schema
-    ///      2. Check for required, and recommended, properties in the template.json file
-    ///      3. Analyze symbols for issues (todo: talk to Phil)
-    ///      4. host file => validate with latest schema 
-    ///      5. Check for ide.host.json (or similar filename) and for recommended properties
-    ///      6. Analyze symbolInfo for issues (todo: talk to Phil)
+    ///      1. Check for required, and recommended, properties in the template.json file
+    ///      2. Analyze symbols for issues (todo: talk to Phil)
+    ///      3. Check for ide.host.json (or similar filename) and for recommended properties
+    ///      4. Analyze symbolInfo for issues (todo: talk to Phil)
     /// required properties of the template.json file
     ///  name, sourceName, tags:type==[project,item]
     /// recommended properties of the template.json file
@@ -22,27 +20,168 @@ namespace TemplatesShared {
     /// </summary>
     public class TemplateAnalyzer : ITemplateAnalyzer {
 
-        public TemplateAnalyzer(IReporter reporter) {
+        public TemplateAnalyzer(IReporter reporter, IJsonHelper jsonHelper) {
             Debug.Assert(reporter != null);
+            Debug.Assert(jsonHelper != null);
+
             _reporter = reporter;
+            _jsonHelper = jsonHelper;
         }
 
         private IReporter _reporter;
-
+        private IJsonHelper _jsonHelper;
         public void Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
+            _reporter.WriteLine();
             _reporter.WriteLine($"Validating folder '{templateFolder}'");
+
+            string indentPrefix = "    ";
             // validate the folder has a .template.config folder
             if (!Directory.Exists(templateFolder)) {
-                _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", "    ");
+                _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
                 return;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
-                _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", "    ");
+                _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
                 return;
             }
+            try {
+                var jobj = _jsonHelper.LoadJsonFrom(templateJsonFile);
+                var foundIssues = CheckTemplateForRequiredProperties(jobj);
+                if (!foundIssues) {
+                    _reporter.WriteLine("√ no issues found", indentPrefix);
+                }
+            }
+            catch(Exception ex) {
+                _reporter.WriteLine($"ERROR: {ex.ToString()}", indentPrefix);
+            }
+        }
+        /// <summary>
+        /// 
+        /// Checks for required properties
+        ///     author, classifications, identity, name, shortName.
+        ///     tags.type
+        ///     tags.language
+        /// </summary>
+        /// <param name="jobj"></param>
+        /// <returns>true if errors were detected otherwise false</returns>
+        protected bool CheckTemplateForRequiredProperties(JToken jobj) {
+            Debug.Assert(jobj != null);
+            bool foundIssues = false;
+            var requiredProps = new List<string> {
+                "author",
+                "classifications",
+                "identity",
+                "name",
+                "shortName",
+                "tags"
+            };
+            string indentPrefix = "    ";
+            foreach(var rp in requiredProps) {
+                if (!HasValue(jobj[rp])) {
+                    WriteError($"ERROR: missing required property '{rp}'");
+                }
+            }
+
+            var tagsObj = jobj["tags"];
+            JToken typeVal = null;
+            JToken langVal = null;
+            if(tagsObj != null) {
+                langVal = tagsObj["language"];
+                typeVal = tagsObj["type"];
+            }
+
+            if (!HasValue(langVal)) {
+                WriteError($"ERROR: Missing required property: 'tags/language'");
+            }
+
+            if (!HasValue(typeVal)) {
+                WriteError($"ERROR: Missing required property: 'tags/type'");
+            }
+            else {
+                var val = ((Newtonsoft.Json.Linq.JValue)(jobj["tags"]["type"])).Value.ToString();
+
+                if (string.Compare("project", val, true) != 0 &&
+                    string.Compare("item", val, true) != 0) {
+                    WriteError($"value for tags/type should be 'project' or 'item'. Unknown value used:'{val}'");
+                }
+            }
+
+            void WriteError(string msg) {
+                foundIssues = true;
+                _reporter.WriteLine(msg, indentPrefix);
+            }
+
+            return foundIssues;
+        }
+        protected bool HasValue(JToken token) {
+            if(token == null) {
+                return false;
+            }
+
+            var value = token as JValue;
+            if(value != null) {
+                if(value.Value == null) {
+                    return false;
+                }
+                if(value.Value is string) {
+                    if (string.IsNullOrEmpty((string)(value.Value))) {
+                        return false;
+                    }
+                }
+            }
+
+            var array = token as JArray;
+            if(array != null) {
+                if(array.Count == 0) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        //protected JObject GetJObjByPath(JObject jObj, string path) {
+        //    Debug.Assert(jObj != null);
+        //    Debug.Assert(!string.IsNullOrEmpty(path));
+
+        //    if (!path.Contains("/")) {
+        //        var firstPath = path.Substring(0, path.IndexOf("/"));
+
+        //    }
+
+
+        //    throw new NotImplementedException();
+        //}
+    }
+
+
+    public interface IJsonHelper {
+        JToken LoadJsonFrom(string filepath);
+    }
+
+    public class JsonHelper : IJsonHelper {
+        private Dictionary<string, JToken> _jsonMap = new Dictionary<string, JToken>();
+        public JToken LoadJsonFrom(string filepath) {
+            Debug.Assert(File.Exists(filepath));
+
+            var key = NormalizeKey(filepath);
+            JToken result;
+            _jsonMap.TryGetValue(NormalizeKey(filepath), out result);
+
+            if (result == null) {
+                result = JObject.Parse(File.ReadAllText(filepath));
+                _jsonMap.Add(key, result);
+            }
+
+            return result;
+        }
+
+        protected string NormalizeKey(string key) {
+            if (string.IsNullOrEmpty(key)) { return key; }
+
+            return string.IsNullOrEmpty(key) ? key : key.Trim().ToLowerInvariant();
         }
     }
 
