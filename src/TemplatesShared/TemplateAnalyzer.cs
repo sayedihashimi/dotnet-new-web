@@ -30,28 +30,59 @@ namespace TemplatesShared {
             _jsonHelper = jsonHelper;
         }
 
+        private string _outputPrefix = "    ";
         private IReporter _reporter;
         private IJsonHelper _jsonHelper;
+
+        private void WriteError(string message, string prefix = "") {
+            WriteImpl(message, "ERROR: ", prefix);
+        }
+        private void WriteWarning(string message, string prefix = "") {
+            WriteImpl(message, "WARNING", prefix);
+        }
+        private void WriteMessage(string message, string prefix = "") {
+            WriteImpl(message, string.Empty, prefix);
+        }
+        private void WriteImpl(string message, string typeStr, string prefix) {
+            if (string.IsNullOrEmpty(message)) { return; }
+            //if (string.IsNullOrEmpty(prefix)) {
+            //    prefix = _outputPrefix;
+            //}
+
+            _reporter.Write(prefix);
+            if (!string.IsNullOrEmpty(typeStr)) {
+                _reporter.Write(typeStr);
+                _reporter.Write(": ");
+            }
+
+            _reporter.WriteLine(message);
+        }
+
         public void Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             _reporter.WriteLine();
-            _reporter.WriteLine($@"Validating '{templateFolder}\.template.config\template.json'");
+            WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
 
             string indentPrefix = "    ";
             // validate the folder has a .template.config folder
             if (!Directory.Exists(templateFolder)) {
-                _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
+                // _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
+                WriteError($"ERROR: templateFolder not found at '{templateFolder}'", _outputPrefix);
                 return;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
-                _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
+                // _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
+                WriteError($"template.json not found at '{templateJsonFile}'", _outputPrefix);
                 return;
             }
             try {
                 var jobj = _jsonHelper.LoadJsonFrom(templateJsonFile);
                 var foundIssues = CheckTemplateProperties(jobj);
+
+                foundIssues = CheckSymbols(jobj) || foundIssues;
+
                 if (!foundIssues) {
                     _reporter.WriteLine("√ no issues found", indentPrefix);
                 }
@@ -87,7 +118,8 @@ namespace TemplatesShared {
             
             foreach(var rp in requiredProps) {
                 if (!HasValue(jobj[rp])) {
-                    WriteOutput($"ERROR: Missing required property: '{rp}'");
+                    // WriteOutput($"ERROR: Missing required property: '{rp}'");
+                    WriteError($"Missing required property: '{rp}'");
                 }
             }
 
@@ -100,18 +132,21 @@ namespace TemplatesShared {
             }
 
             if (!HasValue(langVal)) {
-                WriteOutput($"ERROR: Missing required property: 'tags/language'");
+                // WriteOutput($"ERROR: Missing required property: 'tags/language'");
+                WriteError($"Missing required property: 'tags/language'");
             }
 
             if (!HasValue(typeVal)) {
-                WriteOutput($"ERROR: Missing required property: 'tags/type'");
+                // WriteOutput($"ERROR: Missing required property: 'tags/type'");
+                WriteError($"Missing required property: 'tags/type'");
             }
             else {
                 var val = ((Newtonsoft.Json.Linq.JValue)(jobj["tags"]["type"])).Value.ToString();
 
                 if (string.Compare("project", val, true) != 0 &&
                     string.Compare("item", val, true) != 0) {
-                    WriteOutput($"ERROR: value for tags/type should be 'project' or 'item'. Unknown value used:'{val}'");
+                    // WriteOutput($"ERROR: value for tags/type should be 'project' or 'item'. Unknown value used:'{val}'");
+                    WriteError($"value for tags/type should be 'project' or 'item'. Unknown value used:'{val}'");
                 }
             }
 
@@ -123,17 +158,72 @@ namespace TemplatesShared {
 
             foreach (var recP in recProps) {
                 if (!HasValue(jobj[recP])) {
-                    WriteOutput($"WARNING: Missing recommended property: '{recP}'");
+                    // WriteOutput($"WARNING: Missing recommended property: '{recP}'");
+                    WriteWarning($"Missing recommended property: '{recP}'");
                 }
             }
 
-            void WriteOutput(string msg) {
+            void WriteError(string msg) {
                 foundIssues = true;
-                _reporter.WriteLine(msg, indentPrefix);
+                this.WriteError(msg, _outputPrefix);
+            }
+            void WriteWarning(string message) {
+                foundIssues = true;
+                this.WriteWarning(message, _outputPrefix);
+            }
+            return foundIssues;
+        }
+
+        protected bool CheckSymbols(JToken jobj) {
+            bool foundIssues = false;
+            if (!HasValue(jobj)) {
+                WriteWarning($"symbols property not found");
+            }
+
+            // 1: Check for Framework symbol
+            JToken fxSymbol = jobj != null ? jobj["symbols"] : null;
+            if (HasValue(fxSymbol)) {
+                foundIssues = CheckSymbolFramework(fxSymbol) || foundIssues;
+            }
+            else {
+                WriteWarning($"symbols.Framework property is not found.");
+            }
+
+            void WriteError(string message) {
+                foundIssues = true;
+                this.WriteError(message, _outputPrefix);
+            }
+            void WriteWarning(string message) {
+                foundIssues = true;
+                this.WriteWarning(message, _outputPrefix);
             }
 
             return foundIssues;
         }
+
+        protected bool CheckSymbolFramework(JToken fxSymbol) {
+            if(!HasValue(fxSymbol)) {
+                WriteWarning("WARNING: Framework symbol not defined");
+                return false; 
+            }
+
+            bool foundIssues = false;
+            var type = fxSymbol["type"];
+            if(!HasValue(type)) {
+                foundIssues = true;
+                var typeVal = ((Newtonsoft.Json.Linq.JValue)(fxSymbol["type"])).Value.ToString().Trim();
+                if(string.Compare("parameter", typeVal, true) != 0) {
+                    foundIssues = true;
+                    WriteWarning($"symbols/framework/type should be set to 'parameter' but it is set to {typeVal}");
+                }
+            }
+
+            var dataType = fxSymbol["datatype"];
+            var choices = fxSymbol["choices"];
+
+            return foundIssues;
+        }
+
         protected bool HasValue(JToken token) {
             if(token == null) {
                 return false;
