@@ -2,7 +2,7 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -f C:\\temp\\dotnetnew-community\\packages\\broken-samples\\identityserver4-modified"
+      "commandLineArgs": "analyze -f C:\\temp\\dotnetnew-community\\packages\\broken-samples\\SayedHa.Template-modified\\Content"
     }
   }
 }

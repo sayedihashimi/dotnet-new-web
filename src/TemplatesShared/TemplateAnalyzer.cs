@@ -203,23 +203,47 @@ namespace TemplatesShared {
 
         protected bool CheckSymbolFramework(JToken fxSymbol) {
             if(!HasValue(fxSymbol)) {
-                WriteWarning("WARNING: Framework symbol not defined");
-                return false; 
+                WriteWarning("WARNING: Framework symbol not found");
+                return true; 
             }
 
             bool foundIssues = false;
             var type = fxSymbol["type"];
-            if(!HasValue(type)) {
-                foundIssues = true;
-                var typeVal = ((Newtonsoft.Json.Linq.JValue)(fxSymbol["type"])).Value.ToString().Trim();
-                if(string.Compare("parameter", typeVal, true) != 0) {
-                    foundIssues = true;
-                    WriteWarning($"symbols/framework/type should be set to 'parameter' but it is set to {typeVal}");
+            if(HasValue(type)) {                
+                // var typeVal = fxSymbol != null ? ((Newtonsoft.Json.Linq.JValue)(fxSymbol["type"])).Value.ToString().Trim() : null;
+
+                var typeVal = ((Newtonsoft.Json.Linq.JValue)(fxSymbol["type"]))?.Value?.ToString()?.Trim();
+                if( typeVal == null ||
+                    string.Compare("parameter", typeVal, true) != 0) {
+                    WriteWarning($"symbols.Framework.type should be set to 'parameter' but it is set to '{typeVal}'");
                 }
             }
-
+            else {
+                WriteWarning($"symbols.Framework.type not fund");
+            }
+            
             var dataType = fxSymbol["datatype"];
+            if (HasValue(dataType)) {
+                var dataTypeVal = ((Newtonsoft.Json.Linq.JValue)(fxSymbol["datatype"]))?.Value?.ToString()?.Trim();
+                if( dataTypeVal == null ||
+                    string.Compare("choice", dataTypeVal, true) != 0) {
+                    WriteWarning($"symbols.Framework.datatype should be set to 'choice', but it is set to '{dataTypeVal}'");
+                }
+            }
+            else {
+                WriteWarning("symbols.Framework.datatype not found");
+            }
             var choices = fxSymbol["choices"];
+            var defaultVale = fxSymbol["defaultValue"];
+
+            void WriteError(string message) {
+                foundIssues = true;
+                this.WriteError(message, _outputPrefix);
+            }
+            void WriteWarning(string message) {
+                foundIssues = true;
+                this.WriteWarning(message, _outputPrefix);
+            }
 
             return foundIssues;
         }
