@@ -20,6 +20,203 @@ namespace TemplatesShared {
     /// recommended properties of the ide.host.json file
     ///  $schema, icon
     /// </summary>
+    public class TemplateJsonPathAnalyzer : ITemplateAnalyzer {
+        public TemplateJsonPathAnalyzer(IReporter reporter, IJsonHelper jsonHelper) {
+            Debug.Assert(reporter != null);
+            Debug.Assert(jsonHelper != null);
+
+            _reporter = reporter;
+            _jsonHelper = jsonHelper;
+        }
+
+        private string _outputPrefix = "    ";
+        private IReporter _reporter;
+        private IJsonHelper _jsonHelper;
+
+        public void Analyze(string templateFolder) {
+            Debug.Assert(!string.IsNullOrEmpty(templateFolder));
+            _reporter.WriteLine();
+            WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
+
+            string indentPrefix = "    ";
+            // validate the folder has a .template.config folder
+            if (!Directory.Exists(templateFolder)) {
+                // _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
+                WriteError($"ERROR: templateFolder not found at '{templateFolder}'", _outputPrefix);
+                return;
+            }
+
+            var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
+            if (!File.Exists(templateJsonFile)) {
+                // _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
+                WriteError($"template.json not found at '{templateJsonFile}'", _outputPrefix);
+                return;
+            }
+
+
+            JToken template;
+            try {
+                template = _jsonHelper.LoadJsonFrom(templateJsonFile);
+            }
+            catch(Exception ex) {
+                // TODO: make exception more specific
+                WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
+                return;
+            }
+
+            var foundIssues = false;
+            var templateRules = GetRules();
+            foreach(var rule in templateRules) {
+                if(!ExecuteRule(rule, template)) {
+                    foundIssues = true;
+                    switch (rule.Severity) {
+                        case ErrorWarningType.Error:
+                            WriteError(rule.GetErrorMessage(), indentPrefix);
+                            break;
+                        case ErrorWarningType.Warning:
+                            WriteWarning(rule.GetErrorMessage(), indentPrefix);
+                            break;
+                        default:
+                            WriteMessage(rule.GetErrorMessage(), indentPrefix);
+                            break;
+                            
+                    }
+                }
+            }
+
+            if (!foundIssues) {
+                _reporter.WriteLine("√ no issues found", indentPrefix);
+            }
+        }
+
+        private List<JTokenAnalyzeRule> GetRules() {
+            var requiredProps = new List<string> {
+                "$.author",
+                "$.sourceName",
+                "$.classifications",
+                "$.identity",
+                "$.name",
+                "$.shortName",
+                "$.tags"
+            };
+            var recommendedProps = new List<string> {
+                "$.defaultName",
+                "$.description",
+            };
+
+            List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
+
+            // required properties
+            foreach (var requiredProp in requiredProps) {
+                templateRules.Add(new JTokenAnalyzeRule {
+                    Query = requiredProp,
+                    Expectation = JTokenValidationType.Exists,
+                    Severity = ErrorWarningType.Error
+                });
+            }
+            // recommended properties
+            foreach (var recProp in recommendedProps) {
+                templateRules.Add(new JTokenAnalyzeRule {
+                    Query = recProp,
+                    Expectation = JTokenValidationType.Exists,
+                    Severity = ErrorWarningType.Warning
+                });
+            }
+
+            return templateRules;
+        }
+
+        private bool ValidateNotEmptyString(JToken token, string jsonPath) {
+            var value = _jsonHelper.GetStringValueFromQuery(token, jsonPath);
+
+            return !string.IsNullOrEmpty(value);
+        }
+
+        private void WriteError(string message, string prefix = "") {
+            WriteImpl(message, "ERROR: ", prefix);
+        }
+        private void WriteWarning(string message, string prefix = "") {
+            WriteImpl(message, "WARNING", prefix);
+        }
+        private void WriteMessage(string message, string prefix = "") {
+            WriteImpl(message, string.Empty, prefix);
+        }
+        private void WriteImpl(string message, string typeStr, string prefix) {
+            if (string.IsNullOrEmpty(message)) { return; }
+
+            _reporter.Write(prefix);
+            if (!string.IsNullOrEmpty(typeStr)) {
+                _reporter.Write(typeStr);
+                _reporter.Write(": ");
+            }
+
+            _reporter.WriteLine(message);
+        }
+        /// <summary>
+        /// Returns true if passed otherwise false
+        /// </summary>
+        private bool ExecuteRule(JTokenAnalyzeRule rule, JToken template) {
+            if( rule == null || 
+                !_jsonHelper.HasValue(template) ||
+                string.IsNullOrEmpty(rule.Query)) {
+                return false;
+            }
+
+            var queryResult = template.SelectToken(rule.Query);
+            var str = _jsonHelper.GetStringValueFromQuery(template, rule.Query);
+            switch (rule.Expectation) {
+                case JTokenValidationType.Exists:
+                    return queryResult != null;
+                case JTokenValidationType.StringNotEmpty:                    
+                    return !string.IsNullOrEmpty(str);
+                case JTokenValidationType.StringEquals:
+                    return string.Compare(rule.Value, str, true) == 0;
+                default:
+                    throw new ArgumentException($"Unknown value for JTokenValidationType:{rule.Expectation}");
+            }
+        }
+    }
+
+    // query
+    // expectation
+        // exists
+        // string - not empty
+        // string - equals a specific value
+    // error message (should be able to use current value in error message)
+
+    public enum JTokenValidationType {
+        Exists = 1,
+        StringNotEmpty = 2,
+        StringEquals = 3
+    }
+
+    public class JTokenAnalyzeRule {
+        public string Query { get; set; }
+        public JTokenValidationType Expectation { get; set; }
+        public string ErrorMessage { get; set; }
+        public string Value { get; set; }
+        public ErrorWarningType Severity { get; set; }
+
+        public string GetErrorMessage() {
+            return GetErrorMessage(null);
+        }
+        public string GetErrorMessage(string currentValue) {
+            return ErrorMessage != null ?
+                string.Format(ErrorMessage, currentValue) :
+                Expectation switch {
+                    JTokenValidationType.Exists => $"{Query} not found",
+                    JTokenValidationType.StringNotEmpty => $"{Query} doesn't exist, or doesn't have a value",
+                    JTokenValidationType.StringEquals => $"{Query} should be '{Value}' but is '{currentValue}'"
+                };
+
+            //string errorMessage = Expectation switch {
+            //    JTokenValidationType.Exists => $"{Query} not found",
+            //    JTokenValidationType.StringNotEmpty => $"{Query} doesn't exist, or doesn't have a value",
+            //    JTokenValidationType.StringEquals => $"{Query} should be '{Value}' but is '{currentValue}'"
+            //};
+        }
+    }
+
     public class TemplateAnalyzer : ITemplateAnalyzer {
 
         public TemplateAnalyzer(IReporter reporter, IJsonHelper jsonHelper) {
@@ -45,9 +242,6 @@ namespace TemplatesShared {
         }
         private void WriteImpl(string message, string typeStr, string prefix) {
             if (string.IsNullOrEmpty(message)) { return; }
-            //if (string.IsNullOrEmpty(prefix)) {
-            //    prefix = _outputPrefix;
-            //}
 
             _reporter.Write(prefix);
             if (!string.IsNullOrEmpty(typeStr)) {
@@ -117,7 +311,7 @@ namespace TemplatesShared {
             };
             
             foreach(var rp in requiredProps) {
-                if (!HasValue(jobj[rp])) {
+                if (!_jsonHelper.HasValue(jobj[rp])) {
                     // WriteOutput($"ERROR: Missing required property: '{rp}'");
                     WriteError($"Missing required property: '{rp}'");
                 }
@@ -131,17 +325,17 @@ namespace TemplatesShared {
                 typeVal = tagsObj["type"];
             }
 
-            if (!HasValue(langVal)) {
+            if (!_jsonHelper.HasValue(langVal)) {
                 // WriteOutput($"ERROR: Missing required property: 'tags/language'");
                 WriteError($"Missing required property: 'tags/language'");
             }
 
-            if (!HasValue(typeVal)) {
+            if (!_jsonHelper.HasValue(typeVal)) {
                 // WriteOutput($"ERROR: Missing required property: 'tags/type'");
                 WriteError($"Missing required property: 'tags/type'");
             }
             else {
-                var val = ((Newtonsoft.Json.Linq.JValue)(jobj["tags"]["type"])).Value.ToString();
+                var val = _jsonHelper.GetStringValueFromQuery(jobj, "tags.type");
 
                 if (string.Compare("project", val, true) != 0 &&
                     string.Compare("item", val, true) != 0) {
@@ -157,7 +351,7 @@ namespace TemplatesShared {
             };
 
             foreach (var recP in recProps) {
-                if (!HasValue(jobj[recP])) {
+                if (!_jsonHelper.HasValue(jobj[recP])) {
                     // WriteOutput($"WARNING: Missing recommended property: '{recP}'");
                     WriteWarning($"Missing recommended property: '{recP}'");
                 }
@@ -174,15 +368,16 @@ namespace TemplatesShared {
             return foundIssues;
         }
 
-        protected bool CheckSymbols(JToken jobj) {
+        protected bool CheckSymbols(JToken template) {
             bool foundIssues = false;
-            if (!HasValue(jobj)) {
+            if (!_jsonHelper.HasValue(template) || 
+                !_jsonHelper.HasValue(template["symbols"])) {
                 WriteWarning($"symbols property not found");
             }
 
             // 1: Check for Framework symbol
-            JToken fxSymbol = jobj != null ? jobj["symbols"] : null;
-            if (HasValue(fxSymbol)) {
+            JToken fxSymbol = template != null ? template["symbols"]?["Framework"] : null;
+            if (_jsonHelper.HasValue(fxSymbol)) {
                 foundIssues = CheckSymbolFramework(fxSymbol) || foundIssues;
             }
             else {
@@ -202,17 +397,18 @@ namespace TemplatesShared {
         }
 
         protected bool CheckSymbolFramework(JToken fxSymbol) {
-            if(!HasValue(fxSymbol)) {
+            if(!_jsonHelper.HasValue(fxSymbol)) {
                 WriteWarning("WARNING: Framework symbol not found");
                 return true; 
             }
 
             bool foundIssues = false;
             var type = fxSymbol["type"];
-            if(HasValue(type)) {                
+            if(_jsonHelper.HasValue(type)) {                
                 // var typeVal = fxSymbol != null ? ((Newtonsoft.Json.Linq.JValue)(fxSymbol["type"])).Value.ToString().Trim() : null;
 
-                var typeVal = ((Newtonsoft.Json.Linq.JValue)(fxSymbol["type"]))?.Value?.ToString()?.Trim();
+                var typeVal = ((JValue)(fxSymbol["type"]))?.Value?.ToString()?.Trim();
+                var foo = _jsonHelper.GetStringValueFromQuery(fxSymbol, "type");
                 if( typeVal == null ||
                     string.Compare("parameter", typeVal, true) != 0) {
                     WriteWarning($"symbols.Framework.type should be set to 'parameter' but it is set to '{typeVal}'");
@@ -223,7 +419,7 @@ namespace TemplatesShared {
             }
             
             var dataType = fxSymbol["datatype"];
-            if (HasValue(dataType)) {
+            if (_jsonHelper.HasValue(dataType)) {
                 var dataTypeVal = ((Newtonsoft.Json.Linq.JValue)(fxSymbol["datatype"]))?.Value?.ToString()?.Trim();
                 if( dataTypeVal == null ||
                     string.Compare("choice", dataTypeVal, true) != 0) {
@@ -247,76 +443,14 @@ namespace TemplatesShared {
 
             return foundIssues;
         }
-
-        protected bool HasValue(JToken token) {
-            if(token == null) {
-                return false;
-            }
-
-            var value = token as JValue;
-            if(value != null) {
-                if(value.Value == null) {
-                    return false;
-                }
-                if(value.Value is string) {
-                    if (string.IsNullOrEmpty((string)(value.Value))) {
-                        return false;
-                    }
-                }
-            }
-
-            var array = token as JArray;
-            if(array != null) {
-                if(array.Count == 0) {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-        //protected JObject GetJObjByPath(JObject jObj, string path) {
-        //    Debug.Assert(jObj != null);
-        //    Debug.Assert(!string.IsNullOrEmpty(path));
-
-        //    if (!path.Contains("/")) {
-        //        var firstPath = path.Substring(0, path.IndexOf("/"));
-
-        //    }
-
-
-        //    throw new NotImplementedException();
-        //}
     }
 
-
-    public interface IJsonHelper {
-        JToken LoadJsonFrom(string filepath);
+    public enum ErrorWarningType {
+        Error = 1,
+        Warning = 2,
+        Info = 3,
+        Unknown = 1000
     }
-
-    public class JsonHelper : IJsonHelper {
-        private Dictionary<string, JToken> _jsonMap = new Dictionary<string, JToken>();
-        public JToken LoadJsonFrom(string filepath) {
-            Debug.Assert(File.Exists(filepath));
-
-            var key = NormalizeKey(filepath);
-            JToken result;
-            _jsonMap.TryGetValue(NormalizeKey(filepath), out result);
-
-            if (result == null) {
-                result = JObject.Parse(File.ReadAllText(filepath));
-                _jsonMap.Add(key, result);
-            }
-
-            return result;
-        }
-
-        protected string NormalizeKey(string key) {
-            if (string.IsNullOrEmpty(key)) { return key; }
-
-            return string.IsNullOrEmpty(key) ? key : key.Trim().ToLowerInvariant();
-        }
-    }
-
 
     public class TemplatePackAnalyzer {
         // Checks:
@@ -378,10 +512,5 @@ namespace TemplatesShared {
     //    public Warning(string message, string file) : base(ErrorWarningType.Error, message, file) {
     //    }
     //}
-    //public enum ErrorWarningType {
-    //    Error = 1,
-    //    Warning = 2,
-    //    Info = 3,
-    //    Unknown = 1000
-    //}
+
 }

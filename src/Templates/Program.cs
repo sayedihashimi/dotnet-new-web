@@ -52,7 +52,7 @@ namespace Templates {
                                 .AddSingleton<ITemplateReportLocator, TemplateReportLocator>()
                                 .AddSingleton<ITemplateSearcher, TemplateSearcher>()
                                 .AddSingleton<ITemplateInstaller, TemplateInstaller>()
-                                .AddSingleton<ITemplateAnalyzer, TemplateAnalyzer>()
+                                .AddSingleton<ITemplateAnalyzer, TemplateJsonPathAnalyzer>()
                                 .AddSingleton<IJsonHelper, JsonHelper>()
                                 .BuildServiceProvider();
         }
