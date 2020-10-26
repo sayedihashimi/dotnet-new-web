@@ -2,7 +2,7 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -f C:\\temp\\dotnetnew-community\\packages\\broken-samples\\SayedHa.Template-modified\\Content"
+      "commandLineArgs": "analyze -f C:\\Users\\sayedha\\AppData\\Local\\templatereport\\extracted"
     }
   }
 }

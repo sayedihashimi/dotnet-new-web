@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 namespace TemplatesShared {
     public interface IJsonHelper {
+        string GetStringValue(JToken token);
         string GetStringValueFromQuery(JToken jobj, string jsonPath);
         bool HasValue(JToken token);
         JToken LoadJsonFrom(string filepath);
@@ -42,6 +43,10 @@ namespace TemplatesShared {
             }
 
             var jValue = queryResult as JValue;
+            return jValue != null ? jValue.Value as string : (string)null;
+        }
+        public string GetStringValue(JToken token) {
+            var jValue = token as JValue;
             return jValue != null ? jValue.Value as string : (string)null;
         }
         public bool HasValue(JToken token) {
