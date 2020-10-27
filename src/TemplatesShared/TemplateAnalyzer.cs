@@ -53,7 +53,6 @@ namespace TemplatesShared {
                 return;
             }
 
-
             JToken template;
             try {
                 template = _jsonHelper.LoadJsonFrom(templateJsonFile);
@@ -120,8 +119,8 @@ namespace TemplatesShared {
                     string currentResult = _jsonHelper.HasValue(currentValue as JToken) ?
                         _jsonHelper.GetStringValue(currentValue as JToken) :
                         null;
-                    if (string.Compare("project", currentResult as string, StringComparison.InvariantCultureIgnoreCase) == 0 ||
-                        string.Compare("item", currentResult as string, StringComparison.InvariantCultureIgnoreCase) == 0) {
+                    if (string.Compare("project", currentResult, StringComparison.InvariantCultureIgnoreCase) == 0 ||
+                        string.Compare("item", currentResult, StringComparison.InvariantCultureIgnoreCase) == 0) {
                         return true;
                     }
                     return false;
@@ -167,7 +166,7 @@ namespace TemplatesShared {
         }
 
         private void WriteError(string message, string prefix = "") {
-            WriteImpl(message, "ERROR: ", prefix);
+            WriteImpl(message, "ERROR", prefix);
         }
         private void WriteWarning(string message, string prefix = "") {
             WriteImpl(message, "WARNING", prefix);
