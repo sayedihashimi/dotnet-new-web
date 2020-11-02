@@ -37,6 +37,17 @@ namespace TemplatesShared
         public PrimaryOutput[] PrimaryOutputs { get; set; }
 
         [JsonIgnore()]
+        public List<TemplateSymbolInfo> Symbols { get; set; } = new List<TemplateSymbolInfo>();
+        
+        // hack to write symbols out to new .json but to not read them on deserialize
+        //[JsonProperty("symbols")]
+        //public List<TemplateSymbolInfo> SymbolsReadonly {
+        //    get {
+        //        return Symbols;
+        //    }
+        //}
+
+        [JsonIgnore()]
         public string LocalFilePath { get; set; }
 
         [JsonIgnore()]
@@ -52,10 +63,13 @@ namespace TemplatesShared
             if (hostFilePaths != null && hostFilePaths.Count > 0) {
                 foreach (var hfp in hostFilePaths)
                 {
-                    var hf = TemplateHostFile.CreateFromFile(hfp, templatePackId, templateName);
-                    hf.TemplateLocalFilePath = LocalFilePath;
+                    var hf = TemplateHostFile.CreateFromFile(hfp, templatePackId, templateName);                    
                     if (hf != null) {
+                        hf.TemplateLocalFilePath = LocalFilePath;
                         HostFiles.Add(hf);
+                    }
+                    else {
+                        Console.WriteLine($"WARNING: Unable to read host file at '{hfp}'");
                     }
                 }
             }
@@ -88,9 +102,55 @@ namespace TemplatesShared
         {
             var result = JsonConvert.DeserializeObject<Template>(json);
             result.LocalFilePath = localFilepath;
+            result.InitSymbolsFrom(json);
             return result;
         }
-            
+        protected void InitSymbolsFrom(string json){
+            Debug.Assert(!string.IsNullOrEmpty(json));
+
+            var jobj = JObject.Parse(json);
+
+            this.Symbols = new List<TemplateSymbolInfo>();
+            if (jobj.ContainsKey("symbols")){
+                var symbols = jobj["symbols"];
+                
+
+                foreach(JProperty child in symbols.Children()){
+                    var symbolInfo = new TemplateSymbolInfo();
+                    foreach(JProperty value in child.Values()) {
+                        // Console.WriteLine(value);
+                        // ((Newtonsoft.Json.Linq.JValue)value.First).Value
+
+                        JValue jv = value.First as JValue;
+                        if(jv == null) {
+                            // could be things like choices, parameters, etc.
+                            continue;
+                        }
+                        switch (value.Name)
+                        {
+                            case "type":
+                                symbolInfo.Type = jv.Value<string>();
+                                break;
+                            case "description":
+                                symbolInfo.Description = jv.Value<string>();
+                                break;
+                            case "defaultValue":
+                                symbolInfo.DefaultValue = jv.Value<string>();
+                                break;
+                            case "DataType":
+                                symbolInfo.Datatype = jv.Value<string>();
+                                break;
+                            case "replaces":
+                                symbolInfo.Replaces = jv.Value<string>();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    Symbols.Add(symbolInfo);
+                }
+            }
+        }
     }
     public class PrimaryOutput {
         public string Path { get; set; }
@@ -187,7 +247,6 @@ namespace TemplatesShared
                     {
                         tp.Templates = tList.ToArray();
                     }
-
                 }
             }
 
@@ -240,7 +299,6 @@ namespace TemplatesShared
                     }
                 }
 
-                // TODO: get download count
                 var templatePack = new TemplatePack {
                     Package = nuspec.Metadata.Id,
                     Authors = nuspec.Metadata.Authors,
@@ -267,14 +325,20 @@ namespace TemplatesShared
             if (!File.Exists(filepath)) {
                 throw new ArgumentNullException($"Cannot find template json file at '{filepath}");
             }
-
-            var template = JsonConvert.DeserializeObject<Template>(File.ReadAllText(filepath));
+            
+            //var template = JsonConvert.DeserializeObject<Template>(File.ReadAllText(filepath));
+            var template = Template.CreateFromFile(filepath);
             // we need to set templatePackId
             template.TemplatePackId = templatePackId;
 
+
+
             return template;
         }
+        protected void InitSymbols()
+        {
 
+        }
         public static List<string> GetTemplateFilesUnder(string contentDir) {
             Debug.Assert(Directory.Exists(contentDir));
 

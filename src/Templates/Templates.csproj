@@ -10,6 +10,7 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
 
     <!-- nuget related properties -->
+    <PackageId>sayedha.template.command</PackageId>
     <Authors>Sayed Ibrahim Hashimi</Authors>
     <Description>Prototype demonstrating one way to search for .net core templates on the CLI</Description>
     <Version>1.0.0</Version>

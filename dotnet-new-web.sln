@@ -14,6 +14,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplatesConsole", "src\Tem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Templates", "src\Templates\Templates.csproj", "{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{A20DDCC9-E2BD-4010-8B58-C71E39BD1D73}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{99F4EEB0-A2B8-4F41-A063-0FD75540B1C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5B12C1F-365D-4CED-84EE-3AD11212A0C4} = {A20DDCC9-E2BD-4010-8B58-C71E39BD1D73}
+		{2971AB36-3D4F-49E4-B47C-7A1013D27D4D} = {A20DDCC9-E2BD-4010-8B58-C71E39BD1D73}
+		{7F64A4E5-7F67-4DEC-81B5-D22A51380412} = {99F4EEB0-A2B8-4F41-A063-0FD75540B1C3}
+		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A} = {99F4EEB0-A2B8-4F41-A063-0FD75540B1C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DBA02F1-2749-4EF6-99EA-292B267F16EB}
