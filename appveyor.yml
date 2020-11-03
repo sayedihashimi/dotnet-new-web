@@ -17,7 +17,7 @@ build:
   verbosity: normal
 
 after_build:
-- pwsh: ./create-template-report.ps1
+- pwsh: ./appveyor.ps1
 
 artifacts:
 - path: .output\release\netcoreapp3.1\publish\template-report.json
