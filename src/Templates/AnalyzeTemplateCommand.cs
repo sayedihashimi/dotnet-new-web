@@ -48,6 +48,7 @@ namespace Templates {
                             $"folders: {string.Join(',',folders)}" :
                             "folders is null");
 
+                        bool foundIssues = false;
                         foreach(var f in folders) {
                             // finding folders under f that has a .template.config folder
                             var foundDirs = Directory.GetDirectories(f,".template.config",new EnumerationOptions{RecurseSubdirectories = true, AttributesToSkip = FileAttributes.System });
@@ -55,11 +56,11 @@ namespace Templates {
                                 _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
                             }
                             foreach(var fd in foundDirs) {
-                                _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
+                                foundIssues = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName) || foundIssues;
                             }
-
-                            //_templateAnalyzer.Analyze(f);
                         }
+
+                        return foundIssues ? -1 : 0;
                 }),
                 OptionPackages(),
                 OptionFolders(),

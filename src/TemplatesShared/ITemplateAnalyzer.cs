@@ -1,5 +1,5 @@
 ﻿namespace TemplatesShared {
     public interface ITemplateAnalyzer {
-        void Analyze(string templateFolder);
+        bool Analyze(string templateFolder);
     }
 }

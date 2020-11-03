@@ -33,7 +33,10 @@ namespace TemplatesShared {
         private IReporter _reporter;
         private IJsonHelper _jsonHelper;
 
-        public void Analyze(string templateFolder) {
+        /// <summary>
+        /// Returns true if issues are found, and false otherwise.
+        /// </summary>
+        public bool Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             _reporter.WriteLine();
             WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
@@ -43,14 +46,14 @@ namespace TemplatesShared {
             if (!Directory.Exists(templateFolder)) {
                 // _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
                 WriteError($"ERROR: templateFolder not found at '{templateFolder}'", _outputPrefix);
-                return;
+                return true;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
                 // _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
                 WriteError($"template.json not found at '{templateJsonFile}'", _outputPrefix);
-                return;
+                return true;
             }
 
             JToken template;
@@ -60,7 +63,7 @@ namespace TemplatesShared {
             catch(Exception ex) {
                 // TODO: make exception more specific
                 WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
-                return;
+                return true;
             }
 
             var foundIssues = false;
@@ -86,6 +89,8 @@ namespace TemplatesShared {
             if (!foundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
             }
+
+            return foundIssues;
         }
 
         private List<JTokenAnalyzeRule> GetRules() {
