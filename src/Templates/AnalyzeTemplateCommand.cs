@@ -17,7 +17,7 @@ namespace Templates {
         private ITemplateAnalyzer _templateAnalyzer;
         private IRemoteFile _remoteFile;
 
-        public AnalyzeTemplateCommand(IReporter reporter, ITemplateAnalyzer analyzer, IRemoteFile remoteFile`) :base() {
+        public AnalyzeTemplateCommand(IReporter reporter, ITemplateAnalyzer analyzer, IRemoteFile remoteFile) :base() {
             Debug.Assert(reporter != null);
             Debug.Assert(analyzer != null);
 
@@ -83,6 +83,7 @@ namespace Templates {
                             _reporter.WriteLine("no packages found to analyze");
                         }
 
+                        bool foundIssues = false;
                         if(foldersList != null && foldersList.Count > 0){
                             foreach(var f in foldersList) {
                                 // finding folders under f that has a .template.config folder
@@ -91,10 +92,12 @@ namespace Templates {
                                     _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
                                 }
                                 foreach(var fd in foundDirs) {
-                                    _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
+                                    foundIssues = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName) || foundIssues;
                                 }
                             }
                         }
+
+                        return foundIssues ? -1 : 0;
                 }),
                 OptionPackages(),
                 OptionFolders(),

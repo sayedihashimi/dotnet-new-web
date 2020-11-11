@@ -36,7 +36,8 @@ namespace Templates {
                 .AddCommand(
                     new AnalyzeTemplateCommand(
                         GetFromServices<IReporter>(),
-                        GetFromServices<ITemplateAnalyzer>())
+                        GetFromServices<ITemplateAnalyzer>(),
+                        GetFromServices<IRemoteFile>())
                     .CreateCommand()
                 )
                 .UseDefaults()
