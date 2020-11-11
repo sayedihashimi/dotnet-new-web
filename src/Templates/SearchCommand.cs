@@ -38,8 +38,8 @@ namespace Templates {
                     }
 
                     var consoleWrapper = new DirectConsoleWrapper();
-                    PickManyPrompt pmp = new PickManyPrompt("Select templates to install",options);
-
+                    PickManyPrompt pmp = new PickManyPrompt("Select templates to install (↑↓ to navigate, Space to select, and Enter to commit)",options);
+                    
                     bool doSharprompt = true;
                     IPromptInvoker pi;
                     pi = doSharprompt ? (IPromptInvoker)new SharPromptInvoker() : new PromptInvoker(consoleWrapper);
