@@ -15,13 +15,15 @@ namespace Templates {
     public class AnalyzeTemplateCommand : CommandBase {
         private IReporter _reporter;
         private ITemplateAnalyzer _templateAnalyzer;
+        private IRemoteFile _remoteFile;
 
-        public AnalyzeTemplateCommand(IReporter reporter, ITemplateAnalyzer analyzer) {
+        public AnalyzeTemplateCommand(IReporter reporter, ITemplateAnalyzer analyzer, IRemoteFile remoteFile`) :base() {
             Debug.Assert(reporter != null);
             Debug.Assert(analyzer != null);
 
             _reporter = reporter;
             _templateAnalyzer = analyzer;
+            _remoteFile = remoteFile;
         }
 
         // This will search for .nupkg files, identify the packages which are templates
@@ -36,33 +38,67 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "analyze", description: "template analyzer tool") {
 
-                CommandHandler.Create<string[],string[]>(
-                    (packages, folders) => {
-                        _reporter.WriteLine("analyze command");
+                CommandHandler.Create<string[],string[],bool>(
+                    (packages, folders, enableVerbose) => {
+                        _reporter.EnableVerbose = enableVerbose;
+                        _reporter.WriteLine("analyzing...");
 
-                        _reporter.WriteLine(packages != null ?
+                        _reporter.WriteVerboseLine(packages != null ?
                             $"packages: {string.Join(',',packages)}" :
                             "packages is null");
 
-                        _reporter.WriteLine(folders != null ?
+                        _reporter.WriteVerboseLine(folders != null ?
                             $"folders: {string.Join(',',folders)}" :
                             "folders is null");
 
-                        foreach(var f in folders) {
-                            // finding folders under f that has a .template.config folder
-                            var foundDirs = Directory.GetDirectories(f,".template.config",new EnumerationOptions{RecurseSubdirectories = true });
-                            if(foundDirs == null || foundDirs.Length <= 0) {
-                                _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
-                            }
-                            foreach(var fd in foundDirs) {
-                                _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
-                            }
+                        var foldersList = new List<string>();
+                        if(folders != null && folders.Length > 0)
+                        {
+                            foldersList.AddRange(folders);
+                        }
+                        else
+                        {
+                            _reporter.WriteLine("no folders found to analyze");
+                        }
 
-                            //_templateAnalyzer.Analyze(f);
+                        if(packages != null && packages.Length > 0)
+                        {
+                            foreach(var p in packages)
+                            {
+                                // check that the path exists and then extract to a folder
+                                if (File.Exists(p))
+                                {
+                                    _reporter.WriteVerbose($"extracting package '{p}'");
+                                    var packageFolder = _remoteFile.ExtractZipLocally(p);
+                                    foldersList.Add(packageFolder);
+                                }
+                                else
+                                {
+                                    _reporter.WriteLine($"ERROR: package not found at '{p}'");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            _reporter.WriteLine("no packages found to analyze");
+                        }
+
+                        if(foldersList != null && foldersList.Count > 0){
+                            foreach(var f in foldersList) {
+                                // finding folders under f that has a .template.config folder
+                                var foundDirs = Directory.GetDirectories(f,".template.config",new EnumerationOptions{RecurseSubdirectories = true });
+                                if(foundDirs == null || foundDirs.Length <= 0) {
+                                    _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
+                                }
+                                foreach(var fd in foundDirs) {
+                                    _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
+                                }
+                            }
                         }
                 }),
                 OptionPackages(),
                 OptionFolders(),
+                OptionVerbose()
             };
 
         protected Option OptionPackages() =>
