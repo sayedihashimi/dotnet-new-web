@@ -11,10 +11,11 @@ namespace Templates {
         public abstract Command CreateCommand();
 
         protected Option OptionVerbose() =>
-            new Option(alias: "--verbose", description: "enables verbose output")
+            new Option(new string[] { "--verbose" }, "enables verbose output")
             {
                 Argument = new Argument<bool>(name: "verbose")
             };
+
         public bool EnableVerbose { get; set; }
     }
 }

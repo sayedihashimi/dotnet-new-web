@@ -13,7 +13,7 @@
     <PackageId>sayedha.template.command</PackageId>
     <Authors>Sayed Ibrahim Hashimi</Authors>
     <Description>.net core tool that can be used to search for existing templates on nuget.org as well as analyzing templates.</Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Copyright>Copyright 2020 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sayedihashimi/dotnet-new-web</PackageProjectUrl>
@@ -37,9 +37,16 @@
     <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
 
-  <Target Name="InstallTool" DependsOnTargets="Pack">
-    <Exec Command="dotnet tool uninstall --global $(MSBuildProjectName)" IgnoreExitCode="true" />
-    <Exec Command="dotnet tool install --global --add-source $(PackageOutputPath) $(MSBuildProjectName)" />
+  <Target Name="CleanTool" AfterTargets="Clean">
+    <ItemGroup>
+      <_toremove Include="$(PackageOutputPath)\*.nupkg"/>
+    </ItemGroup>
+    <Delete Files="@(_toremove)"/>
+  </Target>
+  
+  <Target Name="InstallTool" DependsOnTargets="Clean;Pack">
+    <Exec Command="dotnet tool uninstall --global $(PackageId)" IgnoreExitCode="true" />
+    <Exec Command="dotnet tool install --global --add-source $(PackageOutputPath) $(PackageId)" />
     <Exec Command="$(ToolCommandName) --help" />
   </Target>
 

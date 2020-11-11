@@ -55,6 +55,7 @@ namespace Templates {
                                 .AddSingleton<ITemplateInstaller, TemplateInstaller>()
                                 .AddSingleton<ITemplateAnalyzer, TemplateJsonPathAnalyzer>()
                                 .AddSingleton<IJsonHelper, JsonHelper>()
+                                .AddSingleton<IRemoteFile,RemoteFile>()
                                 .BuildServiceProvider();
         }
 
