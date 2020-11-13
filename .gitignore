@@ -1,6 +1,7 @@
 
 template-*.json
 template-*.csv
+nupkg/
 
 
 ## Ignore Visual Studio temporary files, build results, and

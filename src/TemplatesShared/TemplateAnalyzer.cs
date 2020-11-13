@@ -39,7 +39,7 @@ namespace TemplatesShared {
         public bool Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             _reporter.WriteLine();
-            WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
+            WriteMessage($@"***Validating '{templateFolder}\.template.config\template.json'");
 
             string indentPrefix = "    ";
             // validate the folder has a .template.config folder
@@ -60,7 +60,7 @@ namespace TemplatesShared {
             try {
                 template = _jsonHelper.LoadJsonFrom(templateJsonFile);
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 // TODO: make exception more specific
                 WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
                 return true;
@@ -68,8 +68,8 @@ namespace TemplatesShared {
 
             var foundIssues = false;
             var templateRules = GetRules();
-            foreach(var rule in templateRules) {
-                if(!ExecuteRule(rule, template)) {
+            foreach (var rule in templateRules) {
+                if (!ExecuteRule(rule, template)) {
                     foundIssues = true;
                     switch (rule.Severity) {
                         case ErrorWarningType.Error:
@@ -81,10 +81,12 @@ namespace TemplatesShared {
                         default:
                             WriteMessage(rule.GetErrorMessage(), indentPrefix);
                             break;
-                            
+
                     }
                 }
             }
+
+            foundIssues = AnalyzeHostFiles(templateFolder, indentPrefix) || foundIssues;
 
             if (!foundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
@@ -93,7 +95,77 @@ namespace TemplatesShared {
             return foundIssues;
         }
 
-        private List<JTokenAnalyzeRule> GetRules() {
+        /// <summary>
+        /// Things this checks for:
+        ///  - One or more IDE host files exist
+        ///  - Icon is present in all IDE host files
+        ///  TODO: Check that the icon file listed is on disk and in, or below, the 
+        ///        .template.config folder
+        /// </summary>
+        protected bool AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
+            Debug.Assert(!string.IsNullOrEmpty(templateConfigFolder));
+            Debug.Assert(indentPrefix != null);
+            _reporter.WriteVerbose($"Looking for host files in folder '{templateConfigFolder}'");
+            _reporter.WriteVerboseLine();
+
+            var hostFiles = Directory.GetDirectories(templateConfigFolder, "*.host.json");
+            if(hostFiles == null || hostFiles.Length == 0) {
+                _reporter.WriteLine($"ERROR: no host files found", indentPrefix);
+                return false;
+            }
+            bool foundIssues = false;
+
+            // check for either a ide.host.json or vs-2017.3.host.json
+            var foundAnIdeHostFile = false;
+            var hostFileRules = GetHostFileRules();
+            foreach(var hf in hostFiles) {
+                if (IsAnIdeHostFile(hf)) { foundAnIdeHostFile = true; }
+                // check that the icon attribute is included in the host file
+
+                JToken jtoken;
+                try {
+                    jtoken = _jsonHelper.LoadJsonFrom(hf);
+                }
+                catch (Exception ex) {
+                    // TODO: make exception more specific
+                    WriteError($"Unable to load host file from: '{hf}'.\n Error: {ex.ToString()}");
+                    continue;
+                }
+
+                foreach(var rule in hostFileRules) {
+                    foundIssues = ExecuteRule(rule, jtoken) || foundIssues;
+                }
+            }
+
+            if (!foundAnIdeHostFile) {
+                WriteError($"ERROR: no host file found");
+            }
+
+            void WriteError(string text) {
+                this.WriteError(text);
+                foundIssues = true;
+            }
+
+            return foundIssues;
+        }
+
+        protected List<JTokenAnalyzeRule> GetHostFileRules() =>
+            new List<JTokenAnalyzeRule> {
+                new JTokenAnalyzeRule {
+                    Query = "$.icon",
+                    Expectation = JTokenValidationType.Exists,
+                    Severity = ErrorWarningType.Error
+                }
+            };
+        
+        protected bool IsAnIdeHostFile(string filepath) =>
+            new FileInfo(filepath).Name.ToLowerInvariant() switch {
+                "ide.host.json" => true,
+                "vs-2017.3.host.json" => true,
+                _ => false
+            };
+
+        protected List<JTokenAnalyzeRule> GetRules() {
             List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
 
             // check required properties
@@ -193,19 +265,19 @@ namespace TemplatesShared {
         /// <summary>
         /// Returns true if passed otherwise false
         /// </summary>
-        private bool ExecuteRule(JTokenAnalyzeRule rule, JToken template) {
-            if( rule == null || 
-                !_jsonHelper.HasValue(template) ||
+        private bool ExecuteRule(JTokenAnalyzeRule rule, JToken jsonToken) {
+            if (rule == null ||
+                !_jsonHelper.HasValue(jsonToken) ||
                 string.IsNullOrEmpty(rule.Query)) {
                 return false;
             }
 
-            var queryResult = template.SelectToken(rule.Query);
-            var str = _jsonHelper.GetStringValueFromQuery(template, rule.Query);
+            var queryResult = jsonToken.SelectToken(rule.Query);
+            var str = _jsonHelper.GetStringValueFromQuery(jsonToken, rule.Query);
             switch (rule.Expectation) {
                 case JTokenValidationType.Exists:
                     return queryResult != null;
-                case JTokenValidationType.StringNotEmpty:                    
+                case JTokenValidationType.StringNotEmpty:
                     return !string.IsNullOrEmpty(str);
                 case JTokenValidationType.StringEquals:
                     return string.Compare(rule.Value, str, true) == 0;
@@ -226,7 +298,7 @@ namespace TemplatesShared {
         Custom,
         Exists,
         StringNotEmpty,
-        StringEquals 
+        StringEquals
     }
 
     public class JTokenAnalyzeRule {
@@ -235,7 +307,7 @@ namespace TemplatesShared {
         public string ErrorMessage { get; set; }
         public string Value { get; set; }
         public ErrorWarningType Severity { get; set; }
-        public Func<object,bool> Rule { get; set; }
+        public Func<object, bool> Rule { get; set; }
         public string GetErrorMessage() {
             return GetErrorMessage(null);
         }
