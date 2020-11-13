@@ -86,7 +86,7 @@ namespace TemplatesShared {
                 }
             }
 
-            foundIssues = AnalyzeHostFiles(templateFolder, indentPrefix) || foundIssues;
+            foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
 
             if (!foundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
@@ -108,7 +108,7 @@ namespace TemplatesShared {
             _reporter.WriteVerbose($"Looking for host files in folder '{templateConfigFolder}'");
             _reporter.WriteVerboseLine();
 
-            var hostFiles = Directory.GetDirectories(templateConfigFolder, "*.host.json");
+            var hostFiles = Directory.GetFiles(templateConfigFolder, "*.host.json");
             if(hostFiles == null || hostFiles.Length == 0) {
                 _reporter.WriteLine($"ERROR: no host files found", indentPrefix);
                 return false;
@@ -133,7 +133,7 @@ namespace TemplatesShared {
                 }
 
                 foreach(var rule in hostFileRules) {
-                    foundIssues = ExecuteRule(rule, jtoken) || foundIssues;
+                    foundIssues = !ExecuteRule(rule, jtoken) || foundIssues;
                 }
             }
 
