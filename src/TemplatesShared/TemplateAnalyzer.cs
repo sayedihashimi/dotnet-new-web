@@ -207,40 +207,6 @@ namespace TemplatesShared {
                 ErrorMessage = $"ERROR: $.tags.type should be either 'project' or 'item'"
             });
 
-            // looks like you cannot get duplicate elements that have the same name using JSONPath
-            // we will need to look at the file in some other way
-            //templateRules.Add(new JTokenAnalyzeRule {
-            //    Expectation = JTokenValidationType.Custom,
-            //    Query = "$.symbols.*~",
-            //    Rule = (jtoken, currentValue) => {
-            //        Console.WriteLine("inside the new rule");
-            //        // var symbols = jtoken.SelectTokens("$.symbols.*")?.ToList(); //TODO: symbols = jtoken.SelectToken("$.symbols").Children().ToList()
-            //        var symbolChildren = jtoken.SelectToken("$.symbols")?.Children();
-            //        if(symbolChildren != null) {
-            //            var symbols = symbolChildren.AsJEnumerable().ToList();
-            //            var symbolNames = new List<string>();
-            //            foreach(var s in symbols) {
-            //                var name = ((JProperty)s)?.Name;
-            //                if (!string.IsNullOrEmpty(name)) {
-            //                    symbolNames.Add(name);
-            //                }
-            //            }
-            //            var dupelicateSymbols = symbolNames.GetDuplicates();
-            //            if(dupelicateSymbols != null && dupelicateSymbols.Count > 0) {
-            //                foreach(var ds in dupelicateSymbols) {                                
-            //                    WriteError($"duplicate values for $.symbols.{ds}");
-            //                }
-            //            }
-            //        }
-
-            //        // ((Newtonsoft.Json.Linq.JProperty)(new System.Collections.Generic.ICollectionDebugView<Newtonsoft.Json.Linq.JToken>(symbols).Items[0])).Name
-            //        // var duplicateSymbols = symbolChildren.GetDuplicates();
-
-            //        return true;
-            //    },
-            //    ErrorMessage = "error"
-            //});
-
             // check recommended properties
             var recommendedProps = new List<string> {
                 "$.defaultName",
