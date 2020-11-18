@@ -175,7 +175,7 @@ namespace TemplatesShared {
             }
 
             void WriteError(string text) {
-                this.WriteError(text);
+                this.WriteError(text, indentPrefix);
                 foundIssues = true;
             }
 
