@@ -38,8 +38,8 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "analyze", description: "template analyzer tool") {
 
-                CommandHandler.Create<string[],string[],bool>(
-                    (packages, folders, enableVerbose) => {
+                CommandHandler.Create<string[],string[],bool,bool>(
+                    (packages, folders, enableVerbose, usePackageCache) => {
                         _reporter.EnableVerbose = enableVerbose;
                         _reporter.WriteLine("analyzing...");
 
@@ -69,7 +69,7 @@ namespace Templates {
                                 if (File.Exists(p))
                                 {
                                     _reporter.WriteVerbose($"extracting package '{p}'");
-                                    var packageFolder = _remoteFile.ExtractZipLocally(p);
+                                    var packageFolder = _remoteFile.ExtractZipLocally(p, !usePackageCache);
                                     foldersList.Add(packageFolder);
                                 }
                                 else
@@ -101,7 +101,8 @@ namespace Templates {
                 }),
                 OptionPackages(),
                 OptionFolders(),
-                OptionVerbose()
+                OptionVerbose(),
+                OptionUsePackageCache()
             };
 
         protected Option OptionPackages() =>
@@ -113,5 +114,10 @@ namespace Templates {
             new Option(new string[] { "--folders", "-f" }, "search for templates in sub-folders") {
                 Argument = new Argument<string[]>()
             };
+
+        protected Option OptionUsePackageCache() =>
+            new Option(new string[] { "--use-cache" }, "when expanding nuget packages the package cache should be used. (Only used when -p|--packages is passed as a paramter)") {
+                Argument = new Argument<bool>(name: "usepackagecache")
+    };
     }
 }

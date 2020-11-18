@@ -76,7 +76,7 @@ namespace TemplatesShared {
             var listPackagesWithNotemplates = new List<NuGetPackage>();
             var pkgNamesWitoutPackages = new List<string>();
             foreach(var pkg in downloadedPackages) {
-                var extractPath = _remoteFile.ExtractZipLocally(pkg.LocalFilepath);
+                var extractPath = _remoteFile.ExtractZipLocally(pkg.LocalFilepath, true);
                 pkg.LocalExtractPath = extractPath;
                 // see if there is a .template
                 var foundDirs  = Directory.EnumerateDirectories(extractPath, ".template.config", new EnumerationOptions { RecurseSubdirectories = true });
