@@ -13,7 +13,7 @@ namespace TemplatesShared {
         bool Verbose { get; set; }
         string CacheFolderpath { get; }
 
-        string ExtractZipLocally(string zipfilepath);
+        string ExtractZipLocally(string zipfilepath, bool useCache);
         Task<string> GetRemoteFileAsync(string downloadUrl, string filename, bool forceDownload = false);
         Task<string> GetRemoteFileAsync(Uri uri, string filename, bool forceDownlaod = false);
 
@@ -84,7 +84,7 @@ namespace TemplatesShared {
             return Path.Combine(CacheFolderpath, filename);
         }
 
-        public string ExtractZipLocally(string zipfilepath) {
+        public string ExtractZipLocally(string zipfilepath, bool forceExtract) {
             if (!File.Exists(zipfilepath)) { throw new ExtractZipException($"zip file not found at '{zipfilepath}'"); }
             
             var fi = new FileInfo(zipfilepath);
@@ -92,6 +92,12 @@ namespace TemplatesShared {
             // check to see if the file has already been extracted to the cachefolder
             var expectedFolderPath = Path.Combine(CacheFolderpath, "extracted", fi.Name);
             WriteVerbose($"extracting zip '{zipfilepath}' to '{expectedFolderPath}'");
+
+            if (forceExtract && Directory.Exists(expectedFolderPath)) {
+                WriteVerbose($"Deleting package cache directory because forceExtract is true, path = '{expectedFolderPath}'");
+                Directory.Delete(expectedFolderPath, true);
+            }
+
             if (Directory.Exists(expectedFolderPath)) {
                 WriteVerbose($"dir exists '{expectedFolderPath}'");
                 return expectedFolderPath;

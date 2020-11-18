@@ -2,7 +2,7 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -f C:\\Users\\sayedha\\AppData\\Local\\templatereport\\extracted"
+      "commandLineArgs": "analyze -p D:\\data\\mycode\\template-sample\\nupkg\\SayedHa.Template.NetCoreTool.nuspec.1.0.0.nupkg"
     }
   }
 }

@@ -38,7 +38,7 @@ namespace TemplateTest {
             string filename = "Take.Blip.Client.Templates.0.6.15-beta.zip";
             var remoteFile = new RemoteFile();
             var downloadPath = await remoteFile.GetRemoteFileAsync(urltodownload, filename);
-            var extractPath = remoteFile.ExtractZipLocally(downloadPath);
+            var extractPath = remoteFile.ExtractZipLocally(downloadPath, true);
 
             Assert.True(!string.IsNullOrEmpty(extractPath));
             Assert.True(Directory.Exists(extractPath));
