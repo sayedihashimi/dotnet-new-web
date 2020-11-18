@@ -35,5 +35,5 @@ DeleteCacheFolders
 
 foreach($p in $projects){
     'Building and installing tool for project at: "{0}"' -f $p | Write-Output
-    dotnet build $p -t:InstallTool
+    dotnet build $p -t:InstallTool -p:Configuration=Release
 }
