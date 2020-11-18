@@ -2,7 +2,7 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -f D:\\temp\\dotnet-new\\templates-with-issues"
+      "commandLineArgs": "analyze -f C:\\Users\\sayedha\\AppData\\Local\\templatereport\\extracted"
     }
   }
 }

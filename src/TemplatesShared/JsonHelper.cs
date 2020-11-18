@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 namespace TemplatesShared {
     public interface IJsonHelper {
+        string GetJsonFromFile(string filepath);
         string GetStringValue(JToken token);
         string GetStringValueFromQuery(JToken jobj, string jsonPath);
         bool HasValue(JToken token);
@@ -24,6 +25,11 @@ namespace TemplatesShared {
             }
 
             return result;
+        }
+
+        public string GetJsonFromFile(string filepath) {
+            JToken result = LoadJsonFrom(filepath);
+            return result != null ? result.ToString() : null;
         }
 
         protected string NormalizeKey(string key) {

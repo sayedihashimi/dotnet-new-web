@@ -6,6 +6,8 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using TemplatesShared.Extensions;
+using System.Text.RegularExpressions;
+
 namespace TemplatesShared {
     /// <summary>
     /// Checks:
@@ -34,6 +36,8 @@ namespace TemplatesShared {
         private string _outputPrefix = "    ";
         private IReporter _reporter;
         private IJsonHelper _jsonHelper;
+        private string _isProjectTemplateRegex = @"""type""\s*:\s*""project""";
+        private string _isItemTempalteRegex = @"""type""\s*:\s*""item""";
 
         /// <summary>
         /// Returns true if issues are found, and false otherwise.
@@ -41,19 +45,17 @@ namespace TemplatesShared {
         public bool Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             _reporter.WriteLine();
-            WriteMessage($@"***Validating '{templateFolder}\.template.config\template.json'");
+            WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
 
             string indentPrefix = "    ";
             // validate the folder has a .template.config folder
             if (!Directory.Exists(templateFolder)) {
-                // _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
-                WriteError($"ERROR: templateFolder not found at '{templateFolder}'", _outputPrefix);
+                WriteError($"templateFolder not found at '{templateFolder}'", _outputPrefix);
                 return true;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
-                // _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
                 WriteError($"template.json not found at '{templateJsonFile}'", _outputPrefix);
                 return true;
             }
@@ -69,7 +71,12 @@ namespace TemplatesShared {
             }
 
             var foundIssues = false;
-            var templateRules = GetRules();
+            var templateType = GetTemplateType(templateJsonFile);
+            if(templateType == TemplateType.Unknown) {
+                WriteWarning($"Unable to determine if the template is for a project or item (file), assuming it is a project template", indentPrefix);
+            }
+            WriteVerboseLine($"Found a template of type: '{templateType}'", indentPrefix);
+            var templateRules = GetTemplateRules(templateType);
             foreach (var rule in templateRules) {
                 if (!ExecuteRule(rule, template)) {
                     foundIssues = true;
@@ -95,6 +102,30 @@ namespace TemplatesShared {
             }
 
             return foundIssues;
+        }
+
+        private TemplateType GetTemplateType(string templateJsonFilepath) {
+            var text = _jsonHelper.GetJsonFromFile(templateJsonFilepath);
+            if (string.IsNullOrEmpty(text)) {
+                throw new ArgumentException($"Unable to get json from file '{templateJsonFilepath}'");
+            }
+
+            bool isProjectTemplate = Regex.IsMatch(text, _isProjectTemplateRegex);
+            bool isItemTemplate = Regex.IsMatch(text, _isItemTempalteRegex);
+
+            if(isProjectTemplate && isItemTemplate) {
+                throw new JsonException($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+            }
+
+            if(isProjectTemplate && !isItemTemplate) {
+                return TemplateType.Project;
+            }
+            else if(!isProjectTemplate && isItemTemplate) {
+                return TemplateType.Item;
+            }
+            else {
+                return TemplateType.Unknown;
+            }
         }
 
         /// <summary>
@@ -140,7 +171,7 @@ namespace TemplatesShared {
             }
 
             if (!foundAnIdeHostFile) {
-                WriteError($"ERROR: no host file found");
+                WriteError($"no host file found in folder '{templateConfigFolder}'");
             }
 
             void WriteError(string text) {
@@ -167,21 +198,27 @@ namespace TemplatesShared {
                 _ => false
             };
 
-        protected List<JTokenAnalyzeRule> GetRules() {
+        protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType) {
             List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
 
             // check required properties
             var requiredProps = new List<string> {
                 "$.author",
-                "$.sourceName",
                 "$.classifications",
                 "$.identity",
                 "$.name",
-                "$.shortName",
-                "$.tags",
-                "$.tags.language",
-                "$.tags.type"
             };
+
+            if(templateType == TemplateType.Project) {
+                requiredProps.AddRange(new string[] {
+                    "$.sourceName",
+                    "$.shortName",
+                    "$.tags",
+                    "$.tags.language",
+                    "$.tags.type"
+                });
+            }
+
             foreach (var requiredProp in requiredProps) {
                 templateRules.Add(new JTokenAnalyzeRule {
                     Query = requiredProp,
@@ -211,10 +248,14 @@ namespace TemplatesShared {
             var recommendedProps = new List<string> {
                 "$.defaultName",
                 "$.description",
-                "$.symbols",
-                "$.symbols.Framework",
-                "$.symbols.Framework.choices"
             };
+            if(templateType == TemplateType.Project) {
+                recommendedProps.AddRange(new string[] {
+                    "$.symbols",
+                    "$.symbols.Framework",
+                    "$.symbols.Framework.choices"
+                });
+            }
             foreach (var recProp in recommendedProps) {
                 templateRules.Add(new JTokenAnalyzeRule {
                     Query = recProp,
@@ -222,19 +263,21 @@ namespace TemplatesShared {
                     Severity = ErrorWarningType.Warning
                 });
             }
-            templateRules.Add(new JTokenAnalyzeRule {
-                Query = "$.symbols.Framework.type",
-                Expectation = JTokenValidationType.StringEquals,
-                Value = "parameter",
-                ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
-            });
-            templateRules.Add(new JTokenAnalyzeRule {
-                Query = "$.symbols.Framework.datatype",
-                Expectation = JTokenValidationType.StringEquals,
-                Value = "choice",
-                ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
-            });
 
+            if (templateType == TemplateType.Project) {
+                templateRules.Add(new JTokenAnalyzeRule {
+                    Query = "$.symbols.Framework.type",
+                    Expectation = JTokenValidationType.StringEquals,
+                    Value = "parameter",
+                    ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
+                });
+                templateRules.Add(new JTokenAnalyzeRule {
+                    Query = "$.symbols.Framework.datatype",
+                    Expectation = JTokenValidationType.StringEquals,
+                    Value = "choice",
+                    ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
+                });
+            }
             return templateRules;
         }
 
@@ -252,6 +295,11 @@ namespace TemplatesShared {
         }
         private void WriteMessage(string message, string prefix = "") {
             WriteImpl(message, string.Empty, prefix);
+        }
+        private void WriteVerboseLine(string message, string prefix = "") {
+            if (string.IsNullOrEmpty(message)) { return; }
+            _reporter.WriteVerbose(prefix);
+            _reporter.WriteVerboseLine(message, true);
         }
         private void WriteImpl(string message, string typeStr, string prefix) {
             if (string.IsNullOrEmpty(message)) { return; }
@@ -290,6 +338,12 @@ namespace TemplatesShared {
                     throw new ArgumentException($"Unknown value for JTokenValidationType:{rule.Expectation}");
             }
         }
+    }
+
+    public enum TemplateType {
+        Project = 1,
+        Item = 2,
+        Unknown = 4
     }
 
     public enum JTokenValidationType {
