@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Linq;
+using TemplatesShared.Extensions;
+using System.Text.RegularExpressions;
+
 namespace TemplatesShared {
     /// <summary>
     /// Checks:
@@ -32,6 +36,8 @@ namespace TemplatesShared {
         private string _outputPrefix = "    ";
         private IReporter _reporter;
         private IJsonHelper _jsonHelper;
+        private string _isProjectTemplateRegex = @"""type""\s*:\s*""project""";
+        private string _isItemTempalteRegex = @"""type""\s*:\s*""item""";
 
         /// <summary>
         /// Returns true if issues are found, and false otherwise.
@@ -44,14 +50,12 @@ namespace TemplatesShared {
             string indentPrefix = "    ";
             // validate the folder has a .template.config folder
             if (!Directory.Exists(templateFolder)) {
-                // _reporter.WriteLine($"ERROR: templateFolder not found at '{templateFolder}'", indentPrefix);
-                WriteError($"ERROR: templateFolder not found at '{templateFolder}'", _outputPrefix);
+                WriteError($"templateFolder not found at '{templateFolder}'", _outputPrefix);
                 return true;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
-                // _reporter.WriteLine($"template.json not found at '{templateJsonFile}'", indentPrefix);
                 WriteError($"template.json not found at '{templateJsonFile}'", _outputPrefix);
                 return true;
             }
@@ -60,16 +64,21 @@ namespace TemplatesShared {
             try {
                 template = _jsonHelper.LoadJsonFrom(templateJsonFile);
             }
-            catch(Exception ex) {
+            catch (Exception ex) {
                 // TODO: make exception more specific
                 WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
                 return true;
             }
 
             var foundIssues = false;
-            var templateRules = GetRules();
-            foreach(var rule in templateRules) {
-                if(!ExecuteRule(rule, template)) {
+            var templateType = GetTemplateType(templateJsonFile);
+            if(templateType == TemplateType.Unknown) {
+                WriteWarning($"Unable to determine if the template is for a project or item (file), assuming it is a project template", indentPrefix);
+            }
+            WriteVerboseLine($"Found a template of type: '{templateType}'", indentPrefix);
+            var templateRules = GetTemplateRules(templateType);
+            foreach (var rule in templateRules) {
+                if (!ExecuteRule(rule, template)) {
                     foundIssues = true;
                     switch (rule.Severity) {
                         case ErrorWarningType.Error:
@@ -81,10 +90,12 @@ namespace TemplatesShared {
                         default:
                             WriteMessage(rule.GetErrorMessage(), indentPrefix);
                             break;
-                            
+
                     }
                 }
             }
+
+            foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
 
             if (!foundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
@@ -93,21 +104,121 @@ namespace TemplatesShared {
             return foundIssues;
         }
 
-        private List<JTokenAnalyzeRule> GetRules() {
+        private TemplateType GetTemplateType(string templateJsonFilepath) {
+            var text = _jsonHelper.GetJsonFromFile(templateJsonFilepath);
+            if (string.IsNullOrEmpty(text)) {
+                throw new ArgumentException($"Unable to get json from file '{templateJsonFilepath}'");
+            }
+
+            bool isProjectTemplate = Regex.IsMatch(text, _isProjectTemplateRegex);
+            bool isItemTemplate = Regex.IsMatch(text, _isItemTempalteRegex);
+
+            if(isProjectTemplate && isItemTemplate) {
+                throw new JsonException($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+            }
+
+            if(isProjectTemplate && !isItemTemplate) {
+                return TemplateType.Project;
+            }
+            else if(!isProjectTemplate && isItemTemplate) {
+                return TemplateType.Item;
+            }
+            else {
+                return TemplateType.Unknown;
+            }
+        }
+
+        /// <summary>
+        /// Things this checks for:
+        ///  - One or more IDE host files exist
+        ///  - Icon is present in all IDE host files
+        ///  TODO: Check that the icon file listed is on disk and in, or below, the 
+        ///        .template.config folder
+        /// </summary>
+        protected bool AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
+            Debug.Assert(!string.IsNullOrEmpty(templateConfigFolder));
+            Debug.Assert(indentPrefix != null);
+            _reporter.WriteVerbose($"Looking for host files in folder '{templateConfigFolder}'");
+            _reporter.WriteVerboseLine();
+
+            var hostFiles = Directory.GetFiles(templateConfigFolder, "*.host.json");
+            if(hostFiles == null || hostFiles.Length == 0) {
+                _reporter.WriteLine($"ERROR: no host files found", indentPrefix);
+                return false;
+            }
+            bool foundIssues = false;
+
+            // check for either a ide.host.json or vs-2017.3.host.json
+            var foundAnIdeHostFile = false;
+            var hostFileRules = GetHostFileRules();
+            foreach(var hf in hostFiles) {
+                if (IsAnIdeHostFile(hf)) { foundAnIdeHostFile = true; }
+                // check that the icon attribute is included in the host file
+
+                JToken jtoken;
+                try {
+                    jtoken = _jsonHelper.LoadJsonFrom(hf);
+                }
+                catch (Exception ex) {
+                    // TODO: make exception more specific
+                    WriteError($"Unable to load host file from: '{hf}'.\n Error: {ex.ToString()}");
+                    continue;
+                }
+
+                foreach(var rule in hostFileRules) {
+                    foundIssues = !ExecuteRule(rule, jtoken) || foundIssues;
+                }
+            }
+
+            if (!foundAnIdeHostFile) {
+                WriteError($"no host file found in folder '{templateConfigFolder}'");
+            }
+
+            void WriteError(string text) {
+                this.WriteError(text);
+                foundIssues = true;
+            }
+
+            return foundIssues;
+        }
+
+        protected List<JTokenAnalyzeRule> GetHostFileRules() =>
+            new List<JTokenAnalyzeRule> {
+                new JTokenAnalyzeRule {
+                    Query = "$.icon",
+                    Expectation = JTokenValidationType.Exists,
+                    Severity = ErrorWarningType.Error
+                }
+            };
+        
+        protected bool IsAnIdeHostFile(string filepath) =>
+            new FileInfo(filepath).Name.ToLowerInvariant() switch {
+                "ide.host.json" => true,
+                "vs-2017.3.host.json" => true,
+                _ => false
+            };
+
+        protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType) {
             List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
 
             // check required properties
             var requiredProps = new List<string> {
                 "$.author",
-                "$.sourceName",
                 "$.classifications",
                 "$.identity",
                 "$.name",
-                "$.shortName",
-                "$.tags",
-                "$.tags.language",
-                "$.tags.type"
             };
+
+            if(templateType == TemplateType.Project) {
+                requiredProps.AddRange(new string[] {
+                    "$.sourceName",
+                    "$.shortName",
+                    "$.tags",
+                    "$.tags.language",
+                    "$.tags.type"
+                });
+            }
+
             foreach (var requiredProp in requiredProps) {
                 templateRules.Add(new JTokenAnalyzeRule {
                     Query = requiredProp,
@@ -120,7 +231,7 @@ namespace TemplatesShared {
             templateRules.Add(new JTokenAnalyzeRule {
                 Expectation = JTokenValidationType.Custom,
                 Query = "$.tags.type",
-                Rule = (currentValue) => {
+                Rule = (jtoken, currentValue) => {
                     string currentResult = _jsonHelper.HasValue(currentValue as JToken) ?
                         _jsonHelper.GetStringValue(currentValue as JToken) :
                         null;
@@ -137,10 +248,14 @@ namespace TemplatesShared {
             var recommendedProps = new List<string> {
                 "$.defaultName",
                 "$.description",
-                "$.symbols",
-                "$.symbols.Framework",
-                "$.symbols.Framework.choices"
             };
+            if(templateType == TemplateType.Project) {
+                recommendedProps.AddRange(new string[] {
+                    "$.symbols",
+                    "$.symbols.Framework",
+                    "$.symbols.Framework.choices"
+                });
+            }
             foreach (var recProp in recommendedProps) {
                 templateRules.Add(new JTokenAnalyzeRule {
                     Query = recProp,
@@ -148,19 +263,21 @@ namespace TemplatesShared {
                     Severity = ErrorWarningType.Warning
                 });
             }
-            templateRules.Add(new JTokenAnalyzeRule {
-                Query = "$.symbols.Framework.type",
-                Expectation = JTokenValidationType.StringEquals,
-                Value = "parameter",
-                ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
-            });
-            templateRules.Add(new JTokenAnalyzeRule {
-                Query = "$.symbols.Framework.datatype",
-                Expectation = JTokenValidationType.StringEquals,
-                Value = "choice",
-                ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
-            });
 
+            if (templateType == TemplateType.Project) {
+                templateRules.Add(new JTokenAnalyzeRule {
+                    Query = "$.symbols.Framework.type",
+                    Expectation = JTokenValidationType.StringEquals,
+                    Value = "parameter",
+                    ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
+                });
+                templateRules.Add(new JTokenAnalyzeRule {
+                    Query = "$.symbols.Framework.datatype",
+                    Expectation = JTokenValidationType.StringEquals,
+                    Value = "choice",
+                    ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
+                });
+            }
             return templateRules;
         }
 
@@ -179,6 +296,11 @@ namespace TemplatesShared {
         private void WriteMessage(string message, string prefix = "") {
             WriteImpl(message, string.Empty, prefix);
         }
+        private void WriteVerboseLine(string message, string prefix = "") {
+            if (string.IsNullOrEmpty(message)) { return; }
+            _reporter.WriteVerbose(prefix);
+            _reporter.WriteVerboseLine(message, true);
+        }
         private void WriteImpl(string message, string typeStr, string prefix) {
             if (string.IsNullOrEmpty(message)) { return; }
 
@@ -193,28 +315,24 @@ namespace TemplatesShared {
         /// <summary>
         /// Returns true if passed otherwise false
         /// </summary>
-        private bool ExecuteRule(JTokenAnalyzeRule rule, JToken template) {
-            if( rule == null || 
-                !_jsonHelper.HasValue(template) ||
+        private bool ExecuteRule(JTokenAnalyzeRule rule, JToken jsonToken) {
+            if (rule == null ||
+                !_jsonHelper.HasValue(jsonToken) ||
                 string.IsNullOrEmpty(rule.Query)) {
                 return false;
             }
 
-            var queryResult = template.SelectToken(rule.Query);
-            var str = _jsonHelper.GetStringValueFromQuery(template, rule.Query);
+            var queryResult = jsonToken.SelectToken(rule.Query);
+            var str = _jsonHelper.GetStringValueFromQuery(jsonToken, rule.Query);
             switch (rule.Expectation) {
                 case JTokenValidationType.Exists:
                     return queryResult != null;
-                case JTokenValidationType.StringNotEmpty:                    
+                case JTokenValidationType.StringNotEmpty:
                     return !string.IsNullOrEmpty(str);
                 case JTokenValidationType.StringEquals:
                     return string.Compare(rule.Value, str, true) == 0;
                 case JTokenValidationType.Custom:
-                    //string currentResult = _jsonHelper.HasValue(queryResult) ?
-                    //    _jsonHelper.GetStringValue(queryResult) :
-                    //    null;
-
-                    var result = rule.Rule(queryResult);
+                    var result = rule.Rule(jsonToken, queryResult);
                     return result;
                 default:
                     throw new ArgumentException($"Unknown value for JTokenValidationType:{rule.Expectation}");
@@ -222,11 +340,17 @@ namespace TemplatesShared {
         }
     }
 
+    public enum TemplateType {
+        Project = 1,
+        Item = 2,
+        Unknown = 4
+    }
+
     public enum JTokenValidationType {
         Custom,
         Exists,
         StringNotEmpty,
-        StringEquals 
+        StringEquals
     }
 
     public class JTokenAnalyzeRule {
@@ -235,7 +359,7 @@ namespace TemplatesShared {
         public string ErrorMessage { get; set; }
         public string Value { get; set; }
         public ErrorWarningType Severity { get; set; }
-        public Func<object,bool> Rule { get; set; }
+        public Func<JToken, object, bool> Rule { get; set; }
         public string GetErrorMessage() {
             return GetErrorMessage(null);
         }

@@ -78,10 +78,10 @@ namespace Templates {
                                 }
                             }
                         }
-                        else
-                        {
-                            _reporter.WriteLine("no packages found to analyze");
-                        }
+                        //else
+                        //{
+                        //    _reporter.WriteLine("no packages found to analyze");
+                        //}
 
                         bool foundIssues = false;
                         if(foldersList != null && foldersList.Count > 0){

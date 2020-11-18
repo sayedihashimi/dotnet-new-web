@@ -11,6 +11,7 @@ namespace TemplatesShared {
         void WriteLine(string output, string prefix);
         void WriteVerbose(string output);
         void WriteVerboseLine(string output, bool includePrefix = true);
+        void WriteVerboseLine();
     }
 
     public class Reporter : IReporter {
@@ -29,13 +30,18 @@ namespace TemplatesShared {
             Console.Write(prefix);
             Console.WriteLine(output);
         }
+        public void WriteVerboseLine() {
+            if (EnableVerbose) {
+                WriteLine();
+            }
+        }
         public void WriteVerboseLine(string output, bool includePrefix = true) {
             if (EnableVerbose) {
                 if (includePrefix) {
                     Write("verbose: ");
                 }
                 Write(output);
-                Write(Environment.NewLine);
+                WriteLine();
             }
         }
         public void WriteVerbose(string output) {
@@ -43,5 +49,7 @@ namespace TemplatesShared {
                 Write(output);
             }
         }
+
+
     }
 }
