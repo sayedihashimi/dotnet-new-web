@@ -112,14 +112,33 @@ namespace TemplatesConsole {
             //var templatePacks = TemplatePack.CreateFromFile(templateReportJsonPath);
             using var writer = new StreamWriter(tempfilepath);
             writer.WriteLine("package name, version, has lib folder, packagetype,num-downloads");
+
+            // list of template packs that could not be initalized for some reason
+            // they need to be removed from the list to prevent futher issues
+            var tpToRemove = new List<TemplatePack>();
             foreach (var tp in templatePacks) {
-                var info = new TemplatePackReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
+                TemplatePackReportInternalSummaryInfo info = null;
+                try {
+                    info = new TemplatePackReportInternalSummaryInfo(_remoteFile.CacheFolderpath, tp);
+                }
+                catch(TemplateInitException tie) {
+                    // TODO: Reporter should be used instead of writing directly to the console
+                    Console.WriteLine($"ERROR: Unable to initalize template pack from '{tp.Package}', skipping this one.");
+                    tpToRemove.Add(tp);
+                    continue;
+                }
                 var line = GetTemplatePackReportLineFor(info);
                 Console.WriteLine(line);
                 writer.WriteLine(line);
             }
             writer.Flush();
             writer.Close();
+
+            if(tpToRemove.Count > 0) {
+                foreach(var tp in tpToRemove) {
+                    templatePacks.Remove(tp);
+                }
+            }
 
             // string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-pack-analysis.csv";
             Console.WriteLine($"writing analysis file to {resultsPath}");
@@ -341,7 +360,7 @@ namespace TemplatesConsole {
 
             var extractFolderPath = Path.Combine(_cacheFolderPath, "extracted", Normalize($"{tp.Package}.{tp.Version}.nupkg"));
             if (!Directory.Exists(extractFolderPath)) {
-                throw new DirectoryNotFoundException($"directory not found at {extractFolderPath}");
+                throw new TemplateInitException($"directory not found at {extractFolderPath}");
             }
 
             PackageName = tp.Package;

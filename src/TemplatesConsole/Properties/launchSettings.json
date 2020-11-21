@@ -1,8 +1,12 @@
 {
   "profiles": {
-    "TemplatesConsole": {
+    "TemplatesConsole-report": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -trp C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json -od C:\\data\\mycode\\dotnet-new-web\\"
+      "commandLineArgs": "report --verbose -st template -st templates --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport D:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json > d:\\temp\\templatereport-log.txt"
+    },
+    "TemplatesConsole-analayze": {
+      "commandName": "Project",
+      "commandLineArgs": "analyze -trp D:\\\\data\\\\mycode\\\\dotnet-new-web\\\\src\\\\TemplatesApi\\\\wwwroot\\\\template-report.json -od D:\\\\data\\\\mycode\\\\dotnet-new-web\\\\"
     }
   }
 }
