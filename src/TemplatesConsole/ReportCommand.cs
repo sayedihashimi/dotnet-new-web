@@ -66,15 +66,11 @@ namespace TemplatesConsole {
 
                 var report = new TemplateReport(_nugetHelper, _httpClient, _nugetPkgDownloader, _remoteFile);
 
-                var searchTerms = GetDefaultSearchTerms();
-                if (optionSearchTerms.HasValue()) {
-                    searchTerms = optionSearchTerms.Values.ToArray();
-                }
+                var searchTerms = optionSearchTerms.HasValue() ? optionSearchTerms.Values.ToArray() : GetDefaultSearchTerms();
 
-                var templateReportPath = Path.Combine(Directory.GetCurrentDirectory(), "template-report.json");
-                if (optionReportJsonPath.HasValue()) {
-                    templateReportPath = optionReportJsonPath.Value();
-                }
+                var templateReportPath = optionReportJsonPath.HasValue() ? 
+                                        optionReportJsonPath.Value() : 
+                                        Path.Combine(Directory.GetCurrentDirectory(), "template-report.json");
 
                 var specificPackages = new List<string>();
                 if (optionSpecificPackagesToInclude.HasValue()) {
