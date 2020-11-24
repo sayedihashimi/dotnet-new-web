@@ -169,7 +169,7 @@ namespace TemplatesConsole {
         private void CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
             var templateDetailsTempFilePath = Path.GetTempFileName();
             using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
-            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files,local-file-path");
+            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files,local-file-path,num-symbols,num-parameters");
             foreach (var templateInfo in allTemplateInfos) {
                 templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
             }
@@ -255,8 +255,13 @@ namespace TemplatesConsole {
             Debug.Assert(templateInfo.Template != null);
 
             var template = templateInfo.Template;
+            if(template.Symbols == null) { template.Symbols = new List<TemplateSymbolInfo>(); }
+            
+            var parameters = GetParametersFrom(template.Symbols);
+            if(parameters == null){ parameters = new List<TemplateSymbolInfo>();}
+
             var sb = new StringBuilder();
-            sb.Append(ReplaceComma(ReplaceComma(template.Name)));
+            sb.Append(ReplaceComma(template.Name));
             sb.Append(",");
             sb.Append(ReplaceComma(template.TemplatePackId));
             sb.Append(",");
@@ -283,9 +288,13 @@ namespace TemplatesConsole {
             sb.Append(ReplaceComma(GetTemplatePackReportStringForHostFiles(template)));
             sb.Append(",");
             sb.Append(ReplaceComma(template.LocalFilePath));
-
+            sb.Append(",");
+            sb.Append(template.Symbols.Count);
+            sb.Append(",");
+            sb.Append(parameters.Count);
             return sb.ToString();
         }
+
         private string GetHostFilesLineFor(TemplateHostFile hostFile)
         {
             if(hostFile == null)
@@ -336,6 +345,24 @@ namespace TemplatesConsole {
             }
 
             return sb.ToString();
+        }
+        private List<TemplateSymbolInfo> GetParametersFrom(List<TemplateSymbolInfo>symbols) {
+            var result = new List<TemplateSymbolInfo>();
+
+            if(symbols == null || symbols.Count == 0) {
+                return result;
+            }
+
+            foreach(var symbol in symbols) {
+                if(symbol == null || string.IsNullOrEmpty(symbol.Type)) {
+                    continue;
+                }
+                if(string.Compare("parameter",symbol.Type,StringComparison.OrdinalIgnoreCase) == 0) {
+                    result.Add(symbol);
+                }
+            }
+
+            return result;
         }
     }
     public class TemplatePackReportInternalSummaryInfo {
