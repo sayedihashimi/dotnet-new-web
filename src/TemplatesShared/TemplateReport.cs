@@ -94,7 +94,7 @@ namespace TemplatesShared {
             if (!Directory.Exists(reportsPath)) {
                 Directory.CreateDirectory(reportsPath);
             }
-            
+
             File.WriteAllText(
                     Path.Combine(reportsPath, "newly-found-packages-without-templates.json"),
                     JsonConvert.SerializeObject(listPackagesWithNotemplates,Formatting.Indented));
@@ -120,7 +120,12 @@ namespace TemplatesShared {
 
                 try {
                     var tp = TemplatePack.CreateFromNuSpec(pkg, nuspecFile, templateFiles);
-                    templatePacks.Add(tp);
+                    if(tp != null && tp.Templates != null && tp.Templates.Length > 0) {
+                        templatePacks.Add(tp);
+                    }
+                    else {
+                        Console.WriteLine($"Not adding package '{pkg.Id}', no templates found");
+                    }
                 }
                 catch (Exception ex) {
                     Console.WriteLine($"error creating template pack {nuspecFile} {ex.ToString()}");
