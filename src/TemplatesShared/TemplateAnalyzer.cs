@@ -278,6 +278,35 @@ namespace TemplatesShared {
                     ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
                 });
             }
+
+            // ensure primaryOutputs doesn't start with a / or \
+            templateRules.Add(new JTokenAnalyzeRule {
+                Query = @"$.primaryOutputs",
+                Expectation = JTokenValidationType.Custom,
+                Rule = (jtoken, currentValue) => {
+                    // need to loop through each path value
+                    var paths = currentValue as JArray;
+                    var errorFiles = new List<string>();
+                    if (paths != null) {
+
+                        foreach(var item in paths.Children<JObject>()) {
+                            string strResult = _jsonHelper.GetStringValueFromQuery(item, "path");
+                            if (!string.IsNullOrWhiteSpace(strResult) &&
+                                (strResult.StartsWith(@"/") || strResult.StartsWith(@"\"))) {
+                                errorFiles.Add(strResult);
+                            }
+                        }
+                    }
+
+                    if (errorFiles.Count > 0) {
+                        return false;
+                    }
+
+                    return true;
+                },
+                ErrorMessage = @"ERROR: One or more $.primaryOutputs.path values starts with a '/' or '\'. You will need to remove that to get the template to work correctly."
+            });
+
             return templateRules;
         }
 

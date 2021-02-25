@@ -2,7 +2,7 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze --use-cache --verbose -p D:\\data\\mycode\\template-sample\\nupkg\\SayedHa.Template.NetCoreTool.nuspec.1.0.0.nupkg"
+      "commandLineArgs": "analyze --verbose -f C:\\Users\\sayedha\\AppData\\Local\\templatereport\\extracted\\"
     }
   }
 }
