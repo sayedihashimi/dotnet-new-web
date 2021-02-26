@@ -13,7 +13,7 @@
     <PackageId>sayedha.template.command</PackageId>
     <Authors>Sayed Ibrahim Hashimi</Authors>
     <Description>.net core tool that can be used to search for existing templates on nuget.org as well as analyzing templates.</Description>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Copyright>Copyright 2020 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sayedihashimi/dotnet-new-web</PackageProjectUrl>
