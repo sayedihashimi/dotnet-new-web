@@ -35,10 +35,13 @@ namespace TemplatesConsole {
                 GetFromServices<IRemoteFile>(),
                 GetFromServices<INuGetPackageDownloader>());
             var analyzeCommand = new AnalyzeReportCommand(GetFromServices<IRemoteFile>());
+            var hashCommand = new HashCommand();
 
             app.Command(queryCommand.Name, queryCommand.Setup);
             app.Command(reportCommand.Name, reportCommand.Setup);
             app.Command(analyzeCommand.Name, analyzeCommand.Setup);
+            app.Command(hashCommand.Name, hashCommand.Setup);
+            
 
             app.OnExecute(() => {
                 Console.WriteLine("Specify a subcommand to execute\n");

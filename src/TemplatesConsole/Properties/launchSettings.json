@@ -6,7 +6,7 @@
     },
     "TemplatesConsole-analayze": {
       "commandName": "Project",
-      "commandLineArgs": "analyze -trp D:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json -od D:\\data\\mycode\\dotnet-new-web\\"
+      "commandLineArgs": "hash -trf D:\\temp\\templates-temp\\template-report.json"
     }
   }
 }
