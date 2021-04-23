@@ -174,10 +174,22 @@ namespace TemplatesShared {
             // read it from the file
             var pathToIgnoreFile = Path.Combine(
                     new FileInfo(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath).Directory.FullName,
-                    "package-names-to-ignore.json");
+                    "packages-to-ignore.txt");
             if (File.Exists(pathToIgnoreFile)) {
-                var ignoreJson = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(pathToIgnoreFile));
-                var result = ignoreJson.ToList();
+                var text = File.ReadAllText(pathToIgnoreFile);
+                var lines = text.Split(Environment.NewLine);
+                if(lines == null || lines.Length <= 0) {
+                    return new List<string>();
+                }
+
+                List<string> result = new List<string>(lines.Length);
+                foreach(var line in lines) {
+                    if (!string.IsNullOrEmpty(line)) {
+                        result.Add(line);
+                    }
+                }
+                //var ignoreJson = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(pathToIgnoreFile));
+                //var result = ignoreJson.ToList();
                 return result;
             }
 

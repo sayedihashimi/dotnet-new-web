@@ -49,6 +49,9 @@
     <None Update="package-names-to-ignore.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="packages-to-ignore.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="InstallTool" DependsOnTargets="Pack">
