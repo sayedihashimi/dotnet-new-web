@@ -13,7 +13,7 @@ else{
     Import-Module -Name $cacheModulePath -Global -DisableNameChecking
 }
 
-function Extract-NuGetCache{
+function Extract-NuGetCacheAv{
     [cmdletbinding()]
     param(
         [string]$pathToCacheFile = (join-path $scriptDir 'nugettemplatecache.zip')
@@ -32,7 +32,7 @@ if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
         '**** Extracting nuget cache to local folder' | Write-Output
-        Extract-NuGetCache
+        Extract-NuGetCacheAv
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
