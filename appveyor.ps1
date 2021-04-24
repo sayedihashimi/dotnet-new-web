@@ -24,7 +24,7 @@ function Extract-NuGetCacheAv{
             'nuget cache file not found at "{0}"' -f $pathToCacheFile | Write-Error
         }
         else{
-            Extract-NuGetCache -pathToCacheFile $pathToCacheFile
+            Extract-CacheFolder
         }
     }
 }
