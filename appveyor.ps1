@@ -10,6 +10,7 @@ if(-not (test-path -Path $cacheModulePath)){
     'cache module not found at {0}' -f $cacheModulePath | Write-Error
 }
 else{
+    'importing cache module from "{0}"' -f $cacheModulePath | Write-Output
     Import-Module -Name $cacheModulePath -Global -DisableNameChecking
 }
 
