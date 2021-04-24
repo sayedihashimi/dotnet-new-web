@@ -44,11 +44,11 @@ namespace TemplatesShared {
             }
 
             // 1: query nuget for search results, we need to query all because we need to get the new download count
-            var foundPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, GetPackagesToIgnore());
+            var nugetSearchResultPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, GetPackagesToIgnore());
             var pkgsToDownload = new List<NuGetPackage>();
             // go through each found package, if pkg is in previous result with same version number, update download count and move on
             // if not same version number, remove from dictionary and add to list to download
-            foreach(var pkg in foundPackages) {
+            foreach(var pkg in nugetSearchResultPackages) {
                 var id = TemplatePack.NormalisePkgId(pkg.Id);
                 if (previousPacks.ContainsKey(id)) {
                     var previousPackage = previousPacks[id];
@@ -58,6 +58,7 @@ namespace TemplatesShared {
                         previousPackage.DownloadCount = pkg.TotalDownloads;
                     }
                     else {
+                        // removing from previousPacks becuase version mismatch, so latest version should be downloaded
                         previousPacks.Remove(id);
                         pkgsToDownload.Add(pkg);
                     }
@@ -68,8 +69,10 @@ namespace TemplatesShared {
             }
 
             // 2: download nuget packages locally
-            // var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(foundPackages);
-            var downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
+            var downloadedPackages = new List<NuGetPackage>();
+            if (pkgsToDownload != null && pkgsToDownload.Count > 0) {
+                pkgsToDownload = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
+            }
 
             // 3: extract nuget package to local folder
             var templatePackages = new List<NuGetPackage>();

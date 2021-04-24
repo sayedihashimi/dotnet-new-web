@@ -27,6 +27,16 @@
     <EmbeddedResource Remove="nupkg\**" />
     <None Remove="nupkg\**" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="packages-to-ignore.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="packages-to-ignore.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
@@ -47,9 +57,6 @@
   
   <ItemGroup>
     <None Update="package-names-to-ignore.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="packages-to-ignore.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

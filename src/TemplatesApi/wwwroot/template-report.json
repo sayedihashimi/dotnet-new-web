@@ -7596,7 +7596,7 @@
   },
   {
     "Owners": null,
-    "Version": "2021.422.1",
+    "Version": "2021.424.0",
     "DownloadCount": 23442,
     "Templates": [
       {
@@ -14045,7 +14045,7 @@
   },
   {
     "Owners": null,
-    "Version": "4.1.7",
+    "Version": "4.1.8",
     "DownloadCount": 7490,
     "Templates": [
       {
@@ -16438,6 +16438,67 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "",
+    "Version": "5.0.0",
+    "DownloadCount": 5404,
+    "Templates": [
+      {
+        "Author": "Capgemini Valencia ",
+        "Name": "Devon4Net API solution template",
+        "Tags": {
+          "language": "C#",
+          "type": "solution"
+        },
+        "Classifications": [
+          "devonfw",
+          "Devon4Net",
+          "Devon4NetAPI"
+        ],
+        "ShortName": [
+          "Devon4NetAPI"
+        ],
+        "GroupIdentity": "Devon4NetAPI",
+        "Identity": "Devon4Net.WebAPI",
+        "TemplatePackId": "Devon4Net.WebAPI.Template",
+        "SourceName": "Devon4NetAPI",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "Capgemini Valencia ",
+        "Name": "Devon4Net Test project template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "OASP",
+          "Devon4Net"
+        ],
+        "ShortName": [
+          "Devon4NetTest"
+        ],
+        "GroupIdentity": "Devon4Net",
+        "Identity": "Devon4Net.Test",
+        "TemplatePackId": "Devon4Net.WebAPI.Template",
+        "SourceName": "Devon4NetTest",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Project template to develop web API template for .NET core 3.1",
+    "Copyright": "Copyright © Capgemini",
+    "Authors": "iCSD/ADCenter Capgemini Valencia",
+    "LicenseUrl": "https://devonfw.com/website/pages/docs/devonfw-ide-support.asciidoc.html#LICENSE.asciidoc",
+    "ProjectUrl": "https://devonfw.com/",
+    "Package": "Devon4Net.WebAPI.Template",
+    "IconUrl": "https://avatars2.githubusercontent.com/u/7803029?s=200amp;v=4",
+    "IconPngUrl": "https://avatars2.githubusercontent.com/u/7803029?s=200amp;v=4"
+  },
+  {
     "Owners": "Oskar Dudycz",
     "Version": "5.0.0",
     "DownloadCount": 5288,
@@ -16694,6 +16755,48 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/zhusmelb/DotnetNewTemplate/wiki",
     "Package": "com.zhusmelb.Template.Project",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": null,
+    "Version": "4.12.2",
+    "DownloadCount": 5126,
+    "Templates": [
+      {
+        "Author": "Microsoft",
+        "Name": "Bot Framework Core Bot (v4.12.2)",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Bot",
+          "Bot Framework",
+          "Core Bot",
+          "Core Bot Test",
+          "Conversational AI",
+          "AI"
+        ],
+        "ShortName": [
+          "corebot"
+        ],
+        "GroupIdentity": "Microsoft.BotFramework.CSharp.CoreBot",
+        "Identity": "Microsoft.BotFramework.CSharp.CoreBot",
+        "TemplatePackId": "Microsoft.Bot.Framework.CSharp.CoreBot",
+        "SourceName": "Microsoft.BotFramework.CoreBot",
+        "DefaultName": "CoreBot",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A .NET Core Template for Microsoft Bot Framework v4.  Will let you quickly set up a conversational AI bot with core features every bot is likely to use.",
+    "Copyright": "© Microsoft Corporation. All rights reserved.",
+    "Authors": "Microsoft",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": "https://github.com/Microsoft/BotBuilder-Samples/tree/master/generators/dotnet-templates/",
+    "Package": "Microsoft.Bot.Framework.CSharp.CoreBot",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -22746,6 +22849,49 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/dotnet/templating",
     "Package": "Microsoft.DotNet.Common.ProjectTemplates.2.1",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": null,
+    "Version": "1.0.19",
+    "DownloadCount": 3004,
+    "Templates": [
+      {
+        "Author": "Egil Hansen",
+        "Name": "bUnit Test Project",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Test",
+          "bUnit",
+          "Blazor"
+        ],
+        "ShortName": [
+          "bunit"
+        ],
+        "GroupIdentity": "Bunit",
+        "Identity": "BunitProject",
+        "TemplatePackId": "bunit.template",
+        "SourceName": "Company.BlazorTests1",
+        "DefaultName": "BlazorTestProject1",
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "Company.BlazorTests1.csproj"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A project template for a testing Blazor/Razor components using the bUnit library.",
+    "Copyright": "Egil Hansen",
+    "Authors": "Egil Hansen",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://bunit.egilhansen.com/",
+    "Package": "bunit.template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -38178,6 +38324,44 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Jannik Buschke",
+    "Version": "0.10.0",
+    "DownloadCount": 777,
+    "Templates": [
+      {
+        "Author": "Jannik Buschke",
+        "Name": "Opinionated ASP.NET Core + React boilerplate",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "AspNetCore",
+          "React"
+        ],
+        "ShortName": [
+          "glow-app"
+        ],
+        "GroupIdentity": "Glow.App.Template",
+        "Identity": "Glow.App.Template",
+        "TemplatePackId": "Glow.App.Template",
+        "SourceName": "TemplateName",
+        "DefaultName": "MyApp",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Opinionated Asp .Net Core + React template\n      https://github.com/jannikbuschke/glue-reactnetcore-template",
+    "Copyright": null,
+    "Authors": "Jannik Buschke",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "Glow.App.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Meowzz95",
     "Version": "1.0.3",
     "DownloadCount": 776,
@@ -43306,6 +43490,46 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": null,
     "Package": "Plugga.Core.Templates",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Jaxel Rojas",
+    "Version": "0.0.3",
+    "DownloadCount": 450,
+    "Templates": [
+      {
+        "Author": "Jaxel Rojas",
+        "Name": ".Net Core Custom Console Application",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "cnsola"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Cnsola",
+        "TemplatePackId": "Cnsola",
+        "SourceName": "Cnsola",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "Cnsola.csproj"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Template for console applications with usual custom configurations to speed up development",
+    "Copyright": null,
+    "Authors": "Jaxel Rojas",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/Jaxelr/Cnsola",
+    "Package": "Cnsola",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -50274,6 +50498,49 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Miro Holopainen",
+    "Version": "3.2.1",
+    "DownloadCount": 237,
+    "Templates": [
+      {
+        "Author": "Miro Holopainen",
+        "Name": "Azure functions http function (DI)",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Dependency Injection",
+          "Azure",
+          "Azure Functions"
+        ],
+        "ShortName": [
+          "smairo-function-http"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Smairo.Template.AzureFunction.Http",
+        "TemplatePackId": "Smairo.Template.AzureFunction.Http",
+        "SourceName": "Smairo.Template.AzureFunction.Http",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "Smairo.Template.AzureFunctions.Http/Smairo.Template.AzureFunctions.Http.sln"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Azure function http with dependency injection",
+    "Copyright": null,
+    "Authors": "Miro Holopainen",
+    "LicenseUrl": "https://github.com/smairo/SmairoDotNetTemplates/blob/master/LICENSE",
+    "ProjectUrl": "https://github.com/smairo/SmairoDotNetTemplates",
+    "Package": "Smairo.Template.AzureFunction.Http",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": null,
     "Version": "1.0.0",
     "DownloadCount": 236,
@@ -52520,6 +52787,43 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "ArcherTrister",
+    "Version": "3.1.4-preview",
+    "DownloadCount": 191,
+    "Templates": [
+      {
+        "Author": "ArcherTrister",
+        "Name": "Hybrid Template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Hybrid/Web/WebAPI"
+        ],
+        "ShortName": [
+          "hybrid"
+        ],
+        "GroupIdentity": "Hybrid.Sample",
+        "Identity": "Hybrid.Demo.CSharp",
+        "TemplatePackId": "Hybrid.Template",
+        "SourceName": "LeXun.Demo",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Hybrid 模板项目",
+    "Copyright": "Copyright © LeXun 2018",
+    "Authors": "ArcherTrister",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": "https://www.lxking.cn/",
+    "Package": "Hybrid.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "bartlomiej.szal",
     "Version": "1.0.0",
     "DownloadCount": 189,
@@ -53940,6 +54244,43 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": "https://www.lxking.cn/",
     "Package": "AbpPro.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": null,
+    "Version": "1.0.0",
+    "DownloadCount": 127,
+    "Templates": [
+      {
+        "Author": "Rajeev",
+        "Name": "ConsoleTestTemplateDemo1",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "ConsoleDemo1"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Rajeev.ConsoleTestTemplateDemo1",
+        "TemplatePackId": "Rajeev.Template.Demo1",
+        "SourceName": "ConsoleTestDemo1",
+        "DefaultName": "ConsoleTestTemplateDemo1",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "This is test template setup demo 1",
+    "Copyright": null,
+    "Authors": "Rajeev",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": null,
+    "Package": "Rajeev.Template.Demo1",
     "IconUrl": null,
     "IconPngUrl": null
   },
