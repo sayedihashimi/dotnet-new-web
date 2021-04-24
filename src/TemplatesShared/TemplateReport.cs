@@ -96,7 +96,7 @@ namespace TemplatesShared {
                     }
                 }
 
-                pkgsToDownload = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
+                downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
             }
 
             // 3: extract nuget package to local folder
