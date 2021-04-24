@@ -31,7 +31,9 @@ function Extract-NuGetCache{
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
+        '**** Extracting nuget cache to local folder' | Write-Output
         Extract-NuGetCache
+        '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
 }
