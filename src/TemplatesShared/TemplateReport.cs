@@ -70,7 +70,32 @@ namespace TemplatesShared {
 
             // 2: download nuget packages locally
             var downloadedPackages = new List<NuGetPackage>();
+
             if (pkgsToDownload != null && pkgsToDownload.Count > 0) {
+                // if the nuget pkg extract folder exists, don't download the package
+                var pkgsToRemoveFromDownloadList = new List<NuGetPackage>();
+                // TODO: the code that skips if the extract folder is there should be refactored
+                //       probably into RemoteFile.cs somehow
+                var rf = (RemoteFile)_remoteFile;
+                foreach(var pkg in pkgsToDownload) {
+                    // var filepath = (rf.GetLocalFilepathFor(pkg.GetPackageFilename();
+                    // var filename = new System.IO.FileInfo(filepath).Name;
+                    // var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
+                    var filepath = rf.GetLocalFilepathFor(pkg.GetPackageFilename());
+                    var filename = new System.IO.FileInfo(filepath).Name;
+                    var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
+                    if (Directory.Exists(expectedExtractFolder)) {
+                        Console.WriteLine($"adding to exclude list because extract folder exists at '{expectedExtractFolder}'");
+                        pkgsToRemoveFromDownloadList.Add(pkg);
+                    }
+                }
+
+                if(pkgsToRemoveFromDownloadList.Count > 0) {
+                    foreach(var pkg in pkgsToRemoveFromDownloadList) {
+                        pkgsToDownload.Remove(pkg);
+                    }
+                }
+
                 pkgsToDownload = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
             }
 

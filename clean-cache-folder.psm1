@@ -94,7 +94,14 @@ function Extract-CacheFolder{
     )
     process{
         'extracting to "{0}"' -f $rootCacheFolder | Write-Output
-        Expand-Archive -LiteralPath $sourceZipFile -DestinationPath $destination -Force
+        [string]$extractFolder = (Join-Path -Path $destination 'extracted');
+        if(-not(test-path $extractFolder)){
+            Expand-Archive -LiteralPath $sourceZipFile -DestinationPath $destination -Force
+        }
+        else{
+            'Skipping extract cache file because folder exists at "{0}"' -f $extractFolder | Write-Output
+        }
+        
     }
 }
 
