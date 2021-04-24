@@ -90,12 +90,10 @@ function Extract-CacheFolder{
     [cmdletbinding()]
     param(
         [string]$sourceZipFile = (Join-Path $scriptDir nugettemplatecache.zip),
-        [string]$destination = $defaultCacheFolder
+        [string]$destination = $rootCacheFolder
     )
     process{
-        #if(-not (test-path -Path $destination)){
-        #    New-Item -Path $destination -ItemType Directory
-        #}
+        'extracting to "{0}"' -f $rootCacheFolder | Write-Output
         Expand-Archive -LiteralPath $sourceZipFile -DestinationPath $destination -Force
     }
 }
