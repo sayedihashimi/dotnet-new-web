@@ -6,7 +6,7 @@ $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
 
 [string]$cacheModulePath = (Join-Path $scriptDir clean-cache-folder.psm1)
 
-if(not (test-path -Path $cacheModulePath)){
+if(-not (test-path -Path $cacheModulePath)){
     'cache module not found at {0}' -f $cacheModulePath | Write-Error
 }
 else{
@@ -16,16 +16,22 @@ else{
 function Extract-NuGetCache{
     [cmdletbinding()]
     param(
-
+        [string]$pathToCacheFile = (join-path $scriptDir 'nugettemplatecache.zip')
     )
     process{
-
+        if(-not (Test-Path -Path $pathToCacheFile)){
+            'nuget cache file not found at "{0}"' -f $pathToCacheFile | Write-Error
+        }
+        else{
+            Extract-NuGetCache -pathToCacheFile $pathToCacheFile
+        }
     }
 }
 
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
+        Extract-NuGetCache
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
 }
