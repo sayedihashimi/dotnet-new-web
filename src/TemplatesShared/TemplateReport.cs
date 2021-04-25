@@ -86,9 +86,6 @@ namespace TemplatesShared {
                         continue;
                     }
 
-                    // var filepath = (rf.GetLocalFilepathFor(pkg.GetPackageFilename();
-                    // var filename = new System.IO.FileInfo(filepath).Name;
-                    // var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
                     var filepath = rf.GetLocalFilepathFor(pkg.GetPackageFilename());
                     var filename = new System.IO.FileInfo(filepath).Name;
                     var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
