@@ -41,6 +41,6 @@ if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
         # temporary
         Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
                 Select-Object -ExpandProperty FullName |
-                Out-File (join-path (join-path $env:LOCALAPPDATA 'ls-out.txt') ) -Force
+                Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
 }
 
