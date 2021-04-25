@@ -30,7 +30,8 @@ function DeleteCacheFolders{
     }
 }
 
-DeleteCacheFolders
+# TODO: Uncomment this later
+# DeleteCacheFolders
 [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
 
 foreach($p in $projects){
