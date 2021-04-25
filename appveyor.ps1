@@ -29,13 +29,20 @@ function Extract-NuGetCacheAv{
     }
 }
 
+Set-Location -Path C:\projects\dotnet-new-web
+.\install-tools.ps1
+
+templatereport report --verbose -st template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
+
+return
+# old content below
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('2021.04/cibuild01', $branchName, $true) -eq 0 ){
         #'COMMENTED OUT**** Extracting nuget cache to local folder' | Write-Output
         #Extract-NuGetCacheAv
 
-        #'**** Creating template report' | Write-Output
+        '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
 
@@ -50,4 +57,6 @@ if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
             Select-Object -ExpandProperty FullName -ErrorAction Continue |
             Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
 }
-
+else{
+    'false' | Write-Output
+}
