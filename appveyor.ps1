@@ -6,18 +6,7 @@ $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
 
 [string]$cacheModulePath = (Join-Path $scriptDir clean-cache-folder.psm1)
 
-Set-Location -Path C:\projects\dotnet-new-web
-.\install-tools.ps1
 
-'Extracting nuget cache to local folder' | Write-Output
-Extract-NuGetCacheAv
-
-templatereport report --verbose -st template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
-
-return
-# old content below
-
-<#
 if(-not (test-path -Path $cacheModulePath)){
     'cache module not found at {0}' -f $cacheModulePath | Write-Error
 }
@@ -41,6 +30,20 @@ function Extract-NuGetCacheAv{
     }
 }
 
+Set-Location -Path C:\projects\dotnet-new-web
+.\install-tools.ps1
+
+'Extracting nuget cache to local folder' | Write-Output
+Extract-NuGetCacheAv
+
+templatereport report --verbose -st template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
+
+
+
+return
+# old content below
+
+<#
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('2021.04/cibuild01', $branchName, $true) -eq 0 ){
