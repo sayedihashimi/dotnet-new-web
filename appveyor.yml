@@ -21,4 +21,5 @@ after_build:
 
 artifacts:
 - path: output\release\netcoreapp3.1\publish\template-report.json
+- path: src\TemplatesConsole\package-names-to-ignore.json
 - path: ls-out.txt
