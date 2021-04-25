@@ -42,7 +42,7 @@ function DeployTemplateReport{
         [string]$publishUsername = $env:publishUsername,
         [string]$publishPassword = $env:publishPassword,
         [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
-        [string]$sourceRelFilepath = '.output/release/netcoreapp3.1/publish/template-report.json',
+        [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
     )
     process{
@@ -89,7 +89,7 @@ function Download-LatestTemplateReport{
         [string]$publishUsername = $env:publishUsername,
         [string]$publishPassword = $env:publishPassword,
         [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
-        [string]$sourceRelFilepath = '.output/release/netcoreapp3.1/publish/template-report.json',
+        [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
     )
     process{
