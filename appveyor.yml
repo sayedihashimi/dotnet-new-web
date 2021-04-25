@@ -20,5 +20,5 @@ after_build:
 - pwsh: ./appveyor.ps1
 
 artifacts:
-- path: .output\release\netcoreapp3.1\publish\template-report.json
+- path: output\release\netcoreapp3.1\publish\template-report.json
 - path: ls-out.txt

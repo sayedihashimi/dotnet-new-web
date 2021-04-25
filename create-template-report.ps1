@@ -1,5 +1,5 @@
 $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
-$outputPath = Join-Path -Path $scriptDir '.output'
+$outputPath = Join-Path -Path $scriptDir 'output'
 $buildConfig = 'release'
 # need to create the folder to easily get the full path
 
