@@ -32,15 +32,18 @@ function Extract-NuGetCacheAv{
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('2021.04/cibuild01', $branchName, $true) -eq 0 ){
-        'COMMENTED OUT**** Extracting nuget cache to local folder' | Write-Output
+        #'COMMENTED OUT**** Extracting nuget cache to local folder' | Write-Output
         Extract-NuGetCacheAv
-        '**** Creating template report' | Write-Output
-        $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
-        &$createTemplatePath
 
         # temporary
         Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
                 Select-Object -ExpandProperty FullName |
                 Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
+
+        #'**** Creating template report' | Write-Output
+        #$createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
+        #&$createTemplatePath
+
+        
 }
 
