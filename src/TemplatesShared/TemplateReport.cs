@@ -17,10 +17,11 @@ namespace TemplatesShared {
         private readonly HttpClient _httpClient;
         private readonly INuGetPackageDownloader _nugetDownloader;
         private readonly IRemoteFile _remoteFile;
+        private readonly IReporter _reporter;
 
         public bool EnableVerbose{get;set;}
 
-        public TemplateReport(INuGetHelper nugetHelper, HttpClient httpClient, INuGetPackageDownloader nugetDownloader, IRemoteFile remoteFile) {
+        public TemplateReport(INuGetHelper nugetHelper, HttpClient httpClient, INuGetPackageDownloader nugetDownloader, IRemoteFile remoteFile,IReporter reporter) {
             Debug.Assert(nugetHelper != null);
             Debug.Assert(httpClient != null);
             Debug.Assert(nugetDownloader != null);
@@ -30,6 +31,7 @@ namespace TemplatesShared {
             _httpClient = httpClient;
             _nugetDownloader = nugetDownloader;
             _remoteFile = remoteFile;
+            _reporter = reporter;
         }
         public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath, List<string> specificPackagesToInclude, string previousReportPath) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
@@ -82,7 +84,7 @@ namespace TemplatesShared {
                     var key = TemplatePack.NormalisePkgId(pkg.Id);
                     if (packageIdsToIgnore.Contains(key)) {
                         pkgsToRemoveFromDownloadList.Add(pkg);
-                        Console.WriteLine($"verbose: ignoring pkg id '{pkg.Id}' because it's on the ignore list");
+                        _reporter.WriteVerboseLine($"verbose: ignoring pkg id '{pkg.Id}' because it's on the ignore list");
                         continue;
                     }
 
@@ -90,7 +92,7 @@ namespace TemplatesShared {
                     var filename = new System.IO.FileInfo(filepath).Name;
                     var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
                     if (Directory.Exists(expectedExtractFolder)) {
-                        Console.WriteLine($"adding to exclude list because extract folder exists at '{expectedExtractFolder}'");
+                        _reporter.WriteLine($"adding to exclude list because extract folder exists at '{expectedExtractFolder}'");
                         pkgsToRemoveFromDownloadList.Add(pkg);
                     }
                 }
@@ -105,7 +107,7 @@ namespace TemplatesShared {
                     downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
                 }
                 else {
-                    Console.WriteLine("verbose: no packages found to download");
+                    _reporter.WriteVerboseLine("no packages found to download");
                 }
             }
 
@@ -121,7 +123,7 @@ namespace TemplatesShared {
                 catch (Exception ex) {
                     listPackagesWithNotemplates.Add(pkg);
                     pkgNamesWitoutPackages.Add(pkg.Id);
-                    Console.WriteLine($"ERROR: {ex.ToString()}");
+                    _reporter.WriteLine($"ERROR: {ex.ToString()}");
                     continue;
                 }
                 if (string.IsNullOrEmpty(extractPath)) {
@@ -135,7 +137,7 @@ namespace TemplatesShared {
                     templatePackages.Add(pkg);
                 }
                 else {
-                    Console.WriteLine($"pkg has no templates: {pkg.Id}");
+                    _reporter.WriteLine($"pkg has no templates: {pkg.Id}");
                     listPackagesWithNotemplates.Add(pkg);
                     pkgNamesWitoutPackages.Add(pkg.Id);
                 }
@@ -159,7 +161,7 @@ namespace TemplatesShared {
                 // get nuspec file path
                 var nuspecFile = Directory.GetFiles(pkg.LocalExtractPath, $"{pkg.Id}.nuspec").FirstOrDefault();
                 if(nuspecFile == null) {
-                    Console.WriteLine($"warning: nuspec not found in folder {pkg.LocalFilepath}");
+                    _reporter.WriteLine($"warning: nuspec not found in folder {pkg.LocalFilepath}");
                     continue;
                 }
                 // get template folders
@@ -175,11 +177,11 @@ namespace TemplatesShared {
                         templatePacks.Add(tp);
                     }
                     else {
-                        Console.WriteLine($"Not adding package '{pkg.Id}', no templates found");
+                        _reporter.WriteLine($"Not adding package '{pkg.Id}', no templates found");
                     }
                 }
                 catch (Exception ex) {
-                    Console.WriteLine($"error creating template pack {nuspecFile} {ex.ToString()}");
+                    _reporter.WriteLine($"error creating template pack {nuspecFile} {ex.ToString()}");
                 }
             }
 
@@ -204,7 +206,7 @@ namespace TemplatesShared {
                 File.Delete(jsonReportFilepath);
             }
 
-            Console.WriteLine($"Writing report to '{jsonReportFilepath}'");
+            _reporter.WriteLine($"Writing report to '{jsonReportFilepath}'");
             File.Copy(cacheFile, jsonReportFilepath);
         }
 
@@ -231,7 +233,7 @@ namespace TemplatesShared {
                 return result;
             }
             else {
-                Console.WriteLine($"pkgs to ignore file not found at '{pathToIgnoreFile}'");
+                _reporter.WriteLine($"pkgs to ignore file not found at '{pathToIgnoreFile}'");
             }
 
             return new List<string>();
@@ -239,8 +241,7 @@ namespace TemplatesShared {
 
         private void WriteVerbose(string str) {
             if (EnableVerbose) {
-                Console.Write("verbose: ");
-                Console.WriteLine(str);
+                _reporter.WriteVerboseLine(str);
             }
         }
     }
