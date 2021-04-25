@@ -216,6 +216,7 @@ namespace TemplatesShared {
                     new FileInfo(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath).Directory.FullName,
                     "packages-to-ignore.txt");
             if (File.Exists(pathToIgnoreFile)) {
+                _reporter.WriteLine($"pkgs to ignore file found at '{pathToIgnoreFile}'");
                 var text = File.ReadAllText(pathToIgnoreFile);
                 var lines = text.Split(Environment.NewLine);
                 if(lines == null || lines.Length <= 0) {
