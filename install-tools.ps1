@@ -9,7 +9,7 @@ function DeleteCacheFolders{
     process{
         'DeleteCacheFolders' | Write-Output
         foreach($cn in $commandName){
-            'DeleteCacheFolders1, cn="{0}", env:home="{$env:HOME}"' -f $cn, $env:HOME | Write-Output
+            'DeleteCacheFolders1, cn="{0}", env:home="{1}"' -f $cn, $env:HOME | Write-Output
             $exepath = (Join-Path $env:HOME .dotnet\tools\ ("{0}.exe" -f $cn))
             ' exepath: "{0}"' -f $exepath | Write-Output
             if(Test-Path $exepath -PathType Leaf){
