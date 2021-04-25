@@ -42,7 +42,7 @@ if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
 
         '**** directory results for C:\projects\dotnet-new-web\output\' | Out-File -Append -LiteralPath 'C:\projects\dotnet-new-web\ls-out.txt'
 
-        Get-ChildItem 'C:\projects\dotnet-new-web\output\' -Recurse  |
+        Get-ChildItem 'C:\projects\dotnet-new-web' -Recurse  |
                 Select-Object -ExpandProperty FullName -ErrorAction Continue |
                 Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
         #'**** Creating template report' | Write-Output
