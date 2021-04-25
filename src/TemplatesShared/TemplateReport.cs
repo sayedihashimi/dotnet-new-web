@@ -233,6 +233,9 @@ namespace TemplatesShared {
                 //var result = ignoreJson.ToList();
                 return result;
             }
+            else {
+                Console.WriteLine($"pkgs to ignore file not found at '{pathToIgnoreFile}'");
+            }
 
             return new List<string>();
         }
