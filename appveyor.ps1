@@ -35,20 +35,19 @@ if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
         #'COMMENTED OUT**** Extracting nuget cache to local folder' | Write-Output
         Extract-NuGetCacheAv
 
+        #'**** Creating template report' | Write-Output
+        $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
+        &$createTemplatePath
+
         # temporary
         Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
-                Select-Object -ExpandProperty FullName |
-                Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
+            Select-Object -ExpandProperty FullName |
+            Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
 
         '**** directory results for C:\projects\dotnet-new-web\output\' | Out-File -Append -LiteralPath 'C:\projects\dotnet-new-web\ls-out.txt'
 
         Get-ChildItem 'C:\projects\dotnet-new-web' -Recurse  |
-                Select-Object -ExpandProperty FullName -ErrorAction Continue |
-                Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
-        #'**** Creating template report' | Write-Output
-        #$createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
-        #&$createTemplatePath
-
-        
+            Select-Object -ExpandProperty FullName -ErrorAction Continue |
+            Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
 }
 
