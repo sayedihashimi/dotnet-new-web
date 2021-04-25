@@ -23,7 +23,7 @@ function DeleteCacheFolders{
             $nugetcachefolder = Join-Path $env:LOCALAPPDATA NuGet\v3-cache
             [string[]]$foundnugetfiles = Get-ChildItem -Path $nugetcachefolder ("*{0}*" -f $tn) -Recurse -File
             if($foundnugetfiles -and $foundnugetfiles.Length -gt 0){
-                Remove-Item -Path $foundnugetfiles -Force
+                Remove-Item -LiteralPath $foundnugetfiles -Force
             }
             #Get-ChildItem -Path $nugetcachefolder ("*{0}*" -f $cn) -Recurse -ErrorAction Ignore | Remove-Item -Force -ErrorAction SilentlyContinue
         }
@@ -31,7 +31,16 @@ function DeleteCacheFolders{
 }
 
 # TODO: Uncomment this later
-# DeleteCacheFolders
+# 
+
+try {
+    DeleteCacheFolders
+}
+catch {
+    Write-Host "An error occurred:"
+    Write-Host $_
+}
+ 
 [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
 
 foreach($p in $projects){

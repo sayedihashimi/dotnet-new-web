@@ -9,6 +9,9 @@ $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
 Set-Location -Path C:\projects\dotnet-new-web
 .\install-tools.ps1
 
+'Extracting nuget cache to local folder' | Write-Output
+Extract-NuGetCacheAv
+
 templatereport report --verbose -st template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
 
 return
