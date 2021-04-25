@@ -31,9 +31,9 @@ function Extract-NuGetCacheAv{
 
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
-    [string]::Compare('master', $branchName, $true) -eq 0 ){
+    [string]::Compare('2021.04/cibuild01', $branchName, $true) -eq 0 ){
         'COMMENTED OUT**** Extracting nuget cache to local folder' | Write-Output
-        #Extract-NuGetCacheAv
+        Extract-NuGetCacheAv
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
