@@ -44,7 +44,8 @@ namespace TemplatesShared {
             }
 
             // 1: query nuget for search results, we need to query all because we need to get the new download count
-            var nugetSearchResultPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, GetPackagesToIgnore());
+            var packageIdsToIgnore = GetPackagesToIgnore();
+            var nugetSearchResultPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, packageIdsToIgnore);
             var pkgsToDownload = new List<NuGetPackage>();
             // go through each found package, if pkg is in previous result with same version number, update download count and move on
             // if not same version number, remove from dictionary and add to list to download
@@ -78,6 +79,13 @@ namespace TemplatesShared {
                 //       probably into RemoteFile.cs somehow
                 var rf = (RemoteFile)_remoteFile;
                 foreach(var pkg in pkgsToDownload) {
+                    var key = TemplatePack.NormalisePkgId(pkg.Id);
+                    if (packageIdsToIgnore.Contains(key)) {
+                        pkgsToRemoveFromDownloadList.Add(pkg);
+                        Console.WriteLine($"verbose: ignoring pkg id '{pkg.Id}' because it's on the ignore list");
+                        continue;
+                    }
+
                     // var filepath = (rf.GetLocalFilepathFor(pkg.GetPackageFilename();
                     // var filename = new System.IO.FileInfo(filepath).Name;
                     // var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
@@ -96,7 +104,12 @@ namespace TemplatesShared {
                     }
                 }
 
-                downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
+                if(pkgsToDownload.Count > 0) {
+                    downloadedPackages = await _nugetDownloader.DownloadAllPackagesAsync(pkgsToDownload);
+                }
+                else {
+                    Console.WriteLine("verbose: no packages found to download");
+                }
             }
 
             // 3: extract nuget package to local folder
@@ -213,7 +226,7 @@ namespace TemplatesShared {
                 List<string> result = new List<string>(lines.Length);
                 foreach(var line in lines) {
                     if (!string.IsNullOrEmpty(line)) {
-                        result.Add(line);
+                        result.Add(TemplatePack.NormalisePkgId(line));
                     }
                 }
                 //var ignoreJson = JsonConvert.DeserializeObject<string[]>(File.ReadAllText(pathToIgnoreFile));

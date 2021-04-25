@@ -32,10 +32,15 @@ function Extract-NuGetCacheAv{
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
-        '**** Extracting nuget cache to local folder' | Write-Output
-        Extract-NuGetCacheAv
+        'COMMENTED OUT**** Extracting nuget cache to local folder' | Write-Output
+        #Extract-NuGetCacheAv
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
+
+        # temporary
+        Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
+                Select-Object -ExpandProperty FullName |
+                Out-File (join-path (join-path $env:LOCALAPPDATA 'ls-out.txt') ) -Force
 }
 

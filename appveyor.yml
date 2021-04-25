@@ -21,4 +21,4 @@ after_build:
 
 artifacts:
 - path: .output\release\netcoreapp3.1\publish\template-report.json
-
+- path: C:\Users\appveyor\AppData\Local\templatereport\ls-out.txt
