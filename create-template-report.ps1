@@ -27,9 +27,7 @@ function Create-Report{
         Push-Location -Path (Split-Path $pathToExe -Parent)
         # 3: run the tool and pass in the parameters
         'call the tool at "{0}" now' -f $pathToExe | Write-Output
-        #&$pathToExe report --verbose -st template -st templates -st Boilerplate -st generate -st generates -st create -st creates -st Bellatrix -st Meissa -st Scaffold --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport $previousTemplateReport
-        &$pathToExe report --verbose -st template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport $previousTemplateReport
-        #&$pathToExe report --verbose -st Bellatrix --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport $previousTemplateReport
+        &$pathToExe report --verbose -st template -st templates -st Boilerplate -st generate -st generates -st create -st creates -st Bellatrix -st Meissa -st Scaffold --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport $previousTemplateReport
         Pop-Location
     }
 }
