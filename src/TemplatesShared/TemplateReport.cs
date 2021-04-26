@@ -39,11 +39,14 @@ namespace TemplatesShared {
 
             
             Dictionary<string, TemplatePack> previousPacks = new Dictionary<string, TemplatePack>();
+            Console.WriteLine($"verbose: '{previousReportPath}', file exists '{File.Exists(previousReportPath)}'");
             if (!string.IsNullOrEmpty(previousReportPath) && File.Exists(previousReportPath)) {
                 List<TemplatePack> previousReport = new List<TemplatePack>();
                 previousReport = JsonConvert.DeserializeObject<List<TemplatePack>>(File.ReadAllText(previousReportPath));
                 previousPacks = TemplatePack.ConvertToDictionary(previousReport);
             }
+
+            Console.WriteLine($"num of previous template packs in previous report: '{previousPacks.Count}'");
 
             // 1: query nuget for search results, we need to query all because we need to get the new download count
             var packageIdsToIgnore = GetPackagesToIgnore();
