@@ -32,7 +32,7 @@ function Extract-NuGetCacheAv{
 
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
-    [string]::Compare('2021.04/cibuild01', $branchName, $true) -eq 0 ){
+    [string]::Compare('master', $branchName, $true) -eq 0 ){
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
