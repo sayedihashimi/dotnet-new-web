@@ -8,7 +8,8 @@ environment:
     secure: +of8YobtR9CSGWdE1ttUTA==
   publishPassword:
     secure: 5D5/0OnhJtHvQVE1Qgp69VsQ6VrJ0k+1lQ9SLgjReLawxfvzv6WDozfh9Mln/pp4A3XjnRT9/JTadxNrzCHkAw==
-  TEMPLATEDOTNETTOOLSPATH: C:\Users\appveyor\.dotnet\tools    
+  TEMPLATEDOTNETTOOLSPATH: C:\Users\appveyor\.dotnet\tools
+  TEMPLATE_REPORT_PATH_TO_PREVIOUS: C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json
 
 before_build:
 - pwsh: dotnet restore
@@ -23,5 +24,6 @@ after_build:
 artifacts:
 - path: src\TemplatesApi\wwwroot\template-report-updated.json
 - path: output\release\netcoreapp3.1\publish\template-report.json
+  name: template-report.from-tools-folder.json
 - path: src\TemplatesConsole\package-names-to-ignore.json
 - path: ls-out.txt
