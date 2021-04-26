@@ -6,7 +6,9 @@ function DeleteCacheFolders{
         [string[]]$toolNames = ("sayedha.template.command","templatesconsole"),
         [string[]]$commandName = ("templates","templatereport")
     )
-    begin{
+    process{
+        'DeleteCacheFolders' | Write-Output
+
         [string]$toolsFolderPath = Join-Path $env:HOME .dotnet\tools
         [string]$toolsPathFromEnv = $env:TEMPLATEDOTNETTOOLSPATH
         if(-not ([string]::IsNullOrEmpty($toolsFolderPath)) -and
@@ -14,9 +16,7 @@ function DeleteCacheFolders{
             'Overriding tools path from env var, env:TEMPLATEDOTNETTOOLSPATH="{0}"' -f $toolsPathFromEnv | Write-Output
             $toolsFolderPath = $toolsPathFromEnv
         }
-    }
-    process{
-        'DeleteCacheFolders' | Write-Output
+
         foreach($cn in $commandName){
             'DeleteCacheFolders1, cn="{0}", env:home="{1}"' -f $cn, $env:HOME | Write-Output
             $exepath = (Join-Path $toolsFolderPath ("{0}.exe" -f $cn))

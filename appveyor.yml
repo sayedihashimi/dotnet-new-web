@@ -27,3 +27,4 @@ artifacts:
   name: template-report.from-tools-folder.json
 - path: src\TemplatesConsole\package-names-to-ignore.json
 - path: ls-out.txt
+- path: src\TemplatesConsole\packages-to-ignore.txt
