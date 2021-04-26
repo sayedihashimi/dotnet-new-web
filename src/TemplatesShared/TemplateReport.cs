@@ -218,6 +218,19 @@ namespace TemplatesShared {
             var pathToIgnoreFile = Path.Combine(
                     new FileInfo(new System.Uri(Assembly.GetExecutingAssembly().CodeBase).LocalPath).Directory.FullName,
                     "packages-to-ignore.txt");
+
+            // if there is an env var named TEMPLATE_REPORT_PATH_TO_PREVIOUS, then use that instead
+            var previousPathEnvVar = Environment.GetEnvironmentVariable("TEMPLATE_REPORT_PATH_TO_PREVIOUS");
+            if (!string.IsNullOrEmpty(previousPathEnvVar)) {
+                _reporter.WriteVerboseLine($"Setting path using env var override TEMPLATE_REPORT_PATH_TO_PREVIOUS='{previousPathEnvVar}'");
+                if (System.IO.File.Exists(previousPathEnvVar)) {
+                    pathToIgnoreFile = previousPathEnvVar;
+                }
+                else {
+                    _reporter.WriteVerboseLine($"not changing previous report path based on env var, because the file is not found at the path provided");
+                }
+            }
+
             if (File.Exists(pathToIgnoreFile)) {
                 _reporter.WriteLine($"pkgs to ignore file found at '{pathToIgnoreFile}'");
                 var text = File.ReadAllText(pathToIgnoreFile);

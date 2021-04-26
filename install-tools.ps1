@@ -6,11 +6,20 @@ function DeleteCacheFolders{
         [string[]]$toolNames = ("sayedha.template.command","templatesconsole"),
         [string[]]$commandName = ("templates","templatereport")
     )
+    begin{
+        [string]$toolsFolderPath = Join-Path $env:HOME .dotnet\tools
+        [string]$toolsPathFromEnv = $env:TEMPLATEDOTNETTOOLSPATH
+        if(-not ([string]::IsNullOrEmpty($toolsFolderPath)) -and
+                    (test-path $toolsFolderPath)){
+            'Overriding tools path from env var, env:TEMPLATEDOTNETTOOLSPATH="{0}"' -f $toolsPathFromEnv | Write-Output
+            $toolsFolderPath = $toolsPathFromEnv
+        }
+    }
     process{
         'DeleteCacheFolders' | Write-Output
         foreach($cn in $commandName){
             'DeleteCacheFolders1, cn="{0}", env:home="{1}"' -f $cn, $env:HOME | Write-Output
-            $exepath = (Join-Path $env:HOME .dotnet\tools\ ("{0}.exe" -f $cn))
+            $exepath = (Join-Path $toolsFolderPath ("{0}.exe" -f $cn))
             ' exepath: "{0}"' -f $exepath | Write-Output
             if(Test-Path $exepath -PathType Leaf){
                 Remove-Item -LiteralPath $exepath -Force
@@ -18,7 +27,7 @@ function DeleteCacheFolders{
         }
         foreach($tn in $toolNames){
             'DeleteCacheFolders1, cn="{0}"' -f $cn | Write-Output
-            $cacheFolder = Join-Path $env:HOME .dotnet\tools\.store $tn
+            $cacheFolder = Join-Path $toolsFolderPath .store $tn
             ' cacheFolder: "{0}"' -f $cacheFolder | Write-Output
             if(Test-Path $cacheFolder -PathType Container){
                 Remove-Item -LiteralPath $cacheFolder -Recurse -Force
