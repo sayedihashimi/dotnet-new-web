@@ -30,6 +30,10 @@ function Extract-NuGetCacheAv{
     }
 }
 
+foreach($ch in [System.Environment]::NewLine.ToCharArray()){
+    'value: {0}' -f [int]$ch | Write-Output                     
+}                                                  
+
 Set-Location -Path C:\projects\dotnet-new-web
 .\install-tools.ps1
 
@@ -38,7 +42,16 @@ Set-Location -Path C:\projects\dotnet-new-web
 
 templatereport report --verbose -st sayedha.template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
 
+# temporary
+Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
+    Select-Object -ExpandProperty FullName |
+    Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
 
+'**** directory results for C:\projects\dotnet-new-web\output\' | Out-File -Append -LiteralPath 'C:\projects\dotnet-new-web\ls-out.txt'
+
+Get-ChildItem 'C:\projects\dotnet-new-web' -Recurse  |
+    Select-Object -ExpandProperty FullName -ErrorAction Continue |
+    Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
 
 return
 # old content below
