@@ -4,9 +4,8 @@ $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
 [string]$prNumber = $env:APPVEYOR_PULL_REQUEST_NUMBER
 [string]$branchName = $env:APPVEYOR_REPO_BRANCH
 
+<#
 [string]$cacheModulePath = (Join-Path $scriptDir clean-cache-folder.psm1)
-
-
 if(-not (test-path -Path $cacheModulePath)){
     'cache module not found at {0}' -f $cacheModulePath | Write-Error
 }
@@ -29,55 +28,24 @@ function Extract-NuGetCacheAv{
         }
     }
 }
-
-<#
-foreach($ch in [System.Environment]::NewLine.ToCharArray()){
-    'value: {0}' -f [int]$ch | Write-Output                     
-}                                                  
-
-Set-Location -Path C:\projects\dotnet-new-web
-.\install-tools.ps1
-
-#'Extracting nuget cache to local folder' | Write-Output
-#Extract-NuGetCacheAv
-
-templatereport report --verbose -st sayedha.template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
-
-# temporary
-Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
-    Select-Object -ExpandProperty FullName |
-    Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
-
-'**** directory results for C:\projects\dotnet-new-web\output\' | Out-File -Append -LiteralPath 'C:\projects\dotnet-new-web\ls-out.txt'
-
-Get-ChildItem 'C:\projects\dotnet-new-web' -Recurse  |
-    Select-Object -ExpandProperty FullName -ErrorAction Continue |
-    Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
-
-return
-# old content below
 #>
 
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('2021.04/cibuild01', $branchName, $true) -eq 0 ){
-        #'**** Extracting nuget cache to local folder' | Write-Output
-        Extract-NuGetCacheAv
-
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
 
-        # temporary
+        <#
         Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
             Select-Object -ExpandProperty FullName |
             Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
-
         '**** directory results for C:\projects\dotnet-new-web\output\' | Out-File -Append -LiteralPath 'C:\projects\dotnet-new-web\ls-out.txt'
-
         Get-ChildItem 'C:\projects\dotnet-new-web' -Recurse  |
             Select-Object -ExpandProperty FullName -ErrorAction Continue |
             Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
+        #>
 }
 else{
     'false' | Write-Output

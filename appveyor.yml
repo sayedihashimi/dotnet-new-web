@@ -22,8 +22,6 @@ after_build:
 - pwsh: ./appveyor.ps1
 
 artifacts:
-- path: src\TemplatesApi\wwwroot\template-report-updated.json
 - path: output\release\netcoreapp3.1\publish\template-report.json
-  name: template-report.from-tools-folder.json
+  name: template-report.from-publish-folder.json
 - path: src\TemplatesConsole\packages-to-ignore.txt
-- path: ls-out.txt
