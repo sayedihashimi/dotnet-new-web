@@ -13933,3 +13933,10 @@ Blazor.ExtraDry.Core
 BlazorGenUI
 BlazorGenUI.Reflection
 Codefarts.Commander
+WebApiContrib.Formatting.Xlsx.NetStandard
+BlueElectricity.Optra.Runner
+SharpAvi.Net5
+Arief21.EF.Tools
+Community.Core.EnterpriseLibrary
+TinyUpdate.Create
+PdfDocuments

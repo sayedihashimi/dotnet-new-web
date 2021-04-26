@@ -76,7 +76,8 @@ namespace TemplatesShared {
 
             // 2: download nuget packages locally
             var downloadedPackages = new List<NuGetPackage>();
-
+            // var pkgToRemoveAndExtractPathMap = new Dictionary<NuGetPackage, string>();
+            var pkgListSkippedExtractExists = new List<NuGetPackage>();
             if (pkgsToDownload != null && pkgsToDownload.Count > 0) {
                 // if the nuget pkg extract folder exists, don't download the package
                 var pkgsToRemoveFromDownloadList = new List<NuGetPackage>();
@@ -96,7 +97,10 @@ namespace TemplatesShared {
                     var expectedExtractFolder = System.IO.Path.Combine(rf.CacheFolderpath, "extracted", filename);
                     if (Directory.Exists(expectedExtractFolder)) {
                         _reporter.WriteLine($"adding to exclude list because extract folder exists at '{expectedExtractFolder}'");
+                        pkg.LocalExtractPath = expectedExtractFolder;
                         pkgsToRemoveFromDownloadList.Add(pkg);
+                        pkgListSkippedExtractExists.Add(pkg);
+                        // pkgToRemoveAndExtractPathMap.Add(pkg, expectedExtractFolder);
                     }
                 }
 
@@ -145,6 +149,23 @@ namespace TemplatesShared {
                     pkgNamesWitoutPackages.Add(pkg.Id);
                 }
             }
+
+            // look through the extract folders to see if other packages should be added to the exclude list
+            foreach(var pkg in pkgListSkippedExtractExists) {
+                string extractPath = pkg.LocalExtractPath;
+                if(!string.IsNullOrEmpty(extractPath) && Directory.Exists(extractPath)) {
+                    var foundDirs = Directory.EnumerateDirectories(extractPath, ".template.config", new EnumerationOptions { RecurseSubdirectories = true });
+                    if (foundDirs.Count() > 0) {
+                        templatePackages.Add(pkg);
+                    }
+                    else {
+                        _reporter.WriteLine($"pkg has no templates (from extract path): {pkg.Id}");
+                        listPackagesWithNotemplates.Add(pkg);
+                        pkgNamesWitoutPackages.Add(pkg.Id);
+                    }
+                }
+            }
+
 
             var reportsPath = Path.Combine(_remoteFile.CacheFolderpath, "reports",DateTime.Now.ToString("MM.dd.yy-H.m.s.ffff"));
             if (!Directory.Exists(reportsPath)) {

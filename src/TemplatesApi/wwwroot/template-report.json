@@ -7595,6 +7595,64 @@
     "IconPngUrl": "https://raw.githubusercontent.com/fsharp/FAKE/7305422ea912e23c1c5300b23b3d0d7d8ec7d27f/help/content/pics/logo.png"
   },
   {
+    "Owners": null,
+    "Version": "2021.424.1",
+    "DownloadCount": 23640,
+    "Templates": [
+      {
+        "Author": "ppy Pty Ltd",
+        "Name": "osu!framework empty game template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "osu-framework-game"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ppy.osu.Framework.Template.Empty",
+        "TemplatePackId": "ppy.osu.Framework.Templates",
+        "SourceName": "TemplateGame",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "ppy Pty Ltd",
+        "Name": "osu!framework flappy game template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "osu-framework-flappy-game"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ppy.osu.Framework.Template.Flappy",
+        "TemplatePackId": "ppy.osu.Framework.Templates",
+        "SourceName": "FlappyDon",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates that can be used as starting points for new games, built with of osu! framework.",
+    "Copyright": "Copyright (c) 2021 ppy Pty Ltd",
+    "Authors": "ppy Pty Ltd",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/ppy/osu-framework",
+    "Package": "ppy.osu.Framework.Templates",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Idea42, LLC",
     "Version": "1.0.103",
     "DownloadCount": 23255,
@@ -8009,6 +8067,88 @@
     "Package": "Microsoft.DotNet.Web.Spa.ProjectTemplates.2.2",
     "IconUrl": "https://go.microsoft.com/fwlink/?LinkID=288859",
     "IconPngUrl": "https://go.microsoft.com/fwlink/?LinkID=288859"
+  },
+  {
+    "Owners": "peachpie, Petr Houska, Jakub Misek",
+    "Version": "1.0.12",
+    "DownloadCount": 21309,
+    "Templates": [
+      {
+        "Author": "Peachpie",
+        "Name": "Class library",
+        "Tags": {
+          "language": "PHP",
+          "type": "project"
+        },
+        "Classifications": [
+          "Common",
+          "Library"
+        ],
+        "ShortName": [
+          "classlib"
+        ],
+        "GroupIdentity": "Microsoft.Common.Library",
+        "Identity": "Peachpie.Templates.ClassLibrary",
+        "TemplatePackId": "Peachpie.Templates",
+        "SourceName": "PhpLib.1",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "Peachpie",
+        "Name": "Console Application",
+        "Tags": {
+          "language": "PHP",
+          "type": "project"
+        },
+        "Classifications": [
+          "Common",
+          "Console"
+        ],
+        "ShortName": [
+          "console"
+        ],
+        "GroupIdentity": "Microsoft.Common.Console",
+        "Identity": "Peachpie.Templates.ConsoleApp",
+        "TemplatePackId": "Peachpie.Templates",
+        "SourceName": "PhpConsole.1",
+        "DefaultName": "ConsoleApp1",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "Peachpie",
+        "Name": "ASP.NET Core Empty",
+        "Tags": {
+          "language": "PHP",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web",
+          "Empty"
+        ],
+        "ShortName": [
+          "web"
+        ],
+        "GroupIdentity": "Microsoft.Web.Empty",
+        "Identity": "Peachpie.Templates.WebApp",
+        "TemplatePackId": "Peachpie.Templates",
+        "SourceName": "MyWebsite.1",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates of PHP projects for .NET platform using PeachPie Compiler.",
+    "Copyright": "Copyright 2020. All right Reserved.",
+    "Authors": "peachpie, Petr Houska, Jakub Misek",
+    "LicenseUrl": "https://github.com/peachpiecompiler/peachpie/blob/master/LICENSE.txt",
+    "ProjectUrl": "https://github.com/peachpiecompiler/peachpie",
+    "Package": "Peachpie.Templates",
+    "IconUrl": null,
+    "IconPngUrl": null
   },
   {
     "Owners": "Chad Lee,William Sossamon",
@@ -10229,6 +10369,45 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Melvin Vermeer (melvin.vermeer@wortell.nl)",
+    "Version": "2018.2.20.1",
+    "DownloadCount": 10768,
+    "Templates": [
+      {
+        "Author": "Melvin Vermeer <melvin.vermeer@wortell.nl>",
+        "Name": "Team Web Mvc Web Application",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "Aspnet",
+          "Mvc",
+          "Gulp",
+          "Sass"
+        ],
+        "ShortName": [
+          "teamwebmvc"
+        ],
+        "GroupIdentity": null,
+        "Identity": "TeamWeb.MvcTemplate",
+        "TemplatePackId": "TeamWeb.MvcTemplate",
+        "SourceName": "TeamWeb.MvcTemplate",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Team Web Mvc Web Application",
+    "Copyright": "Copyright 2017: Wortell. All right Reserved.",
+    "Authors": "Melvin Vermeer (melvin.vermeer@wortell.nl)",
+    "LicenseUrl": "http://www.wortell.nl/",
+    "ProjectUrl": "http://www.wortell.nl/",
+    "Package": "TeamWeb.MvcTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Tony Xia",
     "Version": "0.9.5",
     "DownloadCount": 10736,
@@ -10311,45 +10490,6 @@
     "Package": "MicrosoftTeams.Templates",
     "IconUrl": "https://c.s-microsoft.com/en-au/CMSImages/Icon_MicrosoftTeamsTile_85x85.jpg?version=107e4762-aeef-86ae-9f77-c931d9a0ac8c",
     "IconPngUrl": "https://c.s-microsoft.com/en-au/CMSImages/Icon_MicrosoftTeamsTile_85x85.jpg?version=107e4762-aeef-86ae-9f77-c931d9a0ac8c"
-  },
-  {
-    "Owners": "Melvin Vermeer (melvin.vermeer@wortell.nl)",
-    "Version": "2018.2.20.1",
-    "DownloadCount": 10727,
-    "Templates": [
-      {
-        "Author": "Melvin Vermeer <melvin.vermeer@wortell.nl>",
-        "Name": "Team Web Mvc Web Application",
-        "Tags": {
-          "language": "C#"
-        },
-        "Classifications": [
-          "Aspnet",
-          "Mvc",
-          "Gulp",
-          "Sass"
-        ],
-        "ShortName": [
-          "teamwebmvc"
-        ],
-        "GroupIdentity": null,
-        "Identity": "TeamWeb.MvcTemplate",
-        "TemplatePackId": "TeamWeb.MvcTemplate",
-        "SourceName": "TeamWeb.MvcTemplate",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Team Web Mvc Web Application",
-    "Copyright": "Copyright 2017: Wortell. All right Reserved.",
-    "Authors": "Melvin Vermeer (melvin.vermeer@wortell.nl)",
-    "LicenseUrl": "http://www.wortell.nl/",
-    "ProjectUrl": "http://www.wortell.nl/",
-    "Package": "TeamWeb.MvcTemplate",
-    "IconUrl": null,
-    "IconPngUrl": null
   },
   {
     "Owners": "take",
@@ -14579,6 +14719,45 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Apache TinkerPop",
+    "Version": "3.4.10",
+    "DownloadCount": 6474,
+    "Templates": [
+      {
+        "Author": "Apache TinkerPop",
+        "Name": "Gremlin.Net Template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "TinkerPop",
+          "Gremlin",
+          "Gremlin.Net"
+        ],
+        "ShortName": [
+          "gremlin"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Gremlin.Net.Template",
+        "TemplatePackId": "Gremlin.Net.Template",
+        "SourceName": "Gremlin.Net.Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Gremlin.Net template to create a console application with dotnet new.",
+    "Copyright": null,
+    "Authors": "Apache TinkerPop",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": "http://tinkerpop.apache.org/",
+    "Package": "Gremlin.Net.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": null,
     "Version": "1.9.1",
     "DownloadCount": 6450,
@@ -14789,45 +14968,6 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/AzureAD/microsoft-identity-web",
     "Package": "Microsoft.Identity.Web.ProjectTemplates",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "Apache TinkerPop",
-    "Version": "3.4.10",
-    "DownloadCount": 6402,
-    "Templates": [
-      {
-        "Author": "Apache TinkerPop",
-        "Name": "Gremlin.Net Template",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "TinkerPop",
-          "Gremlin",
-          "Gremlin.Net"
-        ],
-        "ShortName": [
-          "gremlin"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Gremlin.Net.Template",
-        "TemplatePackId": "Gremlin.Net.Template",
-        "SourceName": "Gremlin.Net.Template",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Gremlin.Net template to create a console application with dotnet new.",
-    "Copyright": null,
-    "Authors": "Apache TinkerPop",
-    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
-    "ProjectUrl": "http://tinkerpop.apache.org/",
-    "Package": "Gremlin.Net.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -17421,7 +17561,7 @@
   {
     "Owners": null,
     "Version": "2.0.0",
-    "DownloadCount": 4613,
+    "DownloadCount": 4636,
     "Templates": [
       {
         "Author": "Danijel Hrček",
@@ -18828,7 +18968,7 @@
   },
   {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 4059,
     "Templates": [
       {
@@ -19665,7 +19805,7 @@
   },
   {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 3715,
     "Templates": [
       {
@@ -20031,7 +20171,7 @@
   {
     "Owners": "Jannik Buschke",
     "Version": "0.14.0",
-    "DownloadCount": 3537,
+    "DownloadCount": 3550,
     "Templates": [
       {
         "Author": "Jannik Buschke",
@@ -20539,7 +20679,7 @@
   {
     "Owners": "Glen Hallworth",
     "Version": "0.1.0",
-    "DownloadCount": 3417,
+    "DownloadCount": 3418,
     "Templates": [
       {
         "Author": "Glen Hallworth",
@@ -21518,6 +21658,66 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Roman Kuzmin",
+    "Version": "1.0.2",
+    "DownloadCount": 3281,
+    "Templates": [
+      {
+        "Author": "Roman Kuzmin",
+        "Name": "FarNet module",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "FarNet",
+          "Module"
+        ],
+        "ShortName": [
+          "farnet"
+        ],
+        "GroupIdentity": "FarNet.module",
+        "Identity": "FarNet.module.CSharp",
+        "TemplatePackId": "FarNet.template",
+        "SourceName": "FarNetCSharp",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "Roman Kuzmin",
+        "Name": "FarNet module",
+        "Tags": {
+          "language": "F#",
+          "type": "project"
+        },
+        "Classifications": [
+          "FarNet",
+          "Module"
+        ],
+        "ShortName": [
+          "farnet"
+        ],
+        "GroupIdentity": "FarNet.module",
+        "Identity": "FarNet.module.FSharp",
+        "TemplatePackId": "FarNet.template",
+        "SourceName": "FarNetFSharp",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "FarNet module template for C# and F# projects\n\n----\n\nhttps://github.com/nightroman/FarNet.template#readme\n\n----",
+    "Copyright": null,
+    "Authors": "Roman Kuzmin",
+    "LicenseUrl": "https://licenses.nuget.org/BSD-2-Clause",
+    "ProjectUrl": "https://github.com/nightroman/FarNet.template",
+    "Package": "FarNet.template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": null,
     "Version": "1.0.23",
     "DownloadCount": 3277,
@@ -21594,66 +21794,6 @@
     "Package": "ProspaTemplates",
     "IconUrl": "https://raw.githubusercontent.com/prospa-group/DotnetPackaging/master/prospa60x60.png",
     "IconPngUrl": "https://raw.githubusercontent.com/prospa-group/DotnetPackaging/master/prospa60x60.png"
-  },
-  {
-    "Owners": "Roman Kuzmin",
-    "Version": "1.0.2",
-    "DownloadCount": 3262,
-    "Templates": [
-      {
-        "Author": "Roman Kuzmin",
-        "Name": "FarNet module",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "FarNet",
-          "Module"
-        ],
-        "ShortName": [
-          "farnet"
-        ],
-        "GroupIdentity": "FarNet.module",
-        "Identity": "FarNet.module.CSharp",
-        "TemplatePackId": "FarNet.template",
-        "SourceName": "FarNetCSharp",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      },
-      {
-        "Author": "Roman Kuzmin",
-        "Name": "FarNet module",
-        "Tags": {
-          "language": "F#",
-          "type": "project"
-        },
-        "Classifications": [
-          "FarNet",
-          "Module"
-        ],
-        "ShortName": [
-          "farnet"
-        ],
-        "GroupIdentity": "FarNet.module",
-        "Identity": "FarNet.module.FSharp",
-        "TemplatePackId": "FarNet.template",
-        "SourceName": "FarNetFSharp",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "FarNet module template for C# and F# projects\n\n----\n\nhttps://github.com/nightroman/FarNet.template#readme\n\n----",
-    "Copyright": null,
-    "Authors": "Roman Kuzmin",
-    "LicenseUrl": "https://licenses.nuget.org/BSD-2-Clause",
-    "ProjectUrl": "https://github.com/nightroman/FarNet.template",
-    "Package": "FarNet.template",
-    "IconUrl": null,
-    "IconPngUrl": null
   },
   {
     "Owners": "Ram",
@@ -21896,7 +22036,7 @@
   },
   {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 3160,
     "Templates": [
       {
@@ -22795,9 +22935,48 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "lingman-opensource",
+    "Version": "0.0.20",
+    "DownloadCount": 3012,
+    "Templates": [
+      {
+        "Author": "Lingman-opensource",
+        "Name": "Lingman WebAPI",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web",
+          "WebAPI",
+          "Lingman WebAPI Template"
+        ],
+        "ShortName": [
+          "lingman-webapi"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Lingman.Template",
+        "TemplatePackId": "lingman-webapi",
+        "SourceName": "Lingman.Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "netcore webapi template",
+    "Copyright": "Copyright © lingman-opensource 2020",
+    "Authors": "lingman-opensource",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": null,
+    "Package": "lingman-webapi",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Jeff Brown",
     "Version": "1.0.1",
-    "DownloadCount": 2991,
+    "DownloadCount": 2994,
     "Templates": [
       {
         "Author": "Jeff Brown",
@@ -22864,45 +23043,6 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Luigi.WpfTemplate",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "lingman-opensource",
-    "Version": "0.0.20",
-    "DownloadCount": 2985,
-    "Templates": [
-      {
-        "Author": "Lingman-opensource",
-        "Name": "Lingman WebAPI",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Web",
-          "WebAPI",
-          "Lingman WebAPI Template"
-        ],
-        "ShortName": [
-          "lingman-webapi"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Lingman.Template",
-        "TemplatePackId": "lingman-webapi",
-        "SourceName": "Lingman.Template",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "netcore webapi template",
-    "Copyright": "Copyright © lingman-opensource 2020",
-    "Authors": "lingman-opensource",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": "lingman-webapi",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -23304,7 +23444,7 @@
   },
   {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 2864,
     "Templates": [
       {
@@ -23341,51 +23481,9 @@
     "IconPngUrl": null
   },
   {
-    "Owners": "Miro Holopainen",
-    "Version": "4.0.0",
-    "DownloadCount": 2838,
-    "Templates": [
-      {
-        "Author": "Miro Holopainen",
-        "Name": "DI Console App",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Dependency Injection",
-          "Console"
-        ],
-        "ShortName": [
-          "smairo-console"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Smairo.Template.ConsoleApp",
-        "TemplatePackId": "Smairo.Template.Console",
-        "SourceName": "Smairo.Template.ConsoleApp",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": [
-          {
-            "Path": "Smairo.Template.ConsoleApp/Smairo.Template.ConsoleApp.sln"
-          }
-        ]
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Consoleapp with dependency injection",
-    "Copyright": null,
-    "Authors": "Miro Holopainen",
-    "LicenseUrl": "https://github.com/smairo/SmairoDotNetTemplates/blob/master/LICENSE",
-    "ProjectUrl": "https://github.com/smairo/SmairoDotNetTemplates",
-    "Package": "Smairo.Template.Console",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
     "Owners": "Newbe",
     "Version": "1.19.0",
-    "DownloadCount": 2825,
+    "DownloadCount": 2841,
     "Templates": [
       {
         "Author": "newbe36524",
@@ -23492,6 +23590,48 @@
     "Package": "Newbe.Mahua.Template",
     "IconUrl": "https://raw.githubusercontent.com/Newbe36524/Newbe.Mahua.Framework.V1/master/logo.png",
     "IconPngUrl": "https://raw.githubusercontent.com/Newbe36524/Newbe.Mahua.Framework.V1/master/logo.png"
+  },
+  {
+    "Owners": "Miro Holopainen",
+    "Version": "4.0.0",
+    "DownloadCount": 2838,
+    "Templates": [
+      {
+        "Author": "Miro Holopainen",
+        "Name": "DI Console App",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Dependency Injection",
+          "Console"
+        ],
+        "ShortName": [
+          "smairo-console"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Smairo.Template.ConsoleApp",
+        "TemplatePackId": "Smairo.Template.Console",
+        "SourceName": "Smairo.Template.ConsoleApp",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "Smairo.Template.ConsoleApp/Smairo.Template.ConsoleApp.sln"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Consoleapp with dependency injection",
+    "Copyright": null,
+    "Authors": "Miro Holopainen",
+    "LicenseUrl": "https://github.com/smairo/SmairoDotNetTemplates/blob/master/LICENSE",
+    "ProjectUrl": "https://github.com/smairo/SmairoDotNetTemplates",
+    "Package": "Smairo.Template.Console",
+    "IconUrl": null,
+    "IconPngUrl": null
   },
   {
     "Owners": "James Mann",
@@ -25041,7 +25181,7 @@
   },
   {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 2551,
     "Templates": [
       {
@@ -26051,7 +26191,7 @@
   {
     "Owners": "Alex Kamsteeg (https://atlex.nl/)",
     "Version": "1.2.2",
-    "DownloadCount": 2247,
+    "DownloadCount": 2255,
     "Templates": [
       {
         "Author": "Alex Kamsteeg",
@@ -26438,6 +26578,106 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/aslotte/ML.NET.Templates",
     "Package": "ML.NET.Templates",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": null,
+    "Version": "2021.424.0",
+    "DownloadCount": 2186,
+    "Templates": [
+      {
+        "Author": "ppy Pty Ltd",
+        "Name": "osu! ruleset",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "ruleset"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ppy.osu.Game.Templates.Rulesets",
+        "TemplatePackId": "ppy.osu.Game.Templates",
+        "SourceName": "EmptyFreeform",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "ppy Pty Ltd",
+        "Name": "osu! ruleset (pippidon example)",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "ruleset-example"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ppy.osu.Game.Templates.Rulesets.Pippidon",
+        "TemplatePackId": "ppy.osu.Game.Templates",
+        "SourceName": "Pippidon",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "ppy Pty Ltd",
+        "Name": "osu! ruleset (scrolling)",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "ruleset-scrolling"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ppy.osu.Game.Templates.Rulesets.Scrolling",
+        "TemplatePackId": "ppy.osu.Game.Templates",
+        "SourceName": "EmptyScrolling",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "ppy Pty Ltd",
+        "Name": "osu! ruleset (scrolling pippidon example)",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "ruleset-scrolling-example"
+        ],
+        "GroupIdentity": null,
+        "Identity": "ppy.osu.Game.Templates.Rulesets.Scrolling.Pippidon",
+        "TemplatePackId": "ppy.osu.Game.Templates",
+        "SourceName": "Pippidon",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to use when creating a ruleset for consumption in osu!.",
+    "Copyright": "Copyright (c) 2021 ppy Pty Ltd",
+    "Authors": "ppy Pty Ltd",
+    "LicenseUrl": "https://github.com/ppy/osu/blob/master/LICENCE",
+    "ProjectUrl": "https://github.com/ppy/osu/blob/master/Templates",
+    "Package": "ppy.osu.Game.Templates",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -27646,7 +27886,7 @@
   {
     "Owners": "Stephen Phillips",
     "Version": "0.1.0",
-    "DownloadCount": 1879,
+    "DownloadCount": 1880,
     "Templates": [
       {
         "Author": "Stephen Phillips",
@@ -27680,8 +27920,45 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Lewis Zou",
+    "Version": "0.1.5",
+    "DownloadCount": 1876,
+    "Templates": [
+      {
+        "Author": "Lewis Zou",
+        "Name": "MSFramework AspNetCore",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "web"
+        ],
+        "ShortName": [
+          "msframework-aspnetcore"
+        ],
+        "GroupIdentity": "MSFramework Console",
+        "Identity": "MSFramework AspNetCore",
+        "TemplatePackId": "MSFramework.AspNetCore.Template",
+        "SourceName": "Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "MSFramework, DDD, AspNetCore",
+    "Copyright": null,
+    "Authors": "Lewis Zou",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "MSFramework.AspNetCore.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 1871,
     "Templates": [
       {
@@ -27716,43 +27993,6 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": null,
     "Package": "Furion.Template.BlazorWithWebApi",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "Lewis Zou",
-    "Version": "0.1.5",
-    "DownloadCount": 1869,
-    "Templates": [
-      {
-        "Author": "Lewis Zou",
-        "Name": "MSFramework AspNetCore",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "web"
-        ],
-        "ShortName": [
-          "msframework-aspnetcore"
-        ],
-        "GroupIdentity": "MSFramework Console",
-        "Identity": "MSFramework AspNetCore",
-        "TemplatePackId": "MSFramework.AspNetCore.Template",
-        "SourceName": "Template",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "MSFramework, DDD, AspNetCore",
-    "Copyright": null,
-    "Authors": "Lewis Zou",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": "MSFramework.AspNetCore.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -28281,7 +28521,7 @@
   {
     "Owners": "Vytautas Maciulskis",
     "Version": "1.0.6",
-    "DownloadCount": 1781,
+    "DownloadCount": 1797,
     "Templates": [
       {
         "Author": "Vytautas Maciulskis",
@@ -28735,7 +28975,7 @@
   },
   {
     "Owners": null,
-    "Version": "2.1.1",
+    "Version": "2.1.9",
     "DownloadCount": 1703,
     "Templates": [
       {
@@ -29203,6 +29443,48 @@
     "IconPngUrl": "https://raw.githubusercontent.com/TimeWarpEngineering/blazor-state/master/assets/Logo.png"
   },
   {
+    "Owners": null,
+    "Version": "5.0.0",
+    "DownloadCount": 1631,
+    "Templates": [
+      {
+        "Author": "Krzysztof Tutak",
+        "Name": "Clean Architecture Template [Web API]",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web",
+          "WebAPI"
+        ],
+        "ShortName": [
+          "cleanarch"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Clean.Architecture.Template.NetCoreApp",
+        "TemplatePackId": "Clean.Architecture.Template",
+        "SourceName": "CleanArchitectureTemplate",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "CleanArchitectureTemplate.sln"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Configurable Clean Architecture template containing the DDD + CQRS approach for .NET Core applications.",
+    "Copyright": null,
+    "Authors": "Krzysztof Tutak",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/ktutak1337/Clean-Architecture-Template",
+    "Package": "Clean.Architecture.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Erik Taylor",
     "Version": "1.1.0",
     "DownloadCount": 1628,
@@ -29274,48 +29556,6 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Newbe.Claptrap.Template",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "5.0.0",
-    "DownloadCount": 1617,
-    "Templates": [
-      {
-        "Author": "Krzysztof Tutak",
-        "Name": "Clean Architecture Template [Web API]",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Web",
-          "WebAPI"
-        ],
-        "ShortName": [
-          "cleanarch"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Clean.Architecture.Template.NetCoreApp",
-        "TemplatePackId": "Clean.Architecture.Template",
-        "SourceName": "CleanArchitectureTemplate",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": [
-          {
-            "Path": "CleanArchitectureTemplate.sln"
-          }
-        ]
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Configurable Clean Architecture template containing the DDD + CQRS approach for .NET Core applications.",
-    "Copyright": null,
-    "Authors": "Krzysztof Tutak",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
-    "ProjectUrl": "https://github.com/ktutak1337/Clean-Architecture-Template",
-    "Package": "Clean.Architecture.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -30531,7 +30771,7 @@
   {
     "Owners": "Demid Sukhovsky",
     "Version": "1.0.0",
-    "DownloadCount": 1507,
+    "DownloadCount": 1508,
     "Templates": [
       {
         "Author": "Demid Sukhovsky",
@@ -30573,7 +30813,7 @@
   {
     "Owners": null,
     "Version": "1.0.0",
-    "DownloadCount": 1503,
+    "DownloadCount": 1505,
     "Templates": [
       {
         "Author": "BizStream",
@@ -30868,6 +31108,51 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Tomasz Heimowski",
+    "Version": "0.0.2",
+    "DownloadCount": 1471,
+    "Templates": [
+      {
+        "Author": "Tomasz Heimowski",
+        "Name": "SAFE-Stack Web App",
+        "Tags": {
+          "language": "F#",
+          "type": "project"
+        },
+        "Classifications": [
+          "F#",
+          "Web",
+          "Suave",
+          "Fable",
+          "Elmish"
+        ],
+        "ShortName": [
+          "SAFE"
+        ],
+        "GroupIdentity": null,
+        "Identity": "SAFE.Template",
+        "TemplatePackId": "SAFE-template",
+        "SourceName": null,
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "README.md"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "SAFE Stack Template",
+    "Copyright": null,
+    "Authors": "Tomasz Heimowski",
+    "LicenseUrl": "https://github.com/SAFE-Stack/SAFE-template/blob/master/LICENSE",
+    "ProjectUrl": "https://github.com/SAFE-Stack/SAFE-template",
+    "Package": "SAFE-template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Fabian Juette",
     "Version": "2.0.0",
     "DownloadCount": 1469,
@@ -30987,51 +31272,6 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "Rti.ConnextDds.Templates",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "Tomasz Heimowski",
-    "Version": "0.0.2",
-    "DownloadCount": 1468,
-    "Templates": [
-      {
-        "Author": "Tomasz Heimowski",
-        "Name": "SAFE-Stack Web App",
-        "Tags": {
-          "language": "F#",
-          "type": "project"
-        },
-        "Classifications": [
-          "F#",
-          "Web",
-          "Suave",
-          "Fable",
-          "Elmish"
-        ],
-        "ShortName": [
-          "SAFE"
-        ],
-        "GroupIdentity": null,
-        "Identity": "SAFE.Template",
-        "TemplatePackId": "SAFE-template",
-        "SourceName": null,
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": [
-          {
-            "Path": "README.md"
-          }
-        ]
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "SAFE Stack Template",
-    "Copyright": null,
-    "Authors": "Tomasz Heimowski",
-    "LicenseUrl": "https://github.com/SAFE-Stack/SAFE-template/blob/master/LICENSE",
-    "ProjectUrl": "https://github.com/SAFE-Stack/SAFE-template",
-    "Package": "SAFE-template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -31296,7 +31536,7 @@
   {
     "Owners": "yimo",
     "Version": "1.0.5",
-    "DownloadCount": 1434,
+    "DownloadCount": 1435,
     "Templates": [
       {
         "Author": "yimo",
@@ -32123,7 +32363,7 @@
   {
     "Owners": "AMS Development Team",
     "Version": "1.0.1",
-    "DownloadCount": 1328,
+    "DownloadCount": 1334,
     "Templates": [
       {
         "Author": "Adam Adoptante",
@@ -32629,6 +32869,45 @@
     "IconPngUrl": "https://raw.githubusercontent.com/dotnet/BenchmarkDotNet/master/docs/guide/logo.png"
   },
   {
+    "Owners": "Aldo Oliveira",
+    "Version": "1.0.1",
+    "DownloadCount": 1243,
+    "Templates": [
+      {
+        "Author": "Aldo Oliveira",
+        "Name": "Worker Oracle Template",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "Worker",
+          "Console",
+          "Oracle",
+          "Windows Service"
+        ],
+        "ShortName": [
+          "workeroracle"
+        ],
+        "GroupIdentity": null,
+        "Identity": "WorkerOracleTemplate",
+        "TemplatePackId": "WorkerOracleTemplate",
+        "SourceName": "WorkerOracleTemplate",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": ".NET template to create worker with Oracle connection",
+    "Copyright": null,
+    "Authors": "Aldo Oliveira",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "WorkerOracleTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Kristoffer Löfberg",
     "Version": "1.0.3-preview0001",
     "DownloadCount": 1239,
@@ -32703,45 +32982,6 @@
     "LicenseUrl": null,
     "ProjectUrl": "https://github.com/panoramicdata/Rundeck.Cli",
     "Package": "Rundeck.Cli",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "Aldo Oliveira",
-    "Version": "1.0.1",
-    "DownloadCount": 1235,
-    "Templates": [
-      {
-        "Author": "Aldo Oliveira",
-        "Name": "Worker Oracle Template",
-        "Tags": {
-          "language": "C#"
-        },
-        "Classifications": [
-          "Worker",
-          "Console",
-          "Oracle",
-          "Windows Service"
-        ],
-        "ShortName": [
-          "workeroracle"
-        ],
-        "GroupIdentity": null,
-        "Identity": "WorkerOracleTemplate",
-        "TemplatePackId": "WorkerOracleTemplate",
-        "SourceName": "WorkerOracleTemplate",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": ".NET template to create worker with Oracle connection",
-    "Copyright": null,
-    "Authors": "Aldo Oliveira",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": "WorkerOracleTemplate",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -34106,7 +34346,7 @@
   {
     "Owners": "Poul K. Sørensen",
     "Version": "2.1.1",
-    "DownloadCount": 1096,
+    "DownloadCount": 1098,
     "Templates": [
       {
         "Author": "Poul K. S�rensen",
@@ -36887,46 +37127,9 @@
     "IconPngUrl": null
   },
   {
-    "Owners": "Lewis Zou",
-    "Version": "0.1.30",
-    "DownloadCount": 863,
-    "Templates": [
-      {
-        "Author": "Lewis Zou",
-        "Name": "MSFramework API",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "web api"
-        ],
-        "ShortName": [
-          "msframework-api"
-        ],
-        "GroupIdentity": "MSFramework",
-        "Identity": "MSFramework API",
-        "TemplatePackId": "MSFramework.API.Template",
-        "SourceName": "Template",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "MSFramework, DDD, AspNetCore",
-    "Copyright": null,
-    "Authors": "Lewis Zou",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": "MSFramework.API.Template",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
     "Owners": "VBorisof",
     "Version": "1.0.0",
-    "DownloadCount": 857,
+    "DownloadCount": 865,
     "Templates": [
       {
         "Author": "Seva Borisoff",
@@ -36976,6 +37179,43 @@
     "LicenseUrl": "http://www.wtfpl.net/",
     "ProjectUrl": "http://github.com/vborisof/netcoreapitemplate",
     "Package": "VBorisof.NetCoreApiTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Lewis Zou",
+    "Version": "0.1.30",
+    "DownloadCount": 863,
+    "Templates": [
+      {
+        "Author": "Lewis Zou",
+        "Name": "MSFramework API",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "web api"
+        ],
+        "ShortName": [
+          "msframework-api"
+        ],
+        "GroupIdentity": "MSFramework",
+        "Identity": "MSFramework API",
+        "TemplatePackId": "MSFramework.API.Template",
+        "SourceName": "Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "MSFramework, DDD, AspNetCore",
+    "Copyright": null,
+    "Authors": "Lewis Zou",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "MSFramework.API.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -37741,6 +37981,44 @@
     "IconPngUrl": null
   },
   {
+    "Owners": null,
+    "Version": "1.0.10",
+    "DownloadCount": 814,
+    "Templates": [
+      {
+        "Author": "Federico Barresi",
+        "Name": "Twincat WPF HMI",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Common",
+          "WPF"
+        ],
+        "ShortName": [
+          "tchmi"
+        ],
+        "GroupIdentity": null,
+        "Identity": "TwincatWpfHMI.template",
+        "TemplatePackId": "TwincatWpfHMI.template",
+        "SourceName": "WpfApp",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "A TwinCAT HMI as a WPF application.",
+    "Copyright": null,
+    "Authors": "Federico Barresi",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/fbarresi/twincat-wpf-boilerplate",
+    "Package": "TwincatWpfHMI.template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "cookie",
     "Version": "1.0.0",
     "DownloadCount": 813,
@@ -37775,44 +38053,6 @@
     "LicenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
     "ProjectUrl": "https://github.com/cookie1981/.NetGlobalToolsTemplate",
     "Package": "Dave.Cook.GlobalToolsTemplate",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "1.0.10",
-    "DownloadCount": 812,
-    "Templates": [
-      {
-        "Author": "Federico Barresi",
-        "Name": "Twincat WPF HMI",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Common",
-          "WPF"
-        ],
-        "ShortName": [
-          "tchmi"
-        ],
-        "GroupIdentity": null,
-        "Identity": "TwincatWpfHMI.template",
-        "TemplatePackId": "TwincatWpfHMI.template",
-        "SourceName": "WpfApp",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "A TwinCAT HMI as a WPF application.",
-    "Copyright": null,
-    "Authors": "Federico Barresi",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
-    "ProjectUrl": "https://github.com/fbarresi/twincat-wpf-boilerplate",
-    "Package": "TwincatWpfHMI.template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -37856,6 +38096,44 @@
     "Package": "MonoGame.Template.Gtk.CSharp",
     "IconUrl": "https://pbs.twimg.com/profile_images/487954549441691649/O3KsHAsb_400x400.png",
     "IconPngUrl": "https://pbs.twimg.com/profile_images/487954549441691649/O3KsHAsb_400x400.png"
+  },
+  {
+    "Owners": null,
+    "Version": "1.0.9.1",
+    "DownloadCount": 804,
+    "Templates": [
+      {
+        "Author": "百小僧/MonkSoul",
+        "Name": "Fur Mvc",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Fur",
+          "Mvc"
+        ],
+        "ShortName": [
+          "furmvc"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Fur.Template.Mvc",
+        "TemplatePackId": "Fur.Template.Mvc",
+        "SourceName": "FurMvc",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "基于 Fur 框架快速搭建 Mvc 多层架构模板。",
+    "Copyright": null,
+    "Authors": "百小僧/MonkSoul",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": null,
+    "Package": "Fur.Template.Mvc",
+    "IconUrl": null,
+    "IconPngUrl": null
   },
   {
     "Owners": "Arcus",
@@ -37941,44 +38219,6 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/wizsolucoes/fn-wiz-data-driven-template",
     "Package": "Wiz.Dotnet.Template.Function.DataDriven",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "1.0.9.1",
-    "DownloadCount": 797,
-    "Templates": [
-      {
-        "Author": "百小僧/MonkSoul",
-        "Name": "Fur Mvc",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Fur",
-          "Mvc"
-        ],
-        "ShortName": [
-          "furmvc"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Fur.Template.Mvc",
-        "TemplatePackId": "Fur.Template.Mvc",
-        "SourceName": "FurMvc",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "基于 Fur 框架快速搭建 Mvc 多层架构模板。",
-    "Copyright": null,
-    "Authors": "百小僧/MonkSoul",
-    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
-    "ProjectUrl": null,
-    "Package": "Fur.Template.Mvc",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -38859,7 +39099,7 @@
   {
     "Owners": "Diego Vieira",
     "Version": "1.0.1",
-    "DownloadCount": 710,
+    "DownloadCount": 712,
     "Templates": [
       {
         "Author": "Diego Vieira",
@@ -40458,6 +40698,64 @@
     "IconPngUrl": null
   },
   {
+    "Owners": null,
+    "Version": "1.0.2",
+    "DownloadCount": 605,
+    "Templates": [
+      {
+        "Author": "WQL",
+        "Name": "WQLWebAPITemplateSql",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web/WebAPI"
+        ],
+        "ShortName": [
+          "wqlwebapisql"
+        ],
+        "GroupIdentity": null,
+        "Identity": "WQLWebAPI",
+        "TemplatePackId": "WQLWebAPISQLTemplate",
+        "SourceName": "WQLWebAPI",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      },
+      {
+        "Author": "WQL",
+        "Name": "WQLWebAPITemplateSql",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Web/WebAPI"
+        ],
+        "ShortName": [
+          "wqlwebapisql"
+        ],
+        "GroupIdentity": null,
+        "Identity": "WQLWebAPI",
+        "TemplatePackId": "WQLWebAPISQLTemplate",
+        "SourceName": "WQLWebAPI",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "ASP.NET CORE WebAPI with SQLServer OR Mysql",
+    "Copyright": null,
+    "Authors": "WQL",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "WQLWebAPISQLTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Moov2 Ltd.",
     "Version": "0.1.1",
     "DownloadCount": 603,
@@ -40534,64 +40832,6 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Exito.DDD.WebApi.NetCore",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "1.0.2",
-    "DownloadCount": 593,
-    "Templates": [
-      {
-        "Author": "WQL",
-        "Name": "WQLWebAPITemplateSql",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Web/WebAPI"
-        ],
-        "ShortName": [
-          "wqlwebapisql"
-        ],
-        "GroupIdentity": null,
-        "Identity": "WQLWebAPI",
-        "TemplatePackId": "WQLWebAPISQLTemplate",
-        "SourceName": "WQLWebAPI",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      },
-      {
-        "Author": "WQL",
-        "Name": "WQLWebAPITemplateSql",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "Web/WebAPI"
-        ],
-        "ShortName": [
-          "wqlwebapisql"
-        ],
-        "GroupIdentity": null,
-        "Identity": "WQLWebAPI",
-        "TemplatePackId": "WQLWebAPISQLTemplate",
-        "SourceName": "WQLWebAPI",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "ASP.NET CORE WebAPI with SQLServer OR Mysql",
-    "Copyright": null,
-    "Authors": "WQL",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": "WQLWebAPISQLTemplate",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -40714,6 +40954,43 @@
     "IconPngUrl": null
   },
   {
+    "Owners": null,
+    "Version": "3.1.1095",
+    "DownloadCount": 589,
+    "Templates": [
+      {
+        "Author": "Jon Mikel Inza",
+        "Name": "Azure IoT Edge Solution Template (.NET Core 3.x)-CLI",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "IoT"
+        ],
+        "ShortName": [
+          "jmiiotedge31"
+        ],
+        "GroupIdentity": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
+        "Identity": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
+        "TemplatePackId": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
+        "SourceName": "ProjectName",
+        "DefaultName": "IoTEdgeSolution",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Accelerate the creation of IoT Edge projects with minimal dependencies and a solution containing settings for DI/IoC, separated layers, preconfigured log settings, increased testability and evolutivity, factorization, etc.",
+    "Copyright": "Jon Mikel Inza",
+    "Authors": "Jon Mikel Inza",
+    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
+    "ProjectUrl": null,
+    "Package": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "JLPI Serv Em Tec da Info",
     "Version": "1.0.1",
     "DownloadCount": 588,
@@ -40745,43 +41022,6 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "JLPI.ConsoleJack",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "3.1.1095",
-    "DownloadCount": 587,
-    "Templates": [
-      {
-        "Author": "Jon Mikel Inza",
-        "Name": "Azure IoT Edge Solution Template (.NET Core 3.x)-CLI",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "IoT"
-        ],
-        "ShortName": [
-          "jmiiotedge31"
-        ],
-        "GroupIdentity": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
-        "Identity": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
-        "TemplatePackId": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
-        "SourceName": "ProjectName",
-        "DefaultName": "IoTEdgeSolution",
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Accelerate the creation of IoT Edge projects with minimal dependencies and a solution containing settings for DI/IoC, separated layers, preconfigured log settings, increased testability and evolutivity, factorization, etc.",
-    "Copyright": "Jon Mikel Inza",
-    "Authors": "Jon Mikel Inza",
-    "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
-    "ProjectUrl": null,
-    "Package": "JMI.IoT.Edge.DotNet31.CSharp.Template.CLI",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -41576,6 +41816,49 @@
     "IconPngUrl": null
   },
   {
+    "Owners": null,
+    "Version": "0.2.1",
+    "DownloadCount": 544,
+    "Templates": [
+      {
+        "Author": "Gab Soulavy",
+        "Name": "Windows Service with Kestrel",
+        "Tags": {
+          "language": "C#",
+          "type": "solution"
+        },
+        "Classifications": [
+          "Common",
+          "Console",
+          "Windows-Service"
+        ],
+        "ShortName": [
+          "windows-service"
+        ],
+        "GroupIdentity": null,
+        "Identity": "GSoulavy.Template.WindowsService.Kestrel",
+        "TemplatePackId": "GSoulavy.Template.WindowsService.Kestrel",
+        "SourceName": "GSoulavy.Template.WindowsService.Kestrel",
+        "DefaultName": "WindowsService1",
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "./src/"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "dotnet 5 windows service template with built in kestrel and testing library.",
+    "Copyright": null,
+    "Authors": "Gab Soulavy",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/gsoulavy/template-windows-service-kestrel",
+    "Package": "GSoulavy.Template.WindowsService.Kestrel",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "pergerch, Dresel",
     "Version": "0.1.2",
     "DownloadCount": 543,
@@ -41661,49 +41944,6 @@
     "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
     "ProjectUrl": null,
     "Package": "Fur.Template.Razor",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "0.2.1",
-    "DownloadCount": 542,
-    "Templates": [
-      {
-        "Author": "Gab Soulavy",
-        "Name": "Windows Service with Kestrel",
-        "Tags": {
-          "language": "C#",
-          "type": "solution"
-        },
-        "Classifications": [
-          "Common",
-          "Console",
-          "Windows-Service"
-        ],
-        "ShortName": [
-          "windows-service"
-        ],
-        "GroupIdentity": null,
-        "Identity": "GSoulavy.Template.WindowsService.Kestrel",
-        "TemplatePackId": "GSoulavy.Template.WindowsService.Kestrel",
-        "SourceName": "GSoulavy.Template.WindowsService.Kestrel",
-        "DefaultName": "WindowsService1",
-        "Baseline": null,
-        "PrimaryOutputs": [
-          {
-            "Path": "./src/"
-          }
-        ]
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "dotnet 5 windows service template with built in kestrel and testing library.",
-    "Copyright": null,
-    "Authors": "Gab Soulavy",
-    "LicenseUrl": null,
-    "ProjectUrl": "https://github.com/gsoulavy/template-windows-service-kestrel",
-    "Package": "GSoulavy.Template.WindowsService.Kestrel",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -42212,7 +42452,7 @@
   {
     "Owners": "Astaldo",
     "Version": "1.1.1",
-    "DownloadCount": 509,
+    "DownloadCount": 510,
     "Templates": [
       {
         "Author": "Astaldo",
@@ -42554,6 +42794,44 @@
     "LicenseUrl": "https://aka.ms/deprecateLicenseUrl",
     "ProjectUrl": null,
     "Package": "RamosISW.ReactMaterialTemplate.CSharp",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Ashkan Rahmani",
+    "Version": "0.1.0",
+    "DownloadCount": 499,
+    "Templates": [
+      {
+        "Author": "Ashkan Rahmani",
+        "Name": "Ashkan Starter Web",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "api",
+          "swagger",
+          "docker"
+        ],
+        "ShortName": [
+          "ashkanweb"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Ashkan.StarterWeb",
+        "TemplatePackId": "Ashkan.Custom.Template",
+        "SourceName": "My.Custom.Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "HTTP Api template. Included swagger and docker",
+    "Copyright": "Copyright 2019-2020",
+    "Authors": "Ashkan Rahmani",
+    "LicenseUrl": null,
+    "ProjectUrl": "https://github.com/ashkanRmk/My.Custom.Template",
+    "Package": "Ashkan.Custom.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -42969,6 +43247,45 @@
     "IconPngUrl": null
   },
   {
+    "Owners": null,
+    "Version": "0.1.19",
+    "DownloadCount": 473,
+    "Templates": [
+      {
+        "Author": "Microsoft",
+        "Name": "Code Velocity extension",
+        "Tags": {
+          "language": "C#",
+          "type": "item"
+        },
+        "Classifications": [
+          "Common",
+          "Code",
+          "CodeVelocity"
+        ],
+        "ShortName": [
+          "codevelocityextension"
+        ],
+        "GroupIdentity": null,
+        "Identity": "CodeVelocity.Extension",
+        "TemplatePackId": "CodeVelocity.Extensions.Templates",
+        "SourceName": "SampleLanguageDependentExtension",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Templates to bootstrap a CodeVelocity extension.",
+    "Copyright": "Copyright © 2021 Microsoft Corporation. All rights reserved.",
+    "Authors": "CodeVelocity.Extensions.Template",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "CodeVelocity.Extensions.Templates",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": "Daniel Mackay",
     "Version": "1.0.1",
     "DownloadCount": 472,
@@ -43033,7 +43350,7 @@
   {
     "Owners": "Ole Consignado",
     "Version": "1.0.0",
-    "DownloadCount": 469,
+    "DownloadCount": 470,
     "Templates": [
       {
         "Author": "Ole Consignado",
@@ -43065,6 +43382,43 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "ApiAdapterTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "xiaobao",
+    "Version": "1.0.1",
+    "DownloadCount": 470,
+    "Templates": [
+      {
+        "Author": "xiaobao",
+        "Name": "xiaobaoDdd template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "WebApi"
+        ],
+        "ShortName": [
+          "xiaobaoDdd template"
+        ],
+        "GroupIdentity": "xiaobaoDdd template",
+        "Identity": "xiaobaoDdd template",
+        "TemplatePackId": "Xiaobao.Ddd.Template.T",
+        "SourceName": "Xiaobao.Ddd.Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Custom Template, including WebApi",
+    "Copyright": null,
+    "Authors": "xiaobao",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "Xiaobao.Ddd.Template.T",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -43295,6 +43649,46 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Jaxel Rojas",
+    "Version": "0.0.3",
+    "DownloadCount": 459,
+    "Templates": [
+      {
+        "Author": "Jaxel Rojas",
+        "Name": ".Net Core Custom Console Application",
+        "Tags": {
+          "language": "C#"
+        },
+        "Classifications": [
+          "Console"
+        ],
+        "ShortName": [
+          "cnsola"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Cnsola",
+        "TemplatePackId": "Cnsola",
+        "SourceName": "Cnsola",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": [
+          {
+            "Path": "Cnsola.csproj"
+          }
+        ]
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Template for console applications with usual custom configurations to speed up development",
+    "Copyright": null,
+    "Authors": "Jaxel Rojas",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": "https://github.com/Jaxelr/Cnsola",
+    "Package": "Cnsola",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": null,
     "Version": "1.3.1",
     "DownloadCount": 458,
@@ -43380,46 +43774,6 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "MyTemplate",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "Jaxel Rojas",
-    "Version": "0.0.3",
-    "DownloadCount": 450,
-    "Templates": [
-      {
-        "Author": "Jaxel Rojas",
-        "Name": ".Net Core Custom Console Application",
-        "Tags": {
-          "language": "C#"
-        },
-        "Classifications": [
-          "Console"
-        ],
-        "ShortName": [
-          "cnsola"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Cnsola",
-        "TemplatePackId": "Cnsola",
-        "SourceName": "Cnsola",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": [
-          {
-            "Path": "Cnsola.csproj"
-          }
-        ]
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Template for console applications with usual custom configurations to speed up development",
-    "Copyright": null,
-    "Authors": "Jaxel Rojas",
-    "LicenseUrl": "https://licenses.nuget.org/MIT",
-    "ProjectUrl": "https://github.com/Jaxelr/Cnsola",
-    "Package": "Cnsola",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -43696,7 +44050,7 @@
   {
     "Owners": "Ioannis G.",
     "Version": "1.1.0",
-    "DownloadCount": 429,
+    "DownloadCount": 430,
     "Templates": [
       {
         "Author": "Ioannis G.",
@@ -43974,6 +44328,43 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/hayer/WPF-Attached-ViewModel-Behavior-Template",
     "Package": "phu.WPFAttachedViewModelBehaviorTemplate",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": null,
+    "Version": "2021.2.19.1",
+    "DownloadCount": 420,
+    "Templates": [
+      {
+        "Author": "databinding.gmbh",
+        "Name": "BDD SpecFlow Blogsample Template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "Library"
+        ],
+        "ShortName": [
+          "bddsample"
+        ],
+        "GroupIdentity": null,
+        "Identity": "bdd.specflow.blogsample.template",
+        "TemplatePackId": "bdd.specflow.blogsample.template",
+        "SourceName": "BDD.BeispielVorlage",
+        "DefaultName": "bdd.AcceptanceTests",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "NET CLI Sample\n\t  Blogpost: https://www.databinding.net/rahmenbedingungen-etablieren-mit-net-cli-vorlagen/",
+    "Copyright": null,
+    "Authors": "René Leupold",
+    "LicenseUrl": "https://licenses.nuget.org/MIT",
+    "ProjectUrl": null,
+    "Package": "bdd.specflow.blogsample.template",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -44396,7 +44787,7 @@
   {
     "Owners": "Yas Ikeda (ycode.laboratory@gmail.com)",
     "Version": "1.1.0",
-    "DownloadCount": 401,
+    "DownloadCount": 402,
     "Templates": [
       {
         "Author": "Yas Ikeda <ycode.laboratory@gmail.com>",
@@ -45817,7 +46208,7 @@
   {
     "Owners": "",
     "Version": "5.0.0",
-    "DownloadCount": 347,
+    "DownloadCount": 349,
     "Templates": [
       {
         "Author": "Capgemini Valencia ",
@@ -47742,7 +48133,7 @@
   {
     "Owners": null,
     "Version": "1.0.0",
-    "DownloadCount": 279,
+    "DownloadCount": 281,
     "Templates": [
       {
         "Author": "Dwipraj Dutta",
@@ -47815,7 +48206,7 @@
   },
   {
     "Owners": null,
-    "Version": "1.0.20",
+    "Version": "1.0.21",
     "DownloadCount": 275,
     "Templates": [
       {
@@ -48073,7 +48464,7 @@
   {
     "Owners": null,
     "Version": "1.0.1",
-    "DownloadCount": 261,
+    "DownloadCount": 262,
     "Templates": [
       {
         "Author": "Stormancer",
@@ -49086,45 +49477,9 @@
     "IconPngUrl": null
   },
   {
-    "Owners": "Jeremy D. Miller",
-    "Version": "1.0.0",
-    "DownloadCount": 255,
-    "Templates": [
-      {
-        "Author": "Jeremy D. Miller",
-        "Name": "Storyteller Specification Project",
-        "Tags": {},
-        "Classifications": [
-          "Storyteller",
-          "Testing",
-          "BDD"
-        ],
-        "ShortName": [
-          "storyteller"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Storyteller.Specifications",
-        "TemplatePackId": "Storyteller.Specifications",
-        "SourceName": "StorytellerSpecs",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Creates a basic Storyteller Specifications project.",
-    "Copyright": null,
-    "Authors": "Jeremy D. Miller",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": "Storyteller.Specifications",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
     "Owners": "Artech",
     "Version": "1.0.1",
-    "DownloadCount": 254,
+    "DownloadCount": 256,
     "Templates": [
       {
         "Author": "Artech",
@@ -49176,6 +49531,42 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Custom.Template.NetCore.ZW",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": "Jeremy D. Miller",
+    "Version": "1.0.0",
+    "DownloadCount": 255,
+    "Templates": [
+      {
+        "Author": "Jeremy D. Miller",
+        "Name": "Storyteller Specification Project",
+        "Tags": {},
+        "Classifications": [
+          "Storyteller",
+          "Testing",
+          "BDD"
+        ],
+        "ShortName": [
+          "storyteller"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Storyteller.Specifications",
+        "TemplatePackId": "Storyteller.Specifications",
+        "SourceName": "StorytellerSpecs",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Creates a basic Storyteller Specifications project.",
+    "Copyright": null,
+    "Authors": "Jeremy D. Miller",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "Storyteller.Specifications",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -51035,7 +51426,7 @@
   {
     "Owners": "Erick Pinheiro",
     "Version": "1.0.0",
-    "DownloadCount": 228,
+    "DownloadCount": 229,
     "Templates": [
       {
         "Author": "Erick Pinheiro de Sousa",
@@ -51191,7 +51582,7 @@
   {
     "Owners": "yyh",
     "Version": "1.0.0",
-    "DownloadCount": 224,
+    "DownloadCount": 225,
     "Templates": [
       {
         "Author": "yyh",
@@ -52756,6 +53147,43 @@
   },
   {
     "Owners": null,
+    "Version": "0.2.0",
+    "DownloadCount": 183,
+    "Templates": [
+      {
+        "Author": "曹金燕",
+        "Name": "AhphSystem",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "ahph/netcore/system"
+        ],
+        "ShortName": [
+          "ahph"
+        ],
+        "GroupIdentity": null,
+        "Identity": "AhphSystemTemplate31",
+        "TemplatePackId": "AhphSystemTemplate31",
+        "SourceName": "Template",
+        "DefaultName": null,
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": ".netcore 3.1版本后台开发模板",
+    "Copyright": null,
+    "Authors": "jinyancao",
+    "LicenseUrl": null,
+    "ProjectUrl": null,
+    "Package": "AhphSystemTemplate31",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
+    "Owners": null,
     "Version": "0.0.2",
     "DownloadCount": 182,
     "Templates": [
@@ -52791,43 +53219,6 @@
     "LicenseUrl": "https://licenses.nuget.org/MIT",
     "ProjectUrl": "https://github.com/a98c14/aspnet-boilerplate",
     "Package": "Boiler.Templates.CSharp",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": null,
-    "Version": "0.2.0",
-    "DownloadCount": 181,
-    "Templates": [
-      {
-        "Author": "曹金燕",
-        "Name": "AhphSystem",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "ahph/netcore/system"
-        ],
-        "ShortName": [
-          "ahph"
-        ],
-        "GroupIdentity": null,
-        "Identity": "AhphSystemTemplate31",
-        "TemplatePackId": "AhphSystemTemplate31",
-        "SourceName": "Template",
-        "DefaultName": null,
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": ".netcore 3.1版本后台开发模板",
-    "Copyright": null,
-    "Authors": "jinyancao",
-    "LicenseUrl": null,
-    "ProjectUrl": null,
-    "Package": "AhphSystemTemplate31",
     "IconUrl": null,
     "IconPngUrl": null
   },
@@ -53845,6 +54236,43 @@
     "IconPngUrl": null
   },
   {
+    "Owners": "Sourabh Krishna",
+    "Version": "1.0.0",
+    "DownloadCount": 140,
+    "Templates": [
+      {
+        "Author": "Sourabh Krishna",
+        "Name": "Microservice Template",
+        "Tags": {
+          "language": "C#",
+          "type": "project"
+        },
+        "Classifications": [
+          "WebApi"
+        ],
+        "ShortName": [
+          "microservice-api"
+        ],
+        "GroupIdentity": null,
+        "Identity": "Microservice.Template",
+        "TemplatePackId": "Microservice.Template",
+        "SourceName": "Microservice.Template",
+        "DefaultName": "Sample Microservice",
+        "Baseline": null,
+        "PrimaryOutputs": null
+      }
+    ],
+    "DownloadUrl": null,
+    "Description": "Microservice Web Api Project Template",
+    "Copyright": null,
+    "Authors": "Sourabh Krishna",
+    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
+    "ProjectUrl": null,
+    "Package": "Microservice.Template",
+    "IconUrl": null,
+    "IconPngUrl": null
+  },
+  {
     "Owners": null,
     "Version": "1.0.2",
     "DownloadCount": 139,
@@ -53880,43 +54308,6 @@
     "LicenseUrl": null,
     "ProjectUrl": null,
     "Package": "Lean-NET5",
-    "IconUrl": null,
-    "IconPngUrl": null
-  },
-  {
-    "Owners": "Sourabh Krishna",
-    "Version": "1.0.0",
-    "DownloadCount": 138,
-    "Templates": [
-      {
-        "Author": "Sourabh Krishna",
-        "Name": "Microservice Template",
-        "Tags": {
-          "language": "C#",
-          "type": "project"
-        },
-        "Classifications": [
-          "WebApi"
-        ],
-        "ShortName": [
-          "microservice-api"
-        ],
-        "GroupIdentity": null,
-        "Identity": "Microservice.Template",
-        "TemplatePackId": "Microservice.Template",
-        "SourceName": "Microservice.Template",
-        "DefaultName": "Sample Microservice",
-        "Baseline": null,
-        "PrimaryOutputs": null
-      }
-    ],
-    "DownloadUrl": null,
-    "Description": "Microservice Web Api Project Template",
-    "Copyright": null,
-    "Authors": "Sourabh Krishna",
-    "LicenseUrl": "https://licenses.nuget.org/Apache-2.0",
-    "ProjectUrl": null,
-    "Package": "Microservice.Template",
     "IconUrl": null,
     "IconPngUrl": null
   },

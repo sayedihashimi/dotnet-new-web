@@ -11,8 +11,8 @@ function DeleteCacheFolders{
 
         [string]$toolsFolderPath = Join-Path $env:HOME .dotnet\tools
         [string]$toolsPathFromEnv = $env:TEMPLATEDOTNETTOOLSPATH
-        if(-not ([string]::IsNullOrEmpty($toolsFolderPath)) -and
-                    (test-path $toolsFolderPath)){
+        if(-not ([string]::IsNullOrEmpty($toolsPathFromEnv)) -and
+                    (test-path $toolsPathFromEnv)){
             'Overriding tools path from env var, env:TEMPLATEDOTNETTOOLSPATH="{0}"' -f $toolsPathFromEnv | Write-Output
             $toolsFolderPath = $toolsPathFromEnv
         }
