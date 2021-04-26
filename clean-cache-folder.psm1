@@ -1,7 +1,7 @@
 [string]$scriptDir = $PSScriptRoot
 [string]$rootCacheFolder = (Join-Path -Path $env:LOCALAPPDATA -ChildPath templatereport)
 [string]$defaultCacheFolder = (Join-Path -Path $rootCacheFolder -ChildPath extracted)
-[string]$defaultZipOutputFolder = (Join-Path $defaultCacheFolder 'generated-zips')
+[string]$defaultZipOutputFolder = (Join-Path $rootCacheFolder 'generated-zips')
 
 function Resolve-FullPath{
     [cmdletbinding()]

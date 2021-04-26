@@ -14,7 +14,8 @@ namespace TemplatesConsole {
         private INuGetHelper _nugetHelper;
         private IRemoteFile _remoteFile;
         private INuGetPackageDownloader _nugetPkgDownloader;
-        public ReportCommand(HttpClient httpClient, INuGetHelper nugetHelper, IRemoteFile remoteFile, INuGetPackageDownloader nugetPkgDownloader): base() {
+        private TemplatesShared.IReporter _reporter;
+        public ReportCommand(HttpClient httpClient, INuGetHelper nugetHelper, IRemoteFile remoteFile, INuGetPackageDownloader nugetPkgDownloader, TemplatesShared.IReporter reporter): base() {
             Debug.Assert(httpClient != null);
             Debug.Assert(nugetHelper != null);
             Debug.Assert(remoteFile != null);
@@ -24,7 +25,7 @@ namespace TemplatesConsole {
             _nugetHelper = nugetHelper;
             _remoteFile = remoteFile;
             _nugetPkgDownloader = nugetPkgDownloader;
-
+            _reporter = reporter;
             Name = "report";
             Description = "will create the template report into a json file";
         }
@@ -64,7 +65,7 @@ namespace TemplatesConsole {
             OnExecute = () => {
                 EnableVerboseOption = OptionVerbose.HasValue();
 
-                var report = new TemplateReport(_nugetHelper, _httpClient, _nugetPkgDownloader, _remoteFile);
+                var report = new TemplateReport(_nugetHelper, _httpClient, _nugetPkgDownloader, _remoteFile, _reporter);
 
                 var searchTerms = optionSearchTerms.HasValue() ? optionSearchTerms.Values.ToArray() : GetDefaultSearchTerms();
 

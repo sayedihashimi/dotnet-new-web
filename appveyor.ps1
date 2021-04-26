@@ -4,8 +4,8 @@ $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
 [string]$prNumber = $env:APPVEYOR_PULL_REQUEST_NUMBER
 [string]$branchName = $env:APPVEYOR_REPO_BRANCH
 
+<#
 [string]$cacheModulePath = (Join-Path $scriptDir clean-cache-folder.psm1)
-
 if(-not (test-path -Path $cacheModulePath)){
     'cache module not found at {0}' -f $cacheModulePath | Write-Error
 }
@@ -28,14 +28,25 @@ function Extract-NuGetCacheAv{
         }
     }
 }
+#>
 
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
-        '**** Extracting nuget cache to local folder' | Write-Output
-        Extract-NuGetCacheAv
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
-}
 
+        <#
+        Get-ChildItem (join-path $env:LOCALAPPDATA 'templatereport') -Recurse | 
+            Select-Object -ExpandProperty FullName |
+            Out-File 'C:\projects\dotnet-new-web\ls-out.txt' -Force
+        '**** directory results for C:\projects\dotnet-new-web\output\' | Out-File -Append -LiteralPath 'C:\projects\dotnet-new-web\ls-out.txt'
+        Get-ChildItem 'C:\projects\dotnet-new-web' -Recurse  |
+            Select-Object -ExpandProperty FullName -ErrorAction Continue |
+            Out-File -Append 'C:\projects\dotnet-new-web\ls-out.txt' -ErrorAction Continue
+        #>
+}
+else{
+    'false' | Write-Output
+}

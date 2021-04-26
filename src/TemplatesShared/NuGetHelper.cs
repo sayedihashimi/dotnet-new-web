@@ -41,7 +41,7 @@ namespace TemplatesShared {
             foreach (string pkg in packagesToIgnore) {
                 packagesToIgnoreNormalized.Add(Normalize(pkg));
             }
-
+            Console.WriteLine($"verbose: num packages to ignore '{packagesToIgnoreNormalized.Count}'");
             Dictionary<string, NuGetPackage> foundPkgsMap = new Dictionary<string, NuGetPackage>();
             foreach (string query in queries) {
                 try {

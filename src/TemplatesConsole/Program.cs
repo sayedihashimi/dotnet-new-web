@@ -33,7 +33,8 @@ namespace TemplatesConsole {
                 GetFromServices<HttpClient>(),
                 GetFromServices<INuGetHelper>(),
                 GetFromServices<IRemoteFile>(),
-                GetFromServices<INuGetPackageDownloader>());
+                GetFromServices<INuGetPackageDownloader>(),
+                GetFromServices<TemplatesShared.IReporter>());
             var analyzeCommand = new AnalyzeReportCommand(GetFromServices<IRemoteFile>());
             var hashCommand = new HashCommand();
 
@@ -58,6 +59,7 @@ namespace TemplatesConsole {
                                         .AddSingleton<IRemoteFile, RemoteFile>()
                                         .AddSingleton<HttpClient>()
                                         .AddSingleton<INuGetPackageDownloader,NuGetPackageDownloader>()
+                                        .AddSingleton<TemplatesShared.IReporter, Reporter>()
                                 .BuildServiceProvider();
         }
 

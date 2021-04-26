@@ -1,5 +1,5 @@
 $scriptDir = split-path -parent $MyInvocation.MyCommand.Definition
-$outputPath = Join-Path -Path $scriptDir '.output'
+$outputPath = Join-Path -Path $scriptDir 'output'
 $buildConfig = 'release'
 # need to create the folder to easily get the full path
 
@@ -28,7 +28,6 @@ function Create-Report{
         # 3: run the tool and pass in the parameters
         'call the tool at "{0}" now' -f $pathToExe | Write-Output
         &$pathToExe report --verbose -st template -st templates -st Boilerplate -st generate -st generates -st create -st creates -st Bellatrix -st Meissa -st Scaffold --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport $previousTemplateReport
-
         Pop-Location
     }
 }
@@ -42,7 +41,7 @@ function DeployTemplateReport{
         [string]$publishUsername = $env:publishUsername,
         [string]$publishPassword = $env:publishPassword,
         [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
-        [string]$sourceRelFilepath = '.output/release/netcoreapp3.1/publish/template-report.json',
+        [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
     )
     process{
@@ -89,7 +88,7 @@ function Download-LatestTemplateReport{
         [string]$publishUsername = $env:publishUsername,
         [string]$publishPassword = $env:publishPassword,
         [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
-        [string]$sourceRelFilepath = '.output/release/netcoreapp3.1/publish/template-report.json',
+        [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
     )
     process{
@@ -195,7 +194,6 @@ function Invoke-CommandString{
         }
     }
 }
-
 
 $prnum = $env:APPVEYOR_PULL_REQUEST_NUMBER
 
