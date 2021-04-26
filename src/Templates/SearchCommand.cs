@@ -29,7 +29,10 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "search", description: "search for templates") {
                 CommandHandler.Create<string>(async (searchTerm) => {
-                    var templatePacks = TemplatePack.CreateFromFile(_reportLocator.GetTemplateReportJsonPath());
+                    var previousTemplateReportPath = _reportLocator.GetTemplateReportJsonPath();
+                    _reporter.WriteVerboseLine($"loading previous template-report.json from '{previousTemplateReportPath}'");
+                    var templatePacks = TemplatePack.CreateFromFile(previousTemplateReportPath);
+                    _reporter.WriteVerboseLine($"Num template packs in previous report: '{templatePacks.Count}'");
                     var result = _searcher.Search(searchTerm, templatePacks);
 
                     List<UserOption>options = new List<UserOption>();
