@@ -18,7 +18,7 @@ function DeleteCacheFolders{
         }
 
         foreach($cn in $commandName){
-            'DeleteCacheFolders1, cn="{0}", env:home="{1}"' -f $cn, $env:HOME | Write-Output
+            'DeleteCacheFolders, cn="{0}", env:home="{1}"' -f $cn, $env:HOME | Write-Output
             $exepath = (Join-Path $toolsFolderPath ("{0}.exe" -f $cn))
             ' exepath: "{0}"' -f $exepath | Write-Output
             if(Test-Path $exepath -PathType Leaf){
@@ -26,7 +26,7 @@ function DeleteCacheFolders{
             }                        
         }
         foreach($tn in $toolNames){
-            'DeleteCacheFolders1, cn="{0}"' -f $cn | Write-Output
+            'DeleteCacheFolders, tn="{0}"' -f $tn | Write-Output
             $cacheFolder = Join-Path $toolsFolderPath .store $tn
             ' cacheFolder: "{0}"' -f $cacheFolder | Write-Output
             if(Test-Path $cacheFolder -PathType Container){
@@ -41,13 +41,9 @@ function DeleteCacheFolders{
                 ' foundnugetfiles.Length: "{0}"' -f ($foundnugetfiles.Length) | Write-Output
                 Remove-Item -LiteralPath $foundnugetfiles -Force
             }
-            #Get-ChildItem -Path $nugetcachefolder ("*{0}*" -f $cn) -Recurse -ErrorAction Ignore | Remove-Item -Force -ErrorAction SilentlyContinue
         }
     }
 }
-
-# TODO: Uncomment this later
-# 
 
 try {
     DeleteCacheFolders

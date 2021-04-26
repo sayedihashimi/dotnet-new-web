@@ -54,7 +54,7 @@ namespace TemplatesShared {
                         var key = Normalize(pkg.Id);
                         if (!packagesToIgnoreNormalized.Contains(key) && !foundPkgsMap.ContainsKey(key)) {
                             foundPkgsMap.Add(key, pkg);
-                            WriteVerbose($"2found package '{pkg.Id}'");
+                            WriteVerbose($"found package '{pkg.Id}'");
                         }
                     }
                 }
@@ -84,7 +84,7 @@ namespace TemplatesShared {
                         pkgsToAdd.Add(foundpackage.Packages[0]);
 
                         foundPkgsMap.Add(normalizedPackageId, foundpackage.Packages[0]);
-                        WriteVerbose($"1found package '{foundpackage.Packages[0].Id}'");
+                        WriteVerbose($"found package '{foundpackage.Packages[0].Id}'");
                     }
                     else if(foundpackage?.Packages.Length > 1) {
                         WriteVerbose($"found more than one pkg for '{pkg}', skipping results");

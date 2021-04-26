@@ -195,7 +195,6 @@ function Invoke-CommandString{
     }
 }
 
-
 $prnum = $env:APPVEYOR_PULL_REQUEST_NUMBER
 
 # download latest from api site to ensure we always have the latest
