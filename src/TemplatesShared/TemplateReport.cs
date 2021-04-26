@@ -234,7 +234,7 @@ namespace TemplatesShared {
             if (File.Exists(pathToIgnoreFile)) {
                 _reporter.WriteLine($"pkgs to ignore file found at '{pathToIgnoreFile}'");
                 var text = File.ReadAllText(pathToIgnoreFile);
-                var lines = text.Split(Environment.NewLine);
+                var lines = text.Split('\n');
                 if(lines == null || lines.Length <= 0) {
                     return new List<string>();
                 }

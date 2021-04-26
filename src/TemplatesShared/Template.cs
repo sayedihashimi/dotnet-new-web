@@ -275,7 +275,7 @@ namespace TemplatesShared
         public static string NormalisePkgId(string id) {
             Debug.Assert(id != null);
 
-            return id.ToLowerInvariant();
+            return id.Trim().ToLowerInvariant();
         }
 
         // TODO: Move these methods somewhere else
