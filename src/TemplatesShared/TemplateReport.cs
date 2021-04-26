@@ -220,14 +220,14 @@ namespace TemplatesShared {
                     "packages-to-ignore.txt");
 
             // if there is an env var named TEMPLATE_REPORT_PATH_TO_PREVIOUS, then use that instead
-            var previousPathEnvVar = Environment.GetEnvironmentVariable("TEMPLATE_REPORT_PATH_TO_PREVIOUS");
-            if (!string.IsNullOrEmpty(previousPathEnvVar)) {
-                _reporter.WriteVerboseLine($"Setting path using env var override TEMPLATE_REPORT_PATH_TO_PREVIOUS='{previousPathEnvVar}'");
-                if (System.IO.File.Exists(previousPathEnvVar)) {
-                    pathToIgnoreFile = previousPathEnvVar;
+            var pathToIgnoreFileEnvVar = Environment.GetEnvironmentVariable("TEMPLATE_REPORT_PATH_TO_IGNORE_FILE");
+            if (!string.IsNullOrEmpty(pathToIgnoreFileEnvVar)) {
+                _reporter.WriteVerboseLine($"Setting path to ignore file using env var override TEMPLATE_REPORT_PATH_TO_IGNORE_FILE='{pathToIgnoreFileEnvVar}'");
+                if (System.IO.File.Exists(pathToIgnoreFileEnvVar)) {
+                    pathToIgnoreFile = pathToIgnoreFileEnvVar;
                 }
                 else {
-                    _reporter.WriteVerboseLine($"not changing previous report path based on env var, because the file is not found at the path provided");
+                    _reporter.WriteVerboseLine($"not changing ignore file path based on env var, because the file is not found at the path provided");
                 }
             }
 

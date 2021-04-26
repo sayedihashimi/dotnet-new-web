@@ -9,7 +9,7 @@ environment:
   publishPassword:
     secure: 5D5/0OnhJtHvQVE1Qgp69VsQ6VrJ0k+1lQ9SLgjReLawxfvzv6WDozfh9Mln/pp4A3XjnRT9/JTadxNrzCHkAw==
   TEMPLATEDOTNETTOOLSPATH: C:\Users\appveyor\.dotnet\tools
-  TEMPLATE_REPORT_PATH_TO_PREVIOUS: C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json
+  TEMPLATE_REPORT_PATH_TO_IGNORE_FILE: C:\projects\dotnet-new-web\src\TemplatesConsole\packages-to-ignore.txt
 
 before_build:
 - pwsh: dotnet restore

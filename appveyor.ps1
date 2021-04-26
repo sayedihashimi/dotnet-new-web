@@ -36,7 +36,7 @@ Set-Location -Path C:\projects\dotnet-new-web
 #'Extracting nuget cache to local folder' | Write-Output
 #Extract-NuGetCacheAv
 
-templatereport report --verbose -st template --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
+templatereport report --verbose -st Bellatrix --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json -rp C:\projects\dotnet-new-web\src\TemplatesApi\wwwroot\template-report-updated.json
 
 
 
