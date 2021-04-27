@@ -25,3 +25,6 @@ artifacts:
 - path: output\release\netcoreapp3.1\publish\template-report.json
   name: template-report.from-publish-folder.json
 - path: src\TemplatesConsole\packages-to-ignore.txt
+  name: packages-to-ignore.source.txt
+- path: ..\..\Users\appveyor\AppData\Local\templatereport\packages-to-ignore.txt
+  name: packages-to-ignore.txt

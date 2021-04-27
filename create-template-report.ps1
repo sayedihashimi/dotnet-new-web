@@ -42,11 +42,12 @@ function DeployTemplateReport{
         [string]$publishPassword = $env:publishPassword,
         [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
         [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
-        [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
+        [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json',
+        [string]$ignoreFileFullpath = (join-path $env:LOCALAPPDATA 'templatereport\packages-to-ignore.txt'),
+        [string]$destIgnoreRelFilepath = 'wwwroot/wwwroot/packages-to-ignore.json'
     )
     process{
-    # msdeploy -verb:sync -whatif -source:contentPath='C:\data\mycode\sayed-tools\powershell\dotnet\template-report2.json' -dest:contentPath='wwwroot/template-report.json',ComputerName="https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api",UserName='%pubusername%',Password='%pubpwd%',AuthType='Basic'
-
+        # msdeploy -verb:sync -whatif -source:contentPath='C:\data\mycode\sayed-tools\powershell\dotnet\template-report2.json' -dest:contentPath='wwwroot/template-report.json',ComputerName="https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api",UserName='%pubusername%',Password='%pubpwd%',AuthType='Basic'
         if([string]::IsNullOrWhiteSpace($publishUsername)){
             '$publishUsername empty, cannot publish' | Write-Output
             return;
@@ -64,10 +65,11 @@ function DeployTemplateReport{
 
         # msdeploy -verb:sync -whatif -source:contentPath=''{0}'' -dest:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 
 
+        # publish the template-report.json
         [string]$msdeployCmdArgs = ('-verb:sync -source:contentPath=''{0}'' -dest:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile,$destRelFilepath,$deployUrl,$publishUsername,$publishPassword)
-        $logfilepath = "$([System.IO.Path]::GetTempFileName()).log"
+        [string]$logfilepath = "$([System.IO.Path]::GetTempFileName()).log"
         New-Item -Path $logfilepath -ItemType File
-        'Starting publish, logfile={0}' -f $logfilepath | Write-Output
+        'Starting publish for template-report.json, logfile={0}' -f $logfilepath | Write-Output
         try{
             # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
             Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs *> $logfilepath
@@ -79,6 +81,28 @@ function DeployTemplateReport{
             $logcontent = '';
         }
         $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
+
+        # publish packages-to-ignore.txt
+        # check that the source file is on disk
+        [string]$ignoreFilePath = join-path $env:LOCALAPPDATA 'templatereport\packages-to-ignore.txt' | Get-FullPathNormalized
+        if(-not (test-path $ignoreFilePath)){
+            throw ('source file not found at [{0}], from relpath: [{1}]' -f $ignoreFilePath, $sourceRelFilepath)
+        }
+        [string]$msdeployCmdArgs2 = ('-verb:sync -source:contentPath=''{0}'' -dest:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $ignoreFileFullpath,$destIgnoreRelFilepath,$deployUrl,$publishUsername,$publishPassword)
+        [string]$logfilepath2 = "$([System.IO.Path]::GetTempFileName()).log"
+        New-Item -Path $logfilepath2 -ItemType File
+        'Starting publish for packages-to-ignore.txt, logfile={0}' -f $logfilepath | Write-Output
+        try{
+            # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
+            Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs2 *> $logfilepath2
+        }
+        catch{
+        }
+        $logcontent2 = Get-Content $logfilepath2
+        if($null -eq $logcontent2){
+            $logcontent2 = '';
+        }
+        $logcontent2.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
     }
 }
 
@@ -89,7 +113,9 @@ function Download-LatestTemplateReport{
         [string]$publishPassword = $env:publishPassword,
         [string]$deployUrl = 'https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api',
         [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
-        [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json'
+        [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json',
+        [string]$ignoreFileFullpath = (join-path $env:LOCALAPPDATA 'templatereport\packages-to-ignore.txt'),
+        [string]$destIgnoreRelFilepath = 'wwwroot/wwwroot/packages-to-ignore.json'
     )
     process{
         if([string]::IsNullOrEmpty($publishUsername)){
@@ -103,11 +129,30 @@ function Download-LatestTemplateReport{
         [string]$msdeployCmdArgs = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile,$destRelFilepath,$deployUrl,$publishUsername,$publishPassword)
         $logfilepath = "$([System.IO.Path]::GetTempFileName()).log"
         New-Item -Path $logfilepath -ItemType File
-        'Starting download, logfile={0}' -f $logfilepath | Write-Output
+        'Starting download for template-report.json, logfile={0}' -f $logfilepath | Write-Output
         try{
             'Downloading latest template-report.json from api site' | Write-Output
             # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
             Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs *> $logfilepath
+        }
+        catch{
+        }
+
+        $logcontent = Get-Content $logfilepath
+        if($null -eq $logcontent){
+            $logcontent = ('log file not found at "{0}"' -f $logfilepath);
+        }
+        $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
+
+        [string]$sourceFile2 = $ignoreFileFullpath | Get-FullPathNormalized
+        [string]$msdeployCmdArgs2 = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile2,$destIgnoreRelFilepath,$deployUrl,$publishUsername,$publishPassword)
+        $logfilepath2 = "$([System.IO.Path]::GetTempFileName()).log"
+        New-Item -Path $logfilepath2 -ItemType File
+        'Starting download for packages-to-ignore.txt, logfile={0}' -f $logfilepath | Write-Output
+        try{
+            'Downloading latest template-report.json from api site' | Write-Output
+            # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
+            Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs2 *> $logfilepath2
         }
         catch{
         }

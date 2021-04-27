@@ -172,6 +172,14 @@ namespace TemplatesShared {
                 Directory.CreateDirectory(reportsPath);
             }
 
+            var sb = new StringBuilder();
+            foreach(var pkg in packageIdsToIgnore) {
+                sb.AppendLine(TemplatePack.NormalisePkgId(pkg));
+            }
+            foreach (var pkg in pkgNamesWitoutPackages) {
+                sb.AppendLine(TemplatePack.NormalisePkgId(pkg));
+            }
+
             File.WriteAllText(
                     Path.Combine(reportsPath, "newly-found-packages-without-templates.json"),
                     JsonConvert.SerializeObject(listPackagesWithNotemplates,Formatting.Indented));
@@ -179,6 +187,18 @@ namespace TemplatesShared {
             File.WriteAllText(
                     Path.Combine(reportsPath, "newly-found-package-names-to-ignore.json"),
                     JsonConvert.SerializeObject(pkgNamesWitoutPackages, Formatting.Indented));
+
+            File.WriteAllText(
+                    Path.Combine(reportsPath, "packages-to-ignore.txt"),
+                    sb.ToString());
+
+            var ignoreFileOutputPath = Path.Combine(_remoteFile.CacheFolderpath, "packages-to-ignore.txt");
+            if (File.Exists(ignoreFileOutputPath)) {
+                File.Delete(ignoreFileOutputPath);
+            }
+            File.WriteAllText(
+                    Path.Combine(_remoteFile.CacheFolderpath, "packages-to-ignore.txt"),
+                    sb.ToString());
 
             var templatePacks = new List<TemplatePack>();
             foreach(var pkg in templatePackages) {
