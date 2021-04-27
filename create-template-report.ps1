@@ -28,6 +28,12 @@ function Create-Report{
         # 3: run the tool and pass in the parameters
         'call the tool at "{0}" now' -f $pathToExe | Write-Output
         &$pathToExe report --verbose -st template -st templates -st Boilerplate -st generate -st generates -st create -st creates -st Bellatrix -st Meissa -st Scaffold --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport $previousTemplateReport
+
+        [string]$pathToLatestPkgsToIgnore = (Join-Path $env:LOCALAPPDATA 'telmplatereport\packages-to-ignore.txt')
+        if(test-path $pathToLatestPkgsToIgnore){
+            Copy-Item -LiteralPath $pathToLatestPkgsToIgnore -Destination (join-path $scriptDir '.\src\TemplatesConsole\packages-to-ignore.txt')
+        }
+
         Pop-Location
     }
 }
@@ -148,9 +154,9 @@ function Download-LatestTemplateReport{
         [string]$msdeployCmdArgs2 = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile2,$destIgnoreRelFilepath,$deployUrl,$publishUsername,$publishPassword)
         $logfilepath2 = "$([System.IO.Path]::GetTempFileName()).log"
         New-Item -Path $logfilepath2 -ItemType File
-        'Starting download for packages-to-ignore.txt, logfile={0}' -f $logfilepath | Write-Output
+        'Starting download for packages-to-ignore.txt, logfile={0}' -f $logfilepath2 | Write-Output
         try{
-            'Downloading latest template-report.json from api site' | Write-Output
+            'Downloading latest packages-to-ignore.txt from api site' | Write-Output
             # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
             Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs2 *> $logfilepath2
         }
