@@ -150,7 +150,7 @@ function Download-LatestTemplateReport{
         }
         $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
 
-        
+
         [string]$sourceFile2 = $ignoreFileFullpath | Get-FullPathNormalized
         [string]$msdeployCmdArgs2 = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile2,$destIgnoreRelFilepath,$deployUrl,$publishUsername,$publishPassword)
         $logfilepath2 = "$([System.IO.Path]::GetTempFileName()).log"
@@ -160,6 +160,7 @@ function Download-LatestTemplateReport{
             'Downloading latest packages-to-ignore.txt from api site' | Write-Output
             # wrap the call and grab all output. This is needed to mask any secrets that may appear in the logs
             Invoke-CommandString -command (Get-MSDeploy) -commandArgs $msdeployCmdArgs2 *> $logfilepath2
+            Copy-Item -LiteralPath $sourceFile2 -Destination (Join-Path $scriptDir 'src\TemplatesConsole\packages-to-ignore.txt')
         }
         catch{
         }
