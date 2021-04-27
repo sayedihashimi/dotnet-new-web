@@ -150,6 +150,7 @@ function Download-LatestTemplateReport{
         }
         $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
 
+        
         [string]$sourceFile2 = $ignoreFileFullpath | Get-FullPathNormalized
         [string]$msdeployCmdArgs2 = ('-verb:sync -dest:contentPath=''{0}'' -source:contentPath=''{1}'',ComputerName="{2}",UserName=''{3}'',Password=''{4}'',AuthType=''Basic'' -retryAttempts=10 -retryInterval=2000 ' -f $sourceFile2,$destIgnoreRelFilepath,$deployUrl,$publishUsername,$publishPassword)
         $logfilepath2 = "$([System.IO.Path]::GetTempFileName()).log"
@@ -163,11 +164,11 @@ function Download-LatestTemplateReport{
         catch{
         }
 
-        $logcontent = Get-Content $logfilepath
-        if($null -eq $logcontent){
-            $logcontent = ('log file not found at "{0}"' -f $logfilepath);
+        $logcontent2 = Get-Content $logfilepath2
+        if($null -eq $logcontent2){
+            $logcontent2 = ('log file not found at "{0}"' -f $logfilepath2);
         }
-        $logcontent.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
+        $logcontent2.Replace($publishUsername,'***USERNAME***').Replace($publishPassword,'***PASSWORD***') | Write-Output
     }
 }
 
