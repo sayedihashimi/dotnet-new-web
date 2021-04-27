@@ -13940,3 +13940,13 @@ Arief21.EF.Tools
 Community.Core.EnterpriseLibrary
 TinyUpdate.Create
 PdfDocuments
+niflysharp
+SmartTender.CommercialServices.DTO
+Google.Apis.Essentialcontacts.v1
+SOLIDWORKS.Application.API
+GraphQLinq.Scaffolding
+Navistar.NTB.UtilsNuget
+SOLIDWORKS.DocumentManager.API
+UtilsNuget
+Google.Apis.ApiKeysService.v2
+SignedCertificate
