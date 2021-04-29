@@ -143,7 +143,8 @@ namespace TemplatesShared {
 
             var hostFiles = Directory.GetFiles(templateConfigFolder, "*.host.json");
             if(hostFiles == null || hostFiles.Length == 0) {
-                _reporter.WriteLine($"ERROR: no host files found", indentPrefix);
+                //_reporter.WriteLine($"WARNING: ", indentPrefix);
+                WriteWarning($"no host files found", indentPrefix);
                 return false;
             }
             bool foundIssues = false;
@@ -171,7 +172,7 @@ namespace TemplatesShared {
             }
 
             if (!foundAnIdeHostFile) {
-                WriteError($"no host file found in folder '{templateConfigFolder}'");
+                WriteWarning($"no host file found in folder '{templateConfigFolder}'");
             }
 
             void WriteError(string text) {
