@@ -237,12 +237,13 @@ namespace TemplatesShared {
                         _jsonHelper.GetStringValue(currentValue as JToken) :
                         null;
                     if (string.Compare("project", currentResult, StringComparison.InvariantCultureIgnoreCase) == 0 ||
-                        string.Compare("item", currentResult, StringComparison.InvariantCultureIgnoreCase) == 0) {
+                        string.Compare("item", currentResult, StringComparison.InvariantCultureIgnoreCase) == 0 ||
+                        string.Compare("solution", currentResult, StringComparison.InvariantCultureIgnoreCase) == 0) {
                         return true;
                     }
                     return false;
                 },
-                ErrorMessage = $"ERROR: $.tags.type should be either 'project' or 'item'"
+                ErrorMessage = $"ERROR: $.tags.type should be either 'project','item' or 'solution'"
             });
 
             // check recommended properties
