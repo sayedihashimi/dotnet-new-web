@@ -68,7 +68,6 @@ namespace TemplatesWeb.Pages {
             NextLink = new ConditionalLink(nextSkip < Stats.NumTemplatePacks, nextLink);
         }
 
-
         public IActionResult OnPostAsync() {
             if (!ModelState.IsValid) {
                 return Page();
@@ -76,5 +75,8 @@ namespace TemplatesWeb.Pages {
 
             return Redirect($"/Search/{SearchText}");
         }
+
+        public string GetIconUrlFor(TemplatePack templatePack) =>
+            string.IsNullOrEmpty(templatePack?.IconUrl) ? Strings.DefaultTemplatePackIconUrl : templatePack?.IconUrl;
     }
 }

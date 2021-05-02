@@ -28,9 +28,7 @@
     @foreach (var tp in Model.TemplatePacks) {
         <section class="template-pack">
             <h4 class="template-pack-header">
-                @if (!string.IsNullOrWhiteSpace(tp.IconUrl)) {
-                    <img class="pkgIcon" src="@tp.IconUrl" alt="icon" />
-                }
+                <img class="pkgIcon" src="@Model.GetIconUrlFor(tp)" alt="icon" />
                 <a href="/pack/@tp.Package">@tp.Package</a>
             </h4>
             <quote class="template-description">@tp.Description</quote>
