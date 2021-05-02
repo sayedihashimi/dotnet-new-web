@@ -22,6 +22,12 @@ namespace TemplatesConsole {
                 "path to the template-report.json file",
                 CommandOptionType.SingleValue);
 
+            var optionCsvOutputPath = command.Option<string>(
+                "-cop|--csv-output-path",
+                "output path for the csv file, default is to create the file in the current directory",
+                CommandOptionType.SingleValue
+                );
+
             OnExecute = () => {
                 var reportFilepath = optionTemplateReportFilepath.HasValue() ?
                                         optionTemplateReportFilepath.Value() :
@@ -29,13 +35,25 @@ namespace TemplatesConsole {
                 if (string.IsNullOrEmpty(reportFilepath)) {
                     throw new ArgumentNullException("template-report-file parameter missing");
                 }
-                var destFile = Path.Combine(Directory.GetCurrentDirectory(), $"template-result.{DateTime.Now.ToString("MM.dd.yy-H.m.s.ffff")}.csv");
+
+                var destPath = optionCsvOutputPath.HasValue() ?
+                                optionCsvOutputPath.Value() :
+                                Path.Combine(Directory.GetCurrentDirectory(), $"template-result.{DateTime.Now.ToString("MM.dd.yy-H.m.s.ffff")}.csv");
+
+                var destFile = destPath;
+
+                if (!Path.HasExtension(destFile)) {
+                    destFile = Path.Combine(destFile, $"template-result.{DateTime.Now.ToString("MM.dd.yy-H.m.s.ffff")}.csv");
+                }
+
+                //var destFile = Path.Combine(Directory.GetCurrentDirectory(), $"template-result.{DateTime.Now.ToString("MM.dd.yy-H.m.s.ffff")}.csv");
+                
                 Console.WriteLine($"destFile: {destFile}");
                 var sb = new StringBuilder();
                 // var destFile = 
                 // load the json file
                 var templatePack = TemplatePack.CreateFromFile(reportFilepath);
-                sb.AppendLine("Identity,hash,idhash,groupidhash");
+                sb.AppendLine("Identity,hash,hashLower,idhash,idhashLower,groupidhash,groupidHashLower");
                 foreach(var tp in templatePack) {
                     foreach(var template in tp.Templates) {
                         var hashInfo = new TemplateHashInfo {
@@ -45,9 +63,12 @@ namespace TemplatesConsole {
                         };
 
                         var hash = TemplateHashExtensions.EncodeAndGenerateHash(hashInfo);
+                        var hashLower = TemplateHashExtensions.EncodeAndGenerateHash(hashInfo,true);
                         var idhash = TemplateHashExtensions.GenerateHash(template.Identity);
+                        var idhashLower = TemplateHashExtensions.GenerateHash(template.Identity != null? template.Identity.ToLowerInvariant():string.Empty);
                         var groupIdHash = TemplateHashExtensions.GenerateHash(template.GroupIdentity);
-                        sb.AppendLine($"{template.Identity},{hash},{idhash},{groupIdHash}");
+                        var groupIdHashLower = TemplateHashExtensions.GenerateHash(template.GroupIdentity != null ? template.GroupIdentity.ToLowerInvariant() : string.Empty);
+                        sb.AppendLine($"{template.Identity},{hash},{hashLower},{idhash},{idhashLower},{groupIdHash},{groupIdHashLower}");
                     }
                 }
                 File.WriteAllText(destFile, sb.ToString());
@@ -65,14 +86,20 @@ namespace TemplatesConsole {
         }
     }
     public static class TemplateHashExtensions {
-        internal static string EncodeAndGenerateHash(TemplateHashInfo template) {
+        internal static string EncodeAndGenerateHash(TemplateHashInfo template, bool toLowercase=false) {
             // We form up a fake group identity for handling templates which just have an identity but no group id.
             string identity = template.GroupIdentity;
             if (string.IsNullOrEmpty(identity)) {
                 identity = $"__{template.Identity}";
             }
 
-            return EncodeAndGenerateHash(identity, template.Language ?? string.Empty);
+            if (toLowercase) {
+                return EncodeAndGenerateHash(identity.ToLowerInvariant(), (template.Language ?? string.Empty).ToLowerInvariant());
+            }
+            else {
+                return EncodeAndGenerateHash(identity, template.Language ?? string.Empty);
+            }
+            
         }
 
         internal static string EncodeAndGenerateHash(string id, string language) => EncodeTemplateId(id, language).GenerateHash();
