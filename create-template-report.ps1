@@ -50,7 +50,7 @@ function DeployTemplateReport{
         [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json',
         [string]$ignoreFileFullpath = (join-path $env:LOCALAPPDATA 'templatereport\packages-to-ignore.txt'),
-        [string]$destIgnoreRelFilepath = 'wwwroot/wwwroot/packages-to-ignore.json'
+        [string]$destIgnoreRelFilepath = 'wwwroot/wwwroot/packages-to-ignore.txt'
     )
     process{
         # msdeploy -verb:sync -whatif -source:contentPath='C:\data\mycode\sayed-tools\powershell\dotnet\template-report2.json' -dest:contentPath='wwwroot/template-report.json',ComputerName="https://dotnetnew-api.scm.azurewebsites.net/msdeploy.axd?site=dotnetnew-api",UserName='%pubusername%',Password='%pubpwd%',AuthType='Basic'
@@ -121,7 +121,7 @@ function Download-LatestTemplateReport{
         [string]$sourceRelFilepath = 'output/release/netcoreapp3.1/publish/template-report.json',
         [string]$destRelFilepath = 'wwwroot/wwwroot/template-report.json',
         [string]$ignoreFileFullpath = (join-path $env:LOCALAPPDATA 'templatereport\packages-to-ignore.txt'),
-        [string]$destIgnoreRelFilepath = 'wwwroot/wwwroot/packages-to-ignore.json'
+        [string]$destIgnoreRelFilepath = 'wwwroot/wwwroot/packages-to-ignore.txt'
     )
     process{
         if([string]::IsNullOrEmpty($publishUsername)){
