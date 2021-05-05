@@ -13,7 +13,7 @@
 <form id="search-form" method="POST">
     <input asp-for="SearchText" required />
     @*<button id="search-button" type="submit">Search templates</button>*@
-    <a href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
+    <a id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
 </form>
 
 <ul id="overallStats">
@@ -42,7 +42,7 @@
                 </ul>
             </details>
             <ul class="template-metadata">
-                <li><p>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</p></li>
+                <li>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</li>
                 <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
             </ul>
         </section>

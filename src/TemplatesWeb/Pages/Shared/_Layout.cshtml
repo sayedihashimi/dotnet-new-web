@@ -1,4 +1,13 @@
 ﻿<!DOCTYPE html>
+@{
+    var usePreviewCss = false;
+    var usePreviewEnvVar = System.Environment.GetEnvironmentVariable("dnw-previewcss");
+    if (!string.IsNullOrEmpty(usePreviewEnvVar) &&
+        string.Compare("true",usePreviewEnvVar,StringComparison.OrdinalIgnoreCase)==0) {
+        usePreviewCss = true;
+    }
+    var pathToSiteCssFile = usePreviewCss ? "/css/preview.css" : "/css/grid.css";
+}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,14 +16,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;500;700;800&display=swap" rel="stylesheet">
 <environment include="Development">
     <link rel="stylesheet" href="~/css/normalize/normalize.css"/>
-    <link rel="stylesheet" href="~/css/grid.css" />
+    <link rel="stylesheet" href="@pathToSiteCssFile" />
 </environment>
 <environment exclude="Development">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
             asp-fallback-href="~/css/normalize/normalize.css"
             asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 
-    <link rel="stylesheet" href="~/css/grid.css" asp-append-version="true" />
+    <link rel="stylesheet" href="@pathToSiteCssFile" asp-append-version="true" />
 </environment>
 @RenderSection("Styles", required: false)
 </head>

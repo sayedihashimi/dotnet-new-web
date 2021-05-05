@@ -182,11 +182,7 @@ a {
     line-height: 5vw;
     border-radius:1vmin;
 }
-/*@media only screen and (max-width: 800px) {
-    .terminal{
-        
-    }
-}*/
+
 .line1 {
     -webkit-animation: type 1s 1s steps(20, end) forwards;
     -moz-animation: type 1s 1s steps(20, end) forwards;

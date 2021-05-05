@@ -1,0 +1,103 @@
+﻿:root {
+    /*color palette*/
+    --bgcolor: #eeeeee;
+    --pgheadercolor: #393e46;
+    --altcolor1: #aad8d3;
+    --altcolor2: #00adb5;
+    /*
+        #eeeeee
+        #aad8d3
+        #00adb5
+        #393e46
+    */
+}
+/*@font-face {
+    font-family: 'Menlo Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Menlo Regular'), url('../fonts/Menlo-Regular.woff') format('woff');
+}*/
+html, body {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background-color: var(--bgcolor);
+    width: 100%;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
+}
+a {
+    text-decoration: none;
+    color:var(--altcolor2);
+}
+
+#search-form{
+    width:100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+#SearchText{
+    width: 50%;
+    height: 6vw;
+    margin-right: 4vw;
+    margin-left: 4vw;
+}
+#search-link{
+    content: url('/images/zoom.svg');
+    height: 6vw;
+    width: 6vw;
+}
+.pkgIcon {
+    width: 5vw;
+    height: 5vw;
+    margin-right: 1vw;
+}
+.template-pack-container{
+    width:100%;
+}
+.template-pack{
+    padding-left: 2vw;
+    padding-right: 2vw;
+    overflow-wrap: anywhere;
+}
+.template-pack-header {
+    margin-block-start: 0.33em;
+    margin-block-end: 0.33em;
+    display: flex;
+    line-height: 6vw;
+    width: 100%;
+    margin-top: 2vh;
+    font-size: max(min(4vw,20px),8px);
+}
+.template-list {
+    margin-block-start: 0;
+}
+
+#overallStats{
+    list-style-type: none;
+}
+
+
+/*************************
+    terminal related
+**************************/
+.terminal-command::before {
+    content: ' $ ';
+}
+
+.terminal-container {
+    margin-bottom: 3vw;
+}
+
+.terminal {
+    background-color: var(--pgheadercolor);
+    font-family: "Menlo Regular","Lucida Console",monospace;
+    color: var(--altcolor2);
+    height: calc(5vw + 20px);
+    /* width: 50vw; */
+    font-size: 5vw;
+    line-height: calc(5vw + 20px);
+    text-align: center;
+}
