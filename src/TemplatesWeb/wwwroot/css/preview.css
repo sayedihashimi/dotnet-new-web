@@ -93,6 +93,7 @@ a {
     line-height: calc(5vw + 20px);
     text-align: center;
 }
+
 .template-description{
     
 }
@@ -122,6 +123,148 @@ a {
     opacity: 0.15;
 }
 */
+.pager-container{
+    align-self:center;
+}
+.pager {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width:100%;
+    padding:0;
+}
+.pager > li:first-child::before{
+    content: "\2B9C"
+}
+.pager > li:nth-child(2)::after{
+    content: "\27A4"
+}
+.navHome{
+    align-self:start;
+    padding: 1vw 1vw;
+}
+/*************************
+    blinking cursor
+**************************/
+.cursor1 {
+    -webkit-animation: blink 1s infinite;
+    -moz-animation: blink 1s infinite;
+    -o-animation: blink 1s infinite;
+    animation: blink 1s infinite;
+}
+
+@-webkit-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-o-keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
+@-moz-keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
+@-o-keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
+@keyframes type {
+    to {
+        width: 17em;
+    }
+}
+
 @media only screen and (min-device-width: 600px) {
 /* font-size: 4vw; */
     body{
