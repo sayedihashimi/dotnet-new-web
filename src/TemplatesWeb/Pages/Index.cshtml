@@ -4,15 +4,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-
 <div class="terminal-container">
     <div class="terminal">
         <p class="line1 terminal-command">dotnet new <span class="cursor1">_</span></p>
     </div>
 </div>
 <form id="search-form" method="POST">
-    <input asp-for="SearchText" required />
-    @*<button id="search-button" type="submit">Search templates</button>*@
+    <input asp-for="SearchText" required autofocus />
     <a id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
 </form>
 
@@ -27,23 +25,33 @@
 <section class="template-pack-container">
     @foreach (var tp in Model.TemplatePacks) {
         <section class="template-pack">
-            <h4 class="template-pack-header">
-                <img class="pkgIcon" src="@Model.GetIconUrlFor(tp)" alt="icon" />
-                <a href="/pack/@tp.Package">@tp.Package</a>
-            </h4>
-            <quote class="template-description">@tp.Description</quote>
+@*            <h4 class="template-pack-header">
+            </h4>*@
 
-            <details class="template-details">
-                <summary>@tp.Templates.Length templates</summary>
-                <ul class="template-list">
-                    @foreach (var t in tp.Templates) {
-                        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
-                    }
-                </ul>
-            </details>
-            <ul class="template-metadata">
-                <li>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</li>
-                <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
+            <ul class="template-info">
+                <li><img class="pkgIcon" src="@Model.GetIconUrlFor(tp)" alt="icon" /></li>
+                <li>
+                    <ul>
+                        <li><a href="/pack/@tp.Package">@tp.Package</a></li>
+                        <li><quote class="template-description">@tp.Description</quote></li>
+                        <li>
+                            <details class="template-details">
+                                <summary>@tp.Templates.Length templates</summary>
+                                <ul class="template-list">
+                                    @foreach (var t in tp.Templates) {
+                                        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
+                                    }
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <ul class="template-metadata">
+                                <li>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</li>
+                                <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </section>
     }
