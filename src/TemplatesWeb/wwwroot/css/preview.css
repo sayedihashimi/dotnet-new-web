@@ -94,9 +94,6 @@ a {
     text-align: center;
 }
 
-.template-description{
-    
-}
 .template-info {
     list-style-type: none;
     /* change to horizontal layout */
@@ -301,4 +298,19 @@ a {
     .template-metadata li{
         margin-right: 1vw;
     }
+}
+
+
+/*************************
+    pack page styles
+**************************/
+.pack-title{
+    background-color: var(--pgheadercolor);
+    font-family: "Menlo Regular","Lucida Console",monospace;
+    color: var(--altcolor2);
+    height: calc(5vw + 20px);
+    font-size: min(4vw, 24px);
+    overflow: scroll;
+    line-height: calc(5vw + 20px);
+    text-align: center;
 }

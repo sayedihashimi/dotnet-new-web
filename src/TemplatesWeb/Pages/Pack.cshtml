@@ -1,15 +1,25 @@
 ﻿@page "{packId}"
 @model PackModel
-    <section class="go-home">
-        <a href="/"><img src="~/images/create-project-20x20.png" /> go home</a>
-    </section>
-<h2>
+@{
+    var usePreviewCss = false;
+    var usePreviewEnvVar = System.Environment.GetEnvironmentVariable("dnw-previewcss");
+    if (!string.IsNullOrEmpty(usePreviewEnvVar) &&
+        string.Compare("true",usePreviewEnvVar,StringComparison.OrdinalIgnoreCase)==0) {
+        usePreviewCss = true;
+    }
+    var pathToSiteCssFile = usePreviewCss ? "/css/preview.css" : "/css/grid.css";
+}
+<section class="go-home">
+    <a href="/"><img src="~/images/create-project-20x20.png" /> go home</a>
+</section>
+
+<h2 class="pack-title">
     @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
         <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="icon" />
     }
     @Model.TemplatePack.Package
 </h2>
-<quote><i>@Model.TemplatePack.Description</i></quote>
+<quote class="pack-description"><i>@Model.TemplatePack.Description</i></quote>
 <section class="install-command">
     @*dotnet new --install "@Model.TemplatePack.Package"*@
     <p class="terminal-command">dotnet new --install "@Model.TemplatePack.Package"</p>
@@ -42,10 +52,15 @@
 
 
 @section Styles {
+    @if(!usePreviewCss){
     <environment include="Development">
         <link rel="stylesheet" href="~/css/pack.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/pack.css" asp-append-version="true" />
     </environment>
+    }
+    else{
+
+    }
 }
