@@ -30,24 +30,34 @@ footer{
     justify-content:center;
     align-items: center;
 }
-#SearchText{
+#SearchText, #search-page-text{
     width: 50%;
     height: 6vw;
     margin: 1vw 4vw 1vw 4vw;
 }
-#search-link{
+#templateSearchBox{
+    width: 50%;
+}
+#search-link {
     content: url('/images/zoom.svg');
     height: 6vw;
     width: 6vw;
     border: 1px solid transparent;
 }
-#search-link:hover{
+#search-page-link{
+    content: url('/images/zoom.svg');
+    height: 3vw;
+    width: 3vw;
+    border: 1px solid transparent;
+}
+#search-link:hover, #search-page-link:hover{
     border: 1px solid var(--altcolor2);
 }
 .pkgIcon {
     width: min(5vw,30px);
     height: min(5vw,30px);
     margin-right: 1vw;
+    background-color: white;
 }
 .template-pack-container{
     width:100%;
@@ -270,11 +280,11 @@ footer{
     body{
         font-size: min(4vw,24px);
     }
-    #SearchText{
+    #SearchText, #search-page-text{
         height: min(6vw,30px);
         margin: min(1vw,6px) min(3vw,18px) min(1vw,6px) min(3vw,18px);
     }
-    #search-link{
+    #search-link, #search-page-link{
         height: min(6vw,40px);
         width: min(6vw,40px);
     }
@@ -310,14 +320,55 @@ footer{
     background-color: var(--pgheadercolor);
     font-family: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
     color: var(--altcolor2);
-    height: calc(5vw + 20px);
+    /* height: calc(5vw + 20px);
+    line-height: calc(5vw + 20px); */
     font-size: min(4vw, 24px);
-    line-height: calc(5vw + 20px);
+    
     text-align: center;
+    padding-top: min(1vw, 20px);
+    padding-bottom: min(1vw, 20px);
+}
+.templates-title{
+    margin-block-start: 0.33em;
+    margin-block-end: 0.33em;
+}
+.templates-list{
+    margin-block-start: 0.33em;
+    margin-block-end: 0.33em;
+    list-style-type: none;
+
+    /* 🧇 📰 📜 */
+}
+.templates-list li:before{
+    content: "🧇";
+    font-size: min(3vw,20px);
 }
 .pack-content{
     padding: 0 2vmin;
 }
+.pack-description{
+    padding-top: min(1vw, 8px);
+    font-weight: 400;
+}
 .links-list{
     list-style-type:none;
+}
+.install-command {
+    font-family: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
+    justify-self: center;
+    background-color: var(--rich-black-fogra-29);
+    color: var(--honeydew);
+    padding: 0 4vw;
+    border-radius: 1vmin;
+    background-color: var(--pgheadercolor);
+    color: var(--altcolor2);
+}
+/*
+.terminal-command{
+    padding-top: min(1vw, 20px);
+    padding-bottom: min(1vw, 20px);
+}
+*/
+.template-lang{
+    font-family: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
 }

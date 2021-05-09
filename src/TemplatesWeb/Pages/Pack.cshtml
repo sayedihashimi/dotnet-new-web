@@ -22,7 +22,8 @@
     @Model.TemplatePack.Package
 </h2>
 <section class="pack-content">
-    <quote class="pack-description"><i>@Model.TemplatePack.Description</i></quote>
+    <div>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a></div>
+    <div class="pack-description">@Model.TemplatePack.Description</div>
     <section class="install-command">
         @*dotnet new --install "@Model.TemplatePack.Package"*@
         <p class="terminal-command">dotnet new --install "@Model.TemplatePack.Package"</p>
@@ -33,7 +34,12 @@
     <section>
         <ul class="templates-list">
             @foreach (var template in Model.TemplatePack.Templates) {
-                <li><a href="/template/@Model.TemplatePack.Package/@template.Identity">@template.Name</a></li>
+                var templateLang = template.GetLanguage();
+                var templateStr = string.Empty;
+                if (!string.IsNullOrEmpty(templateLang)) {
+                    templateStr = $"({templateLang})";
+                }
+                <li><a href="/template/@Model.TemplatePack.Package/@template.Identity">@template.Name <span class="template-lang">@templateStr</span></a></li>
             }
         </ul>
     </section>

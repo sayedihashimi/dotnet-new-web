@@ -6,14 +6,15 @@
 
 <div class="terminal-container">
     <div class="terminal">
-        <p class="line1 terminal-command">dotnet new <span class="cursor1">_</span></p>
+        <p class="line1 terminal-command" id="index-terminal-command">dotnet new <span class="cursor1">_</span></p>
     </div>
 </div>
+
 <form id="search-form" method="POST">
     <input asp-for="SearchText" required autofocus />
     <a id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
 </form>
-
+ 
 <ul id="overallStats">
     <li>downloads:       <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></li>
     <li>templates:        <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></li>
