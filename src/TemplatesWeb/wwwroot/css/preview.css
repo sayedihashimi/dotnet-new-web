@@ -20,7 +20,10 @@ a {
     text-decoration: none;
     color:var(--altcolor2);
 }
-
+footer{
+    display: flex;
+    justify-content: center;
+}
 #search-form{
     width:100%;
     display: flex;
@@ -85,7 +88,7 @@ a {
 
 .terminal {
     background-color: var(--pgheadercolor);
-    font-family: "Menlo Regular","Lucida Console",monospace;
+    font-family: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
     color: var(--altcolor2);
     height: calc(5vw + 20px);
     /* width: 50vw; */
@@ -300,17 +303,21 @@ a {
     }
 }
 
-
 /*************************
     pack page styles
 **************************/
 .pack-title{
     background-color: var(--pgheadercolor);
-    font-family: "Menlo Regular","Lucida Console",monospace;
+    font-family: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
     color: var(--altcolor2);
     height: calc(5vw + 20px);
     font-size: min(4vw, 24px);
-    overflow: scroll;
     line-height: calc(5vw + 20px);
     text-align: center;
+}
+.pack-content{
+    padding: 0 2vmin;
+}
+.links-list{
+    list-style-type:none;
 }

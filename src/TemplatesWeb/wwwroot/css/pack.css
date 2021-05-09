@@ -27,7 +27,7 @@ h4{
     justify-self:start;
 }
 .install-command {
-    font-family: "Menlo Regular","Lucida Console",monospace;
+    font-family: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
     justify-self: center;
     background-color: var(--rich-black-fogra-29);
     color: var(--honeydew);
