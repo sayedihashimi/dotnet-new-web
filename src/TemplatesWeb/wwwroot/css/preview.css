@@ -316,6 +316,9 @@ footer{
     text-align: center;
     padding-top: min(1vw, 20px);
     padding-bottom: min(1vw, 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .templates-title{
     margin-block-start: 0.33em;
