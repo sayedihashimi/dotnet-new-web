@@ -63,6 +63,8 @@ footer{
     width: min(5vw,30px);
     height: min(5vw,30px);
     margin-right: 1vw;
+}
+.pack-title .pkgIcon{
     background-color: white;
 }
 .template-pack-container{
@@ -159,10 +161,18 @@ footer{
     width:100%;
     padding:0;
 }
-.pager > li:first-child::before{
+.i-prevlink, .i-nextlink{
+    border: 1px solid transparent;
+    padding-left: min(4vw, 40px);
+    padding-right: min(4vw, 40px);
+}
+.i-prevlink:hover, .i-nextlink:hover{
+    border: 1px solid var(--altcolor2);
+}
+.i-prevlink::before{
     content: "\2B9C"
 }
-.pager > li:nth-child(2)::after{
+.i-nextlink::after{
     content: "\27A4"
 }
 .navHome{
@@ -291,10 +301,90 @@ footer{
     }
 }
 
+
+/*************************
+    pack page styles
+**************************/
+.pack-title, .template-title{
+    background-color: var(--pgheadercolor);
+    font-family: var(--codefont);
+    color: var(--altcolor2);
+    /* height: calc(5vw + 20px);
+    line-height: calc(5vw + 20px); */
+    font-size: min(4vw, 24px);
+    
+    text-align: center;
+    padding-top: min(1vw, 20px);
+    padding-bottom: min(1vw, 20px);
+}
+.templates-title{
+    margin-block-start: 0.33em;
+    margin-block-end: 0.33em;
+}
+.templates-list, .template-metadata-list{
+    margin-block-start: 0.33em;
+    margin-block-end: 0.33em;
+    list-style-type: none;
+
+    /* 🧇 📰 📜 */
+}
+.template-metadata-list {
+    padding-inline-start: 40px;
+}
+.templates-list li:before{
+    content: "🧇";
+}
+.pack-webicon {
+    width: 1.5
+}
+.pack-content, .tempalte-description, .template-details{
+    padding: 0 2vmin;
+}
+.pack-description{
+    padding-top: min(1vw, 8px);
+    font-weight: 400;
+}
+.links-list, .template-metadata-list{
+    list-style-type:none;
+}
+.install-command, .install-and-use-command {
+    font-family: var(--codefont);
+    justify-self: center;
+    background-color: var(--rich-black-fogra-29);
+    color: var(--honeydew);
+    padding: 0 4vw;
+    border-radius: 1vmin;
+    background-color: var(--pgheadercolor);
+    color: var(--altcolor2);
+}
+.install-and-use-command ul {
+    list-style-type: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /*margin-bottom: 8px;*/
+}
+.install-command p.terminal-command {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 100%;
+    overflow-wrap: anywhere;
+}
+/*
+.terminal-command{
+    padding-top: min(1vw, 20px);
+    padding-bottom: min(1vw, 20px);
+}
+*/
+.template-lang{
+    font-family: var(--codefont);
+}
+
+/*************************
+    media queries
+**************************/
 @media only screen and (min-device-width: 600px) {
-/* font-size: 4vw; */
     body{
-        font-size: min(4vw,24px);
+        /*font-size: min(4vw, 60px);*/
     }
     #SearchText, #search-page-text{
         height: min(6vw,30px);
@@ -328,76 +418,33 @@ footer{
         margin-right: 1vw;
     }
 }
-
-/*************************
-    pack page styles
-**************************/
-.pack-title, .template-title{
-    background-color: var(--pgheadercolor);
-    font-family: var(--codefont);
-    color: var(--altcolor2);
-    /* height: calc(5vw + 20px);
-    line-height: calc(5vw + 20px); */
-    font-size: min(4vw, 24px);
-    
-    text-align: center;
-    padding-top: min(1vw, 20px);
-    padding-bottom: min(1vw, 20px);
+@media only screen and (min-device-width: 1000px) {
+    body{
+        font-size: 1.5vw;
+    }
+    .pkgIcon, .pack-webicon {
+        width: 2vw;
+        height: 2vw;
+    }
+    #search-link, #search-page-link{
+        height: 2vw;
+        width: 2vw;
+    }
+    #SearchText, #search-page-text{
+        height: 2vw;
+    }
+    #search-link, #search-page-link{
+        height: 2vw;
+        width: 2vw;
+    }
 }
-.templates-title{
-    margin-block-start: 0.33em;
-    margin-block-end: 0.33em;
-}
-.templates-list, .template-metadata-list{
-    margin-block-start: 0.33em;
-    margin-block-end: 0.33em;
-    list-style-type: none;
-
-    /* 🧇 📰 📜 */
-}
-.template-metadata-list {
-    padding-inline-start: 40px;
-}
-.templates-list li:before{
-    content: "🧇";
-    font-size: min(3vw,20px);
-}
-.pack-content, .tempalte-description, .template-details{
-    padding: 0 2vmin;
-}
-.pack-description{
-    padding-top: min(1vw, 8px);
-    font-weight: 400;
-}
-.links-list, .template-metadata-list{
-    list-style-type:none;
-}
-.install-command, .install-and-use-command {
-    font-family: var(--codefont);
-    justify-self: center;
-    background-color: var(--rich-black-fogra-29);
-    color: var(--honeydew);
-    padding: 0 4vw;
-    border-radius: 1vmin;
-    background-color: var(--pgheadercolor);
-    color: var(--altcolor2);
-}
-.install-and-use-command ul {
-    list-style-type: none;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    /*margin-bottom: 8px;*/
-}
-.install-command p.terminal-command {
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-/*
-.terminal-command{
-    padding-top: min(1vw, 20px);
-    padding-bottom: min(1vw, 20px);
-}
-*/
-.template-lang{
-    font-family: var(--codefont);
+@media only screen and (min-device-width: 2000px) {
+    .pkgIcon {
+        width: 1.5vw;
+        height: 1.5vw;
+    }
+    .pack-webicon {
+        width: 1vw;
+        height: 1vw;
+    }
 }

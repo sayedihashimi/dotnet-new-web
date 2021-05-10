@@ -26,7 +26,7 @@
             <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a></li>
             <li>downloads: @String.Format("{0:n0}", Model.TemplatePack.DownloadCount)</li>
             @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
-                <li><a href="@Model.TemplatePack.ProjectUrl"><img src="~/images/icon-globe.png" alt="site icon" /> go to project</a></li>
+                <li><a href="@Model.TemplatePack.ProjectUrl"><img class="pack-webicon" src="~/images/web.svg" alt="package icon" /> go to project</a></li>
             }
             @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
                 <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a></li>

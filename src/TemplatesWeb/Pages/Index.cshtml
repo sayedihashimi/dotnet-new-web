@@ -60,12 +60,12 @@
 <div class="pager-container">
 <ul class="pager">
     @if (Model.PreviousLink.IsEnabled) {
-        <li>
+        <li class="i-prevlink">
             <a href="@(Model.PreviousLink.LinkHref)"> Previous </a>
         </li>
     }
     @if (Model.NextLink.IsEnabled) {
-        <li>
+        <li class="i-nextlink">
             <a href="@Model.NextLink.LinkHref"> Next </a>
         </li>
     }
