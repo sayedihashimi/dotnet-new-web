@@ -59,16 +59,3 @@
         </ul>
     </section>
 </section>
-
-
-
-@section Styles {
-    @if(!usePreviewCss){
-        <environment include="Development">
-            <link rel="stylesheet" href="~/css/pack.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="~/css/pack.css" asp-append-version="true" />
-        </environment>
-    }
-}

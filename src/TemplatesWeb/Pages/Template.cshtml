@@ -45,23 +45,3 @@
         </ul>
     </section>
 </section>
-
-
-@{
-    var usePreviewCss = false;
-    var usePreviewEnvVar = System.Environment.GetEnvironmentVariable("dnw-previewcss");
-    if (!string.IsNullOrEmpty(usePreviewEnvVar) &&
-        string.Compare("true",usePreviewEnvVar,StringComparison.OrdinalIgnoreCase)==0) {
-        usePreviewCss = true;
-    }
-}
-@section Styles {
-    @if(!usePreviewCss){
-        <environment include="Development">
-            <link rel="stylesheet" href="~/css/pack.css" />
-        </environment>
-        <environment exclude="Development">
-            <link rel="stylesheet" href="~/css/pack.css" asp-append-version="true" />
-        </environment>
-    }
-}

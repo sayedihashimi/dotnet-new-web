@@ -14,7 +14,7 @@
       "environmentVariables": {
         "LimitNumOfTempaltePacks": "False",
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "dnw-previewcss": "true"
+        "dnw-previewcss": "false"
       },
       "applicationUrl": "https://localhost:52109;http://localhost:52119"
     },
