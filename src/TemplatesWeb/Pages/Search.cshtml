@@ -5,14 +5,11 @@
 <div class="navHome">
     <a href="/"><img src="~/images/create-project-20x20.png" /></a>
 </div>
-<form method="POST" action="~/">
-    <div id="templateSearchBox">
-        <h2>
-            Search
-            <input asp-for="SearchText" class="form-control" />
-            <button type="submit" class="button4">Search</button>
-        </h2>
-    </div>
+
+
+<form method="POST" action="~/" id="search-form">
+    <input asp-for="SearchText" id="search-page-text" class="form-control" />
+    <a id="search-page-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
 </form>
 
 Found <strong>@Model.SearchResults.Count</strong> matching templates
