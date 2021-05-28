@@ -97,6 +97,8 @@ namespace TemplatesShared {
 
             foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
 
+            foundIssues = AnalyzeCasingForCommonProperties(template, indentPrefix) || foundIssues;
+
             if (!foundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
             }
@@ -199,9 +201,55 @@ namespace TemplatesShared {
                 _ => false
             };
 
+        protected bool AnalyzeCasingForCommonProperties(JToken template, string indentPrefix) {
+            if(template == null) {
+                return true;
+            }
+
+            var namesToCheck = new List<string> {
+                "author",
+                "classifications",
+                "name",
+                "defaultName",
+                "identity",
+                "shortName",
+                "tags",
+                "sourceName",
+                "preferNameDirectory",
+                "sources",
+                "baselines",
+                "description",
+                "groupIdentity",
+                "guids",
+                "postActions",
+                "forms",
+                "generatorVersions",
+                "placeholderFilename",
+                "precedence",
+                "primaryOutputs",
+                "thirdPartyNotices"
+            };
+
+            bool foundIssues = false;
+            foreach(var propertyToken in template.Children()) {
+                var path = propertyToken.Path;
+                if (!string.IsNullOrEmpty(path)) {
+                    foreach (var name in namesToCheck) {
+                        // check to see if strings match when case insensitive but not when case sensitive
+                        if( string.Equals(name, path, StringComparison.OrdinalIgnoreCase) &&
+                            !string.Equals(name, path, StringComparison.Ordinal)) {
+                            WriteWarning($"'{path}' should be '{name}', incorrect casing", indentPrefix);
+                            foundIssues = true;
+                        }
+                    }
+                }
+            }
+
+            return foundIssues;
+        }
+
         protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType) {
             List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
-
             // check required properties
             var requiredProps = new List<string> {
                 "$.author",
