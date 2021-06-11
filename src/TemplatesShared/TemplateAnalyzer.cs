@@ -38,6 +38,7 @@ namespace TemplatesShared {
         private IJsonHelper _jsonHelper;
         private string _isProjectTemplateRegex = @"""type""\s*:\s*""project""";
         private string _isItemTempalteRegex = @"""type""\s*:\s*""item""";
+        private string _isSolutionTemplateRegex = @"""type""\s*:\s*""solution""";
 
         /// <summary>
         /// Returns true if issues are found, and false otherwise.
@@ -114,19 +115,18 @@ namespace TemplatesShared {
 
             bool isProjectTemplate = Regex.IsMatch(text, _isProjectTemplateRegex);
             bool isItemTemplate = Regex.IsMatch(text, _isItemTempalteRegex);
-
-            if(isProjectTemplate && isItemTemplate) {
-                throw new JsonException($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+            bool isSolutionTemplate = Regex.IsMatch(text, _isSolutionTemplateRegex);
+            if (isSolutionTemplate && !isProjectTemplate && !isItemTemplate) {
+                return TemplateType.Solution;
             }
-
-            if(isProjectTemplate && !isItemTemplate) {
+            if(isProjectTemplate && !isItemTemplate && !isSolutionTemplate) {
                 return TemplateType.Project;
             }
-            else if(!isProjectTemplate && isItemTemplate) {
+            else if(!isProjectTemplate && isItemTemplate && !isSolutionTemplate) {
                 return TemplateType.Item;
             }
             else {
-                return TemplateType.Unknown;
+                throw new JsonException($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
             }
         }
 
@@ -422,7 +422,8 @@ namespace TemplatesShared {
     public enum TemplateType {
         Project = 1,
         Item = 2,
-        Unknown = 4
+        Solution = 4,
+        Unknown = 8
     }
 
     public enum JTokenValidationType {
