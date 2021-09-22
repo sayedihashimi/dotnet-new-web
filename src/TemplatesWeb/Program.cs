@@ -3,14 +3,15 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddMvc().AddMvcOptions(opt => opt.EnableEndpointRouting = false);
-builder.Services.AddOptions();
 builder.Services.Configure<CookiePolicyOptions>(options => {
     // This lambda determines whether user consent for non-essential cookies is needed for a given request.
     options.CheckConsentNeeded = context => true;
     options.MinimumSameSitePolicy = SameSiteMode.None;
 });
-// builder.Services.Configure<TemplateWebConfig>(Configuration);
+builder.Services.AddMvc().AddMvcOptions(opt => opt.EnableEndpointRouting = false);
+builder.Services.AddOptions();
+builder.Services.Configure<TemplateWebConfig>(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +28,7 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseCookiePolicy();
 app.UseMvc();
 // app.UseRouting();
 // app.UseAuthorization();
