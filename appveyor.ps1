@@ -33,6 +33,8 @@ function Extract-NuGetCacheAv{
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
+        'Installing .net 6 with dotnet install' | Write-Output
+        & .\dotnet-install.ps1 -Version 6.0.100-rc.2.21505.57
         '**** Creating template report' | Write-Output
         $createTemplatePath = (Join-Path -Path $scriptDir -ChildPath 'create-template-report.ps1')
         &$createTemplatePath
