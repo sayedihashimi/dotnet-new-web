@@ -57,7 +57,7 @@ namespace TemplatesShared {
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
-                WriteError($"template.json not found at '{templateJsonFile}'", _outputPrefix);
+                WriteWarning($"template.json not found at '{templateJsonFile}'", _outputPrefix);
                 return true;
             }
 
