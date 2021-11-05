@@ -1,9 +1,9 @@
 ﻿:root {
     /*color palette*/
     --bgcolor: #eeeeee;
-    --pgheadercolor: #393e46;
+    --pgheadercolor: black;
     --altcolor1: #aad8d3;
-    --altcolor2: #00adb5;
+    --altcolor2: #2896B1;
     --codefont: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
 }
 html, body {
@@ -32,7 +32,7 @@ footer{
     align-items: center;
 }
 #SearchText, #search-page-text{
-    width: 50%;
+    width: 40%;
     height: 6vw;
     margin: 1vw 4vw 1vw 4vw;
 }
@@ -60,8 +60,10 @@ footer{
     padding-right: 20px;
 }
 .pkgIcon {
-    width: min(5vw,30px);
-    height: min(5vw,30px);
+    /*width: min(5vw,30px);
+    height: min(5vw,30px);*/
+    width: 4vw;
+    height: 4vw;
     margin-right: 1vw;
 }
 .pack-title .pkgIcon{
@@ -91,6 +93,7 @@ footer{
 
 #overallStats{
     list-style-type: none;
+    margin-top: 1vh;
 }
 
 /*************************
@@ -101,7 +104,7 @@ footer{
 }
 
 .terminal-container {
-    margin-bottom: 3vw;
+    margin-bottom: 1vh;
 }
 
 .terminal {
@@ -425,10 +428,10 @@ footer{
     body{
         font-size: 1.5vw;
     }
-    .pkgIcon, .pack-webicon {
+/*    .pkgIcon, .pack-webicon {
         width: 2vw;
         height: 2vw;
-    }
+    }*/
     #search-link, #search-page-link{
         height: 2vw;
         width: 2vw;

@@ -37,7 +37,6 @@ namespace Templates {
 
         public override Command CreateCommand() =>
             new Command(name: "analyze", description: "template analyzer tool") {
-
                 CommandHandler.Create<string[],string[],bool,bool>(
                     (packages, folders, enableVerbose, usePackageCache) => {
                         _reporter.EnableVerbose = enableVerbose;
@@ -56,11 +55,11 @@ namespace Templates {
                         {
                             foldersList.AddRange(folders);
                         }
-                        else
-                        {
-                            _reporter.WriteLine("no folders found to analyze");
-                        }
-
+                        //else
+                        //{
+                        //    _reporter.WriteLine("no folders found to analyze");
+                        //}
+                        
                         if(packages != null && packages.Length > 0)
                         {
                             foreach(var p in packages)
