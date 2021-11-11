@@ -123,7 +123,7 @@ namespace TemplatesConsole {
                 }
                 catch(TemplateInitException tie) {
                     // TODO: Reporter should be used instead of writing directly to the console
-                    Console.WriteLine($"ERROR: Unable to initalize template pack from '{tp.Package}', skipping this one.");
+                    Console.WriteLine($"ERROR: Unable to initalize template pack from '{tp.Package}', skipping this one. Error: {tie.ToString()}");
                     tpToRemove.Add(tp);
                     continue;
                 }
