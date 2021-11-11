@@ -144,11 +144,13 @@ namespace TemplatesShared {
             _reporter.WriteVerboseLine();
 
             var hostFiles = Directory.GetFiles(templateConfigFolder, "*.host.json");
-            if(hostFiles == null || hostFiles.Length == 0) {
-                //_reporter.WriteLine($"WARNING: ", indentPrefix);
-                WriteWarning($"no host files found", indentPrefix);
-                return false;
-            }
+            
+            // TODO: host files are only needed for vs2019.
+            //if(hostFiles == null || hostFiles.Length == 0) {
+            //    WriteWarning($"no host files found", indentPrefix);
+            //    return false;
+            //}
+
             bool foundIssues = false;
 
             // check for either a ide.host.json or vs-2017.3.host.json
@@ -173,9 +175,10 @@ namespace TemplatesShared {
                 }
             }
 
-            if (!foundAnIdeHostFile) {
-                WriteWarning($"no host file found in folder '{templateConfigFolder}'");
-            }
+            // TODO: Host files are only needed in VS2019
+            //if (!foundAnIdeHostFile) {
+            //    WriteWarning($"no host file found in folder '{templateConfigFolder}'");
+            //}
 
             void WriteError(string text) {
                 this.WriteError(text, indentPrefix);
@@ -190,7 +193,7 @@ namespace TemplatesShared {
                 new JTokenAnalyzeRule {
                     Query = "$.icon",
                     Expectation = JTokenValidationType.Exists,
-                    Severity = ErrorWarningType.Error
+                    Severity = ErrorWarningType.Warning
                 }
             };
         
@@ -295,15 +298,16 @@ namespace TemplatesShared {
             });
 
             // check recommended properties
-            var recommendedProps = new List<string> {
-                "$.defaultName",
+            var recommendedProps = new List<string> {                
                 "$.description",
             };
             if(templateType == TemplateType.Project) {
                 recommendedProps.AddRange(new string[] {
-                    "$.symbols",
-                    "$.symbols.Framework",
-                    "$.symbols.Framework.choices"
+                    "$.defaultName"
+                    // Framework symbol no longer needed, not needed in VS2019 either
+                    //"$.symbols",
+                    //"$.symbols.Framework",
+                    //"$.symbols.Framework.choices"
                 });
             }
             foreach (var recProp in recommendedProps) {
@@ -315,18 +319,19 @@ namespace TemplatesShared {
             }
 
             if (templateType == TemplateType.Project) {
-                templateRules.Add(new JTokenAnalyzeRule {
-                    Query = "$.symbols.Framework.type",
-                    Expectation = JTokenValidationType.StringEquals,
-                    Value = "parameter",
-                    ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
-                });
-                templateRules.Add(new JTokenAnalyzeRule {
-                    Query = "$.symbols.Framework.datatype",
-                    Expectation = JTokenValidationType.StringEquals,
-                    Value = "choice",
-                    ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
-                });
+                // TODO: Only run these rules if a Framework parameter is declared
+                //templateRules.Add(new JTokenAnalyzeRule {
+                //    Query = "$.symbols.Framework.type",
+                //    Expectation = JTokenValidationType.StringEquals,
+                //    Value = "parameter",
+                //    ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
+                //});
+                //templateRules.Add(new JTokenAnalyzeRule {
+                //    Query = "$.symbols.Framework.datatype",
+                //    Expectation = JTokenValidationType.StringEquals,
+                //    Value = "choice",
+                //    ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
+                //});
             }
 
             // ensure primaryOutputs doesn't start with a / or \
