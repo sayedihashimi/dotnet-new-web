@@ -47,6 +47,18 @@ function DeleteCacheFolders{
                 ' foundnugetfiles.Length: "{0}"' -f ($foundnugetfiles.Length) | Write-Output
                 Remove-Item -LiteralPath $foundnugetfiles -Force
             }
+
+            # remove shim for non-windows
+            if(-not ($IsWindows)){
+                foreach($cn in $commandName){
+                    $shimpath = (Join-path (resolve-path ~/.dotnet/tools) $cn)
+
+                    if(test-path ($shimpath)){
+                        'Removing shim file at "{0}"' -f $shimpath | Write-Output
+                        remove-Item -path $shimpath
+                    }
+                }
+            }
         }
     }
 }
@@ -60,8 +72,8 @@ catch {
 }
  
 # TODO: Both commands not working on linux, fix later
-# [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
-[string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj')
+[string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
+# [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj')
 foreach($p in $projects){
     'Building and installing tool for project at: "{0}"' -f $p | Write-Output
     dotnet build $p -t:InstallTool -p:Configuration=Release
