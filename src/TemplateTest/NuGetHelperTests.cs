@@ -44,7 +44,7 @@ namespace TemplateTest {
 
         [Fact]
         public async Task TestDownloadAllPackagesAsync01Async() {
-            var packages = await nugetHelper.QueryNuGetAsync(httpClient, "dec");
+            var packages = await nugetHelper.QueryNuGetAsync(httpClient, "sayedha");
             var downloader = new NuGetPackageDownloader(nugetHelper, remoteFile);
 
             var result = await downloader.DownloadAllPackagesAsync(packages);
