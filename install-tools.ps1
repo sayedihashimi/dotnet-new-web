@@ -59,8 +59,9 @@ catch {
     Write-Host $_
 }
  
-[string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
-
+# TODO: Both commands not working on linux, fix later
+# [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
+[string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj')
 foreach($p in $projects){
     'Building and installing tool for project at: "{0}"' -f $p | Write-Output
     dotnet build $p -t:InstallTool -p:Configuration=Release
