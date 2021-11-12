@@ -34,7 +34,13 @@ function DeleteCacheFolders{
             }
 
             # delete nuget package cache files as well
-            $nugetcachefolder = Join-Path $env:LOCALAPPDATA NuGet\v3-cache
+            if($IsWindows){
+                $nugetcachefolder = Join-Path $env:LOCALAPPDATA NuGet\v3-cache
+            }
+            else{
+                $nugetcachefolder = resolve-path ~/.nuget/packages
+            }
+            
             ' nugetcachefolder: "{0}"' -f $nugetcachefolder | Write-Output
             [string[]]$foundnugetfiles = Get-ChildItem -Path $nugetcachefolder ("*{0}*" -f $tn) -Recurse -File
             if($foundnugetfiles -and $foundnugetfiles.Length -gt 0){
