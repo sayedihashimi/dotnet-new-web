@@ -86,7 +86,8 @@ namespace Templates {
                         if(foldersList != null && foldersList.Count > 0){
                             foreach(var f in foldersList) {
                                 // finding folders under f that has a .template.config folder
-                                var foundDirs = Directory.GetDirectories(f,".template.config",SearchOption.AllDirectories);
+                                var foundDirs = Directory.GetDirectories(f,".template.config",new EnumerationOptions{RecurseSubdirectories=true,ReturnSpecialDirectories=true });
+
                                 
                                 if(foundDirs == null || foundDirs.Length <= 0) {
                                     _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
