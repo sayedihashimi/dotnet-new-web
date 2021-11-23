@@ -129,7 +129,8 @@ namespace TemplatesShared {
                 return TemplateType.Item;
             }
             else {
-                throw new JsonException($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+                _reporter.WriteVerboseLine($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+                return TemplateType.Unknown;
             }
         }
 

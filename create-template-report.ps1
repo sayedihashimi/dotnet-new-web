@@ -19,7 +19,7 @@ function Create-Report{
         'outputpathtouse: "{0}"' -f $outputpathtouse | Write-Output
         &dotnet publish $consoleProjectfile -p:Configuration=$buildConfig -p:BaseOutputPath=$outputpathtouse
 
-        $pathToExe = (Join-Path -Path $outputPath -ChildPath $buildConfig -AdditionalChildPath 'output\release\net6.0\publish\TemplatesConsole.exe')
+        $pathToExe = (Join-Path -Path $outputPath -ChildPath $buildConfig -AdditionalChildPath 'net6.0\publish\TemplatesConsole.exe')
         if(-not (test-path $pathToExe)){
             'File not found at "{0}"' -f $pathToExe | Write-Error
         }
