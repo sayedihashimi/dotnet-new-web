@@ -30,7 +30,7 @@ function Extract-NuGetCacheAv{
 }
 #>
 'Installing .net 6 with dotnet install' | Write-Output
-& .\dotnet-install.ps1 -Version 6.0.100-rc.2.21505.57
+# & .\dotnet-install.ps1 -Version 6.0.100-rc.2.21505.57
 if( [string]::Compare('true',$isAppveyor,$true) -eq 0 -and
     [string]::IsNullOrEmpty($prNumber) -and
     [string]::Compare('master', $branchName, $true) -eq 0 ){
