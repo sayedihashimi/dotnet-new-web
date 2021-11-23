@@ -45,6 +45,7 @@ namespace TemplatesShared {
         /// </summary>
         public bool Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
+            
             _reporter.WriteLine();
             WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
 
@@ -77,7 +78,7 @@ namespace TemplatesShared {
                 WriteWarning($"Unable to determine if the template is for a project or item (file), assuming it is a project template", indentPrefix);
             }
             WriteVerboseLine($"Found a template of type: '{templateType}'", indentPrefix);
-            var templateRules = GetTemplateRules(templateType);
+            var templateRules = GetTemplateRules(templateType, template);
             foreach (var rule in templateRules) {
                 if (!ExecuteRule(rule, template)) {
                     foundIssues = true;
@@ -99,6 +100,8 @@ namespace TemplatesShared {
             foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
 
             foundIssues = AnalyzeCasingForCommonProperties(template, indentPrefix) || foundIssues;
+
+            foundIssues = ValidateFilePathsInSources(template, templateFolder);
 
             if (!foundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
@@ -251,7 +254,7 @@ namespace TemplatesShared {
             return foundIssues;
         }
 
-        protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType) {
+        protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType, JToken template = null) {
             List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
             // check required properties
             var requiredProps = new List<string> {
@@ -319,19 +322,23 @@ namespace TemplatesShared {
             }
 
             if (templateType == TemplateType.Project) {
-                // TODO: Only run these rules if a Framework parameter is declared
-                //templateRules.Add(new JTokenAnalyzeRule {
-                //    Query = "$.symbols.Framework.type",
-                //    Expectation = JTokenValidationType.StringEquals,
-                //    Value = "parameter",
-                //    ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
-                //});
-                //templateRules.Add(new JTokenAnalyzeRule {
-                //    Query = "$.symbols.Framework.datatype",
-                //    Expectation = JTokenValidationType.StringEquals,
-                //    Value = "choice",
-                //    ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
-                //});
+                if (template != null && HasFrameworkSymbolDefined(template)) {
+                    templateRules.Add(new JTokenAnalyzeRule {
+                        Query = "$.symbols.Framework.type",
+                        Expectation = JTokenValidationType.StringEquals,
+                        Value = "parameter",
+                        ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'",
+                        Severity = ErrorWarningType.Warning
+                    });
+                    templateRules.Add(new JTokenAnalyzeRule {
+                        Query = "$.symbols.Framework.datatype",
+                        Expectation = JTokenValidationType.StringEquals,
+                        Value = "choice",
+                        ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'",
+                        Severity = ErrorWarningType.Warning
+                    });
+                }
+
             }
 
             // ensure primaryOutputs doesn't start with a / or \
@@ -343,7 +350,6 @@ namespace TemplatesShared {
                     var paths = currentValue as JArray;
                     var errorFiles = new List<string>();
                     if (paths != null) {
-
                         foreach(var item in paths.Children<JObject>()) {
                             string strResult = _jsonHelper.GetStringValueFromQuery(item, "path");
                             if (!string.IsNullOrWhiteSpace(strResult) &&
@@ -359,12 +365,214 @@ namespace TemplatesShared {
 
                     return true;
                 },
-                ErrorMessage = @"ERROR: One or more $.primaryOutputs.path values starts with a '/' or '\'. You will need to remove that to get the template to work correctly."
+                ErrorMessage = @"ERROR: One or more $.primaryOutputs.path values starts with a '/' or '\'. You will need to remove that to get the template to work correctly.",
+                Severity= ErrorWarningType.Error
             });
 
             return templateRules;
         }
+        private List<string> GetFilePathsFromSources(JToken templateToken) {
+            if (templateToken == null) {
+                throw new ArgumentNullException(nameof(templateToken));
+            }
+            var queries = new List<string>() {
+                "$.sources.[*].modifiers.[*].exclude",
+                "$.sources.[*].modifiers.[*].rename",
+                "$.sources.[*].copyOnly"
+            };
+            var foundFilePaths = new List<string>();
 
+            foreach (var query in queries) {
+                var qResult = templateToken.SelectToken(query);
+                if (qResult != null) {
+                    foreach (var subresult in qResult) {
+                        if (subresult != null && subresult.HasValues) {
+                            foreach (var v in subresult.Values()) {
+                                var str = (v as JValue)?.Value as string;
+
+                                if (!string.IsNullOrEmpty(str)) {
+                                    foundFilePaths.Add(str);
+                                }
+                                else {
+                                    _reporter.WriteVerbose($"file path value is null for query '{query}'");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return foundFilePaths;
+        }
+        
+        private bool ValidateFilePathsInSources(JToken template, string templateFolder) {
+            // paths can be pointing to either files or directories
+            // paths can also contain globbing characters
+            var pathsFound = new List<string>();
+            try {
+                var queryResult = template.SelectTokens("$.sources.[*].modifiers.[*].rename");
+                if (queryResult != null) {
+                    foreach(JObject r in queryResult) {
+                        // (((JObject)r).Values().ElementAt(0) as JValue).Value
+                        if (r.HasValues) {
+                            foreach(var ct in r.Children()) {
+                                foreach(var child in ct) {
+                                    var cp = child.Parent as JProperty;
+                                    if(cp != null) {
+                                        if (!string.IsNullOrEmpty(cp.Name)) {
+                                            pathsFound.Add(cp.Name);
+                                        }
+                                        else {
+                                            _reporter.WriteLine($"WARNING: no file path found when trying to verify sources paths");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception) {
+                Console.WriteLine("error");
+            }
+            List<string> missingFiles = new List<string>();
+            if (pathsFound != null && pathsFound.Count > 0) {
+                // we need to now validate the file paths to ensure they are on disk in the expected location
+                //  Directory paths should end with a slash, otherwise it should be a file path
+                // set the location to the .template.config folder
+
+                //var oldCd = Directory.GetCurrentDirectory();
+                //try {
+                //    Directory.SetCurrentDirectory(templateFolder);
+                //    foreach (var filepath in pathsFound) {
+                //        var files = Directory.GetFiles(templateFolder, filepath);
+
+                //        if (files == null || files.Length <= 0) {
+                //            missingFiles.Add(filepath);
+                //        }
+                //        else {
+                //            foreach (var file in files) {
+                //                if (!File.Exists(file)) {
+                //                    missingFiles.Add(file);
+                //                }
+                //            }
+                //        }
+                //    }
+                //}
+                //catch(Exception ex) {
+                //    _reporter.WriteLine($"ERROR: {ex.ToString()}");
+                //}
+
+                //// reset the old cd
+                //Directory.SetCurrentDirectory(oldCd);
+
+                try {
+                    var findResult = DoThesePathsExistOnDisk(templateFolder, pathsFound);
+                    if (findResult.Item2 != null && findResult.Item2.Count > 0) {
+                        foreach (var missingPath in findResult.Item2) {
+                            _reporter.WriteLine($"WARNING: Missing path: '{missingPath}'");
+                        }
+                    }
+                    return !findResult.Item1;
+                }
+                catch(Exception ex) {
+                    _reporter.WriteLine($"ERROR: {ex.ToString()}");
+                    return true;
+                }
+            }
+
+            // no paths found in $.sources
+            return false;
+            //if (missingFiles.Count > 0) {
+            //    _reporter.WriteLine("WARING: file(s) referenced in `$.sources` not found.");
+            //    foreach (var mf in missingFiles) {
+            //        _reporter.WriteLine($"\tmissing file: {mf}");
+            //    }
+            //}
+            //return missingFiles.Count > 0;
+        }
+        /// <summary>
+        /// Will return true if all paths exist on disk.
+        /// </summary>
+        private (bool, List<string>) DoThesePathsExistOnDisk(string pwd, List<string> paths) {
+            var missingPaths = new List<string>();
+            if (paths == null || paths.Count <= 0) {
+                throw new ArgumentNullException(nameof(paths)); ;
+            }
+            var oldCd = Directory.GetCurrentDirectory();
+            Directory.SetCurrentDirectory(pwd);
+            // need to see if the path points to a file or directory, and also need to account for globbing patterns
+            foreach (var path in paths) {
+                if (IsPathADirectory(path)) {
+                    // validate as a directory path
+                    if (DoesPathUseGlobbing(path)) {
+                        var foundDirs = Directory.GetDirectories(path);
+                        if (!foundDirs.Any()) {
+                            _reporter.WriteVerboseLine($"Missing directory, no match for path with glob: path='{path}'.");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                    else {
+                        var fullpath = Path.Combine(pwd, path);
+                        if (!Directory.Exists(fullpath)) {
+                            _reporter.WriteVerboseLine($"Missing directory: path='{path}', fullpath='{fullpath}'");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                }
+                else {
+                    // validate as a file path
+                    if (DoesPathUseGlobbing(path)) {
+                        var foundFiles = Directory.GetFiles(path);
+
+                        if (!foundFiles.Any()) {
+                            _reporter.WriteVerboseLine($"Missing file, no match for path with glob: path='{path}'.");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                    else {
+                        var fullpath = Path.Combine(pwd, path);
+                        if (!File.Exists(fullpath)) {
+                            _reporter.WriteVerboseLine($"Missing file: path='{path}', fullpath='{fullpath}'");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                }
+            }
+            Directory.SetCurrentDirectory(oldCd);
+
+            return (missingPaths.Count == 0, missingPaths);
+        }
+        /// <summary>
+        /// Directory paths should end with a slash, otherwise it should be a file path
+        /// </summary>
+        private bool IsPathADirectory(string path) {
+            var trimmedPath = path.Trim();
+            return trimmedPath.EndsWith("\\") || trimmedPath.EndsWith("/");
+        }
+        // for now assume that * is the only character for globbing, need to get more info here
+        private bool DoesPathUseGlobbing(string path) {
+            return path.Contains("*",StringComparison.OrdinalIgnoreCase);
+        }
         private bool ValidateNotEmptyString(JToken token, string jsonPath) {
             var value = _jsonHelper.GetStringValueFromQuery(token, jsonPath);
 
@@ -421,6 +629,15 @@ namespace TemplatesShared {
                 default:
                     throw new ArgumentException($"Unknown value for JTokenValidationType:{rule.Expectation}");
             }
+        }
+        private bool HasFrameworkSymbolDefined(JToken template) {
+            if(template == null) {
+                throw new ArgumentNullException(nameof(template), "template cannot be null");
+            }
+
+            var queryResult = template.SelectToken("$.symbols.Framework");
+
+            return queryResult != null ? true : false;
         }
     }
 

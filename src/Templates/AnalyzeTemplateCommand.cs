@@ -38,8 +38,8 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "analyze", description: "template analyzer tool") {
                 CommandHandler.Create<string[],string[],bool,bool>(
-                    (packages, folders, enableVerbose, usePackageCache) => {
-                        _reporter.EnableVerbose = enableVerbose;
+                    (packages, folders, verbose, usePackageCache) => {
+                        _reporter.EnableVerbose = verbose;
                         _reporter.WriteLine("analyzing...");
 
                         _reporter.WriteVerboseLine(packages != null ?
