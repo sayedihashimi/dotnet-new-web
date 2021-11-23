@@ -34,12 +34,30 @@ function DeleteCacheFolders{
             }
 
             # delete nuget package cache files as well
-            $nugetcachefolder = Join-Path $env:LOCALAPPDATA NuGet\v3-cache
+            if($IsWindows){
+                $nugetcachefolder = Join-Path $env:LOCALAPPDATA NuGet\v3-cache
+            }
+            else{
+                $nugetcachefolder = resolve-path ~/.nuget/packages
+            }
+            
             ' nugetcachefolder: "{0}"' -f $nugetcachefolder | Write-Output
             [string[]]$foundnugetfiles = Get-ChildItem -Path $nugetcachefolder ("*{0}*" -f $tn) -Recurse -File
             if($foundnugetfiles -and $foundnugetfiles.Length -gt 0){
                 ' foundnugetfiles.Length: "{0}"' -f ($foundnugetfiles.Length) | Write-Output
                 Remove-Item -LiteralPath $foundnugetfiles -Force
+            }
+
+            # remove shim for non-windows
+            if(-not ($IsWindows)){
+                foreach($cn in $commandName){
+                    $shimpath = (Join-path (resolve-path ~/.dotnet/tools) $cn)
+
+                    if(test-path ($shimpath)){
+                        'Removing shim file at "{0}"' -f $shimpath | Write-Output
+                        remove-Item -path $shimpath
+                    }
+                }
             }
         }
     }
@@ -53,8 +71,9 @@ catch {
     Write-Host $_
 }
  
+# TODO: Both commands not working on linux, fix later
 [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj'),(Join-Path $scriptDir 'src\TemplatesConsole\TemplatesConsole.csproj')
-
+# [string[]]$projects = (Join-Path $scriptDir 'src\Templates\Templates.csproj')
 foreach($p in $projects){
     'Building and installing tool for project at: "{0}"' -f $p | Write-Output
     dotnet build $p -t:InstallTool -p:Configuration=Release

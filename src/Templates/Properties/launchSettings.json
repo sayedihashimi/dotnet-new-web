@@ -2,7 +2,13 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze --verbose -f C:\\Users\\sayedha\\AppData\\Local\\templatereport\\extracted\\"
+      "commandLineArgs": "analyze --verbose -p C:\\temp\\templates\\packages\\sayedha.templates.1.0.4.nupkg"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {},
+      "distributionName": "",
+      "commandLineArgs": "analyze --verbose -p /home/sayedha/temp/sayedha.templates.1.0.4.nupkg"
     }
   }
 }
