@@ -23,7 +23,7 @@ namespace TemplatesShared {
     }
 
     public class RemoteFile : IRemoteFile {
-        public string CacheFolderpath { get; protected set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "templatereport");
+        public string CacheFolderpath { get; protected set; } = GetDefaultCacheFolderPath();
         // todo: should have a better way to conditionally print to the console
         public bool Verbose { get; set; } = true;
         public void SetCacheFolderpath(string folderpath) {
@@ -32,6 +32,16 @@ namespace TemplatesShared {
             }
 
             CacheFolderpath = folderpath;
+        }
+
+        public static string GetDefaultCacheFolderPath() {
+            if(System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows)) {
+                return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "templatereport");
+            }
+            else {
+                return Path.Combine("/tmp", "templatereport");
+
+            }
         }
 
         public async Task<string> GetRemoteFileAsync(string downloadUrl, string filename, bool forceDownload = false) {
