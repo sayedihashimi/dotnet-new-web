@@ -81,8 +81,7 @@ namespace Templates {
                         //{
                         //    _reporter.WriteLine("no packages found to analyze");
                         //}
-
-                        bool foundIssues = false;
+                        var analyzeResult = new AnalyzeResult();
                         if(foldersList != null && foldersList.Count > 0){
                             foreach(var f in foldersList) {
                                 // finding folders under f that has a .template.config folder
@@ -93,12 +92,14 @@ namespace Templates {
                                     _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
                                 }
                                 foreach(var fd in foundDirs) {
-                                    foundIssues = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName) || foundIssues;
+                                    analyzeResult = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
                                 }
                             }
                         }
-
-                        return foundIssues ? -1 : 0;
+                        
+                        //return analyzeResult;
+                        return analyzeResult.FoundIssues ? -1 : 0;
+                        // return foundIssues ? -1 : 0;
                 }),
                 OptionPackages(),
                 OptionFolders(),

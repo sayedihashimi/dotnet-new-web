@@ -2,13 +2,13 @@
   "profiles": {
     "Templates": {
       "commandName": "Project",
-      "commandLineArgs": "analyze --verbose -p C:\\temp\\templates\\packages\\sayedha.templates.1.0.4.nupkg"
+      "commandLineArgs": "analyze --verbose -f C:\\Users\\sayedha\\AppData\\Local\\templatereport\\extracted\\mases.jcobridge.templates.2.4.1.nupkg\\content\\"
     },
     "WSL": {
       "commandName": "WSL2",
+      "commandLineArgs": "analyze --verbose -p /home/sayedha/temp/sayedha.templates.1.0.4.nupkg",
       "environmentVariables": {},
-      "distributionName": "",
-      "commandLineArgs": "analyze --verbose -p /home/sayedha/temp/sayedha.templates.1.0.4.nupkg"
+      "distributionName": ""
     }
   }
 }

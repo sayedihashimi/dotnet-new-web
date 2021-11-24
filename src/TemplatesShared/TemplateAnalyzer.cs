@@ -39,11 +39,21 @@ namespace TemplatesShared {
         private string _isProjectTemplateRegex = @"""type""\s*:\s*""project""";
         private string _isItemTempalteRegex = @"""type""\s*:\s*""item""";
         private string _isSolutionTemplateRegex = @"""type""\s*:\s*""solution""";
-
+        private AnalyzeResult GetResultFrom(FoundIssue issue) {
+            return GetResultFromErrorMessage(issue.IssueType, issue.IssueMessage);
+        }
+        private AnalyzeResult GetResultFromErrorMessage(ErrorWarningType type, string message) {
+            var result = new AnalyzeResult();
+            result.Issues.Add(new FoundIssue {
+                IssueType = type,
+                IssueMessage = message
+            });
+            return result;
+        }
         /// <summary>
         /// Returns true if issues are found, and false otherwise.
         /// </summary>
-        public bool Analyze(string templateFolder) {
+        public AnalyzeResult Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             
             _reporter.WriteLine();
@@ -53,13 +63,16 @@ namespace TemplatesShared {
             // validate the folder has a .template.config folder
             if (!Directory.Exists(templateFolder)) {
                 WriteError($"templateFolder not found at '{templateFolder}'", _outputPrefix);
-                return true;
+                return GetResultFromErrorMessage(ErrorWarningType.Error, $"{_outputPrefix}templateFolder not found at '{templateFolder}'");
+
+                // return true;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
                 WriteWarning($"template.json not found at '{templateJsonFile}'", _outputPrefix);
-                return true;
+                return GetResultFromErrorMessage(ErrorWarningType.Warning, $"{_outputPrefix}template.json not found at '{templateJsonFile}'");
+                // return true;
             }
 
             JToken template;
@@ -69,19 +82,26 @@ namespace TemplatesShared {
             catch (Exception ex) {
                 // TODO: make exception more specific
                 WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
-                return true;
+                return GetResultFromErrorMessage(ErrorWarningType.Error, $"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
+                // return true;
             }
 
             var foundIssues = false;
             var templateType = GetTemplateType(templateJsonFile);
             if(templateType == TemplateType.Unknown) {
-                WriteWarning($"Unable to determine if the template is for a project or item (file), assuming it is a project template", indentPrefix);
+                WriteWarning($"Unable to determine if the template is for a project, or item (file) or solution. Assuming it is a project template", indentPrefix);
             }
             WriteVerboseLine($"Found a template of type: '{templateType}'", indentPrefix);
             var templateRules = GetTemplateRules(templateType, template);
+            var analyzeResult = new AnalyzeResult();
+            // var issuesFound = new List<FoundIssue>();
             foreach (var rule in templateRules) {
                 if (!ExecuteRule(rule, template)) {
                     foundIssues = true;
+                    analyzeResult.Issues.Add(new FoundIssue() {
+                        IssueType = rule.Severity,
+                        IssueMessage = $"{indentPrefix} {rule.GetErrorMessage()}"
+                    });
                     switch (rule.Severity) {
                         case ErrorWarningType.Error:
                             WriteError(rule.GetErrorMessage(), indentPrefix);
@@ -92,22 +112,25 @@ namespace TemplatesShared {
                         default:
                             WriteMessage(rule.GetErrorMessage(), indentPrefix);
                             break;
-
                     }
                 }
             }
+            analyzeResult = AnalyzeResult.Combine(analyzeResult, AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix));
+            // foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
+            analyzeResult = AnalyzeResult.Combine(analyzeResult, AnalyzeCasingForCommonProperties(template, indentPrefix));
+            // foundIssues = AnalyzeCasingForCommonProperties(template, indentPrefix) || foundIssues;
 
-            foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
+            analyzeResult = AnalyzeResult.Combine(analyzeResult, ValidateFilePathsInSources(template, templateFolder));
+            // foundIssues = ValidateFilePathsInSources(template, templateFolder) || foundIssues;
 
-            foundIssues = AnalyzeCasingForCommonProperties(template, indentPrefix) || foundIssues;
-
-            foundIssues = ValidateFilePathsInSources(template, templateFolder);
-
-            if (!foundIssues) {
+            if (!analyzeResult.FoundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
             }
+            //if (!foundIssues) {
+            //    _reporter.WriteLine("√ no issues found", indentPrefix);
+            //}
 
-            return foundIssues;
+            return analyzeResult;
         }
 
         private TemplateType GetTemplateType(string templateJsonFilepath) {
@@ -141,11 +164,13 @@ namespace TemplatesShared {
         ///  TODO: Check that the icon file listed is on disk and in, or below, the 
         ///        .template.config folder
         /// </summary>
-        protected bool AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
+        protected AnalyzeResult AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
             Debug.Assert(!string.IsNullOrEmpty(templateConfigFolder));
             Debug.Assert(indentPrefix != null);
             _reporter.WriteVerbose($"Looking for host files in folder '{templateConfigFolder}'");
             _reporter.WriteVerboseLine();
+
+            var analyzeResult = new AnalyzeResult();
 
             var hostFiles = Directory.GetFiles(templateConfigFolder, "*.host.json");
             
@@ -156,7 +181,7 @@ namespace TemplatesShared {
             //}
 
             bool foundIssues = false;
-
+            
             // check for either a ide.host.json or vs-2017.3.host.json
             var foundAnIdeHostFile = false;
             var hostFileRules = GetHostFileRules();
@@ -171,11 +196,22 @@ namespace TemplatesShared {
                 catch (Exception ex) {
                     // TODO: make exception more specific
                     WriteError($"Unable to load host file from: '{hf}'.\n Error: {ex.ToString()}");
+                    analyzeResult.Issues.Add(
+                        new FoundIssue {
+                            IssueType = ErrorWarningType.Error,
+                            IssueMessage = ex.ToString()
+                        });
                     continue;
                 }
 
                 foreach(var rule in hostFileRules) {
-                    foundIssues = !ExecuteRule(rule, jtoken) || foundIssues;
+                    if (!ExecuteRule(rule, jtoken)) {
+                        analyzeResult.Issues.Add(new FoundIssue {
+                            IssueType = rule.Severity,
+                            IssueMessage = rule.GetErrorMessage()
+                        });
+                    }
+                    //foundIssues = !ExecuteRule(rule, jtoken) || foundIssues;
                 }
             }
 
@@ -189,7 +225,7 @@ namespace TemplatesShared {
                 foundIssues = true;
             }
 
-            return foundIssues;
+            return analyzeResult;
         }
 
         protected List<JTokenAnalyzeRule> GetHostFileRules() =>
@@ -208,9 +244,10 @@ namespace TemplatesShared {
                 _ => false
             };
 
-        protected bool AnalyzeCasingForCommonProperties(JToken template, string indentPrefix) {
+        protected AnalyzeResult AnalyzeCasingForCommonProperties(JToken template, string indentPrefix) {
             if(template == null) {
-                return true;
+                // TODO: Investigate this, we shouldn't be getting into this code
+                return new AnalyzeResult();
             }
 
             var namesToCheck = new List<string> {
@@ -237,6 +274,7 @@ namespace TemplatesShared {
                 "thirdPartyNotices"
             };
 
+            var analyzeResult = new AnalyzeResult();
             bool foundIssues = false;
             foreach(var propertyToken in template.Children()) {
                 var path = propertyToken.Path;
@@ -245,14 +283,20 @@ namespace TemplatesShared {
                         // check to see if strings match when case insensitive but not when case sensitive
                         if( string.Equals(name, path, StringComparison.OrdinalIgnoreCase) &&
                             !string.Equals(name, path, StringComparison.Ordinal)) {
-                            WriteWarning($"'{path}' should be '{name}', incorrect casing", indentPrefix);
+                            analyzeResult.Issues.Add(new FoundIssue {
+                                IssueType = ErrorWarningType.Warning,
+                                IssueMessage = $"{indentPrefix}'{path}' should be '{name}', incorrect casing"
+                            });
+                            // WriteWarning($"'{path}' should be '{name}', incorrect casing", indentPrefix);
                             foundIssues = true;
                         }
                     }
                 }
             }
 
-            return foundIssues;
+            return analyzeResult;
+
+            //return foundIssues;
         }
 
         protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType, JToken template = null) {
@@ -405,9 +449,10 @@ namespace TemplatesShared {
             return foundFilePaths;
         }
         
-        private bool ValidateFilePathsInSources(JToken template, string templateFolder) {
+        private AnalyzeResult ValidateFilePathsInSources(JToken template, string templateFolder) {
             // paths can be pointing to either files or directories
             // paths can also contain globbing characters
+            var analyzeResult = new AnalyzeResult();
             var pathsFound = new List<string>();
             try {
                 var queryResult = template.SelectTokens("$.sources.[*].modifiers.[*].rename");
@@ -423,6 +468,10 @@ namespace TemplatesShared {
                                             pathsFound.Add(cp.Name);
                                         }
                                         else {
+                                            analyzeResult.Issues.Add(new FoundIssue { 
+                                                IssueType = ErrorWarningType.Warning,
+                                                IssueMessage = $"WARNING: no file path found when trying to verify sources paths"
+                                            });
                                             _reporter.WriteLine($"WARNING: no file path found when trying to verify sources paths");
                                         }
                                     }
@@ -432,57 +481,43 @@ namespace TemplatesShared {
                     }
                 }
             }
-            catch (Exception) {
-                Console.WriteLine("error");
+            catch (Exception ex) {
+                analyzeResult.Issues.Add(new FoundIssue {
+                    IssueType = ErrorWarningType.Error,
+                    IssueMessage = ex.ToString()
+                });
+                Console.WriteLine($"ERROR: {ex.ToString()}");
             }
             List<string> missingFiles = new List<string>();
             if (pathsFound != null && pathsFound.Count > 0) {
                 // we need to now validate the file paths to ensure they are on disk in the expected location
                 //  Directory paths should end with a slash, otherwise it should be a file path
                 // set the location to the .template.config folder
-
-                //var oldCd = Directory.GetCurrentDirectory();
-                //try {
-                //    Directory.SetCurrentDirectory(templateFolder);
-                //    foreach (var filepath in pathsFound) {
-                //        var files = Directory.GetFiles(templateFolder, filepath);
-
-                //        if (files == null || files.Length <= 0) {
-                //            missingFiles.Add(filepath);
-                //        }
-                //        else {
-                //            foreach (var file in files) {
-                //                if (!File.Exists(file)) {
-                //                    missingFiles.Add(file);
-                //                }
-                //            }
-                //        }
-                //    }
-                //}
-                //catch(Exception ex) {
-                //    _reporter.WriteLine($"ERROR: {ex.ToString()}");
-                //}
-
-                //// reset the old cd
-                //Directory.SetCurrentDirectory(oldCd);
-
                 try {
                     var findResult = DoThesePathsExistOnDisk(templateFolder, pathsFound);
                     if (findResult.Item2 != null && findResult.Item2.Count > 0) {
                         foreach (var missingPath in findResult.Item2) {
-                            _reporter.WriteLine($"WARNING: Missing path: '{missingPath}'");
+                            analyzeResult.Issues.Add(new FoundIssue {
+                                IssueType = ErrorWarningType.Warning,
+                                IssueMessage = $"    WARNING: Missing path: '{missingPath}'"
+                            });
+                            _reporter.WriteLine($"    WARNING: Missing path: '{missingPath}'");
                         }
                     }
-                    return !findResult.Item1;
+                    // return !findResult.Item1;
                 }
                 catch(Exception ex) {
+                    analyzeResult.Issues.Add(new FoundIssue {
+                        IssueType = ErrorWarningType.Error,
+                        IssueMessage = $"ERROR: {ex.ToString()}"
+                    });
                     _reporter.WriteLine($"ERROR: {ex.ToString()}");
-                    return true;
                 }
             }
 
+            return analyzeResult;
             // no paths found in $.sources
-            return false;
+            //return false;
             //if (missingFiles.Count > 0) {
             //    _reporter.WriteLine("WARING: file(s) referenced in `$.sources` not found.");
             //    foreach (var mf in missingFiles) {
