@@ -55,10 +55,6 @@ namespace Templates {
                         {
                             foldersList.AddRange(folders);
                         }
-                        //else
-                        //{
-                        //    _reporter.WriteLine("no folders found to analyze");
-                        //}
                         
                         if(packages != null && packages.Length > 0)
                         {
@@ -77,10 +73,7 @@ namespace Templates {
                                 }
                             }
                         }
-                        //else
-                        //{
-                        //    _reporter.WriteLine("no packages found to analyze");
-                        //}
+
                         var analyzeResult = new AnalyzeResult();
                         if(foldersList != null && foldersList.Count > 0){
                             foreach(var f in foldersList) {
@@ -98,7 +91,7 @@ namespace Templates {
                         }
                         
                         //return analyzeResult;
-                        return analyzeResult.FoundIssues ? -1 : 0;
+                        return analyzeResult.HasErrors() ? -1 : 0;
                         // return foundIssues ? -1 : 0;
                 }),
                 OptionPackages(),

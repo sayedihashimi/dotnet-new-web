@@ -13,13 +13,14 @@ namespace TemplatesShared {
         }
         public List<FoundIssue> Issues { get; set; } = new List<FoundIssue>();
 
+        public bool HasErrors() => 
+            Issues.Any(fi=>fi.IssueType == ErrorWarningType.Error);
+
         public static AnalyzeResult Combine(AnalyzeResult result1, AnalyzeResult result2) {
             var combinedResult = new AnalyzeResult();
-            var allIssues = new List<FoundIssue>();
 
-            allIssues.AddRange(result1.Issues);
-            allIssues.AddRange(result2.Issues);
-            combinedResult.Issues = allIssues;
+            combinedResult.Issues.AddRange(result1.Issues);
+            combinedResult.Issues.AddRange(result2.Issues);
             return combinedResult;
         }
     }
