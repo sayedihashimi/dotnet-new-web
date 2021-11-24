@@ -64,15 +64,12 @@ namespace TemplatesShared {
             if (!Directory.Exists(templateFolder)) {
                 WriteError($"templateFolder not found at '{templateFolder}'", _outputPrefix);
                 return GetResultFromErrorMessage(ErrorWarningType.Error, $"{_outputPrefix}templateFolder not found at '{templateFolder}'");
-
-                // return true;
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
                 WriteWarning($"template.json not found at '{templateJsonFile}'", _outputPrefix);
                 return GetResultFromErrorMessage(ErrorWarningType.Warning, $"{_outputPrefix}template.json not found at '{templateJsonFile}'");
-                // return true;
             }
 
             JToken template;
@@ -83,10 +80,8 @@ namespace TemplatesShared {
                 // TODO: make exception more specific
                 WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
                 return GetResultFromErrorMessage(ErrorWarningType.Error, $"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
-                // return true;
             }
 
-            var foundIssues = false;
             var templateType = GetTemplateType(templateJsonFile);
             if(templateType == TemplateType.Unknown) {
                 WriteWarning($"Unable to determine if the template is for a project, or item (file) or solution. Assuming it is a project template", indentPrefix);
@@ -94,10 +89,8 @@ namespace TemplatesShared {
             WriteVerboseLine($"Found a template of type: '{templateType}'", indentPrefix);
             var templateRules = GetTemplateRules(templateType, template);
             var analyzeResult = new AnalyzeResult();
-            // var issuesFound = new List<FoundIssue>();
             foreach (var rule in templateRules) {
                 if (!ExecuteRule(rule, template)) {
-                    foundIssues = true;
                     analyzeResult.Issues.Add(new FoundIssue() {
                         IssueType = rule.Severity,
                         IssueMessage = $"{indentPrefix} {rule.GetErrorMessage()}"
@@ -116,19 +109,12 @@ namespace TemplatesShared {
                 }
             }
             analyzeResult = AnalyzeResult.Combine(analyzeResult, AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix));
-            // foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
             analyzeResult = AnalyzeResult.Combine(analyzeResult, AnalyzeCasingForCommonProperties(template, indentPrefix));
-            // foundIssues = AnalyzeCasingForCommonProperties(template, indentPrefix) || foundIssues;
-
             analyzeResult = AnalyzeResult.Combine(analyzeResult, ValidateFilePathsInSources(template, templateFolder));
-            // foundIssues = ValidateFilePathsInSources(template, templateFolder) || foundIssues;
 
             if (!analyzeResult.FoundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
             }
-            //if (!foundIssues) {
-            //    _reporter.WriteLine("√ no issues found", indentPrefix);
-            //}
 
             return analyzeResult;
         }
@@ -179,16 +165,10 @@ namespace TemplatesShared {
             //    WriteWarning($"no host files found", indentPrefix);
             //    return false;
             //}
-
-            bool foundIssues = false;
             
             // check for either a ide.host.json or vs-2017.3.host.json
-            var foundAnIdeHostFile = false;
             var hostFileRules = GetHostFileRules();
             foreach(var hf in hostFiles) {
-                if (IsAnIdeHostFile(hf)) { foundAnIdeHostFile = true; }
-                // check that the icon attribute is included in the host file
-
                 JToken jtoken;
                 try {
                     jtoken = _jsonHelper.LoadJsonFrom(hf);
@@ -211,7 +191,6 @@ namespace TemplatesShared {
                             IssueMessage = rule.GetErrorMessage()
                         });
                     }
-                    //foundIssues = !ExecuteRule(rule, jtoken) || foundIssues;
                 }
             }
 
@@ -222,7 +201,6 @@ namespace TemplatesShared {
 
             void WriteError(string text) {
                 this.WriteError(text, indentPrefix);
-                foundIssues = true;
             }
 
             return analyzeResult;
@@ -275,7 +253,6 @@ namespace TemplatesShared {
             };
 
             var analyzeResult = new AnalyzeResult();
-            bool foundIssues = false;
             foreach(var propertyToken in template.Children()) {
                 var path = propertyToken.Path;
                 if (!string.IsNullOrEmpty(path)) {
@@ -287,16 +264,12 @@ namespace TemplatesShared {
                                 IssueType = ErrorWarningType.Warning,
                                 IssueMessage = $"{indentPrefix}'{path}' should be '{name}', incorrect casing"
                             });
-                            // WriteWarning($"'{path}' should be '{name}', incorrect casing", indentPrefix);
-                            foundIssues = true;
                         }
                     }
                 }
             }
 
             return analyzeResult;
-
-            //return foundIssues;
         }
 
         protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType, JToken template = null) {
@@ -458,10 +431,10 @@ namespace TemplatesShared {
                 var queryResult = template.SelectTokens("$.sources.[*].modifiers.[*].rename");
                 if (queryResult != null) {
                     foreach(JObject r in queryResult) {
-                        // (((JObject)r).Values().ElementAt(0) as JValue).Value
                         if (r.HasValues) {
                             foreach(var ct in r.Children()) {
                                 foreach(var child in ct) {
+                                    // seems strange to do child.Parent, but I couldn't find a better way
                                     var cp = child.Parent as JProperty;
                                     if(cp != null) {
                                         if (!string.IsNullOrEmpty(cp.Name)) {
@@ -495,8 +468,8 @@ namespace TemplatesShared {
                 // set the location to the .template.config folder
                 try {
                     var findResult = DoThesePathsExistOnDisk(templateFolder, pathsFound);
-                    if (findResult.Item2 != null && findResult.Item2.Count > 0) {
-                        foreach (var missingPath in findResult.Item2) {
+                    if (findResult.Exists != null && findResult.MissingPaths.Count > 0) {
+                        foreach (var missingPath in findResult.MissingPaths) {
                             analyzeResult.Issues.Add(new FoundIssue {
                                 IssueType = ErrorWarningType.Warning,
                                 IssueMessage = $"    WARNING: Missing path: '{missingPath}'"
@@ -516,20 +489,11 @@ namespace TemplatesShared {
             }
 
             return analyzeResult;
-            // no paths found in $.sources
-            //return false;
-            //if (missingFiles.Count > 0) {
-            //    _reporter.WriteLine("WARING: file(s) referenced in `$.sources` not found.");
-            //    foreach (var mf in missingFiles) {
-            //        _reporter.WriteLine($"\tmissing file: {mf}");
-            //    }
-            //}
-            //return missingFiles.Count > 0;
         }
         /// <summary>
         /// Will return true if all paths exist on disk.
         /// </summary>
-        private (bool, List<string>) DoThesePathsExistOnDisk(string pwd, List<string> paths) {
+        private (bool Exists, List<string>MissingPaths) DoThesePathsExistOnDisk(string pwd, List<string> paths) {
             var missingPaths = new List<string>();
             if (paths == null || paths.Count <= 0) {
                 throw new ArgumentNullException(nameof(paths)); ;
