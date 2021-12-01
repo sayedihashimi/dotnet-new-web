@@ -38,8 +38,8 @@ namespace Templates {
         public override Command CreateCommand() =>
             new Command(name: "analyze", description: "template analyzer tool") {
                 CommandHandler.Create<string[],string[],bool,bool>(
-                    (packages, folders, enableVerbose, usePackageCache) => {
-                        _reporter.EnableVerbose = enableVerbose;
+                    (packages, folders, verbose, usePackageCache) => {
+                        _reporter.EnableVerbose = verbose;
                         _reporter.WriteLine("analyzing...");
 
                         _reporter.WriteVerboseLine(packages != null ?
@@ -55,10 +55,6 @@ namespace Templates {
                         {
                             foldersList.AddRange(folders);
                         }
-                        //else
-                        //{
-                        //    _reporter.WriteLine("no folders found to analyze");
-                        //}
                         
                         if(packages != null && packages.Length > 0)
                         {
@@ -77,12 +73,8 @@ namespace Templates {
                                 }
                             }
                         }
-                        //else
-                        //{
-                        //    _reporter.WriteLine("no packages found to analyze");
-                        //}
 
-                        bool foundIssues = false;
+                        var analyzeResult = new AnalyzeResult();
                         if(foldersList != null && foldersList.Count > 0){
                             foreach(var f in foldersList) {
                                 // finding folders under f that has a .template.config folder
@@ -93,12 +85,14 @@ namespace Templates {
                                     _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
                                 }
                                 foreach(var fd in foundDirs) {
-                                    foundIssues = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName) || foundIssues;
+                                    analyzeResult = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
                                 }
                             }
                         }
-
-                        return foundIssues ? -1 : 0;
+                        
+                        //return analyzeResult;
+                        return analyzeResult.HasErrors() ? -1 : 0;
+                        // return foundIssues ? -1 : 0;
                 }),
                 OptionPackages(),
                 OptionFolders(),

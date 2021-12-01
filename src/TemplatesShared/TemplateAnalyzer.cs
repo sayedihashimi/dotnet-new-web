@@ -39,12 +39,23 @@ namespace TemplatesShared {
         private string _isProjectTemplateRegex = @"""type""\s*:\s*""project""";
         private string _isItemTempalteRegex = @"""type""\s*:\s*""item""";
         private string _isSolutionTemplateRegex = @"""type""\s*:\s*""solution""";
-
+        private AnalyzeResult GetResultFrom(FoundIssue issue) {
+            return GetResultFromErrorMessage(issue.IssueType, issue.IssueMessage);
+        }
+        private AnalyzeResult GetResultFromErrorMessage(ErrorWarningType type, string message) {
+            var result = new AnalyzeResult();
+            result.Issues.Add(new FoundIssue {
+                IssueType = type,
+                IssueMessage = message
+            });
+            return result;
+        }
         /// <summary>
         /// Returns true if issues are found, and false otherwise.
         /// </summary>
-        public bool Analyze(string templateFolder) {
+        public AnalyzeResult Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
+            
             _reporter.WriteLine();
             WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
 
@@ -52,13 +63,13 @@ namespace TemplatesShared {
             // validate the folder has a .template.config folder
             if (!Directory.Exists(templateFolder)) {
                 WriteError($"templateFolder not found at '{templateFolder}'", _outputPrefix);
-                return true;
+                return GetResultFromErrorMessage(ErrorWarningType.Error, $"{_outputPrefix}templateFolder not found at '{templateFolder}'");
             }
 
             var templateJsonFile = Path.Combine(templateFolder, ".template.config/template.json");
             if (!File.Exists(templateJsonFile)) {
                 WriteWarning($"template.json not found at '{templateJsonFile}'", _outputPrefix);
-                return true;
+                return GetResultFromErrorMessage(ErrorWarningType.Warning, $"{_outputPrefix}template.json not found at '{templateJsonFile}'");
             }
 
             JToken template;
@@ -68,19 +79,22 @@ namespace TemplatesShared {
             catch (Exception ex) {
                 // TODO: make exception more specific
                 WriteError($"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
-                return true;
+                return GetResultFromErrorMessage(ErrorWarningType.Error, $"Unable to load template from: '{templateJsonFile}'.\n Error: {ex.ToString()}");
             }
 
-            var foundIssues = false;
             var templateType = GetTemplateType(templateJsonFile);
             if(templateType == TemplateType.Unknown) {
-                WriteWarning($"Unable to determine if the template is for a project or item (file), assuming it is a project template", indentPrefix);
+                WriteWarning($"Unable to determine if the template is for a project, or item (file) or solution. Assuming it is a project template", indentPrefix);
             }
             WriteVerboseLine($"Found a template of type: '{templateType}'", indentPrefix);
-            var templateRules = GetTemplateRules(templateType);
+            var templateRules = GetTemplateRules(templateType, template);
+            var analyzeResult = new AnalyzeResult();
             foreach (var rule in templateRules) {
                 if (!ExecuteRule(rule, template)) {
-                    foundIssues = true;
+                    analyzeResult.Issues.Add(new FoundIssue() {
+                        IssueType = rule.Severity,
+                        IssueMessage = $"{indentPrefix} {rule.GetErrorMessage()}"
+                    });
                     switch (rule.Severity) {
                         case ErrorWarningType.Error:
                             WriteError(rule.GetErrorMessage(), indentPrefix);
@@ -91,20 +105,18 @@ namespace TemplatesShared {
                         default:
                             WriteMessage(rule.GetErrorMessage(), indentPrefix);
                             break;
-
                     }
                 }
             }
+            analyzeResult = AnalyzeResult.Combine(analyzeResult, AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix));
+            analyzeResult = AnalyzeResult.Combine(analyzeResult, AnalyzeCasingForCommonProperties(template, indentPrefix));
+            analyzeResult = AnalyzeResult.Combine(analyzeResult, ValidateFilePathsInSources(template, templateFolder));
 
-            foundIssues = AnalyzeHostFiles(Path.GetDirectoryName(templateJsonFile), indentPrefix) || foundIssues;
-
-            foundIssues = AnalyzeCasingForCommonProperties(template, indentPrefix) || foundIssues;
-
-            if (!foundIssues) {
+            if (!analyzeResult.FoundIssues) {
                 _reporter.WriteLine("√ no issues found", indentPrefix);
             }
 
-            return foundIssues;
+            return analyzeResult;
         }
 
         private TemplateType GetTemplateType(string templateJsonFilepath) {
@@ -126,7 +138,8 @@ namespace TemplatesShared {
                 return TemplateType.Item;
             }
             else {
-                throw new JsonException($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+                _reporter.WriteVerboseLine($"Unable to determine if the template if the template is a project template or an item template '{templateJsonFilepath}'");
+                return TemplateType.Unknown;
             }
         }
 
@@ -137,11 +150,13 @@ namespace TemplatesShared {
         ///  TODO: Check that the icon file listed is on disk and in, or below, the 
         ///        .template.config folder
         /// </summary>
-        protected bool AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
+        protected AnalyzeResult AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
             Debug.Assert(!string.IsNullOrEmpty(templateConfigFolder));
             Debug.Assert(indentPrefix != null);
             _reporter.WriteVerbose($"Looking for host files in folder '{templateConfigFolder}'");
             _reporter.WriteVerboseLine();
+
+            var analyzeResult = new AnalyzeResult();
 
             var hostFiles = Directory.GetFiles(templateConfigFolder, "*.host.json");
             
@@ -150,16 +165,10 @@ namespace TemplatesShared {
             //    WriteWarning($"no host files found", indentPrefix);
             //    return false;
             //}
-
-            bool foundIssues = false;
-
+            
             // check for either a ide.host.json or vs-2017.3.host.json
-            var foundAnIdeHostFile = false;
             var hostFileRules = GetHostFileRules();
             foreach(var hf in hostFiles) {
-                if (IsAnIdeHostFile(hf)) { foundAnIdeHostFile = true; }
-                // check that the icon attribute is included in the host file
-
                 JToken jtoken;
                 try {
                     jtoken = _jsonHelper.LoadJsonFrom(hf);
@@ -167,11 +176,21 @@ namespace TemplatesShared {
                 catch (Exception ex) {
                     // TODO: make exception more specific
                     WriteError($"Unable to load host file from: '{hf}'.\n Error: {ex.ToString()}");
+                    analyzeResult.Issues.Add(
+                        new FoundIssue {
+                            IssueType = ErrorWarningType.Error,
+                            IssueMessage = ex.ToString()
+                        });
                     continue;
                 }
 
                 foreach(var rule in hostFileRules) {
-                    foundIssues = !ExecuteRule(rule, jtoken) || foundIssues;
+                    if (!ExecuteRule(rule, jtoken)) {
+                        analyzeResult.Issues.Add(new FoundIssue {
+                            IssueType = rule.Severity,
+                            IssueMessage = rule.GetErrorMessage()
+                        });
+                    }
                 }
             }
 
@@ -182,10 +201,9 @@ namespace TemplatesShared {
 
             void WriteError(string text) {
                 this.WriteError(text, indentPrefix);
-                foundIssues = true;
             }
 
-            return foundIssues;
+            return analyzeResult;
         }
 
         protected List<JTokenAnalyzeRule> GetHostFileRules() =>
@@ -204,9 +222,10 @@ namespace TemplatesShared {
                 _ => false
             };
 
-        protected bool AnalyzeCasingForCommonProperties(JToken template, string indentPrefix) {
+        protected AnalyzeResult AnalyzeCasingForCommonProperties(JToken template, string indentPrefix) {
             if(template == null) {
-                return true;
+                // TODO: Investigate this, we shouldn't be getting into this code
+                return new AnalyzeResult();
             }
 
             var namesToCheck = new List<string> {
@@ -233,7 +252,7 @@ namespace TemplatesShared {
                 "thirdPartyNotices"
             };
 
-            bool foundIssues = false;
+            var analyzeResult = new AnalyzeResult();
             foreach(var propertyToken in template.Children()) {
                 var path = propertyToken.Path;
                 if (!string.IsNullOrEmpty(path)) {
@@ -241,17 +260,19 @@ namespace TemplatesShared {
                         // check to see if strings match when case insensitive but not when case sensitive
                         if( string.Equals(name, path, StringComparison.OrdinalIgnoreCase) &&
                             !string.Equals(name, path, StringComparison.Ordinal)) {
-                            WriteWarning($"'{path}' should be '{name}', incorrect casing", indentPrefix);
-                            foundIssues = true;
+                            analyzeResult.Issues.Add(new FoundIssue {
+                                IssueType = ErrorWarningType.Warning,
+                                IssueMessage = $"{indentPrefix}'{path}' should be '{name}', incorrect casing"
+                            });
                         }
                     }
                 }
             }
 
-            return foundIssues;
+            return analyzeResult;
         }
 
-        protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType) {
+        protected List<JTokenAnalyzeRule> GetTemplateRules(TemplateType templateType, JToken template = null) {
             List<JTokenAnalyzeRule> templateRules = new List<JTokenAnalyzeRule>();
             // check required properties
             var requiredProps = new List<string> {
@@ -319,19 +340,23 @@ namespace TemplatesShared {
             }
 
             if (templateType == TemplateType.Project) {
-                // TODO: Only run these rules if a Framework parameter is declared
-                //templateRules.Add(new JTokenAnalyzeRule {
-                //    Query = "$.symbols.Framework.type",
-                //    Expectation = JTokenValidationType.StringEquals,
-                //    Value = "parameter",
-                //    ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'"
-                //});
-                //templateRules.Add(new JTokenAnalyzeRule {
-                //    Query = "$.symbols.Framework.datatype",
-                //    Expectation = JTokenValidationType.StringEquals,
-                //    Value = "choice",
-                //    ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'"
-                //});
+                if (template != null && HasFrameworkSymbolDefined(template)) {
+                    templateRules.Add(new JTokenAnalyzeRule {
+                        Query = "$.symbols.Framework.type",
+                        Expectation = JTokenValidationType.StringEquals,
+                        Value = "parameter",
+                        ErrorMessage = "WARNING: $.symbols.Framework.type should be 'parameter'",
+                        Severity = ErrorWarningType.Warning
+                    });
+                    templateRules.Add(new JTokenAnalyzeRule {
+                        Query = "$.symbols.Framework.datatype",
+                        Expectation = JTokenValidationType.StringEquals,
+                        Value = "choice",
+                        ErrorMessage = "WARNING: $.symbols.Framework.datatype should be 'choice'",
+                        Severity = ErrorWarningType.Warning
+                    });
+                }
+
             }
 
             // ensure primaryOutputs doesn't start with a / or \
@@ -343,7 +368,6 @@ namespace TemplatesShared {
                     var paths = currentValue as JArray;
                     var errorFiles = new List<string>();
                     if (paths != null) {
-
                         foreach(var item in paths.Children<JObject>()) {
                             string strResult = _jsonHelper.GetStringValueFromQuery(item, "path");
                             if (!string.IsNullOrWhiteSpace(strResult) &&
@@ -359,12 +383,196 @@ namespace TemplatesShared {
 
                     return true;
                 },
-                ErrorMessage = @"ERROR: One or more $.primaryOutputs.path values starts with a '/' or '\'. You will need to remove that to get the template to work correctly."
+                ErrorMessage = @"ERROR: One or more $.primaryOutputs.path values starts with a '/' or '\'. You will need to remove that to get the template to work correctly.",
+                Severity= ErrorWarningType.Error
             });
 
             return templateRules;
         }
+        private List<string> GetFilePathsFromSources(JToken templateToken) {
+            if (templateToken == null) {
+                throw new ArgumentNullException(nameof(templateToken));
+            }
+            var queries = new List<string>() {
+                "$.sources.[*].modifiers.[*].exclude",
+                "$.sources.[*].modifiers.[*].rename",
+                "$.sources.[*].copyOnly"
+            };
+            var foundFilePaths = new List<string>();
 
+            foreach (var query in queries) {
+                var qResult = templateToken.SelectToken(query);
+                if (qResult != null) {
+                    foreach (var subresult in qResult) {
+                        if (subresult != null && subresult.HasValues) {
+                            foreach (var v in subresult.Values()) {
+                                var str = (v as JValue)?.Value as string;
+
+                                if (!string.IsNullOrEmpty(str)) {
+                                    foundFilePaths.Add(str);
+                                }
+                                else {
+                                    _reporter.WriteVerbose($"file path value is null for query '{query}'");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return foundFilePaths;
+        }
+        
+        private AnalyzeResult ValidateFilePathsInSources(JToken template, string templateFolder) {
+            // paths can be pointing to either files or directories
+            // paths can also contain globbing characters
+            var analyzeResult = new AnalyzeResult();
+            var pathsFound = new List<string>();
+            try {
+                var queryResult = template.SelectTokens("$.sources.[*].modifiers.[*].rename");
+                if (queryResult != null) {
+                    foreach(JObject r in queryResult) {
+                        if (r.HasValues) {
+                            foreach(var ct in r.Children()) {
+                                foreach(var child in ct) {
+                                    // seems strange to do child.Parent, but I couldn't find a better way
+                                    var cp = child.Parent as JProperty;
+                                    if(cp != null) {
+                                        if (!string.IsNullOrEmpty(cp.Name)) {
+                                            pathsFound.Add(cp.Name);
+                                        }
+                                        else {
+                                            analyzeResult.Issues.Add(new FoundIssue { 
+                                                IssueType = ErrorWarningType.Warning,
+                                                IssueMessage = $"WARNING: no file path found when trying to verify sources paths"
+                                            });
+                                            _reporter.WriteLine($"WARNING: no file path found when trying to verify sources paths");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) {
+                analyzeResult.Issues.Add(new FoundIssue {
+                    IssueType = ErrorWarningType.Error,
+                    IssueMessage = ex.ToString()
+                });
+                Console.WriteLine($"ERROR: {ex.ToString()}");
+            }
+            List<string> missingFiles = new List<string>();
+            if (pathsFound != null && pathsFound.Count > 0) {
+                // we need to now validate the file paths to ensure they are on disk in the expected location
+                //  Directory paths should end with a slash, otherwise it should be a file path
+                // set the location to the .template.config folder
+                try {
+                    var findResult = DoThesePathsExistOnDisk(templateFolder, pathsFound);
+                    if (findResult.Exists != null && findResult.MissingPaths.Count > 0) {
+                        foreach (var missingPath in findResult.MissingPaths) {
+                            analyzeResult.Issues.Add(new FoundIssue {
+                                IssueType = ErrorWarningType.Warning,
+                                IssueMessage = $"    WARNING: Missing path: '{missingPath}'"
+                            });
+                            _reporter.WriteLine($"    WARNING: Missing path: '{missingPath}'");
+                        }
+                    }
+                    // return !findResult.Item1;
+                }
+                catch(Exception ex) {
+                    analyzeResult.Issues.Add(new FoundIssue {
+                        IssueType = ErrorWarningType.Error,
+                        IssueMessage = $"ERROR: {ex.ToString()}"
+                    });
+                    _reporter.WriteLine($"ERROR: {ex.ToString()}");
+                }
+            }
+
+            return analyzeResult;
+        }
+        /// <summary>
+        /// Will return true if all paths exist on disk.
+        /// </summary>
+        private (bool Exists, List<string>MissingPaths) DoThesePathsExistOnDisk(string pwd, List<string> paths) {
+            var missingPaths = new List<string>();
+            if (paths == null || paths.Count <= 0) {
+                throw new ArgumentNullException(nameof(paths)); ;
+            }
+            var oldCd = Directory.GetCurrentDirectory();
+            Directory.SetCurrentDirectory(pwd);
+            // need to see if the path points to a file or directory, and also need to account for globbing patterns
+            foreach (var path in paths) {
+                if (IsPathADirectory(path)) {
+                    // validate as a directory path
+                    if (DoesPathUseGlobbing(path)) {
+                        var foundDirs = Directory.GetDirectories(path);
+                        if (!foundDirs.Any()) {
+                            _reporter.WriteVerboseLine($"Missing directory, no match for path with glob: path='{path}'.");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                    else {
+                        var fullpath = Path.Combine(pwd, path);
+                        if (!Directory.Exists(fullpath)) {
+                            _reporter.WriteVerboseLine($"Missing directory: path='{path}', fullpath='{fullpath}'");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                }
+                else {
+                    // validate as a file path
+                    if (DoesPathUseGlobbing(path)) {
+                        var foundFiles = Directory.GetFiles(path);
+
+                        if (!foundFiles.Any()) {
+                            _reporter.WriteVerboseLine($"Missing file, no match for path with glob: path='{path}'.");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                    else {
+                        var fullpath = Path.Combine(pwd, path);
+                        if (!File.Exists(fullpath)) {
+                            _reporter.WriteVerboseLine($"Missing file: path='{path}', fullpath='{fullpath}'");
+                            missingPaths.Add(path);
+                        }
+                        else {
+                            // TODO: Probably should hide this behind a DEBUG build or some type of setting
+                            // this could cause a lot of extra verbose output
+                            _reporter.WriteVerboseLine($"validated path in sources, path='{path}'");
+                        }
+                    }
+                }
+            }
+            Directory.SetCurrentDirectory(oldCd);
+
+            return (missingPaths.Count == 0, missingPaths);
+        }
+        /// <summary>
+        /// Directory paths should end with a slash, otherwise it should be a file path
+        /// </summary>
+        private bool IsPathADirectory(string path) {
+            var trimmedPath = path.Trim();
+            return trimmedPath.EndsWith("\\") || trimmedPath.EndsWith("/");
+        }
+        // for now assume that * is the only character for globbing, need to get more info here
+        private bool DoesPathUseGlobbing(string path) {
+            return path.Contains("*",StringComparison.OrdinalIgnoreCase);
+        }
         private bool ValidateNotEmptyString(JToken token, string jsonPath) {
             var value = _jsonHelper.GetStringValueFromQuery(token, jsonPath);
 
@@ -421,6 +629,15 @@ namespace TemplatesShared {
                 default:
                     throw new ArgumentException($"Unknown value for JTokenValidationType:{rule.Expectation}");
             }
+        }
+        private bool HasFrameworkSymbolDefined(JToken template) {
+            if(template == null) {
+                throw new ArgumentNullException(nameof(template), "template cannot be null");
+            }
+
+            var queryResult = template.SelectToken("$.symbols.Framework");
+
+            return queryResult != null ? true : false;
         }
     }
 
