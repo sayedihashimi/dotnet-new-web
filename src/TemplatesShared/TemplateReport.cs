@@ -36,7 +36,6 @@ namespace TemplatesShared {
         public async Task GenerateTemplateJsonReportAsync(string[] searchTerms, string jsonReportFilepath, List<string> specificPackagesToInclude, string previousReportPath) {
             Debug.Assert(searchTerms != null && searchTerms.Length > 0);
             Debug.Assert(!string.IsNullOrEmpty(jsonReportFilepath));
-
             
             Dictionary<string, TemplatePack> previousPacks = new Dictionary<string, TemplatePack>();
             Console.WriteLine($"verbose: '{previousReportPath}', file exists '{File.Exists(previousReportPath)}'");
@@ -51,6 +50,8 @@ namespace TemplatesShared {
             // 1: query nuget for search results, we need to query all because we need to get the new download count
             var packageIdsToIgnore = GetPackagesToIgnore();
             var nugetSearchResultPackages = await _nugetHelper.QueryNuGetAsync(_httpClient, searchTerms, specificPackagesToInclude, packageIdsToIgnore);
+            // use below to write full list of search results to a file for debugging
+            // System.IO.File.WriteAllText(@"c:\temp\packages-found.json",JsonConvert.SerializeObject(nugetSearchResultPackages))
             var pkgsToDownload = new List<NuGetPackage>();
             // go through each found package, if pkg is in previous result with same version number, update download count and move on
             // if not same version number, remove from dictionary and add to list to download
