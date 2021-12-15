@@ -7,7 +7,7 @@
     <!-- nuget related properties -->
     <Authors>Sayed Ibrahim Hashimi</Authors>
     <Description>.NET Core tool that creates a JSON report of .NET Core templates in nuget.org.</Description>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Copyright>Copyright 2019 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
