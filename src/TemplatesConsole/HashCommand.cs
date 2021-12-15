@@ -25,8 +25,12 @@ namespace TemplatesConsole {
             var optionCsvOutputPath = command.Option<string>(
                 "-cop|--csv-output-path",
                 "output path for the csv file, default is to create the file in the current directory",
-                CommandOptionType.SingleValue
-                );
+                CommandOptionType.SingleValue);
+
+            var optionTemplateCacheFilepath = command.Option<string>(
+                "-tcf|--template-cache-file",
+                "path to the templatecache.json this is ususally typically found in subfolders under %HOMEPATH%/.templateengine/dotnetcli",
+                CommandOptionType.SingleValue);
 
             OnExecute = () => {
                 var reportFilepath = optionTemplateReportFilepath.HasValue() ?
@@ -53,7 +57,7 @@ namespace TemplatesConsole {
                 // var destFile = 
                 // load the json file
                 var templatePack = TemplatePack.CreateFromFile(reportFilepath);
-                sb.AppendLine("Identity,hash,hashLower,idhash,idhashLower,groupidhash,groupidHashLower");
+                sb.AppendLine("Identity,hash,hashLower,idhash,idhashLower,groupidhash,groupidHashLower,clihash,cliUpperHash,cliLowerHash");
                 foreach(var tp in templatePack) {
                     foreach(var template in tp.Templates) {
                         var hashInfo = new TemplateHashInfo {
@@ -68,14 +72,57 @@ namespace TemplatesConsole {
                         var idhashLower = TemplateHashExtensions.GenerateHash(template.Identity != null? template.Identity.ToLowerInvariant():string.Empty);
                         var groupIdHash = TemplateHashExtensions.GenerateHash(template.GroupIdentity);
                         var groupIdHashLower = TemplateHashExtensions.GenerateHash(template.GroupIdentity != null ? template.GroupIdentity.ToLowerInvariant() : string.Empty);
-                        sb.AppendLine($"{template.Identity},{hash},{hashLower},{idhash},{idhashLower},{groupIdHash},{groupIdHashLower}");
+                        var cliHash = TemplateHashExtensions.GenerateHashForCli(template.Identity);
+                        var cliUpperHash = TemplateHashExtensions.GenerateHashForCliWithNormalizedCasing(template.Identity);
+                        var cliLowerHash = TemplateHashExtensions.GenerateHashForCliWithNormalizedCasing(template.Identity, false);
+                        sb.AppendLine($"{template.Identity},{hash},{hashLower},{idhash},{idhashLower},{groupIdHash},{groupIdHashLower},{cliHash},{cliUpperHash},{cliLowerHash}");
                     }
                 }
+
+                var templateCacheFilepath = optionTemplateCacheFilepath.HasValue() ?
+                                                optionTemplateCacheFilepath.Value() :
+                                                null;
+                var idsFromTemplateCacheFile = GetIdsFromTemplateCache(templateCacheFilepath);
+                if(idsFromTemplateCacheFile == null && idsFromTemplateCacheFile.Count > 0)
+                {
+                    foreach(var id in idsFromTemplateCacheFile)
+                    {
+                        var hash = string.Empty;
+                        var hashLower = string.Empty;
+                        var idhash = TemplateHashExtensions.GenerateHash(id);
+                        var idhashLower = TemplateHashExtensions.GenerateHash(id.ToLowerInvariant());
+                        var groupIdHash = string.Empty;
+                        var groupIdHashLower = string.Empty;
+                        var cliHash = TemplateHashExtensions.GenerateHashForCli(id);
+                        var cliUpperHash = TemplateHashExtensions.GenerateHashForCliWithNormalizedCasing(id);
+                        var cliLowerHash = TemplateHashExtensions.GenerateHashForCliWithNormalizedCasing(id, false);
+                        sb.AppendLine($"{id},{hash},{hashLower},{idhash},{idhashLower},{groupIdHash},{groupIdHashLower},{cliHash},{cliUpperHash},{cliLowerHash}");
+                    }
+                }
+
                 File.WriteAllText(destFile, sb.ToString());
                 return 1;
             };
         }
+        private List<string> GetIdsFromTemplateCache(string templateCacheFilepath)
+        {
+            if (templateCacheFilepath != null)
+            {
+                if (File.Exists(templateCacheFilepath))
+                {
+                    var tcf = new TemplateCacheFile(templateCacheFilepath);
+                    return tcf.GetIdenties();
+                }
+                else
+                {
+                    Console.WriteLine($"ERROR: templateCacheFile not found at '{templateCacheFilepath}'");
+                }
+            }
+
+            return null;
+        }
     }
+    
     public class TemplateHashInfo {
         public string Identity { get; set; }
         public string GroupIdentity { get; set; }
@@ -122,5 +169,41 @@ namespace TemplatesConsole {
                 return hashString.ToString();
             }
         }
+
+        #region copied from template engine
+        // https://github.com/dotnet/templating/blob/e1325e22e2f9cb7c13e5af80eb988a2c5a5dc482/src/Microsoft.TemplateEngine.Cli/TelemetryHelper.cs#L46-L81
+        internal static string GenerateHashForCli(this string text)
+        {
+            var sha256 = SHA256.Create();
+            return HashInFormat(sha256, text);
+
+        }
+        internal static string GenerateHashForCliWithNormalizedCasing(string text, bool upper = true)
+        {
+            if (text == null)
+            {
+                return null;
+            }
+
+            return GenerateHashForCli(upper == true ? text.ToUpper() : text.ToLower());
+        }
+
+        private static string HashInFormat(SHA256 sha256, string text)
+        {
+            if (text == null)
+            {
+                return null;
+            }
+
+            byte[] bytes = Encoding.UTF8.GetBytes(text);
+            byte[] hash = sha256.ComputeHash(bytes);
+            StringBuilder hashString = new StringBuilder();
+            foreach (byte x in hash)
+            {
+                hashString.AppendFormat("{0:x2}", x);
+            }
+            return hashString.ToString();
+        }
+        #endregion
     }
 }

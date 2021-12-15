@@ -109,6 +109,7 @@ footer{
 
 .terminal {
     background-color: var(--pgheadercolor);
+    background-color: aliceblue;
     font-family: var(--codefont);
     color: var(--altcolor2);
     height: calc(5vw + 20px);
