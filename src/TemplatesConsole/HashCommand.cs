@@ -83,7 +83,7 @@ namespace TemplatesConsole {
                                                 optionTemplateCacheFilepath.Value() :
                                                 null;
                 var idsFromTemplateCacheFile = GetIdsFromTemplateCache(templateCacheFilepath);
-                if(idsFromTemplateCacheFile == null && idsFromTemplateCacheFile.Count > 0)
+                if(idsFromTemplateCacheFile != null && idsFromTemplateCacheFile.Count > 0)
                 {
                     foreach(var id in idsFromTemplateCacheFile)
                     {
