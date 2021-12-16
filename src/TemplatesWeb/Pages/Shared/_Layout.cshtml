@@ -7,15 +7,17 @@
         usePreviewCss = true;
     }
     var pathToSiteCssFile = usePreviewCss ? "/css/preview.css" : "/css/grid.css";
+    pathToSiteCssFile = "/css/fast.css";
 }
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dotnet templates</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;500;700;800&display=swap" rel="stylesheet">
+    @*<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;300;500;700;800&display=swap" rel="stylesheet">*@
 <environment include="Development">
-    <link rel="stylesheet" href="~/css/normalize/normalize.css"/>
+    @*<link rel="stylesheet" href="~/css/normalize/normalize.css"/>*@
+    <link rel="stylesheet" href="pico/pico.min.css" />
     <link rel="stylesheet" href="@pathToSiteCssFile" />
 </environment>
 <environment exclude="Development">
@@ -24,11 +26,12 @@
             asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
 
     <link rel="stylesheet" href="@pathToSiteCssFile" asp-append-version="true" />
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@@microsoft/fast-components@@2.16.0/dist/fast-components.min.js"></script>
+    @*<script type="module" src="https://cdn.jsdelivr.net/npm/@@microsoft/fast-components@@2.16.0/dist/fast-components.min.js"></script>*@
 </environment>
 @RenderSection("Styles", required: false)
 </head>
-<body>
+<body data-theme="dark">
+    @*<fast-design-system-provider use-defaults>*@
     @*<nav id="navbar">
         <a asp-page="/Index"><img src="~/images/create-project-20x20.png" alt="create-project-icon" /></a>
     </nav>*@
@@ -37,5 +40,6 @@
         <p>&copy; 2017 - Sayed Ibrahim Hashimi</p>
     </footer>
     @RenderSection("Scripts", required: false)
+    @*</fast-design-system-provider>*@
 </body>
 </html>

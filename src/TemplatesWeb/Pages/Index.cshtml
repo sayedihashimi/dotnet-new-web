@@ -4,15 +4,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="terminal-container">
-    <div class="terminal">
-        <div class="line1 terminal-command" id="index-terminal-command">dotnet new <span class="cursor1">_</span></div>
-    </div>
-</div>
+<header class="container terminal-container">
+    <h1>Templates for <code>dotnet new</code></h1>
+</header>
 
-<form id="search-form" method="POST">
+<form id="search-form" method="POST" class="container">
+    <div class="grid">
     <input asp-for="SearchText" required autofocus />
     <a id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
+    </div>
 </form>
  
 <ul id="overallStats">
@@ -28,7 +28,7 @@
         <section class="template-pack">
 @*            <h4 class="template-pack-header">
             </h4>*@
-
+            
             <ul class="template-info">
                 <li><img class="pkgIcon" src="@Model.GetIconUrlFor(tp)" alt="icon" /></li>
                 <li>

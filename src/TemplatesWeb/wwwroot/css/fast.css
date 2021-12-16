@@ -1,0 +1,13 @@
+﻿html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    width: 100%;
+}
+.pkgIcon {
+    width: 4vw;
+    height: 4vw;
+    margin-right: 1vw;
+}
