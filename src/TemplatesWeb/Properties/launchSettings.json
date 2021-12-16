@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "dnw-previewcss": "false"
       },
-      "applicationUrl": "https://localhost:52109;http://localhost:52119"
+      "applicationUrl": "https://localhost:44318"
     },
     "IIS Express": {
       "commandName": "IISExpress",
