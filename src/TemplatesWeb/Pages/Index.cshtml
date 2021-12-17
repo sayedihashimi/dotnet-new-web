@@ -4,57 +4,53 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="terminal-container">
+<div class="terminal-container" data-foo="bar">
     <div class="terminal">
-        <div class="line1 terminal-command" id="index-terminal-command">dotnet new <span class="cursor1">_</span></div>
+        <h1 class="line1 terminal-command" id="index-terminal-command">dotnet new <span class="cursor1">_</span></h1>
     </div>
 </div>
 
-<form id="search-form" method="POST">
+<form id="search-form" class="centerOnPage" method="POST">
     <input asp-for="SearchText" required autofocus />
-    <a id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</a>
+    <fast-anchor id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</fast-anchor>
 </form>
- 
-<ul id="overallStats">
-    <li>downloads:       <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></li>
-    <li>templates:        <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></li>
+<div id="overallStats" class="centerOnPage">
+    <span id="overallDownloads">downloads: <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></span>
+    <span id="overallTemplates">templates: <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></span>
+</div>
+
+@*<ul id="overallStats">*@
     
+@*    <li>downloads:       <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></li>
+    <li>templates:        <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></li>
+*@    
     @*<li>template packs:   <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplatePacks)</integer></li>
     <li>template authors: <integer>@String.Format("{0:n0}", @Model.Stats.NumAuthors)</integer></li>*@
-</ul>
+@*</ul>*@
 
 <section class="template-pack-container">
     @foreach (var tp in Model.TemplatePacks) {
         <section class="template-pack">
-@*            <h4 class="template-pack-header">
-            </h4>*@
 
             <ul class="template-info">
                 <li><img class="pkgIcon" src="@Model.GetIconUrlFor(tp)" alt="icon" /></li>
                 <li>
-                    <ul>
-                        <li><a href="/pack/@tp.Package">@tp.Package</a></li>
-                        <li><quote class="template-description">@tp.Description</quote></li>
-                        <li>
-                            <details class="template-details">
-                                <summary>@tp.Templates.Length templates</summary>
-                                <ul class="template-list">
-                                    @foreach (var t in tp.Templates) {
-                                        <li><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></li>
-                                    }
-                                </ul>
-                            </details>
-                        </li>
-                        <li>
-                            <ul class="template-metadata">
-                                <li>downloads: @String.Format("{0:n0}", @tp.DownloadCount)</li>
-                                <li>by: <a href="/search/@tp.Authors">@tp.Authors</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <div><a href="/pack/@tp.Package">@tp.Package</a></div>
+                    <div><quote class="template-description">@tp.Description</quote></div>
+                    <div>
+                        <fast-disclosure title="@tp.Templates.Length templates">
+                            <div class="template-list">
+                                @foreach (var t in tp.Templates) {
+                                    <div><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></div>
+                                }
+                            </div>
+                        </fast-disclosure>
+                    </div>
                 </li>
-            </ul>
+            </ul>            
         </section>
+        <div class="templatePackStats">downloads: @String.Format("{0:n0}", @tp.DownloadCount) <span>by: <fast-anchor href="/search/@tp.Authors">@tp.Authors</fast-anchor></span></div>
+        <fast-divider></fast-divider>
     }
 </section>
 <div class="pager-container">

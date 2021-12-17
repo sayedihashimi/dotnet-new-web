@@ -1,10 +1,13 @@
 ﻿:root {
     /*color palette*/
-    --bgcolor: #eeeeee;
+/*    --bgcolor: #eeeeee;
     --pgheadercolor: black;
     --altcolor1: #aad8d3;
-    --altcolor2: #2896B1;
+    --altcolor2: #2896B1;*/
     --codefont: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
+}
+:not(:defined) {
+    visibility: hidden;
 }
 html, body {
     padding: 0;
@@ -15,7 +18,10 @@ body {
     width: 100%;
     font-family: 'Fira Sans', sans-serif;
     font-weight: 300;
-    font-size: 4vw;
+    /*font-size: 4vw;*/
+}
+h1#index-terminal-command {
+    margin: 0;
 }
 a {
     text-decoration: none;
@@ -84,7 +90,7 @@ footer{
     line-height: 6vw;
     width: 100%;
     margin-top: 2vh;
-    font-size: max(min(4vw,20px),8px);
+    /*font-size: max(min(4vw,20px),8px);*/
     align-items: baseline;
 }
 .template-list {
@@ -108,13 +114,14 @@ footer{
 }
 
 .terminal {
-    background-color: var(--pgheadercolor);
-    background-color: aliceblue;
+    background-color: var(--accentFillRest);
+    /*background-color: aliceblue;*/
     font-family: var(--codefont);
     color: var(--altcolor2);
+    color: var(--accent-foreground-cut);
     height: calc(5vw + 20px);
     /* width: 50vw; */
-    font-size: 5vw;
+    /*font-size: 5vw;*/
     line-height: calc(5vw + 20px);
     text-align: center;
 }
@@ -133,7 +140,7 @@ footer{
 }
 
 .template-page-value {
-    color: var(--pgheadercolor);
+    /*color: var(--pgheadercolor);*/
     font-family: var(--codefont);
     font-weight: 400;
 }
@@ -315,7 +322,7 @@ footer{
     color: var(--altcolor2);
     /* height: calc(5vw + 20px);
     line-height: calc(5vw + 20px); */
-    font-size: min(4vw, 24px);
+    /*font-size: min(4vw, 24px);*/
     
     text-align: center;
     padding-top: min(1vw, 20px);
@@ -427,7 +434,7 @@ footer{
 }
 @media only screen and (min-device-width: 1000px) {
     body{
-        font-size: 1.5vw;
+        /*font-size: 1.5vw;*/
     }
 /*    .pkgIcon, .pack-webicon {
         width: 2vw;
