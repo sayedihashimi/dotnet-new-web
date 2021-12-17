@@ -4,7 +4,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="terminal-container" data-foo="bar">
+<div class="terminal-container">
     <div class="terminal">
         <h1 class="line1 terminal-command" id="index-terminal-command">dotnet new <span class="cursor1">_</span></h1>
     </div>
@@ -18,15 +18,6 @@
     <span id="overallDownloads">downloads: <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></span>
     <span id="overallTemplates">templates: <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></span>
 </div>
-
-@*<ul id="overallStats">*@
-    
-@*    <li>downloads:       <integer>@String.Format("{0:n0}", @Model.Stats.NumDownloads)</integer></li>
-    <li>templates:        <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplates)</integer></li>
-*@    
-    @*<li>template packs:   <integer>@String.Format("{0:n0}", @Model.Stats.NumTemplatePacks)</integer></li>
-    <li>template authors: <integer>@String.Format("{0:n0}", @Model.Stats.NumAuthors)</integer></li>*@
-@*</ul>*@
 
 <section class="template-pack-container">
     @foreach (var tp in Model.TemplatePacks) {
