@@ -1,47 +1,49 @@
 ﻿@page "{packId}/{templateId}"
 @model TemplateModel
 
-<section class="go-home">
+<div class="pageContainer">
+    <section class="go-home">
     <a href="/"><img src="~/images/create-project-20x20.png" /> go home</a>
-</section>
-<h2 class="template-title">
-@if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
-    <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="icon" />
-}
-    @Model.Template.Name (@Model.Template.ShortName[0])
-</h2>
-
-<section class="template-details">
-    <div class="tempalte-description">@Model.TemplatePack.Description</div>
-
-    <section class="install-and-use-command">
-        <ul>
-            <li><div class="terminal-command">dotnet new --install "@Model.TemplatePack.Package"</div></li>
-            <li><div class="terminal-command">dotnet new @Model.Template.ShortName[0]</div></li>
-        </ul>
     </section>
+    <h2 class="template-title">
+    @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.IconUrl)) {
+        <img class="pkgIcon" src="@Model.TemplatePack.IconUrl" alt="icon" />
+    }
+        @Model.Template.Name (@Model.Template.ShortName[0])
+    </h2>
 
-    <section>
-        <ul class="template-metadata-list">
-            <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a></li>
-            <li>downloads: @String.Format("{0:n0}", Model.TemplatePack.DownloadCount)</li>
-            @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
-                <li><a href="@Model.TemplatePack.ProjectUrl"><img class="pack-webicon" src="~/images/web.svg" alt="package icon" /> go to project</a></li>
-            }
-            @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
-                <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a></li>
-            }
-            @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
-                <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ", "")</li>
-            }
-        </ul>
-    </section>
+    <section class="template-details">
+        <div class="tempalte-description">@Model.TemplatePack.Description</div>
 
-    <section class="template-meta">
-        <div class="template-page-other-link"><a class="tp-other-link2" href="~/pack/@Model.TemplatePack.Package">View other templates in this package</a></div>
-        <ul>
-            <li class="template-page-tags">Tags: @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <span class="template-page-value">@t.Value<span>; </span></span>}</li>
-            <li class="template-page-classifications">Classifications:   @foreach (var c in Model.Template.Classifications) {<span class="template-page-value">@c</span><span>; </span>}</li>
-        </ul>
+        <section class="install-and-use-command">
+            <ul>
+                <li><div class="terminal-command">dotnet new --install "@Model.TemplatePack.Package"</div></li>
+                <li><div class="terminal-command">dotnet new @Model.Template.ShortName[0]</div></li>
+            </ul>
+        </section>
+
+        <section>
+            <ul class="template-metadata-list">
+                <li>by: <a href="/search/@Model.TemplatePack.Authors">@Model.TemplatePack.Authors</a></li>
+                <li>downloads: @String.Format("{0:n0}", Model.TemplatePack.DownloadCount)</li>
+                @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.ProjectUrl)) {
+                    <li><a href="@Model.TemplatePack.ProjectUrl"><img class="pack-webicon" src="~/images/web.svg" alt="package icon" /> go to project</a></li>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.LicenseUrl)) {
+                    <li><a href="@Model.TemplatePack.LicenseUrl"><img src="~/images/icon-license.png" alt="license icon" /> license</a></li>
+                }
+                @if (!string.IsNullOrWhiteSpace(Model.TemplatePack.Copyright)) {
+                    <li>Copyright: @Model.TemplatePack.Copyright.Replace("Copyright ", "")</li>
+                }
+            </ul>
+        </section>
+
+        <section class="template-meta">
+            <div class="template-page-other-link"><a class="tp-other-link2" href="~/pack/@Model.TemplatePack.Package">View other templates in this package</a></div>
+            <ul>
+                <li class="template-page-tags">Tags: @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <span class="template-page-value">@t.Value<span>; </span></span>}</li>
+                <li class="template-page-classifications">Classifications:   @foreach (var c in Model.Template.Classifications) {<span class="template-page-value">@c</span><span>; </span>}</li>
+            </ul>
+        </section>
     </section>
-</section>
+</div>
