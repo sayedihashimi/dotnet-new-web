@@ -1,8 +1,8 @@
 ﻿body {
     --body-font: Segoe UI, sans-serif;
     font-family: var(--body-font);
-    font-size: var(--type-ramp-base-font-size);
-    line-height: var(--type-ramp-base-line-height);
+    font-size: var(--type-ramp-plus-1-font-size);
+    line-height: var(--type-ramp-plus-1-line-heigh);
     margin: 0;
     --codefont: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
     white-space: normal;
@@ -35,7 +35,7 @@ ul{
     align-items: center;
 }
 #SearchText, #search-page-text {
-    width: 40%;
+    width: 70%;
     margin: 1rem;
     line-height: var(--type-ramp-base-line-height);
     height: calc((var(--base-height-multiplier) + var(--density)) * var(--design-unit) * 0.6px);
@@ -61,21 +61,43 @@ ul{
         vertical-align: text-bottom;
         height: calc((var(--base-height-multiplier)/2 + var(--density)) * var(--design-unit) * 1px);
     }
-    footer {
-        display: flex;
-        justify-content: center;
-    }
+.templates-list li:before {
+    content: "🧇";
+}
+footer {
+    display: flex;
+    justify-content: center;
+}
 a {
     color: var(--accent-foreground-rest);
     text-decoration: none;
 }
-/*************************
+#install-command, .template-install-command {
+    font-size: var(--type-ramp-plus-2-font-size) !important;
+    margin-top: calc((15 + (var(--design-unit) * 2 * var(--density))) * 1px);
+}
+.terminal-command.install-command-text-no-align {
+    padding-bottom: calc((15 + (var(--design-unit) * 2 * var(--density))) * 1px);
+}
+.install-command-text {
+    font-size: var(--type-ramp-plus-2-font-size);
+}
+.install-command-text::before {
+    content: ' $ ';
+}
+.install-command-text-no-align {
+    font-size: var(--type-ramp-plus-2-font-size);
+}
+.install-command-text-no-align {
+    content: ' $ ';
+}
+    /*************************
     media queries
 **************************/
-@media only screen and (max-width : 667px) {
-    h1#index-terminal-command {
+    @media only screen and (max-width : 667px) {
+        h1 #index-terminal-command {
         margin: 0;
-        font-size: var(--type-ramp-plus-4-font-size);
+        font-size: var(--type-ramp-plus-5-font-size);
     }
     .template-pack-container, .pageContainer {
         margin-left: 0.5rem;
@@ -85,7 +107,15 @@ a {
         margin-left: 1rem;
     }
 }
+@media only screen and (max-width : 500px) {
+    h1#index-terminal-command {
+        font-size: var(--type-ramp-plus-4-font-size);
+    }
 
+    #SearchText, #search-page-text {
+        width: 70%;
+    }
+}
 /*************************
     terminal related
 **************************/
@@ -99,16 +129,17 @@ a {
     white-space: nowrap;
 }
 
-.terminal {
+.terminal,.install-command-text {
     background-color: var(--accentFillRest);
     font-family: var(--codefont);
     color: var(--accent-foreground-cut);
-/*    height: calc(4rem + 20px);
-    height: calc(4rem + 20px);
-    line-height: calc(4rem + 20px);*/
     text-align: center;
 }
-
+.install-command-text-no-align {
+    background-color: var(--accentFillRest);
+    font-family: var(--codefont);
+    color: var(--accent-foreground-cut);
+}
 .template-info {
     list-style-type: none;
     /* change to horizontal layout */

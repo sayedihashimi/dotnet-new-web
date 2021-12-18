@@ -15,12 +15,16 @@
     <section class="template-details">
         <div class="tempalte-description">@Model.TemplatePack.Description</div>
 
-        <section class="install-and-use-command">
+        <fast-badge class="template-install-command" appearance="accent">
+            <div class="terminal-command install-command-text-no-align">dotnet new --install "@Model.TemplatePack.Package"</div>
+            <div class="terminal-command install-command-text-no-align">dotnet new @Model.Template.ShortName[0]</div>
+        </fast-badge>
+@*        <section class="install-and-use-command">
             <ul>
                 <li><div class="terminal-command">dotnet new --install "@Model.TemplatePack.Package"</div></li>
                 <li><div class="terminal-command">dotnet new @Model.Template.ShortName[0]</div></li>
             </ul>
-        </section>
+        </section>*@
 
         <section>
             <ul class="template-metadata-list">
