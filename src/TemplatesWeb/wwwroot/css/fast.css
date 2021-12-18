@@ -8,9 +8,10 @@
     white-space: normal;
     word-break: break-word;
 }
-html, body, fast-design-system-provider{
-    height:100%;
-    overflow:auto;
+html, body, fast-design-system-provider {
+    height: 100%;
+    overflow: auto;
+    background-color: var(--fill-color);
 }
 h1#index-terminal-command {
     margin: 0;
@@ -32,12 +33,6 @@ ul{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-#search-form {
-/*    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;*/
 }
 #SearchText, #search-page-text {
     width: 40%;
