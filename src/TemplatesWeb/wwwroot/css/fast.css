@@ -5,6 +5,8 @@
     line-height: var(--type-ramp-base-line-height);
     margin: 0;
     --codefont: "Cascadia Code","Menlo Regular","Lucida Console",monospace;
+    white-space: normal;
+    word-break: break-word;
 }
 html, body, fast-design-system-provider{
     height:100%;
@@ -55,12 +57,14 @@ ul{
 }
 .templatePackStats {
     margin-top: 2.5rem;
-    margin-left: 4rem;
+    margin-left: 4rem;    
 }
-    .templatePackStats fast-anchor{
+    .templatePackStats fast-anchor {
         font-size: initial;
         height: initial;
-        line-height:initial;
+        line-height: initial;
+        vertical-align: text-bottom;
+        height: calc((var(--base-height-multiplier)/2 + var(--density)) * var(--design-unit) * 1px);
     }
     footer {
         display: flex;
@@ -68,7 +72,25 @@ ul{
     }
 a {
     color: var(--accent-foreground-rest);
+    text-decoration: none;
 }
+/*************************
+    media queries
+**************************/
+@media only screen and (max-width : 667px) {
+    h1#index-terminal-command {
+        margin: 0;
+        font-size: var(--type-ramp-plus-4-font-size);
+    }
+    .template-pack-container, .pageContainer {
+        margin-left: 0.5rem;
+    }
+
+    .templatePackStats {
+        margin-left: 1rem;
+    }
+}
+
 /*************************
     terminal related
 **************************/
@@ -78,16 +100,17 @@ a {
 
 .terminal-container {
     margin-bottom: 1rem;
+    line-height: initial;
+    white-space: nowrap;
 }
 
 .terminal {
     background-color: var(--accentFillRest);
     font-family: var(--codefont);
-    color: var(--altcolor2);
     color: var(--accent-foreground-cut);
+/*    height: calc(4rem + 20px);
     height: calc(4rem + 20px);
-    height: calc(4rem + 20px);
-    line-height: calc(4rem + 20px);
+    line-height: calc(4rem + 20px);*/
     text-align: center;
 }
 

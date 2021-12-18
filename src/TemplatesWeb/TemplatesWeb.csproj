@@ -16,4 +16,7 @@
   <ItemGroup>
     <Content Remove="Pages\Error.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
 </Project>
