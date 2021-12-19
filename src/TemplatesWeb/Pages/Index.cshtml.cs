@@ -33,7 +33,7 @@ namespace TemplatesWeb.Pages {
                 Skip = 0;
             }
             if(Take <= 0) {
-                Take = 50;
+                Take = 20;
             }
 
             Stats = await GetFromApiAsync<TemplateStats>("templatepack/stats");

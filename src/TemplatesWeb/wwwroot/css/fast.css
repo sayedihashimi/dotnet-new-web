@@ -13,6 +13,16 @@ html, body, fast-design-system-provider {
     overflow: auto;
     background-color: var(--fill-color);
 }
+code {
+    font-family: var(--codefont);
+    font-size: var(--type-ramp-plus-1-font-size);
+}
+fast-badge {
+    --badge-fill-primary: var(--accent-foreground-rest);
+    --badge-fill-danger: var(--accent-fill-active);
+    --badge-color-light: var(--neutral-fill-rest);
+    --badge-color-dark: var(--neutral-layer-4);
+}
 h1#index-terminal-command {
     margin: 0;
     font-size: var(--type-ramp-plus-6-font-size);
@@ -61,6 +71,12 @@ ul{
         vertical-align: text-bottom;
         height: calc((var(--base-height-multiplier)/2 + var(--density)) * var(--design-unit) * 1px);
     }
+.templates-title{
+    margin-bottom:0.2em;
+}
+.templates-list{
+    margin-top:0;
+}
 .templates-list li:before {
     content: "🧇";
 }
@@ -91,11 +107,17 @@ a {
 .install-command-text-no-align {
     content: ' $ ';
 }
-    /*************************
+.searchHeading{
+    margin-bottom: 0.2em;
+}
+.searchList{
+    margin-top: 0;
+}
+/*************************
     media queries
 **************************/
-    @media only screen and (max-width : 667px) {
-        h1 #index-terminal-command {
+@media only screen and (max-width : 667px) {
+    h1 #index-terminal-command {
         margin: 0;
         font-size: var(--type-ramp-plus-5-font-size);
     }

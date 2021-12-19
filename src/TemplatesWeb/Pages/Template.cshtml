@@ -45,8 +45,8 @@
         <section class="template-meta">
             <div class="template-page-other-link"><a class="tp-other-link2" href="~/pack/@Model.TemplatePack.Package">View other templates in this package</a></div>
             <ul>
-                <li class="template-page-tags">Tags: @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <span class="template-page-value">@t.Value<span>; </span></span>}</li>
-                <li class="template-page-classifications">Classifications:   @foreach (var c in Model.Template.Classifications) {<span class="template-page-value">@c</span><span>; </span>}</li>
+                <li class="template-page-tags">Tags: @foreach (var t in Model.Template.Tags) {@t.Key<span>:</span> <fast-badge fill="primary" color="light"><code>@t.Value<span>  </span></code></fast-badge>}</li>
+                <li class="template-page-classifications">Classifications:   @foreach (var c in Model.Template.Classifications) {<span class="template-page-value">@c</span><span>  </span>}</li>
             </ul>
         </section>
     </section>
