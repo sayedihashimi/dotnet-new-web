@@ -8,27 +8,42 @@
     </div>
 
 
-<form id="search-form" class="centerOnPage" method="POST">
+<form id="search-form" class="centerOnPage" method="POST" action="/">
     <input asp-for="SearchText" required autofocus />
     <fast-anchor id="search-link" href="#" onclick="document.getElementById('search-form').submit();" class="button4">Search</fast-anchor>
 </form>
 
-    Found <strong>@Model.SearchResults.Count</strong> matching templates
-    @foreach (var template in Model.SearchResults) {
-    <section class="template-pack">
-        <h3 class="searchHeading"><a href="~/template/@template.TemplatePackId/@template.Identity">@template.Name</a></h3>
-        <ul class="searchList horizontalList">
-            <li>by: <a href="/search/@template.Author">@template.Author</a></li>
-            <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li>
-            @if (template.Tags != null && template.Tags.Count > 0) {
-                <li>Tags: @foreach (var t in template.Tags) {@t.Key<span>:</span> <fast-badge fill="primary" color="light"><code>@t.Value<span> </span></code></fast-badge>}</li>
-    }
+    @if (Model != null && Model.SearchResults != null && Model.SearchResults.Count > 0)
+    {
+        <p>Found <strong>@Model.SearchResults.Count</strong> matching templates</p>
+        @foreach (var template in Model.SearchResults)
+        {
+            <section class="template-pack">
+                <h3 class="searchHeading"><a href="~/template/@template.TemplatePackId/@template.Identity">@template.Name</a></h3>
+                <ul class="searchList horizontalList">
+                    <li>by: <a href="/search/@template.Author">@template.Author</a></li>
+                    <li><a href="/pack/@template.TemplatePackId">other templates in this pack</a></li>
+                    @if (template.Tags != null && template.Tags.Count > 0)
+                    {
+                        <li>Tags: @foreach (var t in template.Tags)
+                            {
+                                @t.Key<span>:</span> 
+                                <fast-badge fill="primary" color="light"><code>@t.Value<span> </span></code></fast-badge>}</li>
+                    }
 
-            @if (template.Classifications != null && template.Classifications.Length > 0) {
-                <li>Classifications:   @foreach (var c in template.Classifications) {<code>@c</code><span>; </span>}</li>
+                    @if (template.Classifications != null && template.Classifications.Length > 0)
+                    {
+                        <li>Classifications:   @foreach (var c in template.Classifications)
+                            {
+                                <code>@c</code><span>; </span>}</li>
+                    }
+                </ul>
+            </section>
+        }
+        <fast-divider></fast-divider>
     }
-        </ul>
-    </section>
+    else
+    {
+        <h3>no results</h3>
     }
-    <fast-divider></fast-divider>
 </div>

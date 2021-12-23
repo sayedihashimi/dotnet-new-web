@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using System.Net.Http;
 
 namespace TemplatesWeb.Pages {
+    [IgnoreAntiforgeryToken]
     public class IndexModel : BasePageModel {
         public List<TemplatePack> TemplatePacks { get; set; }
 

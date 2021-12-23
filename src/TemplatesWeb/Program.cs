@@ -33,5 +33,10 @@ app.UseMvc();
 // app.UseRouting();
 // app.UseAuthorization();
 // app.MapRazorPages();
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Referrer-Policy", "no-referrer");
+    await next();
+});
 
 app.Run();

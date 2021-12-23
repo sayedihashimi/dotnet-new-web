@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 
 namespace TemplatesWeb.Pages
 {
+    [IgnoreAntiforgeryToken]
     public class SearchModel : BasePageModel {
         [BindProperty]
         public string SearchText { get; set; }
@@ -27,6 +28,16 @@ namespace TemplatesWeb.Pages
             SearchText = searchText;
             SearchResults = await GetFromApiAsync<List<Template>>($"search/{searchText}");
             return Page();
+        }
+
+        public IActionResult OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            return Redirect($"/Search/{SearchText}");
         }
     }
 }
