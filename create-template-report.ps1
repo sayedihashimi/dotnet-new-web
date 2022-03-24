@@ -252,12 +252,12 @@ $prnum = $env:APPVEYOR_PULL_REQUEST_NUMBER
 
 # download latest from api site to ensure we always have the latest
 # this will ensure that build times are minimal
-if([string]::IsNullOrEmpty($prnum)){
+if([string]::IsNullOrEmpty($prnum) -and (-not ([string]::IsNullOrEmpty($env:publishUsername)))){
     Download-LatestTemplateReport -publishUsername $env:publishUsername -publishPassword $env:publishPassword
 }
 
 Create-Report
 
-if([string]::IsNullOrEmpty($prnum)){
+if([string]::IsNullOrEmpty($prnum) -and (-not ([string]::IsNullOrEmpty($env:publishUsername)))){
     DeployTemplateReport
 }
