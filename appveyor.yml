@@ -12,7 +12,7 @@ environment:
   TEMPLATE_REPORT_PATH_TO_IGNORE_FILE: C:\projects\dotnet-new-web\src\TemplatesConsole\packages-to-ignore.txt
 
 before_build:
-- pwsh: .\dotnet-install.ps1 -Version 6.0.100-rc.2.21505.57
+- pwsh: .\dotnet-install.ps1 -Version 6.0.200
 - pwsh: dotnet restore
 
 build:
