@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Components.Web
+<!DOCTYPE html>
+<base href="~/" />
+<component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 @{
     var usePreviewCss = false;
     var usePreviewEnvVar = System.Environment.GetEnvironmentVariable("dnw-previewcss");
@@ -38,6 +41,7 @@
         <footer>
             <p>&copy; 2017 - Sayed Ibrahim Hashimi</p>
         </footer>
+        <script src="_framework/blazor.server.js"></script>
         @RenderSection("Scripts", required: false)
     </fast-design-system-provider>
 </body>

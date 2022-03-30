@@ -1,4 +1,5 @@
 ﻿@page
+@using TemplatesWeb.Components
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
@@ -22,27 +23,7 @@
 
 <section class="template-pack-container">
     @foreach (var tp in Model.TemplatePacks) {
-        <section class="template-pack">
-
-            <ul class="template-info">
-                <li><img class="pkgIcon" src="@Model.GetIconUrlFor(tp)" alt="icon" /></li>
-                <li>
-                    <div><a href="/pack/@tp.Package">@tp.Package</a></div>
-                    <div><quote class="template-description">@tp.Description</quote></div>
-                    <div>
-                        <fast-disclosure title="@tp.Templates.Length templates">
-                            <div class="template-list">
-                                @foreach (var t in tp.Templates) {
-                                    <div><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></div>
-                                }
-                            </div>
-                        </fast-disclosure>
-                    </div>
-                </li>
-            </ul>            
-        </section>
-        <div class="templatePackStats">downloads: @String.Format("{0:n0}", @tp.DownloadCount) <span>by: <fast-anchor href="/search/@tp.Authors">@tp.Authors</fast-anchor></span></div>
-        <fast-divider></fast-divider>
+        <component type="typeof(TemplatePackView)" render-mode="ServerPrerendered" param-tp="@tp" />
     }
 </section>
 <div class="pager-container">
