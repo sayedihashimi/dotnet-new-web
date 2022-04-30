@@ -1,5 +1,6 @@
 ﻿@page
 @using TemplatesWeb.Components
+
 @model IndexModel
 @{
     ViewData["Title"] = "Home Page";
@@ -23,7 +24,7 @@
 
 <section class="template-pack-container">
     @foreach (var tp in Model.TemplatePacks) {
-        <component type="typeof(TemplatePackView)" render-mode="ServerPrerendered" param-tp="@tp" />
+        <component type="typeof(TemplatePackView)" render-mode="ServerPrerendered" param-TemplatePack="@tp" />
     }
 </section>
 <div class="pager-container">

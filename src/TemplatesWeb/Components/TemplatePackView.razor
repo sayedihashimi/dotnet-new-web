@@ -2,14 +2,14 @@
 
 <section class="template-pack">
     <ul class="template-info">
-        <li><img class="pkgIcon" src="@GetIconUrlFor(tp)" alt="icon" /></li>
+        <li><img class="pkgIcon" src="@GetIconUrlFor(TemplatePack)" alt="icon" /></li>
         <li>
-            <div><a href="/pack/@tp.Package">@tp.Package</a></div>
-            <div><quote class="template-description">@tp.Description</quote></div>
+            <div><a href="/pack/@TemplatePack.Package">@TemplatePack.Package</a></div>
+            <div><quote class="template-description">@TemplatePack.Description</quote></div>
             <div>
-                <fast-disclosure title="@tp.Templates.Length templates">
+                <fast-disclosure title="@TemplatePack.Templates.Length templates">
                     <div class="template-list">
-                        @foreach (var t in tp.Templates) {
+                        @foreach (var t in TemplatePack.Templates) {
                             <div><a href="/template/@t.TemplatePackId/@t.Identity">@t.Name</a></div>
                         }
                     </div>
@@ -18,12 +18,12 @@
         </li>
     </ul>            
 </section>
-<div class="templatePackStats">downloads: @String.Format("{0:n0}", @tp.DownloadCount) <span>by: <fast-anchor href="/search/@tp.Authors">@tp.Authors</fast-anchor></span></div>
+<div class="templatePackStats">downloads: @String.Format("{0:n0}", TemplatePack.DownloadCount) <span>by: <fast-anchor href="/search/@TemplatePack.Authors">@TemplatePack.Authors</fast-anchor></span></div>
 <fast-divider></fast-divider>
 
 @code {
     [Parameter]
-    public TemplatePack tp { get; set; }
+    public TemplatePack TemplatePack { get; set; }
 
     public string GetIconUrlFor(TemplatePack templatePack) =>
         string.IsNullOrEmpty(templatePack?.IconUrl) ? Strings.DefaultTemplatePackIconUrl : templatePack?.IconUrl;
