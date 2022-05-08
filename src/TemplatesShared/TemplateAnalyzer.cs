@@ -56,7 +56,7 @@ namespace TemplatesShared {
         public AnalyzeResult Analyze(string templateFolder) {
             Debug.Assert(!string.IsNullOrEmpty(templateFolder));
             
-            _reporter.WriteLine();
+            _reporter.WriteLine("\n");
             WriteMessage($@"Validating '{templateFolder}\.template.config\template.json'");
 
             string indentPrefix = "    ";
@@ -153,8 +153,7 @@ namespace TemplatesShared {
         protected AnalyzeResult AnalyzeHostFiles(string templateConfigFolder, string indentPrefix) {
             Debug.Assert(!string.IsNullOrEmpty(templateConfigFolder));
             Debug.Assert(indentPrefix != null);
-            _reporter.WriteVerbose($"Looking for host files in folder '{templateConfigFolder}'");
-            _reporter.WriteVerboseLine();
+            _reporter.WriteVerboseLine($"Looking for host files in folder '{templateConfigFolder}'");
 
             var analyzeResult = new AnalyzeResult();
 
@@ -595,14 +594,17 @@ namespace TemplatesShared {
         }
         private void WriteImpl(string message, string typeStr, string prefix) {
             if (string.IsNullOrEmpty(message)) { return; }
+            var sb = new StringBuilder();
 
-            _reporter.Write(prefix);
+
+            sb.Append(prefix);
             if (!string.IsNullOrEmpty(typeStr)) {
-                _reporter.Write(typeStr);
-                _reporter.Write(": ");
+                sb.Append(typeStr);
+                sb.Append(": ");
             }
+            sb.Append(message);
 
-            _reporter.WriteLine(message);
+            _reporter.WriteLine(sb.ToString());
         }
         /// <summary>
         /// Returns true if passed otherwise false

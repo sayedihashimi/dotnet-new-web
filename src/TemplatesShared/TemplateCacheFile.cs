@@ -17,7 +17,7 @@ namespace TemplatesShared
         }
 
         private JObject _cachefileobj;
-        public string Filepath { get; init; }
+        public string Filepath { get; set; }
 
 
         private void LoadJsonIfNeeded()
@@ -37,7 +37,7 @@ namespace TemplatesShared
 
             JArray templateInfo = null;
             templateInfo = _cachefileobj != null ? (JArray)_cachefileobj["TemplateInfo"] : null;
-            if (templateInfo is not null)
+            if (templateInfo != null)
             {
                 foreach(JObject child in templateInfo)
                 {

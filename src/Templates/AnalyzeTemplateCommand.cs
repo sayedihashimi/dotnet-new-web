@@ -85,7 +85,12 @@ namespace Templates {
                                     _reporter.WriteLine($"ERROR: No templates found under path '{f}'");
                                 }
                                 foreach(var fd in foundDirs) {
-                                    analyzeResult = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
+                                    // TODO: Is this correct?
+                                    analyzeResult = AnalyzeResult.Combine(
+                                        analyzeResult,
+                                        _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName));
+                                    
+                                    // analyzeResult = _templateAnalyzer.Analyze(Directory.GetParent(fd).FullName);
                                 }
                             }
                         }

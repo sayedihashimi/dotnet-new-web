@@ -1,0 +1,18 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Demo">
+
+	<UsingTask TaskName="AnalyzeTemplate" AssemblyFile="C:\data\mycode\dotnet-new-web\SayedHa.Templates.Tasks\bin\Debug\netstandard2.1\SayedHa.Templates.Tasks.dll"/>
+
+	<ItemGroup>
+		<FoldersToAnalyze Include="C:\data\mycode\template-sample\src\Samples\14-guid\MyProject.Con\"></FoldersToAnalyze>
+		<FoldersToAnalyze Include="C:\Users\sayedha\AppData\Local\templatereport\extracted\sayedha.templates.1.0.6.nupkg\content"/>
+		<FoldersToAnalyze Include="C:\Users\sayedha\AppData\Local\templatereport\extracted\uno.projecttemplates.dotnet.4.2.6.nupkg\content\unoapp"></FoldersToAnalyze>
+
+		<PackagesToAnalyze Include="C:\Users\sayedha\AppData\Local\templatereport\boxed.templates.4.1.0.nupkg" />
+		<PackagesToAnalyze Include="C:\Users\sayedha\AppData\Local\templatereport\hotchocolate.templates.12.8.1.nupkg" />
+	</ItemGroup>
+	
+	<Target Name="Demo">
+		<AnalyzeTemplate Folders="@(FoldersToAnalyze)" Packages="@(PackagesToAnalyze)" AttachDebugger="true" />
+	</Target>
+	
+</Project>
