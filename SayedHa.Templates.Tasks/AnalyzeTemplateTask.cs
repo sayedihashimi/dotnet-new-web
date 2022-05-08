@@ -18,9 +18,6 @@ namespace SayedHa.Templates.Tasks {
         public bool AttachDebugger { get; set; } = false;
 
         public override bool Execute() {
-#if DEBUG
-            // System.Threading.Tasks.Task.Delay(1000).Wait();
-#endif
             if (AttachDebugger) {
                 Log.LogMessage(MessageImportance.High, "trying to attach the debugger");
                 System.Diagnostics.Debugger.Launch();
