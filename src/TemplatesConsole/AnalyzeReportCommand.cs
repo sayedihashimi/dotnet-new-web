@@ -11,6 +11,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using Newtonsoft.Json;
 using System.Reflection.Metadata;
+using System.Threading.Tasks;
 
 namespace TemplatesConsole {
     public class AnalyzeReportCommand : TemplateCommand {
@@ -91,6 +92,10 @@ namespace TemplatesConsole {
                 var templateDetailsCsvPath = Path.Combine(outdir, "template-details.csv");
                 CreateTemplateDetailsCsvFile(allTemplateInfos, templateDetailsCsvPath);
                 createdFiles.Add(templateDetailsCsvPath);
+
+                var classificationsFile = Path.Combine(outdir, "all-classifications.txt");
+                CreateClassificationsCsvFile(allTemplateInfos, classificationsFile);
+                createdFiles.Add(classificationsFile);
 
                 var hostFileDetailsCsvPath = Path.Combine(outdir, "template-host-files.csv");
                 CreateHostFilesDetailsCsvFile(allHostFiles, hostFileDetailsCsvPath);
@@ -178,6 +183,31 @@ namespace TemplatesConsole {
 
             var templateDetailsDestPath = Path.Combine(Path.GetDirectoryName(resultsPath), "template-details.csv");
             File.Copy(templateDetailsTempFilePath, resultsPath, true);
+        }
+        private void CreateClassificationsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultPath) {
+            var classificationsFilepath = Path.GetTempFileName();
+            var values = new List<string>();
+            
+            foreach (var templateInfo in allTemplateInfos) {
+                if (templateInfo?.Template?.Classifications?.Length > 0) {
+                    foreach (var vale in templateInfo.Template.Classifications) {
+                        if (string.IsNullOrEmpty(vale)) {
+                            continue;
+                        }
+                        var str = vale.ToLowerInvariant();
+                        if (!values.Contains(str)) {
+                            values.Add(str);
+                        }
+                    }
+                }
+            }
+            values.Sort();
+            using var writer = new StreamWriter(classificationsFilepath);
+            foreach(var v in values) {
+                writer.WriteLine(v);
+            }
+            writer.Flush();
+            File.Copy(classificationsFilepath, resultPath);
         }
         private void CreateHostFilesDetailsCsvFile(List<TemplateHostFile>hostFiles, string resultsPath)
         {
@@ -346,7 +376,7 @@ namespace TemplatesConsole {
                         continue;
                     }
                     c = c.ToLowerInvariant();
-                    sb.Append(classifications[i]);
+                    sb.Append(c);
                     if(i<classifications.Length - 1) {
                         sb.Append(";");
                     }

@@ -7,6 +7,10 @@
     "TemplatesConsole-hash": {
       "commandName": "Project",
       "commandLineArgs": "hash -trf C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json -cop C:\\Users\\sayedha\\AppData\\Local\\templatereport\\reports\\debug\\ -tcf C:\\Users\\sayedha\\.templateengine\\dotnetcli\\v6.0.100\\templatecache.json"
+    },
+    "TemplatesConsole-analyze": {
+      "commandName": "Project",
+      "commandLineArgs": "analyze -trp C:\\data\\mycode\\dotnet-new-web\\src\\TemplatesApi\\wwwroot\\template-report.json -od C:\\temp\\templates\\2022.05.11-report"
     }
   }
 }
