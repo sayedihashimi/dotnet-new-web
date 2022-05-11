@@ -169,7 +169,7 @@ namespace TemplatesConsole {
         private void CreateTemplateDetailsCsvFile(List<TemplateReportSummaryInfo> allTemplateInfos, string resultsPath) {
             var templateDetailsTempFilePath = Path.GetTempFileName();
             using var templateDetailsWriter = new StreamWriter(templateDetailsTempFilePath);
-            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files,local-file-path,num-symbols,num-parameters");
+            templateDetailsWriter.WriteLine("name,template-pack-id,template-type,author,sourceName,defaultName,baseline,language,primaryOutputs,tags,identity,groupIdentity,host files,local-file-path,num-symbols,num-parameters,classifications");
             foreach (var templateInfo in allTemplateInfos) {
                 templateDetailsWriter.WriteLine(GetTemplateDetailsReportLineFor(templateInfo));
             }
@@ -259,7 +259,7 @@ namespace TemplatesConsole {
             
             var parameters = GetParametersFrom(template.Symbols);
             if(parameters == null){ parameters = new List<TemplateSymbolInfo>();}
-
+            
             var sb = new StringBuilder();
             sb.Append(ReplaceComma(template.Name));
             sb.Append(",");
@@ -292,6 +292,9 @@ namespace TemplatesConsole {
             sb.Append(template.Symbols.Count);
             sb.Append(",");
             sb.Append(parameters.Count);
+            sb.Append(",");
+            sb.Append(ReplaceComma(GetTemplateDetailsClassificationsStringFor(template.Classifications)));
+
             return sb.ToString();
         }
 
@@ -319,7 +322,6 @@ namespace TemplatesConsole {
             sb.Append(",");
             sb.Append(ReplaceComma(hostFile.TemplateLocalFilePath));
 
-
             return sb.ToString();
         }
         private string GetTemplateDetailsReportStringFor(PrimaryOutput[]primaryOutputs) {
@@ -330,6 +332,25 @@ namespace TemplatesConsole {
             var sb = new StringBuilder();
             foreach (var po in primaryOutputs) {
                 sb.Append($"'{po.Path}';");
+            }
+
+            return sb.ToString();
+        }
+        private string GetTemplateDetailsClassificationsStringFor(string[]classifications) {
+            var sb = new StringBuilder();
+
+            if(classifications != null && classifications.Length > 0) {
+                for(var i = 0; i < classifications.Length; i++) {
+                    var c = classifications[i];
+                    if (string.IsNullOrEmpty(c)) {
+                        continue;
+                    }
+                    c = c.ToLowerInvariant();
+                    sb.Append(classifications[i]);
+                    if(i<classifications.Length - 1) {
+                        sb.Append(";");
+                    }
+                }
             }
 
             return sb.ToString();

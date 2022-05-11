@@ -117,7 +117,13 @@ namespace TemplatesShared
 
                 foreach(JProperty child in symbols.Children()){
                     var symbolInfo = new TemplateSymbolInfo();
-                    foreach(JProperty value in child.Values()) {
+                    foreach(var v in child.Values()) {
+                        JProperty value = v as JProperty;
+                        if (value == null) {
+                            // TODO: Look into why this is happening, may be an issue.
+                            continue;
+                        }
+
                         // Console.WriteLine(value);
                         // ((Newtonsoft.Json.Linq.JValue)value.First).Value
 
