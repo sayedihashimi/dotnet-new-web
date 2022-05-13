@@ -1,0 +1,4 @@
+﻿<Project>
+	<UsingTask TaskName="AnalyzeTemplate" 
+			   AssemblyFile="$(MSBuildThisFileDirectory)..\tasks\netstandard2.1\SayedHa.Templates.Tasks.dll"/>
+</Project>

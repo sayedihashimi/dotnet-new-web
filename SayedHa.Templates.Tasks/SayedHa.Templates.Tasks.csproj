@@ -1,14 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netstandard2.1</TargetFramework>
+		<TargetFrameworks>netstandard2.1</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
+		
+		<!-- Suppresses the warnings about the package not having assemblies in lib/*/.dll.-->
+		<NoPackageAnalysis>true</NoPackageAnalysis>
+		<!-- Change the default location where NuGet will put the build output -->
+		<BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+		
 		<PackageId>sayedha.templates.tasks</PackageId>
 		<Authors>Sayed Ibrahim Hashimi</Authors>
 		<Description>MSBuild task that can analyze dotnet templates</Description>
-		<Version>0.0.1</Version>
+		<Version>0.0.1-beta</Version>
 		<Copyright>Copyright 2022 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/sayedihashimi/dotnet-new-web</PackageProjectUrl>
@@ -17,7 +23,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="sample.proj">
+	  <None Remove="build\SayedHa.Templates.Tasks_props" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="build\SayedHa.Templates.Tasks_props" PackagePath="build\SayedHa.Templates.Tasks.props">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="sample.proj" PackagePath="content\">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
@@ -30,4 +43,41 @@
 		<ProjectReference Include="..\src\TemplatesShared\TemplatesShared.csproj" />
 	</ItemGroup>
 
+	<!--<Target Name="AddFilesToPackage" AfterTargets="Build" BeforeTargets="_GetPackageFiles;GenerateNuspec">
+		<Message Text="AddFilesToPackage" Importance="high" />
+		<ItemGroup>
+			<_bp Include="$(OutputPath)TemplatesShared.dll" 
+					 Condition="Exists('$(OutputPath)TemplatesShared.dll')">
+			</_bp>
+			<BuildOutputInPackage Include="@(_bp->'%(FullPath)')">
+			</BuildOutputInPackage >
+		</ItemGroup>
+	</Target>
+
+	<Target Name="AddFilesToPackage2" AfterTargets="Build" BeforeTargets="_GetPackageFiles;GenerateNuspec">
+		
+	</Target>-->
+	
+	<!-- from: https://stackoverflow.com/questions/40396161/include-all-dependencies-using-dotnet-pack -->
+	<PropertyGroup>
+		<TargetsForTfmSpecificContentInPackage>
+			$(TargetsForTfmSpecificContentInPackage);CopyProjectReferencesToPackage</TargetsForTfmSpecificContentInPackage>
+	</PropertyGroup>
+
+	<Target Name="CopyProjectReferencesToPackage" AfterTargets="ResolveProjectReferences" BeforeTargets="_GetPackageFiles">
+		<Message Text="Inside CopyProjectReferencesToPackage" Importance="high" />
+		<ItemGroup>
+			<!-- Filter out unnecessary files -->
+			<_ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->WithMetadataValue('PrivateAssets', 'All'))"/>
+		</ItemGroup>
+
+		<!-- Print batches for debug purposes -->
+		<Message Text="Batch for .nupkg: ReferenceCopyLocalPaths = @(_ReferenceCopyLocalPaths), ReferenceCopyLocalPaths.DestinationSubDirectory = %(_ReferenceCopyLocalPaths.DestinationSubDirectory) Filename = %(_ReferenceCopyLocalPaths.Filename) Extension = %(_ReferenceCopyLocalPaths.Extension)" Importance="High" Condition="'@(_ReferenceCopyLocalPaths)' != ''" />
+
+		<ItemGroup>
+			<!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
+			<BuildOutputInPackage Include="@(_ResolvedProjectReferencePaths)" TargetPath="%(_ResolvedProjectReferencePaths.DestinationSubDirectory)"/>
+		</ItemGroup>
+	</Target>
+	
 </Project>
