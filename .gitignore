@@ -16,7 +16,7 @@ nupkg/
 *.user
 *.userosscache
 *.sln.docstates
-
+*.binlog
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
