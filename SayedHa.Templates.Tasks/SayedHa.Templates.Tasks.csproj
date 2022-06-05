@@ -58,7 +58,7 @@
 
 		<ItemGroup>
 			<!-- Add file to package with consideration of sub folder. If empty, the root folder is chosen. -->
-			<BuildOutputInPackage Include="@(_ResolvedProjectReferencePaths)" TargetPath="%(_ResolvedProjectReferencePaths.DestinationSubDirectory)"/>
+			<BuildOutputInPackage Include="@(_ResolvedProjectReferencePaths)" TargetPath="%(_ResolvedProjectReferencePaths.DestinationSubDirectory)" />
 		</ItemGroup>
 	</Target>
 	

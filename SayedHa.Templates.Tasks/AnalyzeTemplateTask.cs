@@ -71,7 +71,7 @@ namespace SayedHa.Templates.Tasks {
                             Log.LogMessage(MessageImportance.Normal, $"analyzing template folder: '{fd}'");
                             var pathToAnalyze = Directory.GetParent(fd).FullName;
                             LogResults(analyzer.Analyze(pathToAnalyze), Path.Combine(pathToAnalyze, "template.config"));
-                            
+
                             //analyzeResult = AnalyzeResult.Combine(
                             //    analyzeResult,
                             //    analyzer.Analyze(Directory.GetParent(fd).FullName));

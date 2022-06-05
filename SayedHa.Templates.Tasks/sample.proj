@@ -12,7 +12,9 @@
 	</ItemGroup>
 	
 	<Target Name="Demo">
-		<AnalyzeTemplate Folders="@(FoldersToAnalyze)" Packages="@(PackagesToAnalyze)" AttachDebugger="true" />
+		<AnalyzeTemplate Folders="@(FoldersToAnalyze)" 
+						 Packages="@(PackagesToAnalyze)" 
+						 AttachDebugger="true" />
 	</Target>
 	
 </Project>

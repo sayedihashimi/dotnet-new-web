@@ -1,0 +1,6 @@
+﻿<Project>
+	<!-- remove unwanted files from the project -->
+	<ItemGroup>
+		<None Remove="msbuild.binlog" />
+	</ItemGroup>
+</Project>
