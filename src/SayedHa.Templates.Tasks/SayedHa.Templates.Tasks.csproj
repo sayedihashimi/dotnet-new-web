@@ -14,7 +14,7 @@
 		<PackageId>sayedha.templates.tasks</PackageId>
 		<Authors>Sayed Ibrahim Hashimi</Authors>
 		<Description>MSBuild task that can analyze dotnet templates</Description>
-		<Version>0.0.2-beta</Version>
+		<Version>0.0.4-beta</Version>
 		<Copyright>Copyright 2022 © Sayed Ibrahim Hashimi. All rights reserved.</Copyright>
 		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/sayedihashimi/dotnet-new-web</PackageProjectUrl>
@@ -26,11 +26,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="build\SayedHa.Templates.Tasks_props" />
+	  <None Remove="build\SayedHa.Templates.Tasks.props" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="build\SayedHa.Templates.Tasks_props" PackagePath="build\SayedHa.Templates.Tasks.props">
+		<Content Include="build\SayedHa.Templates.Tasks.props" PackagePath="build\">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<Content Include="sample.proj" PackagePath="content\">
