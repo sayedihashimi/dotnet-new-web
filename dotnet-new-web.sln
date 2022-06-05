@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{A20DDCC9-E2B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{99F4EEB0-A2B8-4F41-A063-0FD75540B1C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayedHa.Templates.Tasks", "SayedHa.Templates.Tasks\SayedHa.Templates.Tasks.csproj", "{6677AF32-23CD-44D9-AB8F-6EE2BF1C0A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SayedHa.Templates.Tasks", "src\SayedHa.Templates.Tasks\SayedHa.Templates.Tasks.csproj", "{4239FF7A-8EFA-4A48-82C3-CB60E9BAC568}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +50,10 @@ Global
 		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{205E80D3-584E-4DE4-965B-CE1F48F4CC6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6677AF32-23CD-44D9-AB8F-6EE2BF1C0A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6677AF32-23CD-44D9-AB8F-6EE2BF1C0A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6677AF32-23CD-44D9-AB8F-6EE2BF1C0A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6677AF32-23CD-44D9-AB8F-6EE2BF1C0A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4239FF7A-8EFA-4A48-82C3-CB60E9BAC568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4239FF7A-8EFA-4A48-82C3-CB60E9BAC568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4239FF7A-8EFA-4A48-82C3-CB60E9BAC568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4239FF7A-8EFA-4A48-82C3-CB60E9BAC568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
