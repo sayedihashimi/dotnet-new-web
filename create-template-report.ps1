@@ -38,7 +38,7 @@ function Create-Report{
     }
 }
 <#
-report --verbose -st template -st templates --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --lastReport C:\data\mycode\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json
+report --verbose -st template -st templates --packageToInclude ServiceStack.Core.Templates --packageToInclude BlackFox.DotnetNew.FSharpTemplates --packageToInclude libyear --packageToInclude angular-cli.dotnet --packageToInclude Carna.ProjectTemplates --packageToInclude SerialSeb.Templates.ClassLibrary --packageToInclude Pioneer.Console.Boilerplate --packageToInclude AebSolutions.CodeConvention.SolutionTemplates --lastReport C:\data\mycode\dotnet-new-web\src\TemplatesApi\wwwroot\template-report.json
 #>
 
 function DeployTemplateReport{
