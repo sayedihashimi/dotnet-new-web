@@ -28,10 +28,19 @@ namespace TemplatesApi.Controllers
         private static string Filepath { get; set; }
         private static List<TemplatePack> TemplatePacks { get; set; }
 
+        /// <summary>
+        /// Returns all the templates
+        /// </summary>
+        /// <returns>All templates</returns>
         [HttpGet()]
         public List<Template> Get() {
             return Get(string.Empty);
         }
+        /// <summary>
+        /// Returns all templates that match the search term
+        /// </summary>
+        /// <param name="searchTerm">string that will be used to search for templates</param>
+        /// <returns>Templates that include the search term</returns>
         [HttpGet("{searchTerm}")]
         public List<Template> Get(string searchTerm) {
             return new TemplateSearcher().Search(searchTerm, TemplatePacks);
