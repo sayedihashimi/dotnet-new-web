@@ -16,7 +16,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "dnw-previewcss": "false"
       },
-      "applicationUrl": "https://localhost:44318"
+      "applicationUrl": "https://localhost:44318",
+      "createTunnel": true
     },
     "IIS Express": {
       "commandName": "IISExpress",

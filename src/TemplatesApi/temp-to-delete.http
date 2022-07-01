@@ -1,0 +1,16 @@
+POST https://{{host}}/api/Demo1
+Content-Type: application/x-www-form-urlencoded
+
+identity=some-value-here
+
+###
+POST https://{{host}}/api/Demo1
+Content-Type: application/json
+
+{"some-value-here-json"}
+### 
+
+GET https://{{host}}/api/search/{{searchTerm}}
+Accept: application/json
+
+###

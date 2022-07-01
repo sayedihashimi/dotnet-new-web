@@ -51,5 +51,18 @@ namespace TemplatesApi.Controllers
 
             return NotFound();
         }
+
+#if  DEBUG
+        // just for API testing
+        public ActionResult AddTemplate([FromBody]string identity)
+        {
+            if (string.IsNullOrEmpty(identity))
+            {
+                return BadRequest();
+            }
+
+            return CreatedAtAction(nameof(AddTemplate), new { id = identity }, identity);
+        }
+#endif
     }
 }
