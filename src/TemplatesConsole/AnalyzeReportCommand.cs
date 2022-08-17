@@ -146,6 +146,10 @@ namespace TemplatesConsole {
             }
 
             // string resultsPath = optionAnalysisResultFilePath.HasValue() ? optionAnalysisResultFilePath.Value() : "template-pack-analysis.csv";
+            var dir = Path.GetDirectoryName(resultsPath);
+            if(!Directory.Exists(dir)) {
+                Directory.CreateDirectory(dir);
+            }
             Console.WriteLine($"writing analysis file to {resultsPath}");
             File.Copy(tempfilepath, resultsPath, true);
 
