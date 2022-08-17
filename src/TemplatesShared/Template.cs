@@ -101,8 +101,10 @@ namespace TemplatesShared
         public static Template CreateFromText(string json, string localFilepath)
         {
             var result = JsonConvert.DeserializeObject<Template>(json);
-            result.LocalFilePath = localFilepath;
-            result.InitSymbolsFrom(json);
+            if (result != null) {
+                result.LocalFilePath = localFilepath;
+                result.InitSymbolsFrom(json);
+            }
             return result;
         }
         protected void InitSymbolsFrom(string json){

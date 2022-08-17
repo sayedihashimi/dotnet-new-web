@@ -73,13 +73,15 @@ namespace TemplatesConsole {
                     var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
                     foreach (var template in templates) {
                         var templateObj = Template.CreateFromFile(template);
-                        templateObj.TemplatePackId = tp.Package;
-                        templateObj.InitHostFilesFrom(Path.GetDirectoryName(template), templateObj.TemplatePackId, templateObj.Name);
-                        
-                        allTemplates.Add(templateObj);
-                        allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
-                        if(templateObj.HostFiles != null && templateObj.HostFiles.Count > 0) {
-                            allHostFiles.AddRange(templateObj.HostFiles);
+                        if (templateObj != null) {
+                            templateObj.TemplatePackId = tp.Package;
+                            templateObj.InitHostFilesFrom(Path.GetDirectoryName(template), templateObj.TemplatePackId, templateObj.Name);
+
+                            allTemplates.Add(templateObj);
+                            allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
+                            if (templateObj.HostFiles != null && templateObj.HostFiles.Count > 0) {
+                                allHostFiles.AddRange(templateObj.HostFiles);
+                            }
                         }
                     }
                 }
@@ -160,9 +162,16 @@ namespace TemplatesConsole {
                 var extractFolderPath = Path.Combine(_remoteFile.CacheFolderpath, "extracted", ($"{tp.Package}.{tp.Version}.nupkg").ToLowerInvariant());
                 var templates = TemplatePack.GetTemplateFilesUnder(extractFolderPath);
                 foreach (var template in templates) {
+                    // TODO: null check is needed here
                     var templateObj = Template.CreateFromFile(template);
-                    allTemplates.Add(templateObj);
-                    allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
+                    if(templateObj != null) {
+                        allTemplates.Add(templateObj);
+                        allTemplateInfos.Add(new TemplateReportSummaryInfo { Template = templateObj });
+                    }
+                    else {
+                        Console.WriteLine($"unable to initalize template from path '{template.ToString()}'");
+                    }
+                    
                 }
             }
         }
