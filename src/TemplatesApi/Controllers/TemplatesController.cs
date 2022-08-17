@@ -19,7 +19,7 @@ namespace TemplatesApi.Controllers
             _webRoot = _hostingEnvironment.WebRootPath;
             SetFilepath(@"template-report.json");
         }
-        public void SetFilepath(string filename)
+        private void SetFilepath(string filename)
         {
             string filepath = Path.Combine(_webRoot, filename);
             Filepath = filepath;
@@ -54,6 +54,7 @@ namespace TemplatesApi.Controllers
 
 #if  DEBUG
         // just for API testing
+        [HttpPost]
         public ActionResult AddTemplate([FromBody]string identity)
         {
             if (string.IsNullOrEmpty(identity))

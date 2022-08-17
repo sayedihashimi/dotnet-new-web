@@ -28,6 +28,7 @@ namespace TemplatesApi.Controllers
         private static string Filepath { get; set; }
         private static List<TemplatePack> TemplatePacks { get; set; }
 
+        
         /// <summary>
         /// Returns all the templates
         /// </summary>

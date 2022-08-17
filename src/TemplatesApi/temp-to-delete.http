@@ -1,16 +1,132 @@
+
+GET https://localhost:44320/api/Templates
+
+###
+# shows a simple GET request
+GET https://localhost:44320/api/search/minimal
+
+###
+
+GET https://localhost:44320/api/TemplatePack/100/10
+
+# curl -X 'POST' 
+#  'https://localhost:44320/api/Demo1' 
+#  -H 'accept: */*' 
+#  -H 'Content-Type: application/json' 
+#  -d '"id-goes-here"'
+POST https://localhost:44320/api/Demo1
+accept: application/json
+Content-Type: application/json
+
+"id-goes-here"
+
+###
+
+# curl -X POST https://localhost:44320/api/Demo1 -H 'Content-Type: application/json' -d '{"identity":"created from json-curl"}'
+POST https://localhost:44320/api/Demo1
+Content-Type: application/json
+
+"created from json-curl"
+
+###
+
+# same get request using variables in the env file
+GET https://{{host}}/api/search/{{searchTerm}}
+Accept: application/json
+### 
+
+# Sample POST Request
 POST https://{{host}}/api/Demo1
+Content-Type: application/json
+
+{
+  "identity": "some-value-here-json"
+}
+### 
+
+# Sample POST Request with Form encoding
+POST https://{{host}}/api/Demo2
 Content-Type: application/x-www-form-urlencoded
 
 identity=some-value-here
 
 ###
-POST https://{{host}}/api/Demo1
-Content-Type: application/json
 
-{"some-value-here-json"}
-### 
-
+# Sample using variables defined in a .env file
 GET https://{{host}}/api/search/{{searchTerm}}
 Accept: application/json
+
+###
+
+
+
+# sample put to update a template
+PUT https://localhost:44320/api/Demo1
+accept: application/json
+Content-Type: application/json
+
+{
+  "author": "string",
+  "name": "string",
+  "tags": {
+    "additionalProp1": "string",
+    "additionalProp2": "string",
+    "additionalProp3": "string"
+  },
+  "classifications": [
+    "string"
+  ],
+  "shortName": [
+    "string"
+  ],
+  "groupIdentity": "string",
+  "identity": "string",
+  "searchScore": 0,
+  "templatePackId": "string",
+  "sourceName": "string",
+  "defaultName": "string",
+  "baseline": "string",
+  "primaryOutputs": [
+    {
+      "path": "string"
+    }
+  ],
+  "symbols": [
+    {
+      "name": "string",
+      "type": "string",
+      "datatype": "string",
+      "replaces": "string",
+      "defaultValue": "string",
+      "description": "string"
+    }
+  ],
+  "localFilePath": "string",
+  "hostFiles": [
+    {
+      "tempaltePackId": "string",
+      "templateName": "string",
+      "icon": "string",
+      "learnMoreLink": "string",
+      "uiFilters": [
+        "string"
+      ],
+      "minFullFrameworkVersion": "string",
+      "localFilePath": "string",
+      "templateLocalFilePath": "string"
+    }
+  ]
+}
+
+###
+# curl --data "param1=value1&param2=value2" https://httpbin.org/post
+POST https://httpbin.org/post
+Content-Type: application/x-www-form-urlencoded
+
+param1=value1&param2=value2
+
+###
+
+GET http://simple-books-api.glitch.me/status
 
 ###

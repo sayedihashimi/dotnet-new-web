@@ -19,18 +19,22 @@ namespace TemplatesApi.Controllers {
         public TemplatePackController(IWebHostEnvironment hostingEnvironment) {
             _hostingEnvironment = hostingEnvironment;
             _webRoot = _hostingEnvironment.WebRootPath;
-            SetFilepath(@"template-report.json");
+            // SetFilepath(@"template-report.json");
+            Filepath = Path.Combine(_webRoot, @"template-report.json");
+            TemplatePacks = TemplatePack.CreateFromFile(Filepath);
         }
-        public static void SetFilepath(string filename) {
-            string filepath = Path.Combine(_webRoot, filename);
-            Filepath = filepath;
-            TemplatePacks = TemplatePack.CreateFromFile(filepath);
-        }
+        
+        // public static void SetFilepath(string filename) {
+        //     string filepath = Path.Combine(_webRoot, filename);
+        //     Filepath = filepath;
+        //     TemplatePacks = TemplatePack.CreateFromFile(filepath);
+        // }
 
         [HttpGet("{packageId}")]
         public TemplatePack Get(string packageId) {
             return new TemplateSearcher().FindTemplatePackByName(packageId, TemplatePacks);
         }
+        [HttpGet]
         public List<TemplatePack> Get() {
             return TemplatePacks;
         }
