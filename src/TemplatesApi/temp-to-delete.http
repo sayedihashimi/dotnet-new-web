@@ -7,7 +7,7 @@ GET https://localhost:44320/api/search/minimal
 
 ###
 
-GET https://localhost:44320/api/TemplatePack/100/10
+GET https://localhost:44320/api/TemplatePack/100
 
 # curl -X 'POST' 
 #  'https://localhost:44320/api/Demo1' 
@@ -29,7 +29,6 @@ Content-Type: application/json
 "created from json-curl"
 
 ###
-
 # same get request using variables in the env file
 GET https://{{host}}/api/search/{{searchTerm}}
 Accept: application/json

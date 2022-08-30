@@ -17,7 +17,8 @@
         "dnw-previewcss": "false"
       },
       "applicationUrl": "https://localhost:44318",
-      "createTunnel": true
+      "createTunnel": true,
+      "tunnelAuthentication": "public"
     },
     "IIS Express": {
       "commandName": "IISExpress",
