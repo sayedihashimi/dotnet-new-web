@@ -14,6 +14,8 @@ builder.Services.Configure<TemplateWebConfig>(builder.Configuration);
 
 var app = builder.Build();
 
+var envVars = Environment.GetEnvironmentVariables();
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

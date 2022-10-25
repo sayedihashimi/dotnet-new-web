@@ -9,7 +9,6 @@ namespace TemplatesApi.Controllers;
 public class Demo1Controller : Controller
 {
     [HttpPost]
-    // just for API testing
     public ActionResult AddTemplate([FromBody]string identity)
     {
         if (string.IsNullOrEmpty(identity))

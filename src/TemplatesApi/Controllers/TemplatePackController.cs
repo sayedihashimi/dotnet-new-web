@@ -22,6 +22,7 @@ namespace TemplatesApi.Controllers {
             // SetFilepath(@"template-report.json");
             Filepath = Path.Combine(_webRoot, @"template-report.json");
             TemplatePacks = TemplatePack.CreateFromFile(Filepath);
+            System.Console.WriteLine("to delete");
         }
         
         // public static void SetFilepath(string filename) {
