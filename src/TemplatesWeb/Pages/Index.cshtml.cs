@@ -30,7 +30,10 @@ namespace TemplatesWeb.Pages {
         public async Task OnGetAsync() {
             // TemplatePacks = await GetFromApiAsync<List<TemplatePack>>("templatepack");
 
-            if(Skip < 0) {
+            Console.WriteLine($"tunnel URL: {Environment.GetEnvironmentVariable("VS_TUNNEL_URL")}");
+            Console.WriteLine($"API tunnel URL: {Environment.GetEnvironmentVariable("VS_TUNNEL_URL_TemplatesApi")}");
+
+            if (Skip < 0) {
                 Skip = 0;
             }
             if(Take <= 0) {

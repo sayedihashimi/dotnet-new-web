@@ -1,0 +1,479 @@
+[
+  {
+    "author": "Sayed I. Hashimi",
+    "name": "sayedtool",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "classifications": [
+      "Console"
+    ],
+    "shortName": [
+      "tool"
+    ],
+    "groupIdentity": null,
+    "identity": "Sayedha.CoreTool.CSharp",
+    "searchScore": 500,
+    "templatePackId": "SayedHa.Template.NetCoreTool.nuspec",
+    "sourceName": "MyCommand",
+    "defaultName": "MyCommandTool",
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Gurinder Pal Singh",
+    "name": "gpsinghtool",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "classifications": [
+      "Console"
+    ],
+    "shortName": [
+      "tool"
+    ],
+    "groupIdentity": null,
+    "identity": "GPSingh062321.CoreTool.CSharp",
+    "searchScore": 500,
+    "templatePackId": "gpsingh.demo.con.01",
+    "sourceName": "MyCommand",
+    "defaultName": "MyCommandTool",
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Alexander Clare",
+    "name": "TeGun Project Template 0.4.0",
+    "tags": {},
+    "classifications": [
+      "Common",
+      "Tool"
+    ],
+    "shortName": [
+      "tegun"
+    ],
+    "groupIdentity": null,
+    "identity": "dotnet-tegun.template",
+    "searchScore": 250,
+    "templatePackId": "dotnet-tegun.template",
+    "sourceName": "dotnet-tegun.template",
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Sayed I. Hashimi",
+    "name": "clitool",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "classifications": [
+      "Console",
+      "Tool"
+    ],
+    "shortName": [
+      "clitool"
+    ],
+    "groupIdentity": null,
+    "identity": "Sayedha.Templates.CliTool",
+    "searchScore": 250,
+    "templatePackId": "sayedha.templates",
+    "sourceName": "Sayedha.Templates.CliTool",
+    "defaultName": "MyTool",
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Charles Willis",
+    "name": "libanvl Standalone dotnet tool",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "classifications": [
+      "libanvl",
+      "tool"
+    ],
+    "shortName": [
+      "libanvltoolapp"
+    ],
+    "groupIdentity": "libanvl.tool",
+    "identity": "libanvl.tool.standalone",
+    "searchScore": 250,
+    "templatePackId": "libanvl.dotnet.templates",
+    "sourceName": "libanvl.tool",
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": [
+      {
+        "path": "libanvl.tool/libanvl.tool.csproj"
+      },
+      {
+        "path": "libanvl.tool.test/libanvl.tool.test.csproj"
+      }
+    ],
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Kevin Schneider",
+    "name": "BuildProject",
+    "tags": {
+      "language": "F#",
+      "type": "project"
+    },
+    "classifications": [
+      "F#",
+      "Build",
+      "Tool"
+    ],
+    "shortName": [
+      "BuildProject"
+    ],
+    "groupIdentity": null,
+    "identity": "BuildProject",
+    "searchScore": 250,
+    "templatePackId": "BuildProject",
+    "sourceName": "BuildProject",
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "J.Sakamoto",
+    "name": "Blazor WebAssembly App (hosted, minimum)",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "classifications": [
+      "Web",
+      "Blazor",
+      "WebAssembly",
+      "Hosted"
+    ],
+    "shortName": [
+      "blazorwasmhostedmin"
+    ],
+    "groupIdentity": "Toolbelt.Web.Blazor.Wasm.Hosted.Minimum",
+    "identity": "Toolbelt.Web.Blazor.Wasm.Hosted.Minimum.CSharp",
+    "searchScore": 210,
+    "templatePackId": "Toolbelt.AspNetCore.Blazor.Minimum.Templates",
+    "sourceName": "BlazorWasmHostedMin",
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": [
+      {
+        "path": "BlazorWasmHostedMin.sln"
+      },
+      {
+        "path": "Server/BlazorWasmHostedMin.Server.csproj"
+      },
+      {
+        "path": "Client/BlazorWasmHostedMin.Client.csproj"
+      },
+      {
+        "path": "Shared/BlazorWasmHostedMin.Shared.csproj"
+      }
+    ],
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "J.Sakamoto",
+    "name": "Blazor WebAssembly App (minimum)",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "classifications": [
+      "Web",
+      "Blazor",
+      "WebAssembly"
+    ],
+    "shortName": [
+      "blazorwasmmin"
+    ],
+    "groupIdentity": "Toolbelt.Web.Blazor.Wasm.Minimum",
+    "identity": "Toolbelt.Web.Blazor.Wasm.Minimum.CSharp",
+    "searchScore": 210,
+    "templatePackId": "Toolbelt.AspNetCore.Blazor.Minimum.Templates",
+    "sourceName": "BlazorWasmMin",
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": [
+      {
+        "path": "BlazorWasmMin.csproj"
+      }
+    ],
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Microsoft",
+    "name": "Dotnet local tool manifest file",
+    "tags": {
+      "type": "item"
+    },
+    "classifications": [
+      "Config"
+    ],
+    "shortName": [
+      "tool-manifest"
+    ],
+    "groupIdentity": "ToolManifestFile",
+    "identity": "Microsoft.Standard.QuickStarts.ToolManifestFile",
+    "searchScore": 200,
+    "templatePackId": "Microsoft.DotNet.Common.ItemTemplates",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": [
+      {
+        "path": ".config/dotnet-tools.json"
+      }
+    ],
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Automate The Planet Ltd.",
+    "name": "Meissa.Windows64",
+    "tags": {},
+    "classifications": [
+      "Tools",
+      "Test",
+      "Runner",
+      "Meissa",
+      "Distribute",
+      "Parallel"
+    ],
+    "shortName": [
+      "meissa-windows64"
+    ],
+    "groupIdentity": null,
+    "identity": "Meissa.Windows64",
+    "searchScore": 50,
+    "templatePackId": "Meissa.Windows64",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Automate The Planet Ltd.",
+    "name": "Meissa.MacOS64",
+    "tags": {},
+    "classifications": [
+      "Tools",
+      "Test",
+      "Runner",
+      "Meissa",
+      "Distribute",
+      "Parallel"
+    ],
+    "shortName": [
+      "meissa-macos64"
+    ],
+    "groupIdentity": null,
+    "identity": "Meissa.MacOS64",
+    "searchScore": 50,
+    "templatePackId": "Meissa.MacOS64",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Automate The Planet Ltd.",
+    "name": "Meissa.Linux64",
+    "tags": {},
+    "classifications": [
+      "Tools",
+      "Test",
+      "Runner",
+      "Meissa",
+      "Distribute",
+      "Parallel"
+    ],
+    "shortName": [
+      "meissa-linux64"
+    ],
+    "groupIdentity": null,
+    "identity": "Meissa.Linux64",
+    "searchScore": 50,
+    "templatePackId": "Meissa.Linux64",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Automate The Planet Ltd.",
+    "name": "Bellatrix.Tools.Windows",
+    "tags": {},
+    "classifications": [
+      "Tools",
+      "Test",
+      "UITest",
+      "Bellatrix"
+    ],
+    "shortName": [
+      "bellatrix-tools-windows"
+    ],
+    "groupIdentity": null,
+    "identity": "Bellatrix.Tools.Windows",
+    "searchScore": 50,
+    "templatePackId": "Bellatrix.Tools.Windows",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Automate The Planet Ltd.",
+    "name": "Bellatrix.Tools.Mac64",
+    "tags": {},
+    "classifications": [
+      "Tools",
+      "Test",
+      "UITest",
+      "Bellatrix"
+    ],
+    "shortName": [
+      "bellatrix-tools-mac64"
+    ],
+    "groupIdentity": null,
+    "identity": "Bellatrix.Tools.Mac64",
+    "searchScore": 50,
+    "templatePackId": "Bellatrix.Tools.Mac64",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Automate The Planet Ltd.",
+    "name": "Bellatrix.Tools.Linux64",
+    "tags": {},
+    "classifications": [
+      "Tools",
+      "Test",
+      "UITest",
+      "Bellatrix"
+    ],
+    "shortName": [
+      "bellatrix-tools-linux64"
+    ],
+    "groupIdentity": null,
+    "identity": "Bellatrix.Tools.Linux64",
+    "searchScore": 50,
+    "templatePackId": "Bellatrix.Tools.Linux64",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "Saeed Ganji <shahabganji@gmail.com>",
+    "name": "ASP.NET Core with Aurelia Toolbelt",
+    "tags": {
+      "language": "C#"
+    },
+    "classifications": [
+      "Web",
+      "MVC",
+      "SPA",
+      "Aurelia",
+      "Toolbelt"
+    ],
+    "shortName": [
+      "aut"
+    ],
+    "groupIdentity": null,
+    "identity": "AureliaToolbelt.AspNetCore",
+    "searchScore": 50,
+    "templatePackId": "AureliaToolbelt.AspNetCore",
+    "sourceName": "AureliaToolbeltTemplate",
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": [
+      {
+        "path": "AureliaToolbeltTemplate.csproj"
+      },
+      {
+        "path": "Startup.cs"
+      }
+    ],
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  },
+  {
+    "author": "defiantcode",
+    "name": "DefiantCode Cake Frosting Build Script",
+    "tags": {
+      "language": "C#"
+    },
+    "classifications": [
+      "build",
+      "tools",
+      "Cake",
+      "Frosting"
+    ],
+    "shortName": [
+      "cakefrosting-dc"
+    ],
+    "groupIdentity": null,
+    "identity": "DefiantCode.Cake.Frosting",
+    "searchScore": 50,
+    "templatePackId": "DefiantCode.Cake.Frosting.Template",
+    "sourceName": null,
+    "defaultName": null,
+    "baseline": null,
+    "primaryOutputs": null,
+    "symbols": [],
+    "localFilePath": null,
+    "hostFiles": []
+  }
+]

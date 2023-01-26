@@ -1,0 +1,105 @@
+@host = localhost:44320
+@httpbin = httpbin.org
+
+GET https://{{host}}/api/TemplatePack
+
+###
+
+GET https://{{host}}/api/templates
+
+###
+
+
+
+
+PATCH https://httpbin.org/patch
+Accept: application/json
+
+###
+
+PUT https://httpbin.org/put
+Accept: application/json
+
+"id-goes-here"
+
+###
+
+POST https://{{httpbin}}/post
+Accept: text/plain
+
+{
+    "username": "admin",
+    "password": "password"
+}
+
+###
+POST https://{{httpbin}}/post
+{
+    "name1":"value1",
+    "name2":"value2"
+}
+
+
+
+###
+POST https://{{httpbin}}/post
+Accept: application/json
+Authorization: Bearer mytoken123
+
+###
+POST https://{{httpbin}}/post
+Accept: application/json
+Authorization: Bearer mytoken123
+Authorization: Basic Ym9zY236Ym9zY28=
+
+###
+{
+
+    "metadata": {
+        "name": "somename",
+        "namespace": "argocd"  
+    },
+    "spec": {
+        "source": {
+            "repoURL": "https://github.com/httpyac/argocd.git",
+            "path": "argocd/somename",
+            "targetRevision": "1",
+            "helm": {
+                "valueFiles": ["values-foo.yaml","values.yaml"]
+            }
+        },
+        "destination": {
+            "server": "https://kubernetes.default.svc",
+            "namespace": "argocd"
+        },
+        "project": "default",
+        "syncPolicy": {
+            "automated":{}
+        }
+    }  
+}
+
+###
+
+DELETE https://httpbin.org/delete HTTP/1.1
+Accept: application/json
+###
+
+PUT https://httpbin.org/status/200 HTTP/1.1
+
+###
+
+# Template names
+# HTTP File - 
+# HTTP File (empty) - 
+#
+# OK to create a wrapper vstemplate file for now, we can revisit the localization for dotnet cli templates later.
+# 
+# We should surface this templte in ASP.NET Core as well as all .NET Core projects
+
+# need descriptions
+# need template content for the non-empty template
+# what nodes do we want this in?
+#   ASP.NET Core:        ASP.NET Core\General
+#   All other .NET Core: C#\General
+# Icon Known Moniker: HttpSend

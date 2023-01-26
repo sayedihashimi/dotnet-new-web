@@ -16,11 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "dnw-previewcss": "false"
       },
-      "applicationUrl": "https://localhost:44318",
-      //"devTunnelEnabled": true,
-      //"devTunnelAccess": "public"
-      //"createTunnel": true,
-      //"tunnelAuthentication": "public"
+      "applicationUrl": "https://localhost:44318"
     },
     "IIS Express": {
       "commandName": "IISExpress",

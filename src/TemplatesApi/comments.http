@@ -1,0 +1,32 @@
+# comment 1 - line before
+###
+ 
+GET https://localhost:1234
+ 
+###
+# comment 2 - line after
+ 
+GET https://localhost:1234
+ 
+### comment 3 - same line, also, sometimes >1 empty lines afterwards for more visual spacing
+ 
+ 
+GET https://localhost:1234
+ 
+################################
+### and I saw one case like this
+################################
+
+
+# curl -X 'POST' 
+#  'https://localhost:44320/api/Demo1' 
+#  -H 'accept: application/json' 
+#  -H 'Content-Type: application/json' 
+#  -d '"id-goes-here"'
+POST https://localhost:44320/api/Demo1
+accept: application/json
+Content-Type: application/json
+
+"id-goes-here"
+
+###
