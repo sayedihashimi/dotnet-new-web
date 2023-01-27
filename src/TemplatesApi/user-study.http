@@ -1,4 +1,6 @@
-@host=localhost:44320
+@hostname=localhost
+@port=44320
+@host={{hostname}}:{{port}}
 @searchTerm=tool
 
 GET https://localhost:44320/api/search/tool

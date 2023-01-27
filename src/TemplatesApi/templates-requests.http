@@ -1,7 +1,6 @@
 @host=localhost:44320
 @searchTerm=tool
 
-# @prompt username
 GET https://{{host}}/api/search/{{searchTerm}}
 Accept: application/json
 
