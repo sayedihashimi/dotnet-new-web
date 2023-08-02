@@ -146,3 +146,12 @@ param1=value1&param2=value2
 GET http://simple-books-api.glitch.me/status
 
 ###
+GET https://httpbin.org/anything?page=2&pageSize=10
+  
+  
+###
+
+https://httpbin.org/anything?page=2&pageSize=10
+
+
+###
