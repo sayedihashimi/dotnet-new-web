@@ -167,7 +167,7 @@ namespace TemplatesShared
     {
         public string Owners { get; set; }
         public string Version { get; set; }
-        public int DownloadCount { get; set; }
+        public long DownloadCount { get; set; }
         [JsonConverter(typeof(TemplateConverter))]
         public Template[] Templates { get; set; }
         public string DownloadUrl { get; set; }

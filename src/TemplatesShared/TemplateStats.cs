@@ -19,7 +19,7 @@ namespace TemplatesShared {
                 NumAuthors = templatePacks.Select(x => x.Authors).Distinct().Count();
             }
         }
-        public int NumDownloads { get; set; }
+        public long NumDownloads { get; set; }
         public int NumTemplates { get; set; }
         public int NumTemplatePacks { get; set; }
         public int NumAuthors { get; set; }

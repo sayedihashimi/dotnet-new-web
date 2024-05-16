@@ -444,7 +444,7 @@ namespace TemplatesConsole {
         public List<string> PackageType { get; set; }
         public bool HasLibFolder { get; set; }
         public List<string> HostFiles { get; set; }
-        public int DownloadCount { get; set; }
+        public long DownloadCount { get; set; }
 
         private void InitFrom(TemplatePack tp) {
             Debug.Assert(tp != null);

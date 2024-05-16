@@ -27,7 +27,7 @@ namespace TemplatesShared
         public string Summary { get; set; }
         public string[] Tags { get; set; }
         public string Title { get; set; }
-        public int TotalDownloads { get; set; }
+        public long TotalDownloads { get; set; }
         public bool Verified { get; set; }
         public NuGetPackageType[] PackageTypes { get; set; }
 
