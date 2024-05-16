@@ -1,170 +1,20 @@
-﻿@host=localhost:44320
-@host.foo = https://httpbin.org
-// @searchTerm=tool
-
-@TemplatesApi_HostAddress = https://localhost:44320
-
-GET https://dotnetnew-api.azurewebsites.net/api/templatepack
-###
-
-GET https://localhost:44320/api/templatepack
-
-###
-
 GET {{TemplatesApi_HostAddress}}/api/templatepack
 
 ###
 
-POST {{TemplatesApi_HostAddress}}/api/demo1
-Content-Type: application/json
-
-"string"
-
-###
-
-POST {{TemplatesApi_HostAddress}}/api/demo1
-Content-Type: application/json
-
-"string"
-
-###
-GET https://localhost:44320/api/Templates
-
-###
-
-GET https://{{host}}/api/search/{{searchTerm}}
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}}
 Accept: application/json
 
 ###
 
-# shows a simple GET request
-GET https://localhost:44320/api/search/minimal
+
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}}
 
 ###
-
-GET https://{{host}}/api/search/{{searchTerm}}
-
-###
-
-POST {{TemplatesApi_HostAddress}}/api/demo1
-Content-Type: application/json
-
-"string"
-
-###
-GET https://httpbin.org/anything
-
-
-###
-PUT https://localhost:44320/api/Templates
-Content-Type: application/json
-
-{
-    "author": "Sayed I. Hashimi",
-    "classifications": ["Console","Tool","web/webapi/","web/webapi/restfulapi"],
-    "name": "clitool",
-    "defaultName": "MyTool",
-    "identity": "Sayedha.Templates.CliTool",
-    "shortName": "clitool",
-    "tags": {
-      "language": "C#",
-      "type": "project"
-    }
-}
-
-###
-
-PUT https://localhost:44320/api/Templates
-Content-Type: application/json
-
-{
-    "author": "Mads Kristensen",
-    "classifications": ["Extensibility","Tool"],
-    "name": "vsext",
-    "defaultName": "VsTool",
-    "identity": "Madsk.Templates.VsExt",
-    "shortName": "vsext",
-    "tags": {
-      "language": "C#",
-      "type": "project"
-    }
-}
-
-###
-
-POST https://localhost:44320/api/Templates
-Content-Type: application/json
- 
-{
-  "author": "John Doe",
-  "name": "Sample Template",
-  "tags": {
-    "tag1": "value1",
-    "tag2": "value2"
-  },
-  "classifications": ["classification1", "classification2"],
-  "shortName": ["shortName1", "shortName2"],
-  "groupIdentity": "GroupIdentityValue",
-  "identity": "TemplateId",
-  "searchScore": 5,
-  "templatePackId": "TemplatePackId",
-  "sourceName": "SourceNameValue",
-  "defaultName": "DefaultNameValue",
-  "baseline": "BaselineValue",
-  "primaryOutputs": [
-    {
-      "path": "output/path1"
-    },
-    {
-      "path": "output/path2"
-    }
-  ],
-  "symbols": [
-    {
-      "name": "symbol1",
-      "type": "symbolType1",
-      "datatype": "symbolDatatype1",
-      "replaces": "replacesValue1",
-      "defaultValue": "defaultValue1",
-      "description": "symbolDescription1"
-    },
-    {
-      "name": "symbol2",
-      "type": "symbolType2",
-      "datatype": "symbolDatatype2",
-      "replaces": "replacesValue2",
-      "defaultValue": "defaultValue2",
-      "description": "symbolDescription2"
-    }
-  ],
-  "localFilePath": "/path/to/template",
-  "hostFiles": [
-    {
-      "tempaltePackId": "TemplatePackId",
-      "templateName": "Sample Template",
-      "icon": "icon/path",
-      "learnMoreLink": "learnmore/link",
-      "uiFilters": ["filter1", "filter2"],
-      "minFullFrameworkVersion": "4.7.2",
-      "localFilePath": "/path/to/hostfile",
-      "templateLocalFilePath": "/path/to/templatefile"
-    }
-  ]
-}
-
-
-###
-
-GET {{TemplatesApi_HostAddress}}/api/templates
-
-###
-GET {{TemplatesApi_HostAddress}}/api/templates/SayedHa.Template.NetCoreTool.nuspec
-
-
-
-###
-
-GET {{TemplatesApi_HostAddress}}/api/search/sayedha
+GET https://httpbin.org/headers
+X-From-KeyVault-SECRET: {{otherSecret}}
+X-From-UserSecrets: {{templatesApiKey}}
+X-From-Encrypted: {{secretValue}}
 
 ###
 POST https://f221rbf2-7058.use2.devtunnels.ms/api/MyWebHook

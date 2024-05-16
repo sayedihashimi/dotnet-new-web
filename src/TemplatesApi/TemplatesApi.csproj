@@ -10,6 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="C:\data\mycode\dotnet-new-web\src\TemplatesApi\.editorconfig" />
+    <None Include="httpenv.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TemplatesShared\TemplatesShared.csproj" />
   </ItemGroup>
     
@@ -21,5 +26,9 @@
     
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\data\mycode\dotnet-new-web\src\TemplatesApi\.editorconfig" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,120 @@
+
+@sample = anything
+
+GET https://httpbin.org/{{sample}}
+
+###
+
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}}
+###
+
+GET https://{{TemplatesApi_HostAddress}}/api/templatepack/{{templatePackId}}
+###
+GET https://gkm37f0l-44320.use2.devtunnels.ms/api/templatepack/{{templatePackId}}
+###
+
+GET https://{{TemplatesApi_HostAddress}}/api/templatepack/{{numToSkip}}/{{numToTake}}
+###
+
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}}
+X-API-KEY: {{templatesApiKey}}
+
+###
+
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}}
+X-CUSTOM-SECRET: {{otherSecret}}
+
+###
+
+# @expect 200
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}}
+X-CUSTOM-SECRET: {{secretValue}}
+
+###
+
+GET https://{{TemplatesApi_HostAddress}}/api/search/{{searchTerm}} 
+X-CUSTOM-USER: {{$processEnv USERNAME}}
+
+###
+
+GET https://httpbin.org/headers
+X-1RandomInt: {{$randomInt}}
+X-2DateTime: {{$datetime iso8601}} 
+X-3DateTime: {{$datetime rfc1123}} 
+X-4DateTime: {{$datetime rfc1123 1 d}} 
+X-5DateTime: {{$datetime "dd-MM-yyyy" 1 y}}
+X-6TimeStamp:{{$timestamp}}
+X-7TimeStamp:{{$timestamp 1 y}}
+X-8LocalDateTime: {{$localDatetime rfc1123}}
+X-9LocalDateTime: {{$localDatetime iso8601}}
+X-10LocalDateTime: {{$localDatetime iso8601 1 y}}
+traceparent: hello-world
+
+###
+GET https://httpbin.org/headers
+X-1Username: {{$processEnv USERNAME}}
+X-2ApiSecret: {{$processEnv API_SECRET}}
+
+###
+GET https://httpbin.org/headers
+X-1Username: {{$dotenv }}
+X-2ApiSecret: {{$dotenv API_SECRET}}
+
+###
+
+
+// Consider removing the below requests
+###
+GET https://httpbin.org/headers
+X-1GUID: {{$guid}}
+X-2INT: {{$randomInt}}
+X-3INT: {{$randomInt 100 1000}}
+X-4TIME: {{$timestamp}}
+X-5TIME: {{$timestamp 2 d}}
+X-6DateTime:{{$datetime rfc1123}}
+X-7TIME:{{$datetime "dd-MM-yyyy" 1 y}}
+X-8LocalDate:{{$localDatetime iso8601}}
+X-9LocalDate:{{$localDatetime 'MM/dd HH:mm:ss'}}
+###
+
+
+// {"guid":"{{$guid}}";"randomInt":"{{$randomInt}}"}
+
+
+POST https://httpbin.org/anything
+Content-Type: application/xml
+Date: {{$datetime rfc1123}}
+
+{
+    "user_name": "{{$processEnv USERNAME}}",
+    "request_id": "{{$guid}}",
+    "updated_at": "{{$timestamp}}",
+    "created_at": "{{$timestamp -1 d}}",
+    "review_count": "{{$randomInt 5 200}}",
+    "custom_date": "{{$datetime 'YYYY-MM-DD'}}",
+    "local_custom_date": "{{$localDatetime 'YYYY-MM-DD'}}"
+}
+
+###
+
+GET https://httpbin.org/headers
+X-1CustomDate: {{$localDatetime 'yyyy-MM-dd'}}
+X-2CustomDate: {{$localDatetime 'YYYY-MM-DD'}}
+
+###
+POST https://httpbin.org/anything
+Content-Type: application/json
+
+{
+    "user_name": "sayedha",
+    "request_id": "d6117074-7061-4273-9eb5-1400f130a2f9",
+    "updated_at": "1696350967",
+    "created_at": "1696264567",
+    "review_count": "145",
+    "custom_date": "YYYY-10-DD",
+    "local_custom_date": "YYYY-10-DD"
+}
+###
+GET https://httpbin.org/stream-bytes/100
+Accept: application/octet-stream
+###

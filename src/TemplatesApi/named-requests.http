@@ -1,0 +1,106 @@
+# @name headerReq
+GET https://httpbin.org/headers
+X-1RandomInt: {{$randomInt}}
+X-2DateTime: {{$datetime iso8601}} 
+X-3DateTime: {{$datetime rfc1123}} 
+X-4DateTime: {{$datetime rfc1123 1 d}} 
+X-5DateTime: {{$datetime "dd-MM-yyyy" 1 y}}
+X-6TimeStamp:{{$timestamp}}
+X-7TimeStamp:{{$timestamp 1 y}}
+X-8LocalDateTime: {{$localDatetime rfc1123}}
+X-9LocalDateTime: {{$localDatetime iso8601}}
+X-10LocalDateTime: {{$localDatetime iso8601 1 y}}
+traceparent: hello-world
+
+###
+
+# @name login
+POST https://httpbin.org/post
+Content-Type: application/x-www-form-urlencoded
+X-Custom1: some-custom-value-here
+
+name=foo&password=bar
+
+###
+# shows getting a value from a header
+GET https://httpbin.org/headers
+RespHeaderServer: {{login.response.headers.Server}}
+RequestContentLength: {{login.request.headers.Content-Length}}
+###
+
+# shows getting a value from the body
+POST https://httpbin.org/post
+Content-Type: application/x-www-form-urlencoded
+X-Custom1: some-custom-value-here
+
+name=foo&password={{login.response.body.$.form.name}}
+
+###
+
+# @name jsonpSample
+PUT https://httpbin.org/anything
+Content-Type: application/json
+
+{
+    "author": "Sayed I. Hashimi",
+    "classifications": ["Console","Tool","web/webapi/","web/webapi/restfulapi"],
+    "name": "clitool",
+    "defaultName": "MyTool",
+    "identity": "Sayedha.Templates.CliTool",
+    "shortName": "clitool",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    }
+}
+###
+GET https://httpbin.org/headers
+X-ValFromPrevious: {{jsonpSample.response.body.$.json.tags.language}}
+X-Custom: {{jsonpSample.response.headers.}}
+###
+# the user will get an error if they try to submit this request
+GET https://httpbin.org/headers
+X-ValFromPrevious: {{jsonpSample.response.body.*}}
+
+###
+
+# @name updateContact
+POST https://httpbin.org/anything
+Content-Type: application/xml
+Accept: application/xml
+
+<contact>
+  <Name>
+    <FirstName>Sayed</FirstName>
+    <LastName>Hashimi</LastName>
+  </Name>
+  <email>foo@example.com</email>
+  <phone>1233459238</phone>
+</contact>
+
+###
+
+# @name sampleXml
+GET https://httpbin.org/xml
+
+###
+GET https://httpbin.org/anything
+Accept: application/xml
+X-ValFromPrevious: {{sampleXml.response.body.//slideshow/slide[2]/title}}
+
+###
+# user will get an error, this is not supported
+GET https://httpbin.org/anything
+Accept: application/xml
+X-ValFromPrevious: {{sampleXml.response.body.*}}
+
+###
+// @name plainText
+GET https://httpbin.org/robots.txt
+Accept: text/plain
+
+###
+GET https://httpbin.org/anything
+X-ValFromPrevious: {{plainText.response.body.*}}
+
+###

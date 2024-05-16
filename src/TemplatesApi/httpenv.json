@@ -1,0 +1,16 @@
+{
+  "dev": {
+    "TemplatesApi_HostAddress": "localhost:44320",
+    "searchTerm": "wpf",
+    "templatePackId": "Boxed.Templates",
+    "numToSkip": "3",
+    "numToTake": "4"
+  },
+  "remote": {
+    "TemplatesApi_HostAddress": "dotnetnew-api.azurewebsites.net",
+    "searchTerm": "sayedha",
+    "templatePackId": "Boxed.Templates",
+    "numToSkip": "3",
+    "numToTake": "4"
+  }
+}

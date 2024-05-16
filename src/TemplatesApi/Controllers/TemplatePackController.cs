@@ -33,6 +33,9 @@ namespace TemplatesApi.Controllers {
 
         [HttpGet("{packageId}")]
         public TemplatePack Get(string packageId) {
+
+            var headers = HttpContext.Request.Headers;
+
             return new TemplateSearcher().FindTemplatePackByName(packageId, TemplatePacks);
         }
         [HttpGet]
